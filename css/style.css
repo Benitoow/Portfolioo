@@ -190,6 +190,33 @@ body {
     font-size: 0.9rem;
 }
 
+.tech-tags {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #f0f0f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.humor-note {
+    display: block;
+    font-size: 0.8em;
+    color: #888;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.project-card:hover .humor-note {
+    color: #ff4444;
+}
+
 /* Skills Section */
 .skills-container {
     display: grid;
