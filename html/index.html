@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add meta description for better SEO -->
+    <meta name="description" content="Portfolio de Benjamin LELEU, développeur web créatif et passionné. Découvrez mes projets et compétences en développement web.">
+    <!-- Add favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header class="hero">
         <nav class="navbar">
-            <div class="logo">Portfolio</div>
+            <div class="logo">Portfolio Ben</div>
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#a-propos">À Propos</a></li>
@@ -19,9 +23,12 @@
                 <li><a href="#competences">Compétences</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
         </nav>
 
-        <div class="hero-content">
+        <div class="hero-content" id="accueil">
             <h1>Bienvenue sur mon Portfolio</h1>
             <p class="subtitle">Développeur Web Passionné (et trop fort !)</p>
             <a href="#contact" class="cta-button">Me Contacter</a>
@@ -51,6 +58,7 @@
                 <h3>Site Covoiturage</h3>
                 <p>Site Web De Covoiturage CapCom, dont j'ai été chargé de faire le css</p>
                 <div class="tech-tags">
+                    <span class="tag">HTML</span>
                     <span class="tag">CSS</span>
                 </div>
                 <a href="./projets/SiteWebCapCom.html" class="project-link">Voir le Projet</a>
@@ -58,7 +66,7 @@
             
             <!-- Projet 2 -->
             <div class="project-card">
-                <img src="../Projet/A2-BUT-INFO1/VentePC.png" alt="Site de Vente de PC">
+                <img src="../Projet/Perso/VentePC.png" alt="Site de Vente de PC">
                 <h3>Site de Vente de PC</h3>
                 <p>Site web de vente de PC développé avec HTML, CSS et JavaScript</p>
                 <div class="tech-tags">
@@ -71,17 +79,18 @@
 
             <!-- Projet 3 -->
             <div class="project-card">
-                <img src="../images/site-web.jpg" alt="Aperçu du site d'hypnothérapie">
+                <img src="../Projet/Perso/nav-site-maman.png" alt="Aperçu du site d'hypnothérapie">
                 <h3>Site D'hypnothérapeute</h3>
-                <p>Site web d'hypnothérapie développé avec HTML et CSS</p>
+                <p>Site web d'hypnothérapie développé pour ma mère</p>
                 <div class="tech-tags">
                     <span class="tag">HTML</span>
                     <span class="tag">CSS</span>
+                    <span class="tag">JS</span>
                 </div>
                 <a href="./projets/hypnotherapie.html" class="project-link">Voir le Projet</a>
             </div>
 
-            <!-- Projet AI Aimbot -->
+            <!-- Projet 4 -->
             <div class="project-card">
                 <img src="../Projet/Perso/aimbot.png" alt="AI Aimbot Project">
                 <h3>AI Aimbot (Projet Personnel)</h3>
@@ -95,6 +104,19 @@
                     <span class="tag">OpenCV</span>
                 </div>
                 <a href="./projets/AIAimbot.html" class="project-link">Voir le Projet*</a>
+            </div>
+
+            <!-- Projet 5 -->
+            <div class="project-card">
+                <img src="../Projet/Perso/nav-site-hair.png" alt="Site de coiffure">
+                <h3>Site de Coiffure</h3>
+                <p>Site vitrine pour un salon de coiffure local, avec système de prise de rendez-vous</p>
+                <div class="tech-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JS</span>
+                </div>
+                <a href="./projets/sitecoiffure.html" class="project-link">Voir le Projet</a>
             </div>
         </div>
     </section>
@@ -115,7 +137,31 @@
                 <ul>
                     <li>Node.js</li>
                     <li>PHP</li>
-                    <li>MySQL</li>
+                    <li>PostgreSQL</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Langages de programmation</h3>
+                <ul>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>C#</li>
+                    <li>JavaFX</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Base de données</h3>
+                <ul>
+                    <li>SQL</li>
+                    <li>Microsoft Access</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Outils & Technologies</h3>
+                <ul>
+                    <li>Bash</li>
+                    <li>GNS3</li>
+                    <li>YAML</li>
                 </ul>
             </div>
         </div>
@@ -124,22 +170,23 @@
     <section id="contact" class="section">
         <h2>Contact</h2>
         <div class="contact-container">
-            <form class="contact-form">
+            <form class="contact-form" id="contactForm">
                 <input type="text" placeholder="Votre Nom" required>
                 <input type="email" placeholder="Votre Email" required>
                 <textarea placeholder="Votre Message" required></textarea>
                 <button type="submit">Envoyer</button>
+                <div class="form-message" id="formMessage"></div>
             </form>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/benjamin-leleu-349852283/"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Benitoow"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="https://x.com/noflixe"></i></a>
+                <a href="https://www.linkedin.com/in/benjamin-leleu-349852283/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Benitoow" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/noflixe" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Mon Portfolio. Tous droits réservés.</p>
+        <p>&copy; 2025 Portfolio Benjamin LELEU. Tous droits réservés.</p>
     </footer>
 
     <script src="../js/main.js"></script>
