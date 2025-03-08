@@ -1,38 +1,16 @@
-.github-section {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-}
+/* ===== STYLES SPÉCIFIQUES AUX PAGES DE PROJETS ===== */
 
-.github-message {
-    margin: 1rem 0;
-    line-height: 1.6;
-    color: #333;
-}
-
-.github-button {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background-color: #24292e;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-}
-
-.github-button:hover {
-    background-color: #2f363d;
-}
-
-.fa-github {
-    margin-right: 8px;
-}
-
+/* Structure principale de la page projet */
 .projet-details {
+    padding: 120px 5% 50px;
     max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
+    margin: 0 auto;
+}
+
+.projet-details h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
 }
 
 .projet-info {
@@ -42,12 +20,15 @@
     margin-top: 2rem;
 }
 
+/* Métadonnées du projet (sidebar) */
 .projet-metadata {
-    background-color: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
     position: sticky;
-    top: 2rem;
+    top: 100px;
     height: fit-content;
 }
 
@@ -55,40 +36,61 @@
     margin: 0.5rem 0;
 }
 
+/* Description du projet */
 .projet-description {
     background-color: white;
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
 }
 
 .projet-description h2 {
-    color: #333;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    margin: 2rem 0 1rem;
+}
+
+.projet-description h2:first-child {
+    margin-top: 0;
 }
 
 .projet-description ul {
     list-style-type: none;
-    padding-left: 0;
+    padding-left: 1rem;
 }
 
 .projet-description li {
     margin: 0.5rem 0;
-    padding-left: 1.5rem;
     position: relative;
+    padding-left: 1.5rem;
 }
 
 .projet-description li:before {
     content: "•";
-    color: #007bff;
+    color: var(--primary-color);
     position: absolute;
     left: 0;
 }
 
+/* Galerie d'images */
+.projet-gallery {
+    margin: 3rem 0;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.05);
+}
+
+.projet-gallery h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -97,50 +99,54 @@
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .gallery-grid img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
 }
 
-@media (max-width: 768px) {
-    .projet-info {
-        grid-template-columns: 1fr;
-    }
-    
-    .projet-metadata {
-        position: static;
-    }
+/* Sections des dépôts de code */
+.repository-section {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
 }
 
-.navbar {
-    background-color: #24292e;
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.repository-message {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #333;
 }
 
-.logo {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
+/* Section GitHub */
+.github-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+/* Section Google Drive */
+.gdrive-section {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: #edf3fe;
+    border-radius: 8px;
+    border-left: 4px solid var(--gdrive-color);
 }
 
-.nav-links a:hover {
-    background-color: rgba(255,255,255,0.1);
+.github-message, .gdrive-message {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #333;
 }
 
+/* Boîtes d'avertissement et disclaimers */
 .warning-box {
     background-color: #fff3cd;
     border: 1px solid #ffeeba;
@@ -160,7 +166,7 @@
     font-style: italic;
 }
 
-/* Personal Touch section styling */
+/* Section touche personnelle */
 .personal-touch {
     background-color: #f0f7ff;
     border-left: 4px solid var(--primary-color);
@@ -174,7 +180,87 @@
     margin-top: 0;
 }
 
-/* Additional project-specific styles */
-.projet-gallery {
-    margin: 2.5rem 0;
+/* Section site en ligne */
+.live-site-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #e6f7ed;
+    border-radius: 12px;
+    border-left: 4px solid #28a745;
+    position: relative;
+    overflow: hidden;
+}
+
+.live-site-section h2 {
+    color: #28a745;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.live-site-message {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+.live-site-message i {
+    color: #28a745;
+    margin-right: 8px;
+}
+
+.live-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.live-button:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.live-button i {
+    margin-right: 8px;
+}
+
+/* Animation subtile pour attirer l'attention */
+.live-site-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: rgba(40, 167, 69, 0.1);
+    border-radius: 0 0 0 100%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .projet-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .projet-metadata {
+        position: static;
+    }
+    
+    .repository-section {
+        padding: 1rem;
+    }
+}
+
+/* Optimisation pour les écrans plus grands */
+@media (min-width: 1200px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

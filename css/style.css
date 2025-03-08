@@ -1,3 +1,4 @@
+/* ===== VARIABLES GLOBALES ===== */
 :root {
     --primary-color: #6C63FF;
     --secondary-color: #2A2A2A;
@@ -7,8 +8,11 @@
     --gradient: linear-gradient(135deg, #6C63FF 0%, #00D9FF 100%);
     --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
+    --github-color: #24292e;
+    --gdrive-color: #1a73e8;
 }
 
+/* ===== RÉINITIALISATION ET BASE ===== */
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +22,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Add padding for fixed navbar */
+    scroll-padding-top: 80px; /* Ajoute un padding pour la barre de navigation fixe */
 }
 
 body {
@@ -28,7 +32,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Navbar Styles - Unified for all pages */
+/* ===== BARRE DE NAVIGATION ===== */
 .navbar {
     position: fixed;
     top: 0;
@@ -98,7 +102,7 @@ body {
     color: var(--secondary-color);
 }
 
-/* Hero Section */
+/* ===== SECTION HÉRO ===== */
 .hero {
     min-height: 100vh;
     background: var(--light-bg);
@@ -141,6 +145,7 @@ body {
     color: var(--secondary-color);
 }
 
+/* ===== BOUTONS D'APPEL À L'ACTION ===== */
 .cta-button {
     display: inline-block;
     padding: 1rem 2.5rem;
@@ -177,7 +182,7 @@ body {
     left: 100%;
 }
 
-/* Section Styles */
+/* ===== STYLES DES SECTIONS ===== */
 .section {
     padding: 7rem 10%;
 }
@@ -202,7 +207,7 @@ body {
     background: var(--gradient);
 }
 
-/* About Section */
+/* ===== SECTION À PROPOS ===== */
 .about-content {
     display: flex;
     gap: 2rem;
@@ -227,7 +232,7 @@ body {
     margin-right: 1rem;
 }
 
-/* Projects Section */
+/* ===== SECTION PROJETS ===== */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -293,11 +298,13 @@ body {
     transform: translateY(-3px);
 }
 
+/* ===== ÉTIQUETTES DE TECHNOLOGIE ===== */
 .tech-tags {
     display: flex;
     gap: 8px;
     margin: 10px 0;
     flex-wrap: wrap;
+    padding: 0 1.5rem;
 }
 
 .tag {
@@ -320,7 +327,7 @@ body {
     color: #ff4444;
 }
 
-/* Skills Section */
+/* ===== SECTION COMPÉTENCES ===== */
 .skills-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -348,7 +355,7 @@ body {
     color: var(--secondary-color);
 }
 
-/* Contact Section */
+/* ===== SECTION CONTACT ===== */
 .contact-container {
     max-width: 800px;
     margin: 0 auto;
@@ -416,6 +423,7 @@ body {
     display: block;
 }
 
+/* ===== LIENS SOCIAUX ===== */
 .social-links {
     display: flex;
     justify-content: center;
@@ -433,7 +441,7 @@ body {
     color: var(--primary-color);
 }
 
-/* Footer */
+/* ===== PIED DE PAGE ===== */
 footer {
     text-align: center;
     padding: 2rem;
@@ -441,7 +449,69 @@ footer {
     color: white;
 }
 
-/* Responsive Design */
+/* ===== LIENS VERS LES DÉPÔTS ===== */
+.repo-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.github-button, .gdrive-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.github-button {
+    background-color: var(--github-color);
+}
+
+.github-button:hover {
+    background-color: #3a3f44;
+    transform: translateY(-3px);
+}
+
+.gdrive-button {
+    background-color: var(--gdrive-color);
+}
+
+.gdrive-button:hover {
+    background-color: #1558b7;
+    transform: translateY(-3px);
+}
+
+.fa-github, .fa-google-drive {
+    margin-right: 8px;
+}
+
+/* ===== CLASSES D'ANIMATION ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== DESIGN RESPONSIVE ===== */
 @media (max-width: 992px) {
     .section {
         padding: 5rem 5%;
@@ -493,6 +563,10 @@ footer {
     .projet-metadata {
         position: static;
     }
+    
+    .repo-links {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 480px) {
@@ -509,7 +583,7 @@ footer {
     }
 }
 
-/* Project Details Page Styling - Moving from projet.css to ensure consistency */
+/* ===== STYLES DES PAGES PROJET - Pour assurer la cohérence ===== */
 .projet-details {
     padding: 120px 5% 50px;
     max-width: 1200px;
@@ -593,21 +667,7 @@ footer {
     transform: scale(1.02);
 }
 
-@media (max-width: 768px) {
-    .projet-details {
-        padding: 100px 5% 30px;
-    }
-    
-    .projet-info {
-        grid-template-columns: 1fr;
-    }
-    
-    .projet-metadata {
-        position: static;
-    }
-}
-
-/* GitHub Section styling */
+/* ===== SECTION GITHUB ===== */
 .github-section {
     margin-top: 2rem;
     padding: 1.5rem;
@@ -635,11 +695,7 @@ footer {
     background-color: #2f363d;
 }
 
-.fa-github {
-    margin-right: 8px;
-}
-
-/* Warning box for certain projects */
+/* ===== BOÎTES D'AVERTISSEMENT ===== */
 .warning-box {
     background-color: #fff3cd;
     border: 1px solid #ffeeba;
@@ -657,25 +713,4 @@ footer {
     font-size: 0.8em;
     color: #666;
     font-style: italic;
-}
-
-/* Animation Classes */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
