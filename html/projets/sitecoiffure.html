@@ -3,95 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site de Coiffure - Projet Personnel</title>
+    <title>Site de Coiffure | Portfolio Benjamin LELEU</title>
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/projet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Site vitrine pour salon de coiffure avec système de prise de rendez-vous">
+    <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">Portfolio Ben</div>
-        <ul class="nav-links">
-            <li><a href="../index.html">Retour</a></li>
-        </ul>
-    </nav>
-
-    <div class="projet-details">
-        <h1>Site Web pour Salon de Coiffure</h1>
-        
-        <div class="projet-info">
-            <div class="projet-metadata">
-                <p><strong>Date:</strong> 2024</p>
-                <p><strong>Durée:</strong> Toujours En Cours</p>
-                <p><strong>Équipe:</strong> 1 personne</p>
-                <p><strong>Technologies:</strong> HTML, CSS, JS</p>
-            </div>
-
-            <div class="projet-description">
-                <h2>Description du Projet</h2>
-                <p>Ce site vitrine pour un salon de coiffure local a été conçu pour mettre en valeur les services proposés et permettre aux clients de prendre rendez-vous en ligne. J'ai travaillé en étroite collaboration avec le propriétaire pour créer une identité visuelle qui correspond à l'ambiance chaleureuse et moderne du salon.</p>
-
-                <h2>Fonctionnalités Principales</h2>
-                <ul>
-                    <li>Présentation des services et tarifs</li>
-                    <li>Système de prise de rendez-vous en ligne</li>
-                    <li>Galerie de photos des réalisations</li>
-                    <li>Formulaire de contact</li>
-                    <li>Interface d'administration pour gérer les rendez-vous</li>
-                </ul>
-
-                <h2>Ma Contribution</h2>
-                <p>Pour ce projet, j'ai réalisé :</p>
-                <ul>
-                    <li>La conception de l'interface utilisateur responsive</li>
-                    <li>Le développement front-end avec HTML/CSS</li>
-                    <li>Animations en JS</li>
-                </ul>
-
-                <div class="projet-gallery">
-                    <h2>Captures d'écran</h2>
-                    <div class="gallery-grid">
-                        <img src="../../Projet/Perso/nav-site-hair.png" alt="Navigation et bannière du site">
-                        <img src="../../Projet/Perso/Presta-femme-site-hair.png" alt="Section prestations femmes">
-                        <img src="../../Projet/Perso/homme+kid-site-hair.png" alt="Section prestations hommes et enfants">
-                        <img src="../../Projet/Perso/onco-site-hair.png" alt="Section socio-esthétique et onco-coiffure">
-                        <img src="../../Projet/Perso/contact-site-hair.png" alt="Page de contact">
-                    </div>
+    <!-- Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Navigation -->
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">Portfolio Ben</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="../index.html#a-propos">À Propos</a></li>
+                <li><a href="../index.html#projets">Projets</a></li>
+                <li><a href="../index.html#competences">Compétences</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
                 </div>
+            </div>
+        </nav>
 
-                <div class="repository-section">
-                    <h2>Accéder au Code du Projet</h2>
-                    
-                    <div class="github-section">
-                        <p class="github-message">
-                            <i class="fa-brands fa-github"></i>
-                            Le code source du projet est disponible sur GitHub. N'hésitez pas à y jeter un œil pour voir comment j'ai structuré ce site web.
-                        </p>
-                        <div class="repo-links">
-                            <a href="https://github.com/Benitoow/SiteHair.git" class="github-button" target="_blank">
-                                <i class="fa-brands fa-github"></i> Voir sur GitHub
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="gdrive-section">
-                        <p class="gdrive-message">
-                            <i class="fa-brands fa-google-drive"></i>
-                            Si GitHub n'est pas accessible, vous pouvez également télécharger le code source via Google Drive.
-                        </p>
-                        <div class="repo-links">
-                            <a href="https://drive.google.com/drive/folders/123LBJ3r8z_VaCEp2kKhbwM5iA446s4xi?usp=drive_link" class="gdrive-button" target="_blank">
-                                <i class="fa-brands fa-google-drive"></i> Télécharger sur Google Drive
-                            </a>
-                        </div>
+        <!-- Contenu principal de la section Héro -->
+        <div class="hero-content">
+            <h1>Site de Coiffure</h1>
+            <p class="subtitle">Site vitrine moderne pour salon de coiffure avec système de prise de rendez-vous</p>            <div class="project-links">
+                <a href="https://github.com/Benitoow/SiteCoiffure.git" class="cta-button" target="_blank">
+                    <i class="fab fa-github"></i> Code Source
+                </a>
+                <a href="#" class="cta-button" target="_blank">
+                    <i class="fab fa-google-drive"></i> Archive Complète
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section À Propos du Projet -->
+    <section class="section">
+        <h2>À propos du projet</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Ce site vitrine pour salon de coiffure a été conçu pour offrir une présence web moderne et 
+                professionnelle. Il propose une interface élégante mettant en valeur les services, prestations 
+                et l'expertise du salon, avec un système de prise de rendez-vous intégré pour faciliter la 
+                gestion client.</p>
+                
+                <ul class="about-details">
+                    <li><i class="fas fa-calendar-alt"></i> Durée : 2 semaines</li>
+                    <li><i class="fas fa-user"></i> Projet personnel</li>
+                    <li><i class="fas fa-cut"></i> Secteur : Beauté & Coiffure</li>
+                    <li><i class="fas fa-laptop"></i> Type : Site vitrine responsive</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Technologies -->
+    <section class="section">
+        <h2>Technologies utilisées</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>Responsive Design</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-paint-brush"></i> Design</h3>
+                <ul>
+                    <li>UI/UX moderne</li>
+                    <li>Animations CSS</li>
+                    <li>Typography élégante</li>
+                    <li>Palette harmonieuse</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Fonctionnalités</h3>
+                <ul>
+                    <li>Galerie photos</li>
+                    <li>Formulaire contact</li>
+                    <li>Géolocalisation</li>
+                    <li>Optimisation SEO</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Fonctionnalités -->
+    <section class="section">
+        <h2>Fonctionnalités principales</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3><i class="fas fa-home"></i> Accueil</h3>
+                <ul>
+                    <li>Présentation du salon</li>
+                    <li>Services mis en avant</li>
+                    <li>Témoignages clients</li>
+                    <li>Call-to-action efficaces</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-scissors"></i> Prestations</h3>
+                <ul>
+                    <li>Catalogue des services</li>
+                    <li>Tarifs transparents</li>
+                    <li>Descriptions détaillées</li>
+                    <li>Photos avant/après</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-calendar"></i> Réservation</h3>
+                <ul>
+                    <li>Prise de rendez-vous</li>
+                    <li>Sélection coiffeur</li>
+                    <li>Choix créneaux</li>
+                    <li>Confirmation email</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Galerie -->
+    <section class="section">
+        <h2>Aperçu du projet</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="../../Projet/Perso/nav-site-hair.png" alt="Navigation du site de coiffure">
+                <h3>Navigation principale</h3>
+                <p>Interface moderne et navigation intuitive</p>
+            </div>
+            <div class="project-card">
+                <img src="../../Projet/Perso/Presta-femme-site-hair.png" alt="Prestations femmes">
+                <h3>Prestations femmes</h3>
+                <p>Catalogue complet des services pour femmes</p>
+            </div>
+            <div class="project-card">
+                <img src="../../Projet/Perso/homme+kid-site-hair.png" alt="Services hommes et enfants">
+                <h3>Hommes & Enfants</h3>
+                <p>Section dédiée aux coupes hommes et enfants</p>
+            </div>
+            <div class="project-card">
+                <img src="../../Projet/Perso/onco-site-hair.png" alt="Section oncologie">
+                <h3>Coiffure oncologique</h3>
+                <p>Services spécialisés et accompagnement personnalisé</p>
+            </div>
+            <div class="project-card">
+                <img src="../../Projet/Perso/contact-site-hair.png" alt="Page de contact">
+                <h3>Contact & Localisation</h3>
+                <p>Informations pratiques et carte interactive</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Design & UX -->
+    <section class="section">
+        <h2>Approche Design & UX</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>L'approche design de ce projet s'articule autour de plusieurs principes clés :</p>
+                
+                <ul class="about-details">
+                    <li><i class="fas fa-palette"></i> <strong>Élégance :</strong> Palette de couleurs raffinée reflétant l'univers de la beauté</li>
+                    <li><i class="fas fa-images"></i> <strong>Visuel :</strong> Mise en avant des réalisations avec galerie photo professionnelle</li>
+                    <li><i class="fas fa-mobile-alt"></i> <strong>Accessibilité :</strong> Design responsive adapté à tous les appareils</li>
+                    <li><i class="fas fa-heart"></i> <strong>Empathie :</strong> Interface pensée pour rassurer et inspirer confiance</li>
+                    <li><i class="fas fa-rocket"></i> <strong>Performance :</strong> Chargement rapide et navigation fluide</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact/Retour -->
+    <section class="section">
+        <h2>Retour sur le projet</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Ce projet m'a permis d'explorer le secteur de la beauté et de comprendre les besoins spécifiques 
+                d'un salon de coiffure en termes de présence web. J'ai particulièrement apprécié travailler sur 
+                l'aspect esthétique et l'expérience utilisateur, en créant une interface qui reflète le professionnalisme 
+                et la créativité du métier de coiffeur.</p>
+                
+                <p>Le défi principal était de créer un équilibre entre élégance visuelle et fonctionnalité pratique, 
+                notamment pour le système de prise de rendez-vous.</p>
+                
+                <div class="contact-container">
+                    <div class="social-links">
+                        <a href="https://github.com/Benitoow/SiteCoiffure.git" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="../index.html#projets" class="cta-button">← Retour aux projets</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 Mon Portfolio. Tous droits réservés.</p>
+        <p>&copy; 2025 Portfolio Benjamin LELEU. Tous droits réservés.</p>
     </footer>
+
+    <script src="../../js/main.js"></script>
 </body>
 </html>

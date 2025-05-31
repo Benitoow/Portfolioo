@@ -11,9 +11,11 @@
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <!-- Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
     <!-- Section Héro avec Navigation -->
-    <header class="hero">
-        <nav class="navbar">
+    <header class="hero">        <nav class="navbar">
             <div class="logo">Portfolio Ben</div>
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
@@ -22,8 +24,13 @@
                 <li><a href="#competences">Compétences</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
+            <div class="navbar-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </nav>
 
@@ -33,9 +40,7 @@
             <p class="subtitle">Développeur Web Passionné (et trop fort !)</p>
             <a href="#contact" class="cta-button">Me Contacter</a>
         </div>
-    </header>
-
-    <!-- Section À Propos -->
+    </header>    <!-- Section À Propos -->
     <section id="a-propos" class="section">
         <h2>À Propos de Moi</h2>
         <div class="about-content">
@@ -45,7 +50,39 @@
                     <li><i class="fas fa-graduation-cap"></i> Formation en BUT informatique</li>
                     <li><i class="fas fa-briefcase"></i> 2 années d'expérience (Redoublement)</li>
                     <li><i class="fas fa-map-marker-alt"></i> Basé en France</li>
+                    <li><i class="fas fa-code"></i> Passionné par les nouvelles technologies</li>
+                    <li><i class="fas fa-rocket"></i> Toujours en quête d'apprentissage</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouvelle Section Achievements -->
+    <section id="achievements" class="section achievements-section">
+        <h2>Réalisations & Objectifs</h2>
+        <div class="achievements-grid">            <div class="achievement-card">
+                <div class="achievement-icon">🏆</div>
+                <h3>Projets Réalisés</h3>
+                <p class="achievement-number">8</p>
+                <p>Sites web et applications développés</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">💻</div>
+                <h3>Technologies Maîtrisées</h3>
+                <p class="achievement-number">15+</p>
+                <p>Langages et frameworks utilisés</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🎯</div>
+                <h3>Objectif 2025</h3>
+                <p class="achievement-number">100%</p>
+                <p>Réussir mon BUT MMI et décrocher un stage</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🚀</div>
+                <h3>Projets en Cours</h3>
+                <p class="achievement-number">3</p>
+                <p>Applications modernes en développement</p>
             </div>
         </div>
     </section>
@@ -105,10 +142,26 @@
                     <span class="tag">PyTorch</span>
                     <span class="tag">OpenCV</span>
                 </div>
-                <a href="./projets/AIAimbot.html" class="project-link">Voir le Projet*</a>
+                <a href="./projets/AIAimbot.html" class="project-link">Voir le Projet*</a>            </div>
+
+            <!-- Projet 5 - CoC Bot -->
+            <div class="project-card">
+                <img src="../images/project-placeholder.svg" alt="Clash of Clans Bot">
+                <h3>CoC Bot - Automatisation Clash of Clans</h3>
+                <p>Bot intelligent en Python pour automatiser certaines tâches dans Clash of Clans. 
+                   Utilise la vision par ordinateur et l'apprentissage automatique ! 🤖⚔️
+                   <span class="humor-note">*Usage strictement éducatif</span>
+                </p>
+                <div class="tech-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">OpenCV</span>
+                    <span class="tag">Selenium</span>
+                    <span class="tag">ML</span>
+                </div>
+                <a href="./projets/CoCBot.html" class="project-link">Voir le Projet</a>
             </div>
 
-            <!-- Projet 5 -->
+            <!-- Projet 6 -->
             <div class="project-card">
                 <img src="../Projet/Perso/nav-site-hair.png" alt="Site de coiffure">
                 <h3>Site de Coiffure</h3>
@@ -118,7 +171,32 @@
                     <span class="tag">CSS</span>
                     <span class="tag">JS</span>
                 </div>
-                <a href="./projets/sitecoiffure.html" class="project-link">Voir le Projet</a>
+                <a href="./projets/sitecoiffure.html" class="project-link">Voir le Projet</a>            </div>            <!-- Nouveau Projet 7 - Portfolio React -->
+            <div class="project-card">
+                <img src="../images/project-placeholder.svg" alt="Portfolio React moderne">
+                <h3>Portfolio React Interactif</h3>
+                <p>Version moderne de ce portfolio développée avec React, Three.js pour les animations 3D et Framer Motion</p>
+                <div class="tech-tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Three.js</span>
+                    <span class="tag">Framer Motion</span>
+                    <span class="tag">TypeScript</span>
+                </div>
+                <a href="#" class="project-link">En Développement 🚧</a>
+            </div>
+
+            <!-- Nouveau Projet 8 - API REST -->
+            <div class="project-card">
+                <img src="../images/project-placeholder.svg" alt="API REST Node.js">
+                <h3>API REST E-commerce</h3>
+                <p>API complète pour une plateforme e-commerce avec authentification JWT, gestion des commandes et intégration de paiement</p>
+                <div class="tech-tags">
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Express</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">JWT</span>
+                    <span class="tag">Stripe</span>
+                </div>                <a href="#" class="project-link">Prévu 2025 📅</a>
             </div>
         </div>
     </section>
@@ -130,16 +208,22 @@
                 <h3>Front-end</h3>
                 <ul>
                     <li>HTML5 / CSS3</li>
-                    <li>JavaScript</li>
+                    <li>JavaScript ES6+</li>
                     <li>React.js</li>
+                    <li>TypeScript</li>
+                    <li>Sass/SCSS</li>
+                    <li>Responsive Design</li>
                 </ul>
             </div>
             <div class="skill-category">
                 <h3>Back-end</h3>
                 <ul>
                     <li>Node.js</li>
+                    <li>Express.js</li>
                     <li>PHP</li>
                     <li>PostgreSQL</li>
+                    <li>MongoDB</li>
+                    <li>API REST</li>
                 </ul>
             </div>
             <div class="skill-category">
@@ -149,6 +233,7 @@
                     <li>Python</li>
                     <li>C#</li>
                     <li>JavaFX</li>
+                    <li>Kotlin (apprentissage)</li>
                 </ul>
             </div>
             <div class="skill-category">
@@ -156,14 +241,19 @@
                 <ul>
                     <li>SQL</li>
                     <li>Microsoft Access</li>
+                    <li>Firebase</li>
+                    <li>SQLite</li>
                 </ul>
             </div>
             <div class="skill-category">
                 <h3>Outils & Technologies</h3>
                 <ul>
+                    <li>Git / GitHub</li>
+                    <li>VS Code</li>
+                    <li>Figma</li>
                     <li>Bash</li>
                     <li>GNS3</li>
-                    <li>YAML</li>
+                    <li>Docker (apprentissage)</li>
                 </ul>
             </div>
         </div>
@@ -193,4 +283,4 @@
 
     <script src="../js/main.js"></script>
 </body>
-</html>*
+</html>

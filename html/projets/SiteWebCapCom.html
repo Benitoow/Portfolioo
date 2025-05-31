@@ -3,88 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Web De Covoiturage CapCom - Projet BUT</title>
+    <title>Site Covoiturage CapCom | Portfolio Benjamin LELEU</title>
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/projet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Site de covoiturage CapCom développé en équipe - Projet scolaire">
+    <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">Portfolio Ben</div>
-        <ul class="nav-links">
-            <li><a href="../index.html">Retour</a></li>
-        </ul>
-    </nav>
-
-    <div class="projet-details">
-        <h1>Site Web De Covoiturage CapCom</h1>
-        
-        <div class="projet-info">
-            <div class="projet-metadata">
-                <p><strong>Date:</strong> 2024</p>
-                <p><strong>Durée:</strong> 3-4 mois</p>
-                <p><strong>Équipe:</strong> 3 personnes</p>
-                <p><strong>Rôle:</strong> Développeur CSS</p>
-            </div>
-
-            <div class="projet-description">
-                <h2>Description du Projet</h2>
-                <p>Le projet consistait à créer un site web de covoiturage pour les employés de CapCom. L'objectif était de faciliter les trajets domicile-travail entre collègues, de réduire les émissions de CO2 et de promouvoir une mobilité plus durable. Ce projet était purement fictif et réalisé dans le cadre d'un exercice d'entraînement, sans l'implication réelle de CapCom.</p>
-                <h2>Fonctionnalités Principales</h2>
-                <ul>
-                    <li>Création de styles CSS réactifs</li>
-                    <li>Utilisation de Flexbox et Grid pour la mise en page</li>
-                    <li>Animations et transitions CSS</li>
-                    <li>Optimisation des performances CSS</li>
-                </ul>
-
-                <h2>Ma Contribution</h2>
-                <p>En tant que développeur CSS, j'étais responsable de la conception et de la mise en œuvre de l'interface utilisateur. J'ai travaillé sur la création de styles réactifs pour assurer une expérience utilisateur optimale sur différents appareils. J'ai également collaboré avec les développeurs backend pour intégrer les fonctionnalités de la base de données en temps réel.</p>
-                
-                <div class="projet-gallery">
-                    <h2>Captures d'écran</h2>
-                    <div class="gallery-grid">
-                        <img src="../../Projet/A2-BUT-INFO1/CapComSite.png" alt="Page d'accueil du site CapCom">
-                        <img src="../../Projet/A2-BUT-INFO1/CapComRes.png" alt="Interface de réservation de covoiturage">
-                        <img src="../../Projet/A2-BUT-INFO1/CapCom Inscription.png" alt="Formulaire d'inscription CapCom">
-                    </div>
+    <!-- Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Navigation -->
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">Portfolio Ben</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="../index.html#a-propos">À Propos</a></li>
+                <li><a href="../index.html#projets">Projets</a></li>
+                <li><a href="../index.html#competences">Compétences</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
                 </div>
+            </div>
+        </nav>
+
+        <!-- Contenu principal de la section Héro -->
+        <div class="hero-content">
+            <h1>Site Covoiturage CapCom</h1>
+            <p class="subtitle">Plateforme de covoiturage collaborative développée en équipe</p>            <div class="project-links">
+                <a href="https://github.com/Benitoow/CapCom.git" class="cta-button" target="_blank">
+                    <i class="fab fa-github"></i> Code Source
+                </a>
+                <a href="#" class="cta-button" target="_blank">
+                    <i class="fab fa-google-drive"></i> Archive Complète
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section À Propos du Projet -->
+    <section class="section">
+        <h2>À propos du projet</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>CapCom est une plateforme de covoiturage développée dans le cadre de mes études en BUT Informatique. 
+                Ce projet collaboratif avait pour objectif de créer une solution complète permettant aux utilisateurs 
+                de proposer et rechercher des trajets en covoiturage. J'ai été principalement responsable du 
+                développement des feuilles de style CSS et de l'interface utilisateur.</p>
                 
-                <div class="repository-section">
-                    <h2>Accéder au Code du Projet</h2>
+                <ul class="about-details">
+                    <li><i class="fas fa-calendar-alt"></i> Durée : 6 semaines</li>
+                    <li><i class="fas fa-users"></i> Projet en équipe (4 personnes)</li>
+                    <li><i class="fas fa-car"></i> Thématique : Mobilité & Covoiturage</li>
+                    <li><i class="fas fa-graduation-cap"></i> Cadre : BUT Informatique</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Technologies -->
+    <section class="section">
+        <h2>Technologies utilisées</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3 (ma spécialité)</li>
+                    <li>JavaScript</li>
+                    <li>Responsive Design</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-server"></i> Backend</h3>
+                <ul>
+                    <li>PHP</li>
+                    <li>MySQL</li>
+                    <li>Apache</li>
+                    <li>PDO</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Collaboration</h3>
+                <ul>
+                    <li>Git/GitHub</li>
+                    <li>Travail en équipe</li>
+                    <li>Méthode Agile</li>
+                    <li>Trello</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Mon Rôle -->
+    <section class="section">
+        <h2>Mon rôle dans le projet</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Dans ce projet collaboratif, j'ai été principalement responsable de :</p>
                 
-                    <div class="github-section">
-                        <p class="github-message">
-                            <i class="fa-brands fa-github"></i>
-                            Ce projet étant un travail d'équipe réalisé dans le cadre de ma formation, le code source est disponible sur GitHub.
-                            Vous pourrez y voir notamment ma contribution aux styles CSS et à l'interface utilisateur.
-                        </p>
-                        <div class="repo-links">
-                            <a href="https://github.com/Benitoow/CapCom-Covoiturage.git" class="github-button" target="_blank">
-                                <i class="fa-brands fa-github"></i> Voir sur GitHub
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="gdrive-section">
-                        <p class="gdrive-message">
-                            <i class="fa-brands fa-google-drive"></i>
-                            Une version du projet incluant la documentation complète est également disponible sur Google Drive.
-                            Elle contient notamment les maquettes initiales et les rapports de progression.
-                        </p>
-                        <div class="repo-links">
-                            <a href="https://drive.google.com/drive/folders/10nyLNFrdO9Vxa2O-Ffl4dbc_JfD5jIz9?usp=drive_link" class="gdrive-button" target="_blank">
-                                <i class="fa-brands fa-google-drive"></i> Télécharger sur Google Drive
-                            </a>
-                        </div>
+                <ul class="about-details">
+                    <li><i class="fas fa-paint-brush"></i> Design et intégration CSS complète</li>
+                    <li><i class="fas fa-mobile-alt"></i> Développement responsive pour tous les écrans</li>
+                    <li><i class="fas fa-palette"></i> Création de la charte graphique</li>
+                    <li><i class="fas fa-user-friends"></i> Interface utilisateur et expérience UX</li>
+                    <li><i class="fas fa-code"></i> Contributions au code JavaScript frontend</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Galerie -->
+    <section class="section">
+        <h2>Aperçu du projet</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="../../Projet/A2-BUT-INFO1/CapComSite.png" alt="Interface principale CapCom">
+                <h3>Page d'accueil</h3>
+                <p>Interface claire et moderne pour la recherche de trajets</p>
+            </div>
+            <div class="project-card">
+                <img src="../../Projet/A2-BUT-INFO1/CapComRes.png" alt="Résultats de recherche">
+                <h3>Résultats de recherche</h3>
+                <p>Affichage optimisé des trajets disponibles</p>
+            </div>
+            <div class="project-card">
+                <img src="../../Projet/A2-BUT-INFO1/CapCom Inscription.png" alt="Page d'inscription">
+                <h3>Inscription</h3>
+                <p>Formulaire d'inscription utilisateur responsive</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Fonctionnalités -->
+    <section class="section">
+        <h2>Fonctionnalités développées</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3><i class="fas fa-search"></i> Recherche</h3>
+                <ul>
+                    <li>Recherche par ville</li>
+                    <li>Filtres par date</li>
+                    <li>Tri par prix</li>
+                    <li>Géolocalisation</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-user"></i> Gestion Utilisateur</h3>
+                <ul>
+                    <li>Inscription/Connexion</li>
+                    <li>Profil conducteur</li>
+                    <li>Historique trajets</li>
+                    <li>Système de notation</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-road"></i> Trajets</h3>
+                <ul>
+                    <li>Proposition trajet</li>
+                    <li>Réservation places</li>
+                    <li>Chat intégré</li>
+                    <li>Notifications</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact/Retour -->
+    <section class="section">
+        <h2>Retour sur l'expérience</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Ce projet m'a permis de découvrir le travail en équipe dans le développement web. 
+                Prendre en charge l'intégralité du CSS a été un défi passionnant qui m'a permis de 
+                perfectionner mes compétences en design responsive et en organisation du code. 
+                J'ai particulièrement apprécié créer une interface utilisateur cohérente et intuitive.</p>
+                
+                <div class="contact-container">
+                    <div class="social-links">
+                        <a href="https://github.com/Benitoow/CapCom.git" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="../index.html#projets" class="cta-button">← Retour aux projets</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 Mon Portfolio. Tous droits réservés.</p>
+        <p>&copy; 2025 Portfolio Benjamin LELEU. Tous droits réservés.</p>
     </footer>
+
+    <script src="../../js/main.js"></script>
 </body>
 </html>
