@@ -1,29 +1,49 @@
 # 🌟 Portfolio - Benjamin LELEU
 
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-DC143C?style=for-the-badge&logo=github)](https://benitoow.github.io/Portfolioo/)
+
 Portfolio personnel moderne présentant mes compétences en développement web et mes projets.
 
-## 🚀 Démarrage rapide
+## 🌐 Voir en ligne
 
-1. Ouvrir le fichier `html/index.html` dans votre navigateur
-2. Ou lancer un serveur local : `python -m http.server 8000`
-3. Naviguer vers `http://localhost:8000/html/`
+**[➡️ Visiter le Portfolio](https://benitoow.github.io/Portfolioo/)**
+
+## 🚀 Démarrage local
+
+1. Cloner le dépôt : `git clone https://github.com/Benitoow/Portfolioo.git`
+2. Ouvrir `index.html` dans votre navigateur
+3. Ou utiliser Live Server dans VS Code
 
 ## 🛠️ Technologies
 
-- **HTML5** / **CSS3** / **JavaScript**
-- Design responsive et accessible
-- Animations optimisées
-- Thème sombre/clair
+| Frontend | Animations | Design |
+|----------|------------|--------|
+| HTML5 | AOS.js | Responsive |
+| CSS3 | Vanta.js (FOG) | Glassmorphism |
+| JavaScript ES6+ | Three.js | Dark/Light Theme |
+
+## 🎨 Thème
+
+- **Couleur principale** : Rouge Sang (#DC143C)
+- **Fond** : Noir/Blanc avec effet brouillard animé
+- **Style** : Moderne, minimaliste, glassmorphism
 
 ## 📁 Structure du projet
 
 ```
-Portfolio/
+Portfolioo/
+├── index.html      # Redirection GitHub Pages
+├── 404.html        # Page d'erreur personnalisée
+├── .nojekyll       # Désactive Jekyll
 ├── css/            # Fichiers de styles
-├── html/           # Pages HTML
+│   ├── style.css   # Styles principaux
+│   ├── fixes.css   # Corrections additionnelles
+│   └── projet-pages.css  # Styles pages projets
+├── html/           
 │   ├── index.html  # Page principale
-│   └── projets/    # Pages de projets
-├── js/             # Scripts JavaScript
+│   └── projets/    # Pages de projets détaillés
+├── js/
+│   └── main.js     # JavaScript principal
 ├── images/         # Images et assets
 └── Projet/         # Screenshots des projets
 ```
@@ -41,9 +61,9 @@ Portfolio/
 **Benjamin LELEU** - Développeur Web Full-Stack
 
 - 📧 [ll.benjamin.9455@gmail.com](mailto:ll.benjamin.9455@gmail.com)
-- 💼 [LinkedIn](https://www.linkedin.com/in/benjamin-leleu-349852283/)
+- 💼 [LinkedIn](https://www.linkedin.com/in/benjamin-leleu-b373bb36a/)
 - 🐙 [GitHub](https://github.com/Benitoow)
 
 ---
 
-© 2025 Benjamin LELEU - Créé avec ❤️
+© 2026 Benjamin LELEU - Créé avec ❤️

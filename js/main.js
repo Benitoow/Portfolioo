@@ -1,6 +1,6 @@
 /* ===== PORTFOLIO MAIN.JS - ENHANCED VERSION ===== */
 /* Author: Benjamin LELEU */
-/* Last Updated: 2025 */
+/* Last Updated: 2026 */
 
 // ===== CONFIGURATION =====
 const CONFIG = {

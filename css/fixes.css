@@ -666,17 +666,17 @@
 
 /* ===== SCROLL PROGRESS BAR ===== */
 .scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #DC143C, #ff4560, #DC143C);
-    background-size: 200% 100%;
-    animation: progressGradient 2s linear infinite;
-    z-index: 9999;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 4px !important;
+    background: linear-gradient(90deg, #DC143C, #ff4560, #DC143C) !important;
+    background-size: 200% 100% !important;
+    animation: progressGradient 2s linear infinite !important;
+    z-index: 99999 !important;
     width: 0%;
-    transition: width 0.1s ease;
-    box-shadow: 0 0 15px rgba(220, 20, 60, 0.8), 0 0 30px rgba(220, 20, 60, 0.4);
+    transition: width 0.1s ease !important;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.8), 0 0 30px rgba(220, 20, 60, 0.4) !important;
 }
 
 @keyframes progressGradient {
