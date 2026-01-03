@@ -12,6 +12,13 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ===== PRÉSERVER FONT AWESOME ===== */
+.fa, .fas, .fab, .far, .fal, .fad,
+[class*="fa-"] {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+    font-style: normal !important;
+}
+
 /* ===== BODY ===== */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
