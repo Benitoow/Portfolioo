@@ -20,8 +20,13 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../css/fixes.css">
+    <link rel="stylesheet" href="../css/glassmorphism.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
@@ -45,6 +50,9 @@
     </script>
 </head>
 <body>
+    <!-- Vanta.js Fog Background -->
+    <div id="vanta-bg"></div>
+    
     <!-- Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
       <!-- Section Héro avec Navigation -->
@@ -103,17 +111,17 @@
     </header>    <!-- Section À Propos -->
     <section id="a-propos" class="section">
         <div class="container">
-            <h2>À Propos de Moi</h2>
+            <h2 data-aos="fade-up">À Propos de Moi</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <p>Je m'appelle <strong>Benjamin LELEU</strong>, développeur web full-stack passionné 💻. Après un parcours enrichissant en BUT Informatique puis une réorientation stratégique vers le BUT MMI, j'ai trouvé ma vraie vocation ! Originaire de la région parisienne (nord de Paris), je suis mobile et prêt à déménager pour poursuivre ma formation.</p>
+                <div class="about-text" data-aos="fade-up" data-aos-delay="100">
+                    <p>Je m'appelle <strong>Benjamin LELEU</strong>, étudiant en BUT MMI et développeur web passionné 💻. Actuellement en formation à l'<strong>IUT de Troyes</strong> depuis septembre 2025, j'allie créativité et technique pour donner vie à des projets web innovants !</p>
                     
-                    <p>Mon objectif ? <strong>Transformer des idées en expériences numériques innovantes</strong>, avec une touche de créativité qui me caractérise. Je combine expertise technique et vision artistique pour créer des solutions web modernes et performantes.</p>
+                    <p>Mon objectif ? <strong>Transformer des idées en expériences numériques uniques</strong>, avec une touche de créativité qui me caractérise. Je combine expertise technique et vision artistique pour créer des solutions web modernes et performantes.</p>
                     
                     <ul class="about-details" role="list">
                         <li role="listitem">
                             <i class="fas fa-graduation-cap" aria-hidden="true"></i> 
-                            Formation en BUT MMI (Métiers du Multimédia et de l'Internet)
+                            Étudiant en BUT MMI à Troyes (depuis Sept. 2025)
                         </li>
                         <li role="listitem">
                             <i class="fas fa-briefcase" aria-hidden="true"></i> 
@@ -121,11 +129,11 @@
                         </li>
                         <li role="listitem">
                             <i class="fas fa-map-marker-alt" aria-hidden="true"></i> 
-                            Basé en France, mobile pour opportunités
+                            Basé à Troyes, Champagne-Ardenne 🥂
                         </li>
                         <li role="listitem">
                             <i class="fas fa-code" aria-hidden="true"></i> 
-                            Passionné par les technologies émergentes
+                            Passionné par le web design & développement
                         </li>
                         <li role="listitem">
                             <i class="fas fa-rocket" aria-hidden="true"></i> 
@@ -138,31 +146,31 @@
     </section>    <!-- Section Réalisations & Objectifs -->
     <section id="achievements" class="section achievements-section">
         <div class="container">
-            <h2>Réalisations & Objectifs</h2>
+            <h2 data-aos="fade-up">Réalisations & Objectifs</h2>
             <div class="achievements-grid">
-                <article class="achievement-card">
-                    <div class="achievement-icon" aria-hidden="true">🏆</div>
+                <article class="achievement-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="achievement-icon" aria-hidden="true"><i class="fas fa-trophy"></i></div>
                     <h3>Projets Réalisés</h3>
                     <p class="achievement-number" aria-label="8 projets">8</p>
                     <p>Sites web et applications développés avec passion</p>
                 </article>
                 
-                <article class="achievement-card">
-                    <div class="achievement-icon" aria-hidden="true">💻</div>
+                <article class="achievement-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="achievement-icon" aria-hidden="true"><i class="fas fa-laptop-code"></i></div>
                     <h3>Technologies Maîtrisées</h3>
                     <p class="achievement-number" aria-label="Plus de 15 technologies">15+</p>
                     <p>Langages et frameworks modernes utilisés</p>
                 </article>
                 
-                <article class="achievement-card">
-                    <div class="achievement-icon" aria-hidden="true">🎯</div>
+                <article class="achievement-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="achievement-icon" aria-hidden="true"><i class="fas fa-bullseye"></i></div>
                     <h3>Objectif 2025</h3>
                     <p class="achievement-number" aria-label="100 pourcent de réussite">100%</p>
                     <p>Réussir mon BUT MMI et décrocher un stage</p>
                 </article>
                 
-                <article class="achievement-card">
-                    <div class="achievement-icon" aria-hidden="true">🚀</div>
+                <article class="achievement-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="achievement-icon" aria-hidden="true"><i class="fas fa-rocket"></i></div>
                     <h3>Projets en Cours</h3>
                     <p class="achievement-number" aria-label="3 projets">3</p>
                     <p>Applications modernes en développement</p>
@@ -172,10 +180,10 @@
     </section>    <!-- Section Projets -->
     <section id="projets" class="section">
         <div class="container">
-            <h2>Mes Projets</h2>
+            <h2 data-aos="fade-up">Mes Projets</h2>
             <div class="projects-grid">
                 <!-- Projet 1 - CapCom -->
-                <article class="project-card">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="0">
                     <img src="../Projet/A2-BUT-INFO1/CapComSite.png" alt="Capture d'écran du site de covoiturage CapCom" loading="lazy">
                     <div class="project-content">
                         <h3>Site Covoiturage CapCom</h3>
@@ -192,7 +200,7 @@
                 </article>
                 
                 <!-- Projet 2 - Vente PC -->
-                <article class="project-card">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
                     <img src="../Projet/Perso/VentePC.png" alt="Capture d'écran du site de vente de PC" loading="lazy">
                     <div class="project-content">
                         <h3>Site de Vente de PC</h3>
@@ -210,7 +218,7 @@
                 </article>
 
                 <!-- Projet 3 - Site Hypnothérapeute -->
-                <article class="project-card">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <img src="../Projet/Perso/nav-site-maman.png" alt="Capture d'écran du site d'hypnothérapie" loading="lazy">
                     <div class="project-content">
                         <h3>Site D'hypnothérapeute</h3>
@@ -228,7 +236,7 @@
                 </article>
 
                 <!-- Projet 4 - AI Aimbot -->
-                <article class="project-card">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="300">
                     <img src="../Projet/Perso/aimbot.png" alt="Illustration du projet AI Aimbot" loading="lazy">
                     <div class="project-content">
                         <h3>AI Aimbot (Projet Éducatif)</h3>
@@ -247,7 +255,7 @@
                         </a>
                     </div>
                 </article>                <!-- Projet 5 - CoC Bot -->
-                <article class="project-card">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="0">
                     <img src="../images/project-placeholder.svg" alt="Illustration du bot Clash of Clans" loading="lazy">
                     <div class="project-content">
                         <h3>CoC Bot - Automatisation Clash of Clans</h3>
@@ -269,7 +277,7 @@
                 </article>
 
                 <!-- Projet 6 - Site Coiffure -->
-                <article class="project-card">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
                     <img src="../Projet/Perso/nav-site-hair.png" alt="Capture d'écran du site de coiffure" loading="lazy">
                     <div class="project-content">
                         <h3>Site de Coiffure</h3>
@@ -287,7 +295,7 @@
                 </article>
 
                 <!-- Projet 7 - Portfolio React -->
-                <article class="project-card">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <img src="../images/project-placeholder.svg" alt="Aperçu du portfolio React en développement" loading="lazy">
                     <div class="project-content">
                         <h3>Portfolio React Interactif</h3>
@@ -309,7 +317,7 @@
                 </article>
 
                 <!-- Projet 8 - API REST -->
-                <article class="project-card">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="300">
                     <img src="../images/project-placeholder.svg" alt="Illustration de l'API REST e-commerce" loading="lazy">
                     <div class="project-content">
                         <h3>API REST E-commerce</h3>
@@ -335,9 +343,9 @@
     </section>    <!-- Section Compétences -->
     <section id="competences" class="section">
         <div class="container">
-            <h2>Compétences</h2>
+            <h2 data-aos="fade-up">Compétences</h2>
             <div class="skills-container">
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="0">
                     <h3><i class="fas fa-code" aria-hidden="true"></i> Front-end</h3>
                     <div class="tech-grid">
                         <div class="tech-item">
@@ -367,7 +375,7 @@
                     </div>
                 </div>
                 
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
                     <h3><i class="fas fa-server" aria-hidden="true"></i> Back-end</h3>
                     <div class="tech-grid">
                         <div class="tech-item">
@@ -397,7 +405,7 @@
                     </div>
                 </div>
                 
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
                     <h3><i class="fas fa-tools" aria-hidden="true"></i> Outils & Technologies</h3>
                     <div class="tech-grid">
                         <div class="tech-item">
@@ -431,7 +439,7 @@
     </section>    <!-- Section Timeline -->
     <section id="timeline" class="section timeline-section">
         <div class="container">
-            <h2>Mon Parcours</h2>
+            <h2 data-aos="fade-up">Mon Parcours</h2>
             <div class="timeline">
                 <article class="timeline-item" data-aos="fade-right">
                     <div class="timeline-marker" aria-hidden="true"></div>
@@ -476,11 +484,11 @@
                     <div class="timeline-marker" aria-hidden="true"></div>
                     <div class="timeline-content">
                         <h3>2025 - Réorientation Stratégique</h3>
-                        <p>Réorientation vers le BUT MMI pour allier technique et créativité. Une décision mûrement réfléchie qui correspond parfaitement à mes aspirations professionnelles.</p>
+                        <p>Décision de réorientation vers le BUT MMI pour allier technique et créativité. Une décision mûrement réfléchie qui correspond parfaitement à mes aspirations professionnelles.</p>
                         <div class="timeline-tags" role="list" aria-label="Nouvelle orientation">
-                            <span class="tag" role="listitem">BUT MMI</span>
+                            <span class="tag" role="listitem">Réorientation</span>
                             <span class="tag" role="listitem">Créativité</span>
-                            <span class="tag" role="listitem">Multimédia</span>
+                            <span class="tag" role="listitem">Ambition</span>
                         </div>
                     </div>
                 </article>
@@ -488,10 +496,25 @@
                 <article class="timeline-item" data-aos="fade-right">
                     <div class="timeline-marker" aria-hidden="true"></div>
                     <div class="timeline-content">
-                        <h3>2025 - Projets & Innovation</h3>
-                        <p>Développement intensif de projets personnels et professionnels. Passion confirmée pour le développement web moderne et l'innovation technologique. L'aventure ne fait que commencer ! 🚀</p>
+                        <h3>Septembre 2025 - BUT MMI à Troyes <i class="fas fa-graduation-cap"></i></h3>
+                        <p>Intégration du BUT Métiers du Multimédia et de l'Internet à l'IUT de Troyes ! Une nouvelle aventure passionnante où je combine développement web, design et communication numérique.</p>
+                        <div class="timeline-tags" role="list" aria-label="Formation actuelle">
+                            <span class="tag" role="listitem">BUT MMI</span>
+                            <span class="tag" role="listitem">Troyes</span>
+                            <span class="tag" role="listitem">Multimédia</span>
+                            <span class="tag" role="listitem">Web Design</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-marker" aria-hidden="true"></div>
+                    <div class="timeline-content">
+                        <h3>2026 - Projets & Innovation <i class="fas fa-rocket"></i></h3>
+                        <p>Développement intensif de projets personnels et académiques. Passion confirmée pour le développement web moderne, le design UI/UX et l'innovation technologique. L'aventure continue !</p>
                         <div class="timeline-tags" role="list" aria-label="Domaines d'expertise">
                             <span class="tag" role="listitem">Web Dev</span>
+                            <span class="tag" role="listitem">UI/UX</span>
                             <span class="tag" role="listitem">React</span>
                             <span class="tag" role="listitem">Innovation</span>
                         </div>
@@ -502,7 +525,7 @@
     </section>    <!-- Section Contact -->
     <section id="contact" class="section">
         <div class="container">
-            <h2>Contact</h2>
+            <h2 data-aos="fade-up">Contact</h2>
             <div class="contact-container">
                 <form class="contact-form" id="contactForm" novalidate>
                     <div class="form-group">
@@ -584,8 +607,8 @@
                     <h4>Contact</h4>
                     <div class="footer-contact">
                         <p><i class="fas fa-envelope" aria-hidden="true"></i> benjamin.leleu.dev@gmail.com</p>
-                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> France, Mobile</p>
-                        <p><i class="fas fa-phone" aria-hidden="true"></i> Disponible sur demande</p>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Troyes, France 🥂</p>
+                        <p><i class="fas fa-graduation-cap" aria-hidden="true"></i> Étudiant BUT MMI</p>
                     </div>
                 </div>
                 
@@ -602,8 +625,8 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Benjamin LELEU. Tous droits réservés.</p>
-                <p class="footer-quote">"Code with passion, create with purpose" 💻✨</p>
+                <p>&copy; 2026 Benjamin LELEU. Tous droits réservés.</p>
+                <p class="footer-quote"><i class="fas fa-code"></i> "Code with passion, create with purpose" <i class="fas fa-heart"></i></p>
             </div>
         </div>
     </footer>
@@ -614,6 +637,64 @@
     </button>
 
     <!-- Scripts -->
+    <!-- Three.js (required for Vanta) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- Vanta.js Fog Effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.fog.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+
+        // Initialize Vanta.js Fog
+        let vantaEffect = null;
+        
+        function initVanta() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            
+            if (vantaEffect) {
+                vantaEffect.destroy();
+            }
+            
+            vantaEffect = VANTA.FOG({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                highlightColor: isDark ? 0xFF4560 : 0xDC143C,  // Rouge sang
+                midtoneColor: isDark ? 0x1e1e1e : 0xf5f5f5,
+                lowlightColor: isDark ? 0x000000 : 0xfafafa,
+                baseColor: isDark ? 0x000000 : 0xffffff,
+                blurFactor: 0.6,
+                speed: 1.5,
+                zoom: 1.2
+            });
+        }
+
+        // Init Vanta on load
+        initVanta();
+
+        // Update Vanta on theme change
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                setTimeout(initVanta, 100);
+            });
+        }
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (vantaEffect) vantaEffect.destroy();
+        });
+    </script>
 </body>
 </html>

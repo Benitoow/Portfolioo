@@ -1,0 +1,49 @@
+/* ===== CONFIGURATION DES POLICES - SANS-SERIF MODERNES ===== */
+
+/* Polices système sans-serif pour tous les textes */
+* {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Force sans-serif pour le corps de texte */
+body,
+p,
+li,
+span,
+a,
+input,
+textarea,
+button,
+.nav-link,
+.about-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+/* Force sans-serif moderne pour les titres */
+h1, h2, h3, h4, h5, h6,
+.logo,
+.hero-content h1,
+.section-title,
+.project-card h3,
+.skill-category h3,
+.achievement-card h3,
+.timeline-content h3 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Poids de police robuste */
+strong, b {
+    font-weight: 600 !important;
+}
+
+em, i {
+    font-style: italic;
+}
+
