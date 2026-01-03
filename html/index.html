@@ -12,6 +12,24 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <link rel="canonical" href="https://votre-domaine.com">
+    <base id="dynamic-base" href="./">
+
+    <script>
+        // Fige les URLs longues en remplaçant /html/index.html par la racine tout en gardant les liens relatifs valides
+        (function() {
+            var baseEl = document.getElementById('dynamic-base');
+            if (!baseEl) return;
+
+            var path = window.location.pathname;
+            var dir = path.endsWith('/') ? path : path.substring(0, path.lastIndexOf('/') + 1);
+            baseEl.setAttribute('href', dir);
+
+            if (path.endsWith('/html/index.html')) {
+                var trimmed = dir.replace(/html\/?$/, '');
+                window.history.replaceState({}, '', trimmed || '/');
+            }
+        })();
+    </script>
     
     <!-- Préchargement des ressources critiques -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -293,7 +311,7 @@
 
                 <!-- Projet 7 - TikTok (37k) - Arrêté -->
                 <article class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="../images/project-placeholder.svg" alt="Miniatures TikTok 37k" loading="lazy">
+                    <img src="../Projet/Perso/CompteTikTok1/ww2__tank.png" alt="Miniatures TikTok 37k" loading="lazy">
                     <div class="project-content">
                         <h3>TikTok @benitoow (37k) - Archives</h3>
                         <p>Ancien compte TikTok (37k) d'éditions vidéo (chars/militaire) réalisé intégralement sur CapCut, arrêté par choix personnel.</p>
@@ -313,7 +331,7 @@
 
                 <!-- Projet 8 - TikTok Star Wars (en cours) -->
                 <article class="project-card" data-aos="fade-up" data-aos-delay="300">
-                    <img src="../images/project-placeholder.svg" alt="Édits Star Wars TikTok" loading="lazy">
+                    <img src="../Projet/Perso/CompteTikTok2/astralcovenant.png" alt="Édits Star Wars TikTok" loading="lazy">
                     <div class="project-content">
                         <h3>TikTok Star Wars (en cours)</h3>
                         <p>Nouveau compte TikTok dédié aux edits Star Wars. Montage sur Premiere Pro & After Effects, export Media Encoder.</p>
@@ -561,7 +579,7 @@
             
             <div class="footer-bottom">
                 <p>&copy; 2026 Benjamin LELEU. Tous droits réservés.</p>
-                <p class="footer-quote"><i class="fas fa-code"></i> "C'est raconter le monde en pixels" <i class="fas fa-heart"></i></p>
+                <p class="footer-quote"><i class="fas fa-code"></i> "Raconter le monde en pixels" <i class="fas fa-heart"></i></p>
             </div>
         </div>
     </footer>
