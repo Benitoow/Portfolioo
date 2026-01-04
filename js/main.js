@@ -138,12 +138,9 @@ function initThemeToggle() {
     const themeToggle = $('#themeToggle');
     if (!themeToggle) return;
 
-    // Check for saved theme preference or default to light
-    const savedTheme = localStorage.getItem('theme') || 
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
+    // Le thème a déjà été initialisé dans le HTML, on récupère juste la valeur actuelle
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    updateThemeIcon(currentTheme);
 
     themeToggle.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
