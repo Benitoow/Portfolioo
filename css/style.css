@@ -1851,31 +1851,216 @@ i[class*=" fab"],
     }
 }
 
-/* Print Styles */
+/* Print Styles - Optimisé pour PDF */
 @media print {
+    /* Masquer les éléments interactifs non pertinents */
     .navbar,
     .hero-cta,
     .contact-form,
     .social-links,
-    .footer {
+    .footer,
+    .scroll-to-top,
+    .quick-contact,
+    .scroll-progress,
+    .theme-toggle,
+    .menu-btn,
+    .hero-particles,
+    #vanta-bg,
+    .skip-link {
+        display: none !important;
+    }
+
+    /* Reset des couleurs pour impression */
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Conserver les couleurs pour titres et accents */
+    h1, h2, h3, .subtitle, .stat-number, .achievement-number {
+        color: #DC143C !important;
+    }
+
+    /* Body et page */
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Hero simplifié */
+    .hero {
+        min-height: auto;
+        padding: 1.5cm 0;
+        background: white !important;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 24pt;
+        margin-bottom: 0.5cm;
+    }
+
+    .subtitle {
+        font-size: 14pt;
+    }
+
+    /* Hero stats en ligne */
+    .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 1cm;
+        margin: 0.5cm 0;
+    }
+
+    .hero-stat {
+        border: 1px solid #ccc;
+        padding: 0.3cm;
+        background: #f9f9f9 !important;
+    }
+
+    .stat-number {
+        font-size: 18pt;
+    }
+
+    /* Sections */
+    .section {
+        padding: 0.5cm 0;
+        page-break-inside: avoid;
+    }
+
+    .section h2 {
+        font-size: 18pt;
+        border-bottom: 2px solid #DC143C;
+        padding-bottom: 0.2cm;
+        margin-bottom: 0.5cm;
+    }
+
+    /* Projets en grille 2 colonnes */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5cm;
+    }
+
+    .project-card {
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+        padding: 0.3cm;
+    }
+
+    .project-card img {
+        max-height: 3cm;
+        object-fit: cover;
+    }
+
+    .project-link {
         display: none;
     }
 
-    .hero {
-        min-height: auto;
-        padding: 2rem 0;
+    /* Compétences */
+    .skills-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5cm;
     }
 
-    .section {
-        padding: 1rem 0;
+    .skills-block {
+        border: 1px solid #ccc;
+        padding: 0.3cm;
         page-break-inside: avoid;
+        background: #f9f9f9 !important;
+    }
+
+    .skill-item {
+        padding: 0.1cm 0;
+    }
+
+    /* Achievement cards */
+    .achievements-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.3cm;
+    }
+
+    .achievement-card {
+        border: 1px solid #ccc;
+        padding: 0.2cm;
+        page-break-inside: avoid;
+    }
+
+    /* Timeline */
+    .timeline::before {
+        background: #DC143C !important;
+    }
+
+    .timeline-item {
+        page-break-inside: avoid;
+    }
+
+    .timeline-content {
+        border: 1px solid #ccc;
+        padding: 0.3cm;
+    }
+
+    /* Tags */
+    .tag, .tech-tags span {
+        border: 1px solid #DC143C;
+        padding: 0.1cm 0.2cm;
+        font-size: 9pt;
+    }
+
+    /* Contact info visible pour impression */
+    .contact-info {
+        display: block !important;
+        border: 1px solid #ccc;
+        padding: 0.3cm;
+    }
+
+    /* Footer contact info à afficher */
+    .footer-contact {
+        display: block !important;
+    }
+
+    /* Liens visibles avec URL */
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #666 !important;
+    }
+
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    /* Page breaks */
+    h2, h3 {
+        page-break-after: avoid;
     }
 
     .project-card,
-    .skill-category {
-        box-shadow: none;
-        border: 1px solid #000;
+    .skills-block,
+    .achievement-card,
+    .timeline-item {
         page-break-inside: avoid;
+    }
+
+    /* Marges de page */
+    @page {
+        margin: 1.5cm;
+        size: A4;
+    }
+
+    @page :first {
+        margin-top: 1cm;
     }
 }
 

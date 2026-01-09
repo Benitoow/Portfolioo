@@ -75,6 +75,9 @@
     </script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#a-propos" class="skip-link" aria-label="Aller au contenu principal">Aller au contenu</a>
+    
     <!-- Vanta.js Fog Background -->
     <div id="vanta-bg"></div>
     
@@ -106,7 +109,7 @@
             <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
             <div class="hero-text">
                 <h1 class="typewriter">Bienvenue sur mon Portfolio</h1>
-                <p class="subtitle">Développeur Web Full-Stack & Créatif</p>
+                <p class="subtitle">Étudiant en BUT MMI 1ère année</p>
                 <div class="hero-stats" role="region" aria-label="Statistiques du portfolio">
                     <div class="hero-stat">
                         <span class="stat-number" data-target="8" aria-label="8 projets réalisés">0</span>
@@ -121,14 +124,18 @@
                         <span class="stat-label">Années d'Expérience</span>
                     </div>
                 </div>
+                <p class="hero-availability">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    Disponible en alternance sur <strong>Troyes</strong> et <strong>Île-de-France</strong>
+                </p>
                 <div class="hero-cta">
-                    <a href="#contact" class="cta-button" role="button">
+                    <a href="../cv/Benjamin_LELEU_CV.pdf" class="cta-button" role="button" download>
+                        <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                        Télécharger mon CV
+                    </a>
+                    <a href="#contact" class="cta-button secondary" role="button">
                         <i class="fas fa-envelope" aria-hidden="true"></i>
                         Me Contacter
-                    </a>
-                    <a href="#projets" class="cta-button secondary" role="button">
-                        <i class="fas fa-folder-open" aria-hidden="true"></i>
-                        Voir mes Projets
                     </a>
                 </div>
             </div>
@@ -192,9 +199,9 @@
                 
                 <article class="achievement-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="achievement-icon" aria-hidden="true"><i class="fas fa-rocket"></i></div>
-                    <h3>Projets en Cours</h3>
-                    <p class="achievement-number" aria-label="3 projets">3</p>
-                    <p>Applications modernes en développement</p>
+                    <h3>Projet en Cours</h3>
+                    <p class="achievement-number" aria-label="1 projet">1</p>
+                    <p>Application moderne en développement</p>
                 </article>
             </div>
         </div>
@@ -362,34 +369,136 @@
     <section id="competences" class="section">
         <div class="container">
             <h2 data-aos="fade-up">Compétences</h2>
-            <div class="skills-container">
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="0">
-                    <h3><i class="fas fa-code" aria-hidden="true"></i> Techniques</h3>
-                    <div class="tech-grid">
-                        <div class="tech-item"><i class="fab fa-html5" aria-hidden="true"></i><span>HTML5</span></div>
-                        <div class="tech-item"><i class="fab fa-css3-alt" aria-hidden="true"></i><span>CSS3</span></div>
-                        <div class="tech-item"><i class="fab fa-js-square" aria-hidden="true"></i><span>JavaScript</span></div>
-                        <div class="tech-item"><i class="fas fa-coffee" aria-hidden="true"></i><span>Java</span></div>
-                        <div class="tech-item"><i class="fas fa-database" aria-hidden="true"></i><span>Bases de données</span></div>
-                        <div class="tech-item"><i class="fas fa-terminal" aria-hidden="true"></i><span>Bash</span></div>
+            <div class="skills-wrapper">
+                <!-- Compétences Techniques -->
+                <div class="skills-block" data-aos="fade-up" data-aos-delay="0">
+                    <div class="skills-block-header">
+                        <div class="skills-block-icon">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                        </div>
+                        <h3>Techniques</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <i class="fab fa-html5" aria-hidden="true"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt" aria-hidden="true"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js-square" aria-hidden="true"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-java" aria-hidden="true"></i>
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database" aria-hidden="true"></i>
+                            <span>SQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-terminal" aria-hidden="true"></i>
+                            <span>Bash</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                    <h3><i class="fas fa-people-carry" aria-hidden="true"></i> Relationnel & Support</h3>
-                    <div class="tech-grid">
-                        <div class="tech-item"><i class="fas fa-headset" aria-hidden="true"></i><span>Service client</span></div>
-                        <div class="tech-item"><i class="fas fa-users" aria-hidden="true"></i><span>Travail d'équipe</span></div>
-                        <div class="tech-item"><i class="fas fa-share-alt" aria-hidden="true"></i><span>Réseaux sociaux & outils numériques</span></div>
-                        <div class="tech-item"><i class="fas fa-file-word" aria-hidden="true"></i><span>Pack Office</span></div>
+
+                <!-- Outils Créatifs -->
+                <div class="skills-block" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skills-block-header">
+                        <div class="skills-block-icon">
+                            <i class="fas fa-palette" aria-hidden="true"></i>
+                        </div>
+                        <h3>Création</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <i class="fas fa-film" aria-hidden="true"></i>
+                            <span>After Effects</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-video" aria-hidden="true"></i>
+                            <span>Premiere Pro</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-image" aria-hidden="true"></i>
+                            <span>Photoshop</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-pen-nib" aria-hidden="true"></i>
+                            <span>Illustrator</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-figma" aria-hidden="true"></i>
+                            <span>Figma</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                    <h3><i class="fas fa-palette" aria-hidden="true"></i> Création & Outils</h3>
-                    <div class="tech-grid">
-                        <div class="tech-item"><i class="fas fa-photo-video" aria-hidden="true"></i><span>Adobe (AE, Ps, AI, PR)</span></div>
-                        <div class="tech-item"><i class="fas fa-car" aria-hidden="true"></i><span>Permis B</span></div>
+
+                <!-- Soft Skills & Outils -->
+                <div class="skills-block" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skills-block-header">
+                        <div class="skills-block-icon">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                        </div>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <i class="fas fa-people-arrows" aria-hidden="true"></i>
+                            <span>Travail d'équipe</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-headset" aria-hidden="true"></i>
+                            <span>Relation client</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                            <span>Créativité</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            <span>Gestion du temps</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                            <span>Adaptabilité</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outils & Autres -->
+                <div class="skills-block" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skills-block-header">
+                        <div class="skills-block-icon">
+                            <i class="fas fa-tools" aria-hidden="true"></i>
+                        </div>
+                        <h3>Outils</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <i class="fab fa-git-alt" aria-hidden="true"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-file-word" aria-hidden="true"></i>
+                            <span>Pack Office</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-share-alt" aria-hidden="true"></i>
+                            <span>Réseaux sociaux</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-car" aria-hidden="true"></i>
+                            <span>Permis B</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-language" aria-hidden="true"></i>
+                            <span>Anglais B2</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -564,7 +673,7 @@
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <div class="footer-contact">
-                        <p><i class="fas fa-envelope" aria-hidden="true"></i> il.benjamin.9455@gmail.com</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> ll.benjamin.9455@gmail.com</p>
                         <p><i class="fas fa-phone" aria-hidden="true"></i> 06 71 69 10 64</p>
                         <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Valmondois, France</p>
                         <p><i class="fas fa-graduation-cap" aria-hidden="true"></i> Étudiant BUT MMI (IUT Troyes)</p>
@@ -589,6 +698,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- Boutons de contact rapide flottants -->
+    <div class="quick-contact" role="navigation" aria-label="Contact rapide">
+        <a href="mailto:ll.benjamin.9455@gmail.com" class="quick-contact-btn email" aria-label="Envoyer un email" title="Envoyer un email">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+        </a>
+        <a href="tel:+33671691064" class="quick-contact-btn phone" aria-label="Appeler par téléphone" title="Appeler">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/benjamin-leleu-b373bb36a/" target="_blank" rel="noopener noreferrer" class="quick-contact-btn linkedin" aria-label="Voir le profil LinkedIn" title="LinkedIn">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+        </a>
+    </div>
 
     <!-- Skip to top button -->
     <button id="scrollToTop" class="scroll-to-top" aria-label="Retour en haut de la page">

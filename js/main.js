@@ -79,12 +79,15 @@ function initNavigation() {
     // Mobile menu toggle
     if (menuBtn && navLinks) {
         menuBtn.addEventListener('click', () => {
-            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-            menuBtn.setAttribute('aria-expanded', !isExpanded);
-            navLinks.classList.toggle('active');
-            menuBtn.querySelector('i').classList.toggle('fa-bars');
-            menuBtn.querySelector('i').classList.toggle('fa-times');
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            toggleMobileMenu();
+        });
+        
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                closeMobileMenu();
+                menuBtn.focus();
+            }
         });
     }
 
@@ -92,14 +95,94 @@ function initNavigation() {
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             if (navLinks && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                menuBtn.querySelector('i').classList.add('fa-bars');
-                menuBtn.querySelector('i').classList.remove('fa-times');
-                document.body.style.overflow = '';
+                closeMobileMenu();
             }
         });
     });
+    
+    // Close menu on click outside (but not on quick contact buttons)
+    document.addEventListener('click', (e) => {
+        if (navLinks && navLinks.classList.contains('active')) {
+            // Don't close if clicking on quick contact buttons or their children
+            const isQuickContact = e.target.closest('.quick-contact');
+            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target) && !isQuickContact) {
+                closeMobileMenu();
+            }
+        }
+    });
+    
+    function toggleMobileMenu() {
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    }
+    
+    function openMobileMenu() {
+        menuBtn.setAttribute('aria-expanded', 'true');
+        navLinks.classList.add('active');
+        menuBtn.querySelector('i').classList.remove('fa-bars');
+        menuBtn.querySelector('i').classList.add('fa-times');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus first menu item for accessibility
+        setTimeout(() => {
+            const firstLink = navLinks.querySelector('a');
+            if (firstLink) firstLink.focus();
+        }, 100);
+        
+        // Setup focus trap
+        setupFocusTrap();
+    }
+    
+    function closeMobileMenu() {
+        if (!menuBtn || !navLinks) return;
+        menuBtn.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('active');
+        menuBtn.querySelector('i').classList.add('fa-bars');
+        menuBtn.querySelector('i').classList.remove('fa-times');
+        document.body.style.overflow = '';
+        document.body.style.overflowX = 'hidden'; // Keep horizontal scroll hidden
+        
+        // Remove focus trap
+        removeFocusTrap();
+    }
+    
+    // Focus trap for accessibility
+    let focusTrapHandler = null;
+    
+    function setupFocusTrap() {
+        const focusableElements = navLinks.querySelectorAll('a, button');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        
+        focusTrapHandler = (e) => {
+            if (e.key !== 'Tab') return;
+            
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    e.preventDefault();
+                    menuBtn.focus();
+                }
+            } else {
+                if (document.activeElement === lastElement || document.activeElement === menuBtn) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        };
+        
+        document.addEventListener('keydown', focusTrapHandler);
+    }
+    
+    function removeFocusTrap() {
+        if (focusTrapHandler) {
+            document.removeEventListener('keydown', focusTrapHandler);
+            focusTrapHandler = null;
+        }
+    }
 
     // Navbar scroll effect
     const handleNavbarScroll = throttle(() => {
