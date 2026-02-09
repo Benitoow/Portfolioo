@@ -29,7 +29,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
@@ -58,6 +58,33 @@
     </script>
 </head>
 <body>
+
+    <!-- Global animated background -->
+    <canvas class="bg-canvas" id="bgCanvas"></canvas>
+    <div class="bg-grain"></div>
+
+    <!-- Video background system — crossfade on scroll -->
+    <div class="video-bg" id="videoBg">
+        <video class="video-bg__vid active" data-section="hero" autoplay muted loop playsinline>
+            <source src="../videos/forest-walk.mp4" type="video/mp4">
+        </video>
+        <video class="video-bg__vid" data-section="about" muted loop playsinline>
+            <source src="../videos/forest-light.mp4" type="video/mp4">
+        </video>
+        <video class="video-bg__vid" data-section="work" muted loop playsinline>
+            <source src="../videos/forest-creek.mp4" type="video/mp4">
+        </video>
+        <video class="video-bg__vid" data-section="skills" muted loop playsinline>
+            <source src="../videos/forest-canopy.mp4" type="video/mp4">
+        </video>
+        <video class="video-bg__vid" data-section="journey" muted loop playsinline>
+            <source src="../videos/forest-path.mp4" type="video/mp4">
+        </video>
+        <video class="video-bg__vid" data-section="contact" muted loop playsinline>
+            <source src="../videos/forest-sunset.mp4" type="video/mp4">
+        </video>
+        <div class="video-bg__overlay"></div>
+    </div>
 
     <!-- Cursor follower -->
     <div class="cursor" id="cursor"></div>
@@ -131,28 +158,33 @@
 
     <!-- ===== MARQUEE ===== -->
     <div class="marquee">
-        <div class="marquee-track">
-            <span>Développeur Web</span>
-            <span class="marquee-dot">✦</span>
-            <span>BUT MMI Troyes</span>
-            <span class="marquee-dot">✦</span>
-            <span>Créateur Numérique</span>
-            <span class="marquee-dot">✦</span>
-            <span>UI/UX Design</span>
-            <span class="marquee-dot">✦</span>
-            <span>Développeur Web</span>
-            <span class="marquee-dot">✦</span>
-            <span>BUT MMI Troyes</span>
-            <span class="marquee-dot">✦</span>
-            <span>Créateur Numérique</span>
-            <span class="marquee-dot">✦</span>
-            <span>UI/UX Design</span>
-            <span class="marquee-dot">✦</span>
+        <div class="marquee-inner">
+            <div class="marquee-track">
+                <span>Développeur Web</span>
+                <span class="marquee-dot">✦</span>
+                <span>BUT MMI Troyes</span>
+                <span class="marquee-dot">✦</span>
+                <span>Créateur Numérique</span>
+                <span class="marquee-dot">✦</span>
+                <span>UI/UX Design</span>
+                <span class="marquee-dot">✦</span>
+            </div>
+            <div class="marquee-track" aria-hidden="true">
+                <span>Développeur Web</span>
+                <span class="marquee-dot">✦</span>
+                <span>BUT MMI Troyes</span>
+                <span class="marquee-dot">✦</span>
+                <span>Créateur Numérique</span>
+                <span class="marquee-dot">✦</span>
+                <span>UI/UX Design</span>
+                <span class="marquee-dot">✦</span>
+            </div>
         </div>
     </div>
 
     <!-- ===== ABOUT ===== -->
     <section class="section" id="about">
+        <div class="section-glow section-glow--right"></div>
         <div class="container">
             <div class="section-label">01 — À Propos</div>
             <div class="about-grid">
@@ -166,6 +198,24 @@
                     </p>
                 </div>
                 <div class="about-details">
+                    <!-- Terminal-style visual decoration -->
+                    <div class="about-terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-dot terminal-dot--red"></span>
+                            <span class="terminal-dot terminal-dot--yellow"></span>
+                            <span class="terminal-dot terminal-dot--green"></span>
+                            <span class="terminal-title">benjamin.js</span>
+                        </div>
+                        <div class="terminal-body">
+                            <code><span class="code-keyword">const</span> <span class="code-var">benjamin</span> = {</code>
+                            <code>  <span class="code-prop">role</span>: <span class="code-string">"Développeur Web"</span>,</code>
+                            <code>  <span class="code-prop">formation</span>: <span class="code-string">"BUT MMI Troyes"</span>,</code>
+                            <code>  <span class="code-prop">passion</span>: <span class="code-string">"Créer des expériences"</span>,</code>
+                            <code>  <span class="code-prop">disponible</span>: <span class="code-bool">true</span>,</code>
+                            <code>};</code>
+                        </div>
+                    </div>
+
                     <div class="about-detail-item">
                         <span class="detail-label">Formation</span>
                         <span class="detail-value">BUT MMI · IUT de Troyes</span>
@@ -210,9 +260,14 @@
             <h2 class="section-title reveal-text">Travaux sélectionnés</h2>
             <p class="section-subtitle reveal-text">Projets scolaires & personnels qui me définissent.</p>
 
+            <!-- Floating thumbnail that follows cursor on project hover -->
+            <div class="project-thumbnail" id="projectThumbnail">
+                <img src="" alt="" id="projectThumbnailImg">
+            </div>
+
             <div class="projects-list">
 
-                <a href="./projets/SiteWebCapCom.html" class="project-item">
+                <a href="./projets/SiteWebCapCom.html" class="project-item" data-thumbnail="../Projet/A2-BUT-INFO1/CapComSite.png">
                     <div class="project-index">01</div>
                     <div class="project-info">
                         <h3 class="project-name">Site Covoiturage CapCom</h3>
@@ -228,7 +283,7 @@
                     <div class="project-arrow">→</div>
                 </a>
 
-                <a href="./projets/SiteVentePC.html" class="project-item">
+                <a href="./projets/SiteVentePC.html" class="project-item" data-thumbnail="../Projet/Perso/VentePC.png">
                     <div class="project-index">02</div>
                     <div class="project-info">
                         <h3 class="project-name">Site de Vente de PC</h3>
@@ -245,7 +300,7 @@
                     <div class="project-arrow">→</div>
                 </a>
 
-                <a href="./projets/hypnotherapie.html" class="project-item">
+                <a href="./projets/hypnotherapie.html" class="project-item" data-thumbnail="../Projet/Perso/hypno-site-maman.png">
                     <div class="project-index">03</div>
                     <div class="project-info">
                         <h3 class="project-name">Site d'Hypnothérapeute</h3>
@@ -262,7 +317,7 @@
                     <div class="project-arrow">→</div>
                 </a>
 
-                <a href="./projets/AIAimbot.html" class="project-item">
+                <a href="./projets/AIAimbot.html" class="project-item" data-thumbnail="../Projet/Perso/aimbot.png">
                     <div class="project-index">04</div>
                     <div class="project-info">
                         <h3 class="project-name">AI Aimbot — Projet Éducatif</h3>
@@ -279,7 +334,7 @@
                     <div class="project-arrow">→</div>
                 </a>
 
-                <a href="./projets/CoCBot.html" class="project-item">
+                <a href="./projets/CoCBot.html" class="project-item" data-thumbnail="../Projet/Perso/BoTCSC.png">
                     <div class="project-index">05</div>
                     <div class="project-info">
                         <h3 class="project-name">CoC Bot — Automatisation</h3>
@@ -296,7 +351,7 @@
                     <div class="project-arrow">→</div>
                 </a>
 
-                <a href="https://auxptitsoinscoiffure.fr/" class="project-item" target="_blank" rel="noopener noreferrer">
+                <a href="https://auxptitsoinscoiffure.fr/" class="project-item" target="_blank" rel="noopener noreferrer" data-thumbnail="../Projet/Perso/sitecoiff.png">
                     <div class="project-index">06</div>
                     <div class="project-info">
                         <h3 class="project-name">Aux Ptits Soins Coiffure</h3>
@@ -314,7 +369,7 @@
                     <div class="project-arrow">↗</div>
                 </a>
 
-                <a href="https://www.tiktok.com/@ww2__tank" class="project-item" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.tiktok.com/@ww2__tank" class="project-item" target="_blank" rel="noopener noreferrer" data-thumbnail="../Projet/Perso/CompteTikTok1/ww2__tank.png">
                     <div class="project-index">07</div>
                     <div class="project-info">
                         <h3 class="project-name">TikTok @benitoow — 37k</h3>
@@ -331,7 +386,7 @@
                     <div class="project-arrow">↗</div>
                 </a>
 
-                <a href="https://www.tiktok.com/@astralcovenant" class="project-item" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.tiktok.com/@astralcovenant" class="project-item" target="_blank" rel="noopener noreferrer" data-thumbnail="../Projet/Perso/CompteTikTok2/astralcovenant.png">
                     <div class="project-index">08</div>
                     <div class="project-info">
                         <h3 class="project-name">TikTok Star Wars</h3>
@@ -353,6 +408,7 @@
 
     <!-- ===== SKILLS ===== -->
     <section class="section" id="skills">
+        <div class="section-glow section-glow--left"></div>
         <div class="container">
             <div class="section-label">03 — Compétences</div>
             <h2 class="section-title reveal-text">Outils & Technologies</h2>
