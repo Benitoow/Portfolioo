@@ -6,10 +6,20 @@
     <title>Benjamin LELEU — Portfolio</title>
     <meta name="description" content="Portfolio de Benjamin LELEU, étudiant en BUT MMI. Développeur web & créateur numérique.">
     <meta name="author" content="Benjamin LELEU">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="theme-color" content="#1E1B18">
+    <link rel="canonical" href="https://benitoow.github.io/Portfolioo/">
     <meta property="og:title" content="Benjamin LELEU — Portfolio">
     <meta property="og:description" content="Développeur web & créateur numérique. Étudiant BUT MMI à Troyes.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Benjamin LELEU Portfolio">
+    <meta property="og:url" content="https://benitoow.github.io/Portfolioo/">
+    <meta property="og:image" content="https://benitoow.github.io/Portfolioo/images/project-placeholder.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Benjamin LELEU — Portfolio">
+    <meta name="twitter:description" content="Développeur web & créateur numérique. Étudiant BUT MMI à Troyes.">
+    <meta name="twitter:image" content="https://benitoow.github.io/Portfolioo/images/project-placeholder.svg">
 
     <base id="dynamic-base" href="./">
     <script>
@@ -30,6 +40,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="../css/style.css" as="style">
+    <link rel="preload" href="../videos/Forest-Walking.mp4" as="video" type="video/mp4">
 
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
@@ -58,30 +70,34 @@
     </script>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    <noscript>
+        <div class="noscript-banner">JavaScript est désactivé. Le site reste navigable, mais certaines animations avancées sont désactivées.</div>
+    </noscript>
 
     <!-- Global animated background -->
     <canvas class="bg-canvas" id="bgCanvas"></canvas>
     <div class="bg-grain"></div>
 
     <!-- Video background system — crossfade on scroll -->
-    <div class="video-bg" id="videoBg">
-        <video class="video-bg__vid active" data-section="hero" autoplay muted loop playsinline>
-            <source src="../videos/forest-walk.mp4" type="video/mp4">
+    <div class="video-bg" id="videoBg" aria-hidden="true">
+        <video class="video-bg__vid active" data-section="hero" autoplay muted loop playsinline preload="metadata" poster="../images/placeholder.jpg" aria-hidden="true">
+            <source src="../videos/Forest-Walking.mp4" type="video/mp4">
         </video>
-        <video class="video-bg__vid" data-section="about" muted loop playsinline>
-            <source src="../videos/forest-light.mp4" type="video/mp4">
+        <video class="video-bg__vid" data-section="about" muted loop playsinline preload="none" poster="../images/placeholder.jpg" aria-hidden="true">
+            <source data-src="../videos/Forest-Walking2.mp4" type="video/mp4">
         </video>
-        <video class="video-bg__vid" data-section="work" muted loop playsinline>
-            <source src="../videos/forest-creek.mp4" type="video/mp4">
+        <video class="video-bg__vid" data-section="work" muted loop playsinline preload="none" poster="../images/placeholder.jpg" aria-hidden="true">
+            <source data-src="../videos/forest-walking3.mp4" type="video/mp4">
         </video>
-        <video class="video-bg__vid" data-section="skills" muted loop playsinline>
-            <source src="../videos/forest-canopy.mp4" type="video/mp4">
+        <video class="video-bg__vid" data-section="skills" muted loop playsinline preload="none" poster="../images/placeholder.jpg" aria-hidden="true">
+            <source data-src="../videos/forest-walking4.mp4" type="video/mp4">
         </video>
-        <video class="video-bg__vid" data-section="journey" muted loop playsinline>
-            <source src="../videos/forest-path.mp4" type="video/mp4">
+        <video class="video-bg__vid" data-section="journey" muted loop playsinline preload="none" poster="../images/placeholder.jpg" aria-hidden="true">
+            <source data-src="../videos/Forest-SkyLooking.mp4" type="video/mp4">
         </video>
-        <video class="video-bg__vid" data-section="contact" muted loop playsinline>
-            <source src="../videos/forest-sunset.mp4" type="video/mp4">
+        <video class="video-bg__vid" data-section="contact" muted loop playsinline preload="none" poster="../images/placeholder.jpg" aria-hidden="true">
+            <source data-src="../videos/Forest-SkyLooking.mp4" type="video/mp4">
         </video>
         <div class="video-bg__overlay"></div>
     </div>
@@ -100,7 +116,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="nav" id="nav">
+    <nav class="nav" id="nav" aria-label="Navigation principale">
         <a href="#hero" class="nav-logo">B.</a>
         <div class="nav-links">
             <a href="#about" class="nav-link" data-index="01">À Propos</a>
@@ -110,14 +126,14 @@
             <a href="#contact" class="nav-link" data-index="05">Contact</a>
         </div>
         <a href="../cv/Benjamin_LELEU_CV.pdf" class="nav-cta" download>CV ↓</a>
-        <button class="nav-menu" id="navMenu" aria-label="Menu">
+        <button class="nav-menu" id="navMenu" aria-label="Ouvrir le menu mobile" aria-controls="mobileMenu" aria-expanded="false">
             <span></span>
             <span></span>
         </button>
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <div class="mobile-menu-content">
             <a href="#about" class="mobile-link" data-index="01">À Propos</a>
             <a href="#work" class="mobile-link" data-index="02">Projets</a>
@@ -135,11 +151,12 @@
     <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
+    <main id="main-content">
     <!-- ===== HERO ===== -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
         <div class="hero-inner">
             <div class="hero-label">Portfolio 2026</div>
-            <h1 class="hero-title">
+            <h1 class="hero-title" id="hero-title">
                 <span class="hero-line"><span class="hero-line-inner">Benjamin</span></span>
                 <span class="hero-line"><span class="hero-line-inner accent">LELEU</span></span>
             </h1>
@@ -183,13 +200,13 @@
     </div>
 
     <!-- ===== ABOUT ===== -->
-    <section class="section" id="about">
+    <section class="section" id="about" aria-labelledby="about-title">
         <div class="section-glow section-glow--right"></div>
         <div class="container">
             <div class="section-label">01 — À Propos</div>
             <div class="about-grid">
                 <div class="about-text">
-                    <h2 class="section-title reveal-text">Je crée des expériences web qui comptent.</h2>
+                    <h2 class="section-title reveal-text" id="about-title">Je crée des expériences web qui comptent.</h2>
                     <p class="about-description reveal-text">
                         Je m'appelle <strong>Benjamin LELEU</strong>, étudiant en <strong>BUT MMI</strong> à l'<strong>IUT de Troyes</strong> (parcours création). Motivé par le travail en équipe, le contact client et la création numérique, je cherche une <strong>alternance de 12 mois à partir de septembre 2026</strong>.
                     </p>
@@ -254,15 +271,15 @@
     </section>
 
     <!-- ===== PROJECTS ===== -->
-    <section class="section section-dark" id="work">
+    <section class="section section-dark" id="work" aria-labelledby="work-title">
         <div class="container">
             <div class="section-label">02 — Projets</div>
-            <h2 class="section-title reveal-text">Travaux sélectionnés</h2>
+            <h2 class="section-title reveal-text" id="work-title">Travaux sélectionnés</h2>
             <p class="section-subtitle reveal-text">Projets scolaires & personnels qui me définissent.</p>
 
             <!-- Floating thumbnail that follows cursor on project hover -->
             <div class="project-thumbnail" id="projectThumbnail">
-                <img src="" alt="" id="projectThumbnailImg">
+                <img src="" alt="" id="projectThumbnailImg" loading="lazy" decoding="async">
             </div>
 
             <div class="projects-list">
@@ -407,11 +424,11 @@
     </section>
 
     <!-- ===== SKILLS ===== -->
-    <section class="section" id="skills">
+    <section class="section" id="skills" aria-labelledby="skills-title">
         <div class="section-glow section-glow--left"></div>
         <div class="container">
             <div class="section-label">03 — Compétences</div>
-            <h2 class="section-title reveal-text">Outils & Technologies</h2>
+            <h2 class="section-title reveal-text" id="skills-title">Outils & Technologies</h2>
 
             <div class="skills-grid">
                 <div class="skill-category">
@@ -463,10 +480,10 @@
     </section>
 
     <!-- ===== JOURNEY / TIMELINE ===== -->
-    <section class="section section-dark" id="journey">
+    <section class="section section-dark" id="journey" aria-labelledby="journey-title">
         <div class="container">
             <div class="section-label">04 — Parcours</div>
-            <h2 class="section-title reveal-text">Mon chemin</h2>
+            <h2 class="section-title reveal-text" id="journey-title">Mon chemin</h2>
 
             <div class="timeline">
                 <div class="timeline-item">
@@ -521,29 +538,16 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">2026</div>
-                    <div class="timeline-content">
-                        <h3>Projets & Innovation</h3>
-                        <p>Développement de projets personnels et académiques. Web dev moderne, UI/UX, innovation. L'aventure continue.</p>
-                        <div class="timeline-tags">
-                            <span>Web Dev</span>
-                            <span>UI/UX</span>
-                            <span>Innovation</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
-    <section class="section" id="contact">
+    <section class="section" id="contact" aria-labelledby="contact-title">
         <div class="container">
             <div class="section-label">05 — Contact</div>
             <div class="contact-content">
-                <h2 class="contact-title reveal-text">Travaillons ensemble.</h2>
+                <h2 class="contact-title reveal-text" id="contact-title">Travaillons ensemble.</h2>
                 <p class="contact-subtitle reveal-text">Je suis ouvert aux opportunités d'alternance et aux collaborations. N'hésitez pas à me contacter.</p>
 
                 <div class="contact-links">
@@ -576,6 +580,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">

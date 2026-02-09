@@ -2,8 +2,20 @@
 /* Editorial style, inspired by chimdibam.co */
 /* Author: Benjamin LELEU · 2026 */
 
-// ===== WAIT FOR GSAP ===== 
+const isReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isSaveDataEnabled = () => {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    return !!(connection && connection.saveData);
+};
+
+// ===== WAIT FOR GSAP =====
 document.addEventListener('DOMContentLoaded', () => {
+    if (isReducedMotion()) {
+        document.body.classList.add('reduced-motion');
+        initReducedApp();
+        return;
+    }
+
     // Small delay to make sure GSAP is loaded (deferred)
     const checkGSAP = setInterval(() => {
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
@@ -15,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fallback: if GSAP doesn't load in 3s, init without animations
     setTimeout(() => {
-        if (typeof gsap === 'undefined') {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
             clearInterval(checkGSAP);
             initAppFallback();
         }
@@ -29,7 +41,6 @@ function initApp() {
     initNav();
     initMobileMenu();
     initScrollProgress();
-    initHeroAnimation();
     initRevealAnimations();
     initProjectHovers();
     initProjectThumbnails();
@@ -40,16 +51,8 @@ function initApp() {
     initSmoothScroll();
     initBgCanvas();
     initVideoBackground();
-
-    // Safety net — force visibility if ScrollTrigger didn't fire
-    setTimeout(() => {
-        document.querySelectorAll('.reveal-text, .section-label, .project-item, .skill-category, .skill-chip, .timeline-item, .contact-link-item').forEach(el => {
-            if (parseFloat(getComputedStyle(el).opacity) < 0.1) {
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-            }
-        });
-    }, 4000);
+    initMarquee();
+    ensureVisibleAfterAnimations();
 
     console.log('✦ Portfolio loaded with GSAP');
 }
@@ -59,14 +62,7 @@ function initAppFallback() {
     const loader = document.getElementById('loader');
     if (loader) loader.classList.add('hidden');
 
-    // Show everything
-    document.querySelectorAll('.reveal-text, .hero-label, .hero-subtitle, .hero-description, .hero-availability, .hero-scroll').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-    });
-    document.querySelectorAll('.hero-line-inner').forEach(el => {
-        el.style.transform = 'none';
-    });
+    revealStaticContent();
 
     initNav();
     initMobileMenu();
@@ -75,8 +71,105 @@ function initAppFallback() {
     initProjectThumbnails();
     initBgCanvas();
     initVideoBackground();
+    initMarquee();
 
     console.log('✦ Portfolio loaded (fallback, no GSAP)');
+}
+
+function initReducedApp() {
+    const loader = document.getElementById('loader');
+    if (loader) loader.classList.add('hidden');
+
+    revealStaticContent();
+    initNav();
+    initMobileMenu();
+    initScrollProgress();
+    initSmoothScroll();
+    initMarquee();
+
+    console.log('✦ Portfolio loaded (reduced motion)');
+}
+
+function revealStaticContent() {
+    document.querySelectorAll('.reveal-text, .hero-label, .hero-subtitle, .hero-description, .hero-availability, .hero-scroll').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
+
+    document.querySelectorAll('.hero-line-inner, .section-label, .project-item, .skill-category, .skill-chip, .timeline-item, .contact-link-item').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
+}
+
+function ensureVisibleAfterAnimations() {
+    // Safety net — force visibility if ScrollTrigger didn't fire
+    setTimeout(() => {
+        document.querySelectorAll('.reveal-text, .section-label, .project-item, .skill-category, .skill-chip, .timeline-item, .contact-link-item').forEach(el => {
+            if (parseFloat(getComputedStyle(el).opacity) < 0.1) {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            }
+        });
+    }, 4000);
+}
+
+// ===== MARQUEE — AUTO-FILL TO FULL WIDTH =====
+function initMarquee() {
+    const marquee = document.querySelector('.marquee');
+    const inner = marquee?.querySelector('.marquee-inner');
+    if (!marquee || !inner) return;
+
+    const sourceTrack = inner.querySelector('.marquee-track');
+    if (!sourceTrack) return;
+
+    // Preserve original content to avoid infinite growth on resize
+    if (!sourceTrack.dataset.baseHtml) {
+        sourceTrack.dataset.baseHtml = sourceTrack.innerHTML.trim();
+    }
+
+    const ensureSecondTrack = () => {
+        let secondTrack = inner.querySelector('.marquee-track[aria-hidden="true"]');
+        if (!secondTrack) {
+            secondTrack = sourceTrack.cloneNode(true);
+            secondTrack.setAttribute('aria-hidden', 'true');
+            inner.appendChild(secondTrack);
+        }
+        return secondTrack;
+    };
+
+    const fillTrackToWidth = () => {
+        sourceTrack.innerHTML = sourceTrack.dataset.baseHtml;
+
+        const marqueeWidth = marquee.clientWidth || window.innerWidth;
+        const minWidth = marqueeWidth * 1.2;
+
+        const temp = document.createElement('div');
+        temp.innerHTML = sourceTrack.dataset.baseHtml;
+        const baseItems = Array.from(temp.children);
+
+        let currentWidth = sourceTrack.scrollWidth;
+        let safety = 0;
+
+        while (currentWidth < minWidth && safety < 50) {
+            baseItems.forEach(node => sourceTrack.appendChild(node.cloneNode(true)));
+            currentWidth = sourceTrack.scrollWidth;
+            safety++;
+        }
+
+        const secondTrack = ensureSecondTrack();
+        secondTrack.innerHTML = sourceTrack.innerHTML;
+    };
+
+    fillTrackToWidth();
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+        if (resizeTimer) window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(() => {
+            fillTrackToWidth();
+        }, 150);
+    });
 }
 
 // ===== LOADER =====
@@ -125,7 +218,7 @@ function initCursor() {
     const cursor = document.getElementById('cursor');
     const follower = document.getElementById('cursorFollower');
 
-    if (!cursor || !follower || window.matchMedia('(pointer: coarse)').matches) return;
+    if (!cursor || !follower || window.matchMedia('(pointer: coarse)').matches || isReducedMotion()) return;
 
     let mouseX = 0, mouseY = 0;
     let cursorX = 0, cursorY = 0;
@@ -198,7 +291,7 @@ function initNav() {
             });
             ticking = true;
         }
-    });
+    }, { passive: true });
 }
 
 // ===== MOBILE MENU =====
@@ -209,14 +302,23 @@ function initMobileMenu() {
 
     if (!menuBtn || !mobileMenu) return;
 
+    const setMenuState = (isOpen) => {
+        menuBtn.classList.toggle('active', isOpen);
+        mobileMenu.classList.toggle('active', isOpen);
+        menuBtn.setAttribute('aria-expanded', String(isOpen));
+        menuBtn.setAttribute('aria-label', isOpen ? 'Fermer le menu mobile' : 'Ouvrir le menu mobile');
+        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    };
+    setMenuState(false);
+
     menuBtn.addEventListener('click', () => {
         const isActive = mobileMenu.classList.contains('active');
+        const willOpen = !isActive;
 
-        menuBtn.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        document.body.style.overflow = isActive ? '' : 'hidden';
+        setMenuState(willOpen);
 
-        if (!isActive && typeof gsap !== 'undefined') {
+        if (willOpen && typeof gsap !== 'undefined' && !isReducedMotion()) {
             gsap.from(mobileLinks, {
                 opacity: 0,
                 y: 40,
@@ -230,18 +332,14 @@ function initMobileMenu() {
 
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-            menuBtn.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            setMenuState(false);
         });
     });
 
     // Close on escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-            menuBtn.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            setMenuState(false);
         }
     });
 }
@@ -254,9 +352,9 @@ function initScrollProgress() {
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = (scrollTop / docHeight) * 100;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
         progressBar.style.width = progress + '%';
-    });
+    }, { passive: true });
 }
 
 // ===== HERO ANIMATION =====
@@ -495,7 +593,7 @@ function initSmoothScroll() {
 
             window.scrollTo({
                 top: targetPosition,
-                behavior: 'smooth'
+                behavior: isReducedMotion() ? 'auto' : 'smooth'
             });
         });
     });
@@ -504,7 +602,7 @@ function initSmoothScroll() {
 // ===== GLOBAL BACKGROUND — ANIMATED MESH GRADIENT =====
 function initBgCanvas() {
     const canvas = document.getElementById('bgCanvas');
-    if (!canvas) return;
+    if (!canvas || isReducedMotion() || isSaveDataEnabled()) return;
 
     const ctx = canvas.getContext('2d');
     let width, height;
@@ -613,7 +711,7 @@ function initProjectThumbnails() {
     if (!thumbnail || !thumbnailImg || !projects.length) return;
 
     // Don't init on touch devices
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches || isReducedMotion() || isSaveDataEnabled()) return;
 
     let mouseX = 0, mouseY = 0;
     let thumbX = 0, thumbY = 0;
@@ -638,6 +736,7 @@ function initProjectThumbnails() {
         project.addEventListener('mouseenter', () => {
             thumbnailImg.src = src;
             thumbnailImg.alt = project.querySelector('.project-name').textContent;
+            thumbnailImg.decoding = 'async';
             isVisible = true;
             thumbnail.classList.add('visible');
             rafId = requestAnimationFrame(updatePosition);
@@ -661,14 +760,23 @@ function initProjectThumbnails() {
 
 // ===== VIDEO BACKGROUND — CROSSFADE ON SCROLL =====
 function initVideoBackground() {
+    const videoBg = document.getElementById('videoBg');
     const videos = document.querySelectorAll('.video-bg__vid');
-    if (!videos.length) return;
+    if (!videoBg || !videos.length) return;
+
+    if (isReducedMotion() || isSaveDataEnabled()) {
+        videoBg.style.display = 'none';
+        return;
+    }
 
     // Map section IDs to their video elements
     const sectionMap = {};
-    videos.forEach(vid => {
+    videos.forEach((vid, index) => {
         const sectionId = vid.getAttribute('data-section');
         sectionMap[sectionId] = vid;
+        if (index > 0) {
+            vid.preload = 'none';
+        }
     });
 
     // Sections to watch (in DOM order)
@@ -679,42 +787,100 @@ function initVideoBackground() {
 
     let currentVideo = null;
     let videosLoaded = false;
+    let switchLock = false;
 
     // Check if at least the first video can load
     const firstVideo = videos[0];
-    firstVideo.addEventListener('loadeddata', () => {
+
+    function hideVideoBackground() {
+        videoBg.style.display = 'none';
+        videos.forEach(video => video.pause());
+    }
+
+    function onVideoReady() {
+        if (videosLoaded) return;
         videosLoaded = true;
         // Hide the canvas fallback when video works
         const bgCanvas = document.getElementById('bgCanvas');
         if (bgCanvas) bgCanvas.style.opacity = '0';
-    }, { once: true });
+    }
+
+    function ensureSourceLoaded(video) {
+        const source = video.querySelector('source');
+        if (!source) return Promise.resolve();
+
+        const dataSrc = source.getAttribute('data-src');
+        if (!source.getAttribute('src') && dataSrc) {
+            source.setAttribute('src', dataSrc);
+            source.removeAttribute('data-src');
+            video.load();
+        }
+
+        if (video.readyState >= 2) {
+            return Promise.resolve();
+        }
+
+        return new Promise(resolve => {
+            const onReady = () => {
+                video.removeEventListener('loadeddata', onReady);
+                video.removeEventListener('canplay', onReady);
+                video.removeEventListener('error', onReady);
+                resolve();
+            };
+
+            video.addEventListener('loadeddata', onReady, { once: true });
+            video.addEventListener('canplay', onReady, { once: true });
+            video.addEventListener('error', onReady, { once: true });
+        });
+    }
+
+    // If video already has data (cached), activate immediately
+    ensureSourceLoaded(firstVideo).then(() => {
+        if (firstVideo.readyState >= 2) {
+            onVideoReady();
+        }
+        firstVideo.play().catch(() => {});
+    });
+    firstVideo.addEventListener('loadeddata', onVideoReady, { once: true });
+    firstVideo.addEventListener('canplay', onVideoReady, { once: true });
 
     firstVideo.addEventListener('error', () => {
         // Videos not found — keep canvas fallback visible
-        const videoBg = document.getElementById('videoBg');
-        if (videoBg) videoBg.style.display = 'none';
+        hideVideoBackground();
         console.log('✦ Video backgrounds not found, using canvas fallback');
     }, { once: true });
 
-    function switchVideo(sectionId) {
+    async function switchVideo(sectionId) {
         const targetVideo = sectionMap[sectionId];
-        if (!targetVideo || targetVideo === currentVideo) return;
+        if (!targetVideo || targetVideo === currentVideo || switchLock) return;
+        switchLock = true;
+
+        await ensureSourceLoaded(targetVideo);
 
         // Fade out current
+        const previousVideo = currentVideo;
         if (currentVideo) {
             currentVideo.classList.remove('active');
             // Pause after transition to save resources
             setTimeout(() => {
-                if (!currentVideo.classList.contains('active')) {
-                    currentVideo.pause();
+                if (previousVideo && !previousVideo.classList.contains('active')) {
+                    previousVideo.pause();
                 }
             }, 1300);
         }
 
         // Fade in target
         targetVideo.classList.add('active');
+        targetVideo.preload = 'metadata';
         targetVideo.play().catch(() => {}); // Silently handle autoplay issues
         currentVideo = targetVideo;
+        switchLock = false;
+    }
+
+    function prefetchSectionVideo(sectionId) {
+        const video = sectionMap[sectionId];
+        if (!video) return;
+        ensureSourceLoaded(video).catch(() => {});
     }
 
     // Set initial video
@@ -722,15 +888,32 @@ function initVideoBackground() {
 
     // Use IntersectionObserver to detect which section is in view
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-                switchVideo(entry.target.id);
-            }
-        });
+        const visibleEntries = entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (!visibleEntries.length) return;
+
+        const topEntry = visibleEntries[0];
+        if (topEntry.intersectionRatio > 0.3) {
+            const currentIndex = sectionIds.indexOf(topEntry.target.id);
+            const nextId = sectionIds[currentIndex + 1];
+            switchVideo(topEntry.target.id);
+            if (nextId) prefetchSectionVideo(nextId);
+        }
     }, {
         threshold: [0.3, 0.5],
         rootMargin: '-10% 0px -10% 0px'
     });
 
     sections.forEach(section => observer.observe(section));
+
+    document.addEventListener('visibilitychange', () => {
+        if (!currentVideo) return;
+        if (document.hidden) {
+            currentVideo.pause();
+        } else if (currentVideo.classList.contains('active')) {
+            currentVideo.play().catch(() => {});
+        }
+    });
 }
