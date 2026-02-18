@@ -8,6 +8,23 @@ Portfolio personnel moderne présentant mes compétences en développement web e
 
 **[➡️ Visiter le Portfolio](https://benitoow.github.io/Portfolioo/)**
 
+## ☁️ Déploiement Cloudflare Pages (gratuit)
+
+Configuration prête dans `wrangler.toml` (`pages_build_output_dir = "."`).
+
+### Première mise en place
+
+1. Se connecter à Cloudflare :
+   `npx wrangler login`
+2. Créer le projet Pages (une seule fois) :
+   `npx wrangler pages project create portfolioo --production-branch main`
+3. Déployer :
+   `npx wrangler pages deploy . --project-name portfolioo --branch main`
+
+### Déploiements suivants
+
+`npx wrangler pages deploy . --project-name portfolioo --branch main`
+
 ## 🚀 Démarrage local
 
 1. Cloner le dépôt : `git clone https://github.com/Benitoow/Portfolioo.git`
