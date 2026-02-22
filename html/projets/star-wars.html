@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars - Plateforme Web | Portfolio Benjamin LELEU</title>
+    <!-- CSS autonome pour les pages projets -->
+    <link rel="stylesheet" href="../../css/projet-pages.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <meta name="description" content="Développement d'un siteweb dynamique Star Wars en PHP avec base de données JSON (SAE 1.05 MMI).">
+    <link rel="shortcut icon" href="../../images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Navigation -->
+    <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../../images/projets/star-wars/banner_light.jpg'); background-size: cover; background-position: center;">
+        <nav class="navbar">
+            <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="../index.html#about">À Propos</a></li>
+                <li><a href="../index.html#work">Projets</a></li>
+                <li><a href="../index.html#skills">Compétences</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenu principal de la section Héro -->
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Star Wars — Plateforme Web <i class="fas fa-jedi"></i></h1>
+            <p class="subtitle">Développement d'un site dynamique en PHP avec BDD JSON.</p>            
+            <div class="project-links">
+                <a href="http://sae105.mmi25b12.mmi-troyes.fr/index.php" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Voir le Site Live
+                </a>
+                <a href="https://drive.google.com/drive/folders/1pXVtO7OQLSvxLMBd5HyMUnaycuOjThqW?usp=drive_link" class="cta-button secondary" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-google-drive"></i> Fichiers Sources
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section À Propos du Projet -->
+    <section class="section" data-aos="fade-up">
+        <h2>Contexte & Thématique</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>Projet SAE 1.05 — BUT MMI.</strong> L'objectif de ce module était de concevoir un site web complet sur un sujet de notre choix. Grand passionné de science-fiction, j'ai sélectionné l'univers de <strong>Star Wars</strong> pour construire cette plateforme interactive.</p>
+                <p>Bien plus qu'un simple exercice d'intégration HTML/CSS, ce projet évaluait nos capacités à rendre un site dynamique côté serveur à l'aide de <strong>PHP</strong>, et à structurer/exploiter des données mockées sous format <strong>JSON</strong>.</p>
+                
+                <ul class="about-details">
+                    <li><i class="fas fa-university"></i> Contexte : BUT MMI (Troyes)</li>
+                    <li><i class="fas fa-laptop-code"></i> Rôle : Développeur Web</li>
+                    <li><i class="fas fa-database"></i> Enjeu : Dynamisme & BDD JSON</li>
+                    <li><i class="fas fa-tools"></i> Technologies : HTML5, CSS3, PHP 8, JSON</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Défis Techniques -->
+    <section class="section" data-aos="fade-up">
+        <h2>Défis Techniques & Fonctionnalités</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Au-delà du design "sci-fi" soigné, l'intérêt principal du site réside dans son architecture backend légère et fonctionnelle.</p>
+        
+        <div class="projects-grid">
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-server"></i></div>
+                <h3>Formulaire PHP</h3>
+                <p style="margin-top: 1rem;">La page de Contact intègre un formulaire complexe traité en PHP natif, gérant les erreurs et les messages de succès via l'URL (GET).</p>
+            </div>
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fab fa-js-square"></i></div>
+                <h3>Base JSON</h3>
+                <p style="margin-top: 1rem;">L'ensemble du contenu data (personnages, vaisseaux) est stocké, parsé et généré dynamiquement en PHP depuis un fichier JSON.</p>
+            </div>
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-images"></i></div>
+                <h3>Galerie Dynamique</h3>
+                <p style="margin-top: 1rem;">Développement d'une galerie d'images organisée offrant une immersion visuelle optimale grâce aux inclusions PHP.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Retour -->
+    <section class="section">
+        <div class="contact-container">
+            <div class="social-links" style="justify-content: center;">
+                <a href="../index.html#work" class="cta-button">← Retour aux projets</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Portfolio Benjamin LELEU. Tous droits réservés.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
+    <!-- Script Lightbox pour l'agrandissement des images -->
+    <script src="../../js/lightbox.js" defer></script>
+</body>
+</html>

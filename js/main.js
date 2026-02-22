@@ -47,7 +47,6 @@ function initApp() {
   initScrollProgress();
   initRevealAnimations();
   initProjectHovers();
-  initProjectThumbnails();
   initStatsCounter();
   initTimelineAnimations();
   initSkillAnimations();
@@ -72,7 +71,6 @@ function initAppFallback() {
   initMobileMenu();
   initScrollProgress();
   initSmoothScroll();
-  initProjectThumbnails();
   initBgCanvas();
   initVideoBackground();
   initMarquee();
@@ -787,68 +785,6 @@ function initBgCanvas() {
     } else {
       if (!animationId) draw();
     }
-  });
-}
-
-// ===== PROJECT FLOATING THUMBNAIL =====
-function initProjectThumbnails() {
-  const thumbnail = document.getElementById("projectThumbnail");
-  const thumbnailImg = document.getElementById("projectThumbnailImg");
-  const projects = document.querySelectorAll(".project-item[data-thumbnail]");
-
-  if (!thumbnail || !thumbnailImg || !projects.length) return;
-
-  // Don't init on touch devices
-  if (
-    window.matchMedia("(pointer: coarse)").matches ||
-    isReducedMotion() ||
-    isSaveDataEnabled()
-  )
-    return;
-
-  let mouseX = 0,
-    mouseY = 0;
-  let thumbX = 0,
-    thumbY = 0;
-  let isVisible = false;
-  let rafId = null;
-
-  function updatePosition() {
-    thumbX += (mouseX - thumbX) * 0.1;
-    thumbY += (mouseY - thumbY) * 0.1;
-
-    thumbnail.style.transform = `translate3d(${thumbX + 20}px, ${thumbY - 100}px, 0)`;
-
-    if (isVisible) {
-      rafId = requestAnimationFrame(updatePosition);
-    }
-  }
-
-  projects.forEach((project) => {
-    const src = project.getAttribute("data-thumbnail");
-
-    project.addEventListener("mouseenter", () => {
-      thumbnailImg.src = src;
-      thumbnailImg.alt = project.querySelector(".project-name").textContent;
-      thumbnailImg.decoding = "async";
-      isVisible = true;
-      thumbnail.classList.add("visible");
-      rafId = requestAnimationFrame(updatePosition);
-    });
-
-    project.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    project.addEventListener("mouseleave", () => {
-      isVisible = false;
-      thumbnail.classList.remove("visible");
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-      }
-    });
   });
 }
 

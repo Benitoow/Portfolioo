@@ -1424,36 +1424,7 @@ ol {
   color: var(--accent-light);
 }
 
-/* ===== PROJECT THUMBNAIL (Floating) ===== */
-.project-thumbnail {
-  position: fixed;
-  width: 320px;
-  height: 200px;
-  border-radius: 12px;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 100;
-  opacity: 0;
-  transform: scale(0.8);
-  transition:
-    opacity 0.3s var(--ease-out),
-    transform 0.3s var(--ease-out);
-  border: 1px solid rgba(242, 201, 76, 0.15);
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(242, 201, 76, 0.08);
-}
 
-.project-thumbnail.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.project-thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
 /* ===== REVEAL ANIMATIONS ===== */
 .reveal-text {

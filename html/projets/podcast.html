@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast - Fiction Sonore | Portfolio Benjamin LELEU</title>
+    <!-- CSS autonome pour les pages projets -->
+    <link rel="stylesheet" href="../../css/projet-pages.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <meta name="description" content="Écriture et réalisation d'un podcast (fiction sonore) mêlant horreur et humour.">
+    <link rel="shortcut icon" href="../../images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Navigation -->
+    <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../../images/projets/podcast/Affiche_Podcast.png'); background-size: cover; background-position: center;">
+        <nav class="navbar">
+            <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="../index.html#about">À Propos</a></li>
+                <li><a href="../index.html#work">Projets</a></li>
+                <li><a href="../index.html#skills">Compétences</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenu principal de la section Héro -->
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Fiction Sonore — Thriller & Comédie <i class="fas fa-headphones"></i></h1>
+            <p class="subtitle">Écriture, enregistrement studio et sound design d'un podcast.</p>            
+            <div class="project-links">
+                <a href="#audio-player" class="cta-button" onclick="document.querySelector('#audio-player').scrollIntoView({behavior: 'smooth'}); return false;">
+                    <i class="fas fa-play"></i> Écouter le Podcast
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section À Propos du Projet -->
+    <section class="section" data-aos="fade-up">
+        <h2>Contexte & Thématique</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>Projet BUT MMI.</strong> Ce projet consistait à réaliser une fiction sonore complète (format Podcast) reposant sur une contrainte créative forte : mêler les codes de la terreur (Horreur) à l'absurde (Humour).</p>
+                <p>Pour donner vie à cette histoire, le travail a été divisé en trois pôles principaux : la création de la trame narrative et du script, la captation vocale des acteurs en salle d'enregistrement, et le minutieux travail d'habillage sonore en post-production.</p>
+                
+                <ul class="about-details">
+                    <li><i class="fas fa-university"></i> Contexte : BUT MMI (Troyes)</li>
+                    <li><i class="fas fa-microphone"></i> Rôle : Scénariste & Monteur Son</li>
+                    <li><i class="fas fa-theater-masks"></i> Enjeu : Écriture Horreur/Humour</li>
+                    <li><i class="fas fa-tools"></i> Outils : Audition / Audacity, Studio</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Écouter -->
+    <section class="section" data-aos="fade-up" id="audio-player">
+        <h2>Écouter l'épisode</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem; text-align: center;">Mettez un casque pour profiter pleinement du mixage et de la spatialisation sonore.</p>
+        
+        <div style="background: var(--bg-elevated); padding: 3rem; border-radius: 12px; border: 1px solid var(--border); text-align: center; max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+            <i class="fas fa-microphone-alt" style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem; display: block;"></i>
+            <h3 style="margin-bottom: 1.5rem;">"Le dernier face à face"</h3>
+            <audio controls style="width: 100%; max-width: 500px; background: transparent; margin: 0 auto;">
+                <source src="../../audios/projets/podcast/podcast-horreur-humour.mp3" type="audio/mpeg">
+                Votre navigateur ne supporte pas le lecteur audio. Vous pouvez le télécharger !
+            </audio>
+        </div>
+    </section>
+
+    <!-- Section Processus -->
+    <section class="section" data-aos="fade-up">
+        <h2>Le Processus de Création</h2>
+        <div class="projects-grid">
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-pen-nib"></i></div>
+                <h3>Scripting</h3>
+                <p style="margin-top: 1rem;">Écriture détaillée des dialogues, en gardant en tête le rythme, les respirations et l'intégration des "punchlines" humoristiques.</p>
+            </div>
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-record-vinyl"></i></div>
+                <h3>Enregistrement Studio</h3>
+                <p style="margin-top: 1rem;">Utilisation du matériel professionnel de notre salle d'enregistrement pour garantir une voix claire, sans écho, et au plus proche de l'auditeur.</p>
+            </div>
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-sliders-h"></i></div>
+                <h3>Sound Design (Bruitages)</h3>
+                <p style="margin-top: 1rem;">Mixage des pistes vocales et ajout stratégique de bruits d'ambiance et de SFX libres de droits pour renforcer la tension et la comédie.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Retour -->
+    <section class="section">
+        <div class="contact-container">
+            <div class="social-links" style="justify-content: center;">
+                <a href="../index.html#work" class="cta-button">← Retour aux projets</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Portfolio Benjamin LELEU. Tous droits réservés.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
+</body>
+</html>
