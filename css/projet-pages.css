@@ -236,6 +236,10 @@ button:focus-visible {
     transform: scale(1.05);
 }
 
+.cta-button:active {
+    transform: scale(0.95);
+}
+
 .cta-button.secondary,
 .cta-button:not(:first-child) {
     background: transparent;
@@ -669,6 +673,12 @@ footer a, .footer a {
 .project-card:hover {
     border-color: rgba(242, 201, 76, 0.15);
     transform: translateY(-4px);
+}
+
+@media (hover: none) {
+    .project-card {
+        border-color: rgba(242, 201, 76, 0.1);
+    }
 }
 
 .project-card img {

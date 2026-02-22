@@ -358,6 +358,10 @@ ol {
   transform: translateY(-1px) scale(1.03);
 }
 
+.nav-cta:active {
+  transform: translateY(0) scale(0.95);
+}
+
 .nav-menu {
   display: none;
   flex-direction: column;
@@ -671,6 +675,10 @@ ol {
   width: 100%;
 }
 
+.marquee:hover .marquee-inner {
+  animation-play-state: paused;
+}
+
 .marquee-inner {
   display: flex;
   width: max-content;
@@ -837,6 +845,19 @@ ol {
 .project-item:hover {
   border-color: rgba(242, 201, 76, 0.2);
   transform: translateX(4px);
+}
+
+@media (hover: none) {
+  .project-item {
+    border-color: rgba(242, 201, 76, 0.1);
+  }
+  .project-item .project-name {
+    color: var(--accent);
+  }
+  .project-item .project-arrow {
+    transform: translateX(4px);
+    color: var(--accent);
+  }
 }
 
 .project-index {
