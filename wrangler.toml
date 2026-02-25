@@ -1,6 +1,0 @@
-name = "portfolioo"
-compatibility_date = "2026-02-25"
-
-[assets]
-directory = "."
-exclude = [".git/**"]
