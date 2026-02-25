@@ -513,23 +513,21 @@ function initRevealAnimations() {
 // ===== PROJECT HOVERS =====
 function initProjectHovers() {
   const projects = document.querySelectorAll(".project-item");
+  if (!projects.length) return;
 
-  projects.forEach((project, index) => {
-    // Entrance animation
-    gsap.set(project, { opacity: 0, y: 30 });
+  gsap.set(projects, { opacity: 0, y: 30 });
 
-    gsap.to(project, {
-      scrollTrigger: {
-        trigger: project,
-        start: "top 95%",
-        once: true,
-      },
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      delay: index * 0.05,
-      ease: "power3.out",
-    });
+  gsap.to(projects, {
+    scrollTrigger: {
+      trigger: "#work",
+      start: "top 80%",
+      once: true,
+    },
+    opacity: 1,
+    y: 0,
+    duration: 0.5,
+    stagger: 0.04,
+    ease: "power3.out",
   });
 }
 

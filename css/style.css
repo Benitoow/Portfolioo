@@ -675,10 +675,6 @@ ol {
   width: 100%;
 }
 
-.marquee:hover .marquee-inner {
-  animation-play-state: paused;
-}
-
 .marquee-inner {
   display: flex;
   width: max-content;
@@ -819,6 +815,8 @@ ol {
     border-color 0.4s var(--ease-out),
     transform 0.4s var(--ease-out);
   position: relative;
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 .project-item:first-child {
