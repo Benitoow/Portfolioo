@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Dossiers techniques à ne pas indexer (si présents)
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /.git/
+
+# Crawl politeness
+Crawl-delay: 10

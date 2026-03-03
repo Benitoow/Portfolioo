@@ -1,0 +1,49 @@
+/*
+  # Empêche le MIME sniffing
+  X-Content-Type-Options: nosniff
+
+  # Limite les infos de referrer envoyées aux sites externes
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Protection anti-clickjacking
+  X-Frame-Options: DENY
+
+  # Active la protection XSS legacy des vieux navigateurs
+  X-XSS-Protection: 1; mode=block
+
+  # Forcer HTTPS sur les prochaines visites (1 an)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Limite les APIs navigateur accessibles
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), accelerometer=(), gyroscope=(), magnetometer=(), usb=(), payment=(), interest-cohort=()
+
+  # Contrôle des ressources croisées (bon compromis pour site statique)
+  Cross-Origin-Resource-Policy: same-site
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
+  # Réduit l'indexation des assets techniques
+  X-Robots-Tag: noarchive
+
+  # HTML: toujours revalidé pour voir rapidement les mises à jour
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/css/*
+  Cache-Control: public, max-age=86400
+
+/js/*
+  Cache-Control: public, max-age=86400
+
+/images/*
+  Cache-Control: public, max-age=604800
+
+/videos/*
+  Cache-Control: public, max-age=86400
+
+/audios/*
+  Cache-Control: public, max-age=86400
+
+/cv/*
+  Cache-Control: public, max-age=86400

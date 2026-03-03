@@ -13,7 +13,7 @@ const isSaveDataEnabled = () => {
 };
 
 // ===== WAIT FOR GSAP =====
-document.addEventListener("DOMContentLoaded", () => {
+function bootPortfolioApp() {
   if (isReducedMotion()) {
     document.body.classList.add("reduced-motion");
     initReducedApp();
@@ -36,7 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
       initAppFallback();
     }
   }, 3000);
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", bootPortfolioApp);
+} else {
+  bootPortfolioApp();
+}
 
 // ===== MAIN INIT =====
 function initApp() {

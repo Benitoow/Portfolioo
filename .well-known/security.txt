@@ -1,0 +1,6 @@
+Contact: mailto:ll.benjamin.9455@gmail.com
+Expires: 2027-03-03T23:59:59.000Z
+Preferred-Languages: fr, en
+Canonical: /.well-known/security.txt
+Policy: https://github.com/Benitoow/Portfolioo
+Acknowledgments: https://github.com/Benitoow/Portfolioo

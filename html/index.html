@@ -37,7 +37,7 @@
     />
 
     <base id="dynamic-base" href="./" />
-    <script>
+    <script data-cfasync="false">
       (function () {
         var baseEl = document.getElementById("dynamic-base");
         if (!baseEl) return;
@@ -957,6 +957,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js" defer></script>
   </body>
 </html>
