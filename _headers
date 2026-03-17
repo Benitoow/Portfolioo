@@ -6,7 +6,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
 
   # Protection anti-clickjacking
-  X-Frame-Options: DENY
+  X-Frame-Options: SAMEORIGIN
 
   # Active la protection XSS legacy des vieux navigateurs
   X-XSS-Protection: 1; mode=block
