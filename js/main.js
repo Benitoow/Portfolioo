@@ -840,15 +840,19 @@ function initVideoBackground() {
   }
 
   function ensureSourceLoaded(video) {
-    const source = video.querySelector("source");
-    if (!source) return Promise.resolve();
+    const sources = video.querySelectorAll("source");
+    if (!sources.length) return Promise.resolve();
 
-    const dataSrc = source.getAttribute("data-src");
-    if (!source.getAttribute("src") && dataSrc) {
-      source.setAttribute("src", dataSrc);
-      source.removeAttribute("data-src");
-      video.load();
-    }
+    let needsLoad = false;
+    sources.forEach((source) => {
+      const dataSrc = source.getAttribute("data-src");
+      if (!source.getAttribute("src") && dataSrc) {
+        source.setAttribute("src", dataSrc);
+        source.removeAttribute("data-src");
+        needsLoad = true;
+      }
+    });
+    if (needsLoad) video.load();
 
     if (video.readyState >= 2) {
       return Promise.resolve();
