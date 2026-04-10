@@ -101,7 +101,7 @@ function initReducedApp() {
 function revealStaticContent() {
   document
     .querySelectorAll(
-      ".reveal-text, .hero-label, .hero-subtitle, .hero-description, .hero-availability, .hero-scroll",
+      ".reveal-text, .hero-label, .hero-subtitle, .hero-description, .hero-availability",
     )
     .forEach((el) => {
       el.style.opacity = "1";
@@ -420,7 +420,6 @@ function initHeroAnimation() {
   const heroSubtitle = document.querySelector(".hero-subtitle");
   const heroDesc = document.querySelector(".hero-description");
   const heroAvail = document.querySelector(".hero-availability");
-  const heroScroll = document.querySelector(".hero-scroll");
 
   if (!heroLines.length) return;
 
@@ -467,15 +466,6 @@ function initHeroAnimation() {
         ease: "power2.out",
       },
       "-=0.2",
-    )
-    .to(
-      heroScroll,
-      {
-        opacity: 1,
-        duration: 0.8,
-        ease: "power2.out",
-      },
-      "-=0.1",
     );
 }
 
