@@ -50,4 +50,4 @@
 
 /docs/*
   Cache-Control: public, max-age=86400
-  !X-Frame-Options
+  ! X-Frame-Options
