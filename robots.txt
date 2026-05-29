@@ -1,10 +1,27 @@
+# Autoriser tous les bots par défaut
 User-agent: *
 Allow: /
 
-# Dossiers techniques à ne pas indexer (si présents)
-Disallow: /private/
-Disallow: /tmp/
-Disallow: /.git/
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
 
-# Crawl politeness
-Crawl-delay: 10
+# OpenAI (ChatGPT / GPTBot)
+User-agent: GPTBot
+Allow: /
+
+# Google AI (Gemini)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Common Crawl (utilisé par plusieurs IA)
+User-agent: CCBot
+Allow: /
