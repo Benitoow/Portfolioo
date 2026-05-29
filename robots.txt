@@ -25,3 +25,10 @@ Allow: /
 # Common Crawl (utilisé par plusieurs IA)
 User-agent: CCBot
 Allow: /
+
+# Signaux de contenu pour les robots compatibles
+Content-Signal: ai-train=disallow
+Content-Signal: search=allow
+
+# Sitemap du portfolio
+Sitemap: https://benjaminleleu.fr/sitemap.xml
