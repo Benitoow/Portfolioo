@@ -24,6 +24,9 @@
   # Réduit l'indexation des assets techniques
   X-Robots-Tag: noarchive
 
+  # Découverte agentique / ressources machine-readable
+  Link: </llms.txt>; rel="describedby"; type="text/plain", </sitemap.xml>; rel="describedby"; type="application/xml", </robots.txt>; rel="describedby"; type="text/plain"
+
   # HTML: toujours revalidé pour voir rapidement les mises à jour
   Cache-Control: public, max-age=0, must-revalidate
 

@@ -27,8 +27,7 @@ User-agent: CCBot
 Allow: /
 
 # Signaux de contenu pour les robots compatibles
-Content-Signal: ai-train=disallow
-Content-Signal: search=allow
+Content-Signal: ai-train=no, search=yes, ai-input=no
 
 # Sitemap du portfolio
 Sitemap: https://benjaminleleu.fr/sitemap.xml
