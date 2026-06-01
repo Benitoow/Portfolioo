@@ -1187,15 +1187,39 @@ footer a, .footer a {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .navbar {
-        padding: 0.75rem 1.5rem;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
     }
 
+    .logo a {
+        font-size: 1.1rem;
+    }
+
+    /* Nav mobile accessible : barre de liens scrollable, pas de hamburger non fonctionnel */
     .nav-links {
+        display: flex;
+        flex: 1;
+        min-width: 0;
+        gap: 0.1rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
         display: none;
     }
 
+    .nav-links a {
+        padding: 0.4rem 0.55rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
     .menu-btn {
-        display: block;
+        display: none;
     }
 
     .hero {
