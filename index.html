@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -11,7 +11,7 @@
     <meta name="author" content="Benjamin LELEU" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#1E1B18" />
-    <link rel="canonical" href="https://benitoow.github.io/Portfolioo/" />
+    <link rel="canonical" href="https://benjaminleleu.fr/" />
     <meta property="og:title" content="Benjamin LELEU — Portfolio" />
     <meta
       property="og:description"
@@ -20,10 +20,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="Benjamin LELEU Portfolio" />
-    <meta property="og:url" content="https://benitoow.github.io/Portfolioo/" />
+    <meta property="og:url" content="https://benjaminleleu.fr/" />
     <meta
       property="og:image"
-      content="https://benitoow.github.io/Portfolioo/images/project-placeholder.svg"
+      content="https://benjaminleleu.fr/images/og-image.png"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Benjamin LELEU — Portfolio" />
@@ -33,43 +33,29 @@
     />
     <meta
       name="twitter:image"
-      content="https://benitoow.github.io/Portfolioo/images/project-placeholder.svg"
+      content="https://benjaminleleu.fr/images/og-image.png"
     />
 
-    <base id="dynamic-base" href="./" />
-    <script data-cfasync="false">
-      (function () {
-        var baseEl = document.getElementById("dynamic-base");
-        if (!baseEl) return;
-        var path = window.location.pathname;
-        var dir = path.endsWith("/")
-          ? path
-          : path.substring(0, path.lastIndexOf("/") + 1);
-        baseEl.setAttribute("href", dir);
-        if (path.endsWith("/html/index.html")) {
-          var trimmed = dir.replace(/html\/?$/, "");
-          window.history.replaceState({}, "", trimmed || "/");
-        }
-      })();
-    </script>
+    <!-- Page servie à la racine : aucune réécriture de base nécessaire -->
 
-    <!-- Fonts -->
+    <!-- Préconnexions (perf) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" href="../css/style.css" as="style" />
+    <link rel="preload" href="css/style.css" as="style" />
     <link
       rel="preload"
-      href="../videos/Forest-Walking.mp4"
+      href="videos/Forest-Walking.mp4"
       as="video"
       type="video/mp4"
     />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <!-- GSAP -->
     <script
@@ -82,7 +68,7 @@
     ></script>
 
     <!-- Favicon -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -91,7 +77,7 @@
         "@type": "Person",
         "name": "Benjamin LELEU",
         "jobTitle": "Étudiant BUT MMI",
-        "url": "https://benitoow.github.io/Portfolioo/",
+        "url": "https://benjaminleleu.fr/",
         "sameAs": [
           "https://www.linkedin.com/in/benjamin-leleu-b373bb36a/",
           "https://github.com/Benitoow",
@@ -123,10 +109,10 @@
         loop
         playsinline
         preload="metadata"
-        poster="../images/placeholder.jpg"
+        poster="images/posters/forest-walking.webp"
         aria-hidden="true"
       >
-        <source src="../videos/Forest-Walking.mp4" type="video/mp4" />
+        <source src="videos/Forest-Walking.mp4" type="video/mp4" />
       </video>
       <video
         class="video-bg__vid"
@@ -135,10 +121,10 @@
         loop
         playsinline
         preload="none"
-        poster="../images/placeholder.jpg"
+        poster="images/posters/forest-walking2.webp"
         aria-hidden="true"
       >
-        <source data-src="../videos/Forest-Walking2.mp4" type="video/mp4" />
+        <source data-src="videos/Forest-Walking2.mp4" type="video/mp4" />
       </video>
       <video
         class="video-bg__vid"
@@ -147,10 +133,10 @@
         loop
         playsinline
         preload="none"
-        poster="../images/placeholder.jpg"
+        poster="images/posters/forest-walking3.webp"
         aria-hidden="true"
       >
-        <source data-src="../videos/forest-walking3.mp4" type="video/mp4" />
+        <source data-src="videos/forest-walking3.mp4" type="video/mp4" />
       </video>
       <video
         class="video-bg__vid"
@@ -159,10 +145,10 @@
         loop
         playsinline
         preload="none"
-        poster="../images/placeholder.jpg"
+        poster="images/posters/forest-walking4.webp"
         aria-hidden="true"
       >
-        <source data-src="../videos/forest-walking4.mp4" type="video/mp4" />
+        <source data-src="videos/forest-walking4.mp4" type="video/mp4" />
       </video>
       <video
         class="video-bg__vid"
@@ -171,10 +157,10 @@
         loop
         playsinline
         preload="none"
-        poster="../images/placeholder.jpg"
+        poster="images/posters/forest-skylooking.webp"
         aria-hidden="true"
       >
-        <source data-src="../videos/Forest-SkyLooking.mp4" type="video/mp4" />
+        <source data-src="videos/Forest-SkyLooking.mp4" type="video/mp4" />
       </video>
       <video
         class="video-bg__vid"
@@ -183,10 +169,10 @@
         loop
         playsinline
         preload="none"
-        poster="../images/placeholder.jpg"
+        poster="images/posters/forest-skylooking.webp"
         aria-hidden="true"
       >
-        <source data-src="../videos/Forest-SkyLooking.mp4" type="video/mp4" />
+        <source data-src="videos/Forest-SkyLooking.mp4" type="video/mp4" />
       </video>
       <div class="video-bg__overlay"></div>
     </div>
@@ -214,7 +200,7 @@
         <a href="#journey" class="nav-link" data-index="04">Parcours</a>
         <a href="#contact" class="nav-link" data-index="05">Contact</a>
       </div>
-      <a href="../cv/Benjamin_LELEU_CV.pdf" class="nav-cta" download>CV ↓</a>
+      <a href="cv/Benjamin_LELEU_CV.pdf" class="nav-cta" download>CV ↓</a>
       <button
         class="nav-menu"
         id="navMenu"
@@ -265,7 +251,7 @@
       <!-- ===== HERO ===== -->
       <section class="hero" id="hero" aria-labelledby="hero-title">
         <div class="hero-inner">
-          <div class="hero-label">Portfolio 2026</div>
+          <div class="hero-label">Portfolio</div>
           <h1 class="hero-title" id="hero-title">
             <span class="hero-line"
               ><span class="hero-line-inner">Benjamin</span></span
@@ -281,7 +267,7 @@
           </p>
           <div class="hero-availability">
             <span class="availability-dot"></span>
-            Disponible pour une alternance · Sept. 2026
+            Ouvert aux projets &amp; collaborations
           </div>
         </div>
 
@@ -327,9 +313,8 @@
                 Je m'appelle <strong>Benjamin LELEU</strong>, étudiant en
                 <strong>BUT MMI</strong> à l'<strong>IUT de Troyes</strong>
                 (parcours création). Motivé par le travail en équipe, le contact
-                client et la création numérique, je cherche une
-                <strong>alternance de 12 mois à partir de septembre 2026</strong
-                >.
+                client et la création numérique, j'aime concevoir des projets
+                web et créatifs, du concept à la mise en ligne.
               </p>
               <p class="about-description reveal-text">
                 Je mobilise mes compétences en HTML/CSS/JS, Java, design et
@@ -385,12 +370,6 @@
               <div class="about-detail-item">
                 <span class="detail-label">Langues</span>
                 <span class="detail-value">Français · Anglais B2</span>
-              </div>
-              <div class="about-detail-item">
-                <span class="detail-label">Mobilité</span>
-                <span class="detail-value"
-                  >Permis B · Île-de-France / Troyes</span
-                >
               </div>
             </div>
           </div>
@@ -758,7 +737,6 @@
                 <div class="skill-chip">Git</div>
                 <div class="skill-chip">Pack Office</div>
                 <div class="skill-chip">Réseaux sociaux</div>
-                <div class="skill-chip">Permis B</div>
                 <div class="skill-chip">Anglais B2</div>
               </div>
             </div>
@@ -856,8 +834,8 @@
               Travaillons ensemble.
             </h2>
             <p class="contact-subtitle reveal-text">
-              Je suis ouvert aux opportunités d'alternance et aux
-              collaborations. N'hésitez pas à me contacter.
+              Je suis ouvert aux opportunités et aux collaborations.
+              N'hésitez pas à me contacter.
             </p>
 
             <div class="contact-links">
@@ -944,13 +922,13 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2026 Benjamin LELEU — Tous droits réservés</p>
+          <p>© <span id="footer-year">2026</span> Benjamin LELEU — Tous droits réservés</p>
           <p>Conçu avec passion depuis 🇫🇷</p>
         </div>
       </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="../js/main.js" defer></script>
+    <script src="js/main.js" defer></script>
   </body>
 </html>

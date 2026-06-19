@@ -3,186 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Hypnothérapie & Massages | Portfolio Benjamin LELEU</title>
-    <!-- Google Fonts -->
+    <title>Site Hypnotherapie &amp; Massages | Portfolio Benjamin LELEU</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
-    <!-- CSS autonome pour les pages projets -->
     <link rel="stylesheet" href="../css/projet-pages.css">
-    <!-- Font Awesome - Source alternative -->
     <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
-    <!-- AOS Animations -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Site vitrine professionnel pour hypnothérapie et massages bien-être">
+    <meta name="description" content="Site vitrine professionnel pour une hypnotherapeute et praticienne en massages bien-etre. Projet personnel, en ligne sur massage-valmondois.netlify.app.">
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-    <!-- Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <!-- Navigation -->
+
     <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../Projet/Perso/hypno-site-maman.webp'); background-size: cover; background-position: center;">
         <nav class="navbar">
             <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
             <ul class="nav-links">
                 <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../index.html#about">À Propos</a></li>
+                <li><a href="../index.html#about">A Propos</a></li>
                 <li><a href="../index.html#work">Projets</a></li>
-                <li><a href="../index.html#skills">Compétences</a></li>
+                <li><a href="../index.html#skills">Competences</a></li>
                 <li><a href="../index.html#contact">Contact</a></li>
             </ul>
-        </nav>        <!-- Contenu principal de la section Héro -->
-        <div class="hero-content">
-            <h1>Site Hypnothérapie & Massages</h1>
-            <p class="subtitle">Vitrine web professionnelle dédiée à l'hypnothérapie et aux massages bien-être <i class="fas fa-leaf"></i></p>
-            <p class="humor-note">*Projet développé avec amour pour ma mère hypnothérapeute*</p>
+        </nav>
+
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Site Hypnotherapie &amp; Massages <i class="fas fa-leaf"></i></h1>
+            <p class="subtitle">Creer une presence web apaisante et professionnelle pour ma mere, hypnotherapeute.</p>
             <div class="project-links">
                 <a href="https://massage-valmondois.netlify.app/" class="cta-button" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-external-link-alt"></i> Voir le Site en Ligne
                 </a>
             </div>
         </div>
-    </header>    <!-- Section À Propos du Projet -->
-    <section class="section">
-        <h2>À propos du projet</h2>
+    </header>
+
+    <section class="section" data-aos="fade-up">
+        <h2>Contexte &amp; Objectifs</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Ce site web a été créé spécialement pour ma mère, hypnothérapeute et praticienne en massages bien-être. 
-                L'objectif était de développer une présence web professionnelle et apaisante, reflétant l'univers du 
-                bien-être et de la détente. Le site présente ses services, ses approches thérapeutiques et permet 
-                aux clients de la contacter facilement.</p>
-                
+                <p>Ma mere est hypnotherapeute et praticienne en massages bien-etre. Elle n'avait pas de site web : bouche a oreille uniquement. L'objectif etait de lui construire une vitrine professionnelle qui reflete la douceur et le serieux de son approche, et qui simplifie la prise de contact pour ses futurs clients.</p>
+                <p>Ce projet presentait une contrainte particuliere : le secteur du bien-etre a ses propres codes visuels et son propre registre. Trop clinique et c'est froid, trop "new age" et c'est peu credible. Trouver le bon equilibre entre rassurance professionnelle et atmosphere apaisante etait l'enjeu central.</p>
+
                 <ul class="about-details">
-                    <li><i class="fas fa-calendar-alt"></i> Durée : 3 semaines</li>
-                    <li><i class="fas fa-heart"></i> Projet personnel (famille)</li>
-                    <li><i class="fas fa-spa"></i> Secteur : Bien-être & Santé</li>
-                    <li><i class="fas fa-hands"></i> Focus : Hypnothérapie & Massages</li>
+                    <li><i class="fas fa-heart"></i> Projet personnel (client : ma mere)</li>
+                    <li><i class="fas fa-calendar-alt"></i> 3 semaines, solo</li>
+                    <li><i class="fas fa-spa"></i> Secteur : hypnotherapie et massages bien-etre</li>
+                    <li><i class="fas fa-bullseye"></i> Enjeu : presence web professionnelle et apaisante</li>
+                    <li><i class="fas fa-tools"></i> Stack : HTML5, CSS3, JavaScript, Netlify</li>
                 </ul>
             </div>
         </div>
-    </section>    <!-- Section Technologies -->
-    <section class="section">
-        <h2>Technologies utilisées</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fas fa-laptop-code"></i> Développement</h3>
-                <ul>
-                    <li>HTML5 sémantique</li>
-                    <li>CSS3 moderne</li>
-                    <li>JavaScript vanilla</li>
-                    <li>Design responsive</li>
-                </ul>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+        <h2>Demarche &amp; Parti Pris Design</h2>
+        <div class="projects-grid">
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-palette"></i></div>
+                <h3>Palette &amp; Atmosphere</h3>
+                <p style="margin-top: 1rem;">Teintes naturelles, typographie douce, espaces aeres. Le design devait mettre a l'aise avant meme que la personne lise le contenu.</p>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-palette"></i> Design</h3>
-                <ul>
-                    <li>UI/UX apaisante</li>
-                    <li>Palette zen</li>
-                    <li>Typography douce</li>
-                    <li>Animations fluides</li>
-                </ul>
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-info-circle"></i></div>
+                <h3>Pedagogie</h3>
+                <p style="margin-top: 1rem;">Beaucoup de personnes ne savent pas ce qu'est l'hypnotherapie concretement. Les textes devaient expliquer clairement, sans jargon et sans survente.</p>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-leaf"></i> Bien-être</h3>
-                <ul>
-                    <li>Ambiance relaxante</li>
-                    <li>Navigation intuitive</li>
-                    <li>Contenu rassurant</li>
-                    <li>Accessibilité optimale</li>
-                </ul>
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-phone"></i></div>
+                <h3>Contact Simplifie</h3>
+                <p style="margin-top: 1rem;">La prise de rendez-vous devait etre accessible en deux clics : formulaire clair, numero visible, localisation integree.</p>
             </div>
         </div>
-    </section>    <!-- Section Spécificités du Secteur -->
-    <section class="section">
-        <h2>Adaptation au secteur du bien-être</h2>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+        <h2>Bilan &amp; Apprentissages</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Le secteur de l'hypnothérapie et du massage nécessite une approche web particulière :</p>
-                
+                <p>Ce projet m'a appris que concevoir pour quelqu'un qu'on connait est plus difficile qu'il n'y parait. On a une connaissance intime du sujet, ce qui rend difficile de se mettre a la place d'un visiteur qui arrive sans contexte. J'ai du m'appuyer sur des retours exterieurs pour savoir si les textes etaient comprehensibles par quelqu'un qui n'y connait rien.</p>
+                <p>J'ai aussi decouvert le design emotionnel dans la pratique : la typographie, les espaces, les couleurs influencent le ressenti avant meme la lecture. Sur un site de bien-etre, cette dimension est particulierement visible parce que le produit vendu est precisement une emotion, un etat de relaxation.</p>
+
                 <ul class="about-details">
-                    <li><i class="fas fa-user-shield"></i> <strong>Confiance :</strong> Présentation professionnelle pour rassurer les clients</li>
-                    <li><i class="fas fa-heart"></i> <strong>Bienveillance :</strong> Ton chaleureux et accueillant dans tous les textes</li>
-                    <li><i class="fas fa-info-circle"></i> <strong>Pédagogie :</strong> Explication claire des pratiques et bienfaits</li>
-                    <li><i class="fas fa-phone"></i> <strong>Accessibilité :</strong> Contact facile et prise de rendez-vous simplifiée</li>
-                    <li><i class="fas fa-certificate"></i> <strong>Crédibilité :</strong> Mise en avant des formations et certifications</li>
+                    <li><i class="fas fa-check-circle"></i> Design centre utilisateur pour un public non-tech et anxieux</li>
+                    <li><i class="fas fa-check-circle"></i> Redaction web claire et accessible pour un secteur specialise</li>
+                    <li><i class="fas fa-check-circle"></i> Deploiement sur Netlify avec configuration de domaine</li>
+                    <li><i class="fas fa-check-circle"></i> Gestion de projet client : recueil du besoin, iterations, mise en ligne</li>
                 </ul>
             </div>
         </div>
-    </section>    <!-- Section Services -->
+    </section>
+
     <section class="section">
-        <h2>Services présentés</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fas fa-brain"></i> Hypnothérapie</h3>
-                <ul>
-                    <li>Gestion du stress</li>
-                    <li>Arrêt du tabac</li>
-                    <li>Troubles du sommeil</li>
-                    <li>Confiance en soi</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-hands"></i> Massages</h3>
-                <ul>
-                    <li>Massage relaxant</li>
-                    <li>Massage thérapeutique</li>
-                    <li>Réflexologie</li>
-                    <li>Massage prénatal</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-calendar"></i> Pratique</h3>
-                <ul>
-                    <li>Consultations individuelles</li>
-                    <li>Séances en cabinet</li>
-                    <li>Domicile possible</li>
-                    <li>Suivi personnalisé</li>
-                </ul>
-            </div>
-        </div>
-    </section>    <!-- Section Défis Techniques -->
-    <section class="section">
-        <h2>Défis techniques & créatifs</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Ce projet présentait des défis spécifiques liés au secteur du bien-être :</p>
-                
-                <ul class="about-details">
-                    <li><i class="fas fa-palette"></i> <strong>Atmosphère :</strong> Créer une ambiance web relaxante et professionnelle</li>
-                    <li><i class="fas fa-balance-scale"></i> <strong>Équilibre :</strong> Allier sérieux médical et approche humaine</li>
-                    <li><i class="fas fa-mobile-alt"></i> <strong>Accessibilité :</strong> Interface simple pour tous les âges</li>
-                    <li><i class="fas fa-shield-alt"></i> <strong>Confidentialité :</strong> Rassurer sur la discrétion professionnelle</li>
-                    <li><i class="fas fa-star"></i> <strong>Différenciation :</strong> Se démarquer dans un secteur concurrentiel</li>
-                </ul>
-            </div>
-        </div>
-    </section>    <!-- Section Contact/Retour -->
-    <section class="section">
-        <h2>Retour sur l'expérience</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Développer ce site pour ma mère a été une expérience enrichissante à plusieurs niveaux. 
-                Au-delà de l'aspect technique, j'ai dû comprendre les enjeux du secteur du bien-être, 
-                les attentes des clients et créer une identité web qui reflète la personnalité professionnelle 
-                de ma mère.</p>
-                
-                <p>Ce projet m'a également permis d'explorer le design axé sur l'émotion et le ressenti, 
-                une approche différente de mes projets plus techniques. La satisfaction de voir ma mère 
-                utiliser ce site pour développer son activité a été la plus belle récompense !</p>
-                
-                <div class="contact-container">
-                    <div class="social-links">
-                        <a href="https://massage-valmondois.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-                        <a href="../index.html#work" class="cta-button">← Retour aux projets</a>
-                    </div>
-                </div>
+        <div class="contact-container">
+            <div class="social-links" style="justify-content: center;">
+                <a href="https://massage-valmondois.netlify.app/" target="_blank" rel="noopener noreferrer" class="cta-button secondary"><i class="fas fa-external-link-alt"></i></a>
+                <a href="../index.html#work" class="cta-button">&#8592; Retour aux projets</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Portfolio Benjamin LELEU. Tous droits réservés.</p>
+        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits reserves.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
@@ -190,4 +113,3 @@
     <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
 </body>
 </html>
-

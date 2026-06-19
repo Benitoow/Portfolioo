@@ -3,213 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aux Ptits Soins Coiffure - Site E-commerce | Portfolio Benjamin LELEU</title>
-    <!-- Google Fonts -->
+    <title>Aux Ptits Soins Coiffure - Site Vitrine | Portfolio Benjamin LELEU</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
-    <!-- CSS autonome pour les pages projets -->
     <link rel="stylesheet" href="../css/projet-pages.css">
-    <!-- Font Awesome - Source alternative -->
     <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
-    <!-- AOS Animations -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Site e-commerce pour salon de coiffure avec gestion des prestations et prise de rendez-vous">
+    <meta name="description" content="Site vitrine et e-commerce pour salon de coiffure : prestations, prise de rendez-vous, galerie. Projet client reel, en production depuis 2024.">
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-    <!-- Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <!-- Navigation -->
+
     <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../Projet/Perso/sitecoiff.webp'); background-size: cover; background-position: center;">
         <nav class="navbar">
             <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
             <ul class="nav-links">
                 <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../index.html#about">À Propos</a></li>
+                <li><a href="../index.html#about">A Propos</a></li>
                 <li><a href="../index.html#work">Projets</a></li>
-                <li><a href="../index.html#skills">Compétences</a></li>
+                <li><a href="../index.html#skills">Competences</a></li>
                 <li><a href="../index.html#contact">Contact</a></li>
             </ul>
         </nav>
 
-        <!-- Contenu principal de la section Héro -->
-        <div class="hero-content">
+        <div class="hero-content" data-aos="fade-up">
             <h1>Aux Ptits Soins Coiffure <i class="fas fa-cut"></i></h1>
-            <p class="subtitle">Site e-commerce pour salon de coiffure — Maintenance, évolution et support technique</p>            <div class="project-links">
+            <p class="subtitle">Premier projet client reel : conception, mise en ligne, puis maintenance active d'un salon de coiffure independant.</p>
+            <div class="project-links">
                 <a href="https://github.com/Benitoow/SiteCoiffure.git" class="cta-button" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github"></i> Code Source
-                </a>                <a href="https://drive.google.com/drive/folders/123LBJ3r8z_VaCEp2kKhbwM5iA446s4xi?usp=sharing" class="cta-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-google-drive"></i> Archive Complète
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Section À Propos du Projet -->
-    <section class="section">
-        <h2>À propos du projet</h2>
+    <section class="section" data-aos="fade-up">
+        <h2>Contexte &amp; Objectifs</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Ce site e-commerce pour salon de coiffure est un projet en production. Je suis responsable de la 
-                maintenance, des évolutions et du support technique pour la commerçante. Le site propose une interface élégante 
-                mettant en valeur les services, prestations et l'expertise du salon.</p>
-                
+                <p>Une commercante independante, coiffeuse, voulait developper sa clientele en ligne et proposer la prise de rendez-vous depuis son site. Elle n'avait ni budget important ni site existant. J'ai concu et developpe ce projet de bout en bout, puis je suis reste responsable de la <strong>maintenance, des evolutions et du support technique</strong> depuis la mise en ligne en 2024.</p>
+                <p>Ce projet a une particularite que les projets scolaires n'ont pas : il est en <strong>production reelle</strong>. Une erreur a un impact direct sur les rendez-vous d'une vraie commercante. Ca change la facon dont on teste, dont on deploie, dont on communique les changements.</p>
+
                 <ul class="about-details">
-                    <li><i class="fas fa-calendar-alt"></i> Durée : En cours depuis 2024</li>
-                    <li><i class="fas fa-user"></i> Client : Commerçante indépendante</li>
-                    <li><i class="fas fa-cut"></i> Secteur : Beauté & Coiffure</li>
-                    <li><i class="fas fa-laptop"></i> Type : Site e-commerce en production</li>
-                    <li><i class="fas fa-tools"></i> Mission : Maintenance & Support</li>
+                    <li><i class="fas fa-user-tie"></i> Client : commercante independante, salon de coiffure</li>
+                    <li><i class="fas fa-calendar-alt"></i> En production depuis 2024, maintenance continue</li>
+                    <li><i class="fas fa-laptop-code"></i> Role : conception, developpement, maintenance</li>
+                    <li><i class="fas fa-bullseye"></i> Enjeu : presence web et prise de RDV en ligne</li>
+                    <li><i class="fas fa-tools"></i> Stack : HTML5, CSS3, JavaScript</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Section Technologies -->
-    <section class="section">
-        <h2>Technologies utilisées</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
-                <ul>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>JavaScript</li>
-                    <li>Responsive Design</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-paint-brush"></i> Design</h3>
-                <ul>
-                    <li>UI/UX moderne</li>
-                    <li>Animations CSS</li>
-                    <li>Typography élégante</li>
-                    <li>Palette harmonieuse</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-tools"></i> Fonctionnalités</h3>
-                <ul>
-                    <li>Galerie photos</li>
-                    <li>Formulaire contact</li>
-                    <li>Géolocalisation</li>
-                    <li>Optimisation SEO</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Fonctionnalités -->
-    <section class="section">
-        <h2>Fonctionnalités principales</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fas fa-home"></i> Accueil</h3>
-                <ul>
-                    <li>Présentation du salon</li>
-                    <li>Services mis en avant</li>
-                    <li>Témoignages clients</li>
-                    <li>Call-to-action efficaces</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-scissors"></i> Prestations</h3>
-                <ul>
-                    <li>Catalogue des services</li>
-                    <li>Tarifs transparents</li>
-                    <li>Descriptions détaillées</li>
-                    <li>Photos avant/après</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-calendar"></i> Réservation</h3>
-                <ul>
-                    <li>Prise de rendez-vous</li>
-                    <li>Sélection coiffeur</li>
-                    <li>Choix créneaux</li>
-                    <li>Confirmation email</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Galerie -->
-    <section class="section">
-        <h2>Aperçu du projet</h2>
+    <section class="section" data-aos="fade-up">
+        <h2>Apercu du Site</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/nav-site-hair.webp" alt="Navigation du site de coiffure">
-                <h3>Navigation principale</h3>
-                <p>Interface moderne et navigation intuitive</p>
+                <img loading="lazy" decoding="async" src="../Projet/Perso/nav-site-hair.webp" alt="Navigation principale">
+                <h3>Navigation</h3>
+                <p>Interface claire et elegante, pensee pour une clientele de tous ages.</p>
             </div>
             <div class="project-card">
                 <img loading="lazy" decoding="async" src="../Projet/Perso/Presta-femme-site-hair.webp" alt="Prestations femmes">
-                <h3>Prestations femmes</h3>
-                <p>Catalogue complet des services pour femmes</p>
+                <h3>Catalogue Prestations</h3>
+                <p>Services detailles avec tarifs, photos et descriptions accessibles.</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/homme+kid-site-hair.webp" alt="Services hommes et enfants">
-                <h3>Hommes & Enfants</h3>
-                <p>Section dédiée aux coupes hommes et enfants</p>
+                <img loading="lazy" decoding="async" src="../Projet/Perso/onco-site-hair.webp" alt="Coiffure oncologique">
+                <h3>Coiffure Oncologique</h3>
+                <p>Section dediee a un service specialise : accompagnement personnalise pour les patients en traitement.</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/onco-site-hair.webp" alt="Section oncologie">
-                <h3>Coiffure oncologique</h3>
-                <p>Services spécialisés et accompagnement personnalisé</p>
-            </div>
-            <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/contact-site-hair.webp" alt="Page de contact">
-                <h3>Contact & Localisation</h3>
-                <p>Informations pratiques et carte interactive</p>
+                <img loading="lazy" decoding="async" src="../Projet/Perso/contact-site-hair.webp" alt="Contact et localisation">
+                <h3>Contact &amp; Localisation</h3>
+                <p>Informations pratiques et formulaire de prise de rendez-vous simplifie.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section Design & UX -->
-    <section class="section">
-        <h2>Approche Design & UX</h2>
+    <section class="section" data-aos="fade-up">
+        <h2>Bilan &amp; Apprentissages</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>L'approche design de ce projet s'articule autour de plusieurs principes clés :</p>
-                
+                <p>Travailler avec un vrai client, c'est apprendre la relation client autant que le developpement. Il faut savoir reformuler un besoin flou ("je veux quelque chose de beau et moderne") en specifications concretes, expliquer les contraintes techniques sans jargon, et gerer les demandes de modification qui arrivent apres la mise en ligne.</p>
+                <p>La maintenance long terme m'a aussi appris l'importance de coder de facon lisible et documentee, pas juste pour aujourd'hui mais pour "moi dans six mois" qui devra modifier quelque chose rapidement sans casser le reste.</p>
+
                 <ul class="about-details">
-                    <li><i class="fas fa-palette"></i> <strong>Élégance :</strong> Palette de couleurs raffinée reflétant l'univers de la beauté</li>
-                    <li><i class="fas fa-images"></i> <strong>Visuel :</strong> Mise en avant des réalisations avec galerie photo professionnelle</li>
-                    <li><i class="fas fa-mobile-alt"></i> <strong>Accessibilité :</strong> Design responsive adapté à tous les appareils</li>
-                    <li><i class="fas fa-heart"></i> <strong>Empathie :</strong> Interface pensée pour rassurer et inspirer confiance</li>
-                    <li><i class="fas fa-rocket"></i> <strong>Performance :</strong> Chargement rapide et navigation fluide</li>
+                    <li><i class="fas fa-check-circle"></i> Gestion de projet client de A a Z (recueil besoin, specs, livraison, suivi)</li>
+                    <li><i class="fas fa-check-circle"></i> Design adapte a un secteur et une cible clientele specifique</li>
+                    <li><i class="fas fa-check-circle"></i> Maintenance long terme et versioning d'un site en production</li>
+                    <li><i class="fas fa-check-circle"></i> Communication non-technique avec une cliente non-tech</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Section Contact/Retour -->
     <section class="section">
-        <h2>Retour sur le projet</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Ce projet m'a permis d'explorer le secteur de la beauté et de comprendre les besoins spécifiques 
-                d'un salon de coiffure en termes de présence web. J'ai particulièrement apprécié travailler sur 
-                l'aspect esthétique et l'expérience utilisateur, en créant une interface qui reflète le professionnalisme 
-                et la créativité du métier de coiffeur.</p>
-                
-                <p>Le défi principal était de créer un équilibre entre élégance visuelle et fonctionnalité pratique, 
-                notamment pour le système de prise de rendez-vous.</p>
-                
-                <div class="contact-container">
-                    <div class="social-links">
-                        <a href="https://github.com/Benitoow/SiteCoiffure.git" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                        <a href="../index.html#work" class="cta-button">← Retour aux projets</a>
-                    </div>
-                </div>
+        <div class="contact-container">
+            <div class="social-links" style="justify-content: center;">
+                <a href="https://github.com/Benitoow/SiteCoiffure.git" target="_blank" rel="noopener noreferrer" class="cta-button secondary"><i class="fab fa-github"></i></a>
+                <a href="../index.html#work" class="cta-button">&#8592; Retour aux projets</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Portfolio Benjamin LELEU. Tous droits réservés.</p>
+        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits reserves.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
@@ -217,5 +118,3 @@
     <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
 </body>
 </html>
-
-

@@ -3,194 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Athena V1 - Benjamin LELEU</title>
-    <!-- Google Fonts -->
+    <title>Project Athena V1 - Computer Vision | Portfolio Benjamin LELEU</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
-    <!-- CSS autonome pour les pages projets -->
     <link rel="stylesheet" href="../css/projet-pages.css">
-    <!-- Font Awesome - Source alternative -->
     <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
-    <!-- AOS Animations -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Project Athena V1 - Bot d'IA utilisant YOLOv5 pour la détection d'objets en temps réel">
+    <meta name="description" content="Project Athena V1 : exploration de la computer vision avec YOLOv5 et OpenCV en Python. Projet educatif de detection d'objets en temps reel.">
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-    <!-- Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <!-- Navigation -->
+
     <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../Projet/Perso/aimbot.webp'); background-size: cover; background-position: center;">
         <nav class="navbar">
             <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
             <ul class="nav-links">
                 <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../index.html#about">À Propos</a></li>
+                <li><a href="../index.html#about">A Propos</a></li>
                 <li><a href="../index.html#work">Projets</a></li>
-                <li><a href="../index.html#skills">Compétences</a></li>
+                <li><a href="../index.html#skills">Competences</a></li>
                 <li><a href="../index.html#contact">Contact</a></li>
             </ul>
-        </nav>        <!-- Contenu principal de la section Héro -->
-        <div class="hero-content">
+        </nav>
+
+        <div class="hero-content" data-aos="fade-up">
             <h1>Project Athena V1 <i class="fas fa-crosshairs"></i></h1>
-            <p class="subtitle">Un petit projet d'IA qui m'aide à "mieux viser" dans les jeux... Purement éducatif bien sûr !</p>
-            <p class="humor-note">*Résultats non garantis en tournoi</p>
+            <p class="subtitle">Quatre jours pour apprendre YOLOv5 et comprendre comment une IA voit le monde en temps reel.</p>
             <div class="project-links">
-                <a href="#" class="cta-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i> Code Source
-                </a>                <a href="https://drive.google.com/drive/folders/1tX9WFQ6igu_tNrQd7-_EanfK3r98rFsE?usp=sharing" class="cta-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-google-drive"></i> Archive Complète
+                <a href="https://drive.google.com/drive/folders/1tX9WFQ6igu_tNrQd7-_EanfK3r98rFsE?usp=sharing" class="cta-button secondary" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-google-drive"></i> Archive Complete
                 </a>
             </div>
         </div>
-    </header><!-- Section À Propos du Projet -->
+    </header>
+
     <section class="section" data-aos="fade-up">
-        <h2>À propos du projet</h2>
-        <div class="about-content" data-aos="fade-up" data-aos-delay="100">
+        <h2>Contexte &amp; Objectifs</h2>
+        <div class="about-content">
             <div class="about-text">
-                <p><strong>Project Athena V1</strong> est un projet éducatif d'intelligence artificielle développé pour explorer 
-                les capacités de la computer vision et de la détection d'objets en temps réel. Ce projet utilise YOLOv5, 
-                un modèle de deep learning avancé, pour identifier et localiser des objets spécifiques dans un flux vidéo.</p>
-                
-                <p>Bon, soyons honnêtes... L'idée m'est venue pendant une partie frustrante de Valorant ! 🎮 
-                Mais ne vous inquiétez pas, c'est devenu un vrai projet d'apprentissage sur l'IA et la computer vision. 
-                J'ai appris énormément sur les réseaux de neurones, la détection d'objets en temps réel, et les défis éthiques de l'IA.</p>
-                
-                <p><strong>⚠️ Disclaimer important :</strong> Ce projet a été développé dans un cadre strictement éducatif pour 
-                comprendre les concepts d'IA. L'utilisation dans des jeux compétitifs est contraire aux conditions d'utilisation 
-                et à l'esprit sportif ! 🚫</p>
-                
+                <p>L'idee vient d'une partie de Valorant, soyons honnetes. Mais l'objectif reel etait de comprendre concretement comment fonctionne la <strong>detection d'objets en temps reel</strong> : comment un modele de deep learning peut identifier et localiser des elements visuels dans un flux video, image par image.</p>
+                <p><strong>Project Athena V1</strong> est un projet personnel d'apprentissage base sur <strong>YOLOv5</strong> (You Only Look Once) et <strong>OpenCV</strong>. Pas de backend web, pas de base de donnees : juste Python, PyTorch, et le probleme fondamental de "comment une machine voit-elle ?"</p>
+                <p>Note : ce projet a ete developpe dans un cadre strictement educatif. L'utilisation de bots dans les jeux competitifs est contraire aux CGU des editeurs et ce n'est pas l'usage qui m'interessait.</p>
+
                 <ul class="about-details">
-                    <li><i class="fas fa-calendar-alt"></i> Durée : 4 jours intenses</li>
-                    <li><i class="fas fa-user"></i> Projet personnel d'apprentissage</li>
-                    <li><i class="fas fa-brain"></i> Focus : IA & Computer Vision</li>
-                    <li><i class="fas fa-code"></i> Langage : Python</li>
-                    <li><i class="fas fa-gamepad"></i> Inspiration : Gaming (avouons-le !)</li>
-                </ul>
-            </div>
-        </div>
-    </section>    <!-- Section Technologies -->
-    <section class="section" data-aos="fade-up">
-        <h2>Technologies utilisées</h2>
-        <div class="skills-container">
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                <h3><i class="fab fa-python"></i> Python</h3>
-                <ul>
-                    <li>YOLOv5 (Détection d'objets)</li>
-                    <li>OpenCV (Computer Vision)</li>
-                    <li>PyTorch (Deep Learning)</li>
-                    <li>NumPy (Calculs numériques)</li>
-                </ul>
-            </div>
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                <h3><i class="fas fa-brain"></i> Intelligence Artificielle</h3>
-                <ul>
-                    <li>Réseaux de neurones</li>
-                    <li>Computer Vision</li>
-                    <li>Détection temps réel</li>
-                    <li>Fine-tuning de modèles</li>
-                </ul>
-            </div>
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
-                <h3><i class="fas fa-tools"></i> Outils</h3>
-                <ul>
-                    <li>PyCharm</li>
-                    <li>Jupyter Notebook</li>
-                    <li>Git</li>
-                    <li>CUDA (GPU)</li>
-                </ul>
-            </div>
-        </div>
-    </section>    <!-- Section Fonctionnalités -->
-    <section class="section" data-aos="fade-up">
-        <h2>Fonctionnalités développées</h2>
-        <div class="skills-container">
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                <h3><i class="fas fa-crosshairs"></i> Détection de Cibles</h3>
-                <ul>
-                    <li>Reconnaissance d'objets</li>
-                    <li>Localisation précise</li>
-                    <li>Suivi en temps réel</li>
-                    <li>Filtrage intelligent</li>
-                </ul>
-            </div>
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                <h3><i class="fas fa-robot"></i> Intelligence Artificielle</h3>
-                <ul>
-                    <li>Modèle YOLOv5</li>
-                    <li>Optimisation GPU</li>
-                    <li>Précision en temps réel</li>
-                    <li>Adaptation contextuelle</li>
-                </ul>
-            </div>
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
-                <h3><i class="fas fa-graduation-cap"></i> Apprentissage</h3>
-                <ul>
-                    <li>Computer Vision</li>
-                    <li>Deep Learning</li>
-                    <li>Éthique de l'IA</li>
-                    <li>Optimisation performance</li>
-                </ul>
-            </div>
-        </div>
-    </section>    <!-- Section Apprentissages -->
-    <section class="section" data-aos="fade-up">
-        <h2>Apprentissages techniques</h2>
-        <div class="about-content" data-aos="fade-up" data-aos-delay="100">
-            <div class="about-text">
-                <p>Ce projet m'a permis d'acquérir des compétences approfondies dans plusieurs domaines :</p>
-                
-                <ul class="about-details">
-                    <li><i class="fas fa-camera"></i> <strong>Computer Vision :</strong> Maîtrise d'OpenCV et YOLOv5 pour la reconnaissance d'objets</li>
-                    <li><i class="fas fa-brain"></i> <strong>Deep Learning :</strong> Compréhension des réseaux de neurones et de l'optimisation</li>
-                    <li><i class="fas fa-code"></i> <strong>Python avancé :</strong> Programmation orientée objet, threading et optimisation</li>
-                    <li><i class="fas fa-tachometer-alt"></i> <strong>Performance :</strong> Optimisation GPU et traitement temps réel</li>
-                    <li><i class="fas fa-shield-alt"></i> <strong>Éthique :</strong> Responsabilités du développeur en IA</li>
+                    <li><i class="fas fa-user"></i> Projet personnel, exploration technique</li>
+                    <li><i class="fas fa-calendar-alt"></i> 4 jours intensifs</li>
+                    <li><i class="fas fa-brain"></i> Focus : computer vision et deep learning</li>
+                    <li><i class="fas fa-code"></i> Stack : Python, YOLOv5, OpenCV, PyTorch, NumPy</li>
+                    <li><i class="fas fa-microchip"></i> Optimisation GPU via CUDA</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Section Éthique -->
     <section class="section" data-aos="fade-up">
-        <h2>Considérations éthiques</h2>
-        <div class="about-content" data-aos="fade-up" data-aos-delay="100">
-            <div class="about-text">
-                <p>Ce projet a été développé dans un cadre strictement éducatif avec plusieurs objectifs pédagogiques :</p>
-                
-                <ul class="about-details">
-                    <li><i class="fas fa-graduation-cap"></i> Comprendre les principes de la computer vision</li>
-                    <li><i class="fas fa-book"></i> Apprendre les techniques de deep learning</li>
-                    <li><i class="fas fa-cogs"></i> Maîtriser les outils de développement Python</li>
-                    <li><i class="fas fa-lightbulb"></i> Développer ma logique de programmation</li>
-                </ul>
-                
-                <p><strong>Note importante :</strong> Je ne recommande pas l'utilisation de bots dans les jeux et je respecte 
-                les conditions d'utilisation des services. Ce projet reste dans le domaine de l'apprentissage technique.</p>
+        <h2>Demarche Technique</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">La pipeline de detection suit une logique simple mais couteuse en calcul : capturer l'ecran, passer l'image dans le modele, recuperer les bounding boxes des objets detectes, filtrer par seuil de confiance.</p>
+
+        <div class="projects-grid">
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-camera"></i></div>
+                <h3>Capture &amp; Pretraitement</h3>
+                <p style="margin-top: 1rem;">Screenshot toutes les N ms, resize a la resolution attendue par YOLOv5, conversion BGR/RGB pour OpenCV.</p>
+            </div>
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-brain"></i></div>
+                <h3>Inference YOLOv5</h3>
+                <p style="margin-top: 1rem;">Passage de l'image dans le modele pre-entraine sur GPU. Retourne les coordonnees et scores de confiance de chaque objet detecte.</p>
+            </div>
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-crosshairs"></i></div>
+                <h3>Filtrage &amp; Action</h3>
+                <p style="margin-top: 1rem;">Selection de la cible prioritaire par seuil de confiance et distance au centre. Logique de decision simple basee sur la position relative.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section Contact/Retour -->
     <section class="section" data-aos="fade-up">
-        <h2>Retour sur l'expérience</h2>
-        <div class="about-content" data-aos="fade-up" data-aos-delay="100">
+        <h2>Bilan &amp; Apprentissages</h2>
+        <div class="about-content">
             <div class="about-text">
-                <p>Ce projet m'a ouvert les portes du monde fascinant de l'intelligence artificielle et de la computer vision. 
-                Bien que le contexte soit celui d'un jeu, les techniques apprises sont directement transférables vers des 
-                applications plus sérieuses comme la reconnaissance médicale, la surveillance, ou l'automatisation industrielle.</p>
-                
-                <div class="contact-container">
-                    <div class="social-links">
-                        <a href="../index.html#work" class="cta-button">← Retour aux projets</a>
-                    </div>
-                </div>
+                <p>Quatre jours pour passer de "je n'ai jamais touche a PyTorch" a "j'ai un pipeline de detection d'objets qui tourne en temps reel". C'est dense. Le plus difficile n'etait pas le modele lui-meme (YOLOv5 vient avec ses poids pre-entraines) mais l'optimisation des performances : reduire la latence entre la capture et l'affichage des resultats sans sacrifier la precision.</p>
+                <p>Ce projet m'a ouvert une porte sur le monde de l'IA appliquee a la vision. Les techniques de detection d'objets ont des applications serieuses dans la sante, l'industrie, la robotique. Comprendre les mecaniques de base ici m'a donne un point de depart pour explorer ces domaines.</p>
+
+                <ul class="about-details">
+                    <li><i class="fas fa-check-circle"></i> Computer vision : pipeline OpenCV, preprocessing, bounding boxes</li>
+                    <li><i class="fas fa-check-circle"></i> Deep learning : inference YOLOv5, optimisation GPU avec CUDA</li>
+                    <li><i class="fas fa-check-circle"></i> Python avance : threading, optimisation de performances, profiling</li>
+                    <li><i class="fas fa-check-circle"></i> Comprehension des enjeux ethiques du developpement IA</li>
+                </ul>
             </div>
         </div>
-    </section>    <footer>
-        <p>&copy; 2026 Portfolio Benjamin LELEU. Tous droits réservés.</p>
+    </section>
+
+    <section class="section">
+        <div class="contact-container">
+            <div class="social-links" style="justify-content: center;">
+                <a href="../index.html#work" class="cta-button">&#8592; Retour aux projets</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits reserves.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
@@ -198,4 +115,3 @@
     <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
 </body>
 </html>
-

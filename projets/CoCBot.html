@@ -4,39 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoC Bot - Clash of Clans Automation | Portfolio Benjamin LELEU</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
-    <!-- CSS autonome pour les pages projets -->
     <link rel="stylesheet" href="../css/projet-pages.css">
-    <!-- Font Awesome - Source alternative -->
     <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
-    <!-- AOS Animations -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Bot intelligent en Python pour Clash of Clans utilisant la vision par ordinateur">
+    <meta name="description" content="Bot Python pour Clash of Clans : computer vision avec OpenCV, template matching, automatisation d'actions. Projet educatif, code source disponible.">
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-    <!-- Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <!-- Navigation -->
+
     <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../Projet/Perso/BoTCSC.webp'); background-size: cover; background-position: center;">
         <nav class="navbar">
             <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
             <ul class="nav-links">
                 <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../index.html#about">À Propos</a></li>
+                <li><a href="../index.html#about">A Propos</a></li>
                 <li><a href="../index.html#work">Projets</a></li>
-                <li><a href="../index.html#skills">Compétences</a></li>
+                <li><a href="../index.html#skills">Competences</a></li>
                 <li><a href="../index.html#contact">Contact</a></li>
             </ul>
-        </nav>        <!-- Contenu principal de la section Héro -->
-        <div class="hero-content">
-            <h1>CoC Bot - Clash of Clans Automation</h1>
-            <p class="subtitle">Bot intelligent en Python utilisant la vision par ordinateur et l'apprentissage automatique <i class="fas fa-robot"></i><i class="fas fa-sword"></i></p>
-            <p class="humor-note">*Usage strictement éducatif pour comprendre la computer vision*</p>            <div class="project-links">
+        </nav>
+
+        <div class="hero-content" data-aos="fade-up">
+            <h1>CoC Bot : Automatisation <i class="fas fa-robot"></i></h1>
+            <p class="subtitle">Trois semaines pour comprendre comment un programme "voit" une interface et prend des decisions a partir d'une image.</p>
+            <div class="project-links">
                 <a href="https://github.com/Benitoow/CoC" class="cta-button" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github"></i> Code Source
                 </a>
@@ -44,417 +39,75 @@
         </div>
     </header>
 
-    <!-- Section À Propos du Projet -->
-    <section class="section">
-        <h2>À propos du projet</h2>
+    <section class="section" data-aos="fade-up">
+        <h2>Contexte &amp; Objectifs</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Ce projet de bot pour Clash of Clans m'a permis d'explorer les domaines fascinants de la vision par ordinateur 
-                et de l'apprentissage automatique. Développé en Python, ce bot utilise des techniques avancées de reconnaissance 
-                d'images pour analyser l'état du jeu et prendre des décisions automatisées.</p>
-                  <p><strong>⚠️ Attention :</strong> Ce projet a été développé uniquement à des fins éducatives pour apprendre 
-                les technologies de computer vision. Il n'est pas destiné à être utilisé de manière abusive.</p>
-                
-                <p><strong>� Code disponible :</strong> Le code source de ce projet est maintenant disponible sur GitHub 
-                à des fins éducatives. Il illustre les techniques de computer vision et d'automatisation utilisées.</p>
-                
+                <p>Clash of Clans est un jeu mobile ou de nombreuses actions se repetent : collecter des ressources, lancer des troupes, surveiller les timers. L'idee de ce projet educatif etait d'automatiser ces actions en Python, en utilisant uniquement ce que le programme peut "voir" : des captures d'ecran analysees avec <strong>OpenCV</strong>.</p>
+                <p>Pas de hacking de memoire, pas d'API non officielle : juste du <strong>template matching</strong> pour reconnaitre les elements de l'interface, et de l'automatisation de clics basee sur les coordonnees des elements detectes. Un exercice concret de computer vision appliquee.</p>
+                <p>Ce projet a ete realise a des fins educatives uniquement. Son code est public sur GitHub pour que les techniques documentees servent a apprendre.</p>
+
                 <ul class="about-details">
-                    <li><i class="fas fa-calendar-alt"></i> Durée : 3 semaines</li>
                     <li><i class="fas fa-user"></i> Projet personnel d'apprentissage</li>
-                    <li><i class="fas fa-eye"></i> Focus : Computer Vision & ML</li>
-                    <li><i class="fas fa-code"></i> Langage : Python</li>
+                    <li><i class="fas fa-calendar-alt"></i> 3 semaines</li>
+                    <li><i class="fas fa-eye"></i> Focus : computer vision, pattern recognition, automation</li>
+                    <li><i class="fas fa-code"></i> Stack : Python, OpenCV, NumPy, Pillow</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Section Technologies -->
-    <section class="section">
-        <h2>Technologies utilisées</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fab fa-python"></i> Python</h3>
-                <ul>
-                    <li>OpenCV (Computer Vision)</li>
-                    <li>NumPy (Calculs numériques)</li>
-                    <li>Pillow (Traitement d'images)</li>
-                    <li>Selenium (Automation web)</li>
-                </ul>
+    <section class="section" data-aos="fade-up">
+        <h2>Demarche Technique</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">La boucle principale capture l'ecran, compare chaque region d'interet contre des templates (images de reference des boutons/icones du jeu), puis declenche l'action correspondante si la similarite depasse un seuil.</p>
+
+        <div class="projects-grid">
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-search"></i></div>
+                <h3>Template Matching</h3>
+                <p style="margin-top: 1rem;">Comparaison de regions d'image contre des templates de reference avec seuillage adaptatif pour gerer les variations de resolution et d'eclairage.</p>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-brain"></i> Machine Learning</h3>
-                <ul>
-                    <li>Pattern Recognition</li>
-                    <li>Image Classification</li>
-                    <li>Template Matching</li>
-                    <li>Feature Detection</li>
-                </ul>
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-hand-pointer"></i></div>
+                <h3>Automatisation d'Actions</h3>
+                <p style="margin-top: 1rem;">Simulation de clics aux coordonnees detectees, gestion des sequences d'actions et des etats de jeu via une machine a etats simple.</p>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-tools"></i> Outils</h3>
-                <ul>
-                    <li>PyCharm</li>
-                    <li>Jupyter Notebook</li>
-                    <li>Git</li>
-                    <li>VS Code</li>
-                </ul>
+            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-tachometer-alt"></i></div>
+                <h3>Optimisation</h3>
+                <p style="margin-top: 1rem;">Caching des templates, ROI pour ne pas analyser l'image entiere a chaque frame, threading pour ne pas bloquer la capture.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section Fonctionnalités -->
-    <section class="section">
-        <h2>Fonctionnalités développées</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fas fa-eye"></i> Vision par Ordinateur</h3>
-                <ul>
-                    <li>Reconnaissance d'éléments UI</li>
-                    <li>Détection de positions</li>
-                    <li>Analyse d'état du jeu</li>
-                    <li>Template matching</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-robot"></i> Automatisation</h3>
-                <ul>
-                    <li>Clics automatisés</li>
-                    <li>Navigation interface</li>
-                    <li>Séquences d'actions</li>
-                    <li>Gestion d'erreurs</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-chart-line"></i> Intelligence</h3>
-                <ul>
-                    <li>Prise de décision</li>
-                    <li>Optimisation stratégique</li>
-                    <li>Adaptation contextuelle</li>
-                    <li>Logging des actions</li>
-                </ul>
-            </div>
-        </div>
-    </section>    <!-- Section Aperçu Visuel -->
-    <section class="section">
-        <h2>Aperçu du système</h2>
-        <div class="visual-showcase">
-            <div class="showcase-grid">
-                <div class="showcase-item">
-                    <div class="showcase-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>Computer Vision</h3>
-                    <p>Reconnaissance d'éléments UI en temps réel</p>
-                    <div class="tech-badge">OpenCV</div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Intelligence Artificielle</h3>
-                    <p>Prise de décision automatisée</p>
-                    <div class="tech-badge">Machine Learning</div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Automatisation</h3>
-                    <p>Exécution de séquences complexes</p>
-                    <div class="tech-badge">Python</div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Optimisation</h3>
-                    <p>Analyse de performance en continu</p>
-                    <div class="tech-badge">NumPy</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Architecture Technique -->
-    <section class="section">
-        <h2>Architecture du système</h2>
-        <div class="architecture-container">
-            <div class="architecture-flow">
-                <div class="flow-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <i class="fas fa-camera"></i>
-                        <h3>Capture d'écran</h3>
-                        <p>Acquisition de l'image en temps réel</p>
-                    </div>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <i class="fas fa-search"></i>
-                        <h3>Analyse</h3>
-                        <p>Détection d'éléments avec OpenCV</p>
-                    </div>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <i class="fas fa-brain"></i>
-                        <h3>Décision</h3>
-                        <p>Logique intelligente de choix</p>
-                    </div>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <i class="fas fa-hand-pointer"></i>
-                        <h3>Action</h3>
-                        <p>Exécution automatisée</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Apprentissages -->
-    <section class="section">
-        <h2>Apprentissages techniques</h2>
+    <section class="section" data-aos="fade-up">
+        <h2>Bilan &amp; Apprentissages</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Ce projet m'a permis d'acquérir des compétences approfondies dans plusieurs domaines :</p>
-                
-                <ul class="about-details">
-                    <li><i class="fas fa-camera"></i> <strong>Computer Vision :</strong> Maîtrise d'OpenCV pour la reconnaissance d'images et la détection de patterns</li>
-                    <li><i class="fas fa-brain"></i> <strong>Machine Learning :</strong> Compréhension des algorithmes de classification et de reconnaissance</li>
-                    <li><i class="fas fa-code"></i> <strong>Python avancé :</strong> Programmation orientée objet, gestion d'exceptions, threading</li>
-                    <li><i class="fas fa-bug"></i> <strong>Debugging :</strong> Techniques avancées de débogage pour les applications de vision</li>
-                    <li><i class="fas fa-chart-area"></i> <strong>Optimisation :</strong> Performance et efficacité des algorithmes de traitement d'image</li>
-                </ul>
-            </div>
-        </div>
-    </section>    <!-- Section Statistiques du Projet -->
-    <section class="section">
-        <h2>Statistiques du développement</h2>
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <div class="stat-number" data-target="1500">0</div>
-                <div class="stat-label">Lignes de Code Python</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <div class="stat-number" data-target="120">0</div>
-                <div class="stat-label">Heures de Développement</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <div class="stat-number" data-target="25">0</div>
-                <div class="stat-label">Éléments UI Détectés</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-flask"></i>
-                </div>
-                <div class="stat-number" data-target="200">0</div>
-                <div class="stat-label">Tests Effectués</div>
-            </div>        </div>
-    </section>
+                <p>Le template matching avec OpenCV m'a appris un concept fondamental de la computer vision : la robustesse d'un algorithme de reconnaissance se mesure a sa capacite a gerer les variations inattendues. En jeu, les elements peuvent etre partiellement masques, legerement redimensionnes, ou eclaires differemment. Gerer ces cas m'a conduit a comprendre les techniques de seuillage adaptatif et de recherche multi-echelle.</p>
+                <p>J'ai aussi compris pourquoi les approches de deep learning ont largement remplace le template matching dans les applications modernes : la robustesse aux variations est beaucoup plus facile a obtenir avec un modele entraine qu'avec des heuristiques manuelles.</p>
 
-    <!-- Section Défis Techniques -->
-    <section class="section">
-        <h2>Défis techniques surmontés</h2>
-        <div class="challenges-container">
-            <div class="challenge-item">
-                <div class="challenge-header">
-                    <div class="challenge-icon">
-                        <i class="fas fa-puzzle-piece"></i>
-                    </div>
-                    <h3>Template Matching Précis</h3>
-                    <div class="difficulty-badge high">Complexe</div>
-                </div>
-                <p>Développement d'algorithmes robustes pour la reconnaissance d'éléments UI avec des variations de résolution et d'éclairage.</p>
-                <div class="solution-tags">
-                    <span class="solution-tag">OpenCV</span>
-                    <span class="solution-tag">Seuillage adaptatif</span>
-                    <span class="solution-tag">Multi-scale</span>
-                </div>
-            </div>
-            
-            <div class="challenge-item">
-                <div class="challenge-header">
-                    <div class="challenge-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h3>Optimisation Performance</h3>
-                    <div class="difficulty-badge medium">Moyen</div>
-                </div>
-                <p>Amélioration des temps de traitement pour une analyse en temps réel sans compromis sur la précision.</p>
-                <div class="solution-tags">
-                    <span class="solution-tag">Threading</span>
-                    <span class="solution-tag">Caching</span>
-                    <span class="solution-tag">ROI Optimization</span>
-                </div>
-            </div>
-            
-            <div class="challenge-item">
-                <div class="challenge-header">
-                    <div class="challenge-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Gestion d'Erreurs</h3>
-                    <div class="difficulty-badge medium">Moyen</div>
-                </div>
-                <p>Implémentation d'un système robuste de gestion d'exceptions et de récupération automatique.</p>
-                <div class="solution-tags">
-                    <span class="solution-tag">Try-Catch</span>
-                    <span class="solution-tag">Logging</span>
-                    <span class="solution-tag">Fallback</span>
-                </div>
-            </div>
-            
-            <div class="challenge-item">
-                <div class="challenge-header">
-                    <div class="challenge-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Logique de Décision</h3>
-                    <div class="difficulty-badge high">Complexe</div>
-                </div>
-                <p>Création d'un système intelligent capable de prendre des décisions contextuelles basées sur l'état du jeu.</p>
-                <div class="solution-tags">
-                    <span class="solution-tag">State Machine</span>
-                    <span class="solution-tag">Decision Trees</span>
-                    <span class="solution-tag">Priority Queue</span>
-                </div>
+                <ul class="about-details">
+                    <li><i class="fas fa-check-circle"></i> OpenCV : template matching, seuillage, ROI, multi-scale search</li>
+                    <li><i class="fas fa-check-circle"></i> Python avance : threading, gestion d'exceptions, state machine</li>
+                    <li><i class="fas fa-check-circle"></i> Optimisation de pipeline de traitement d'images temps reel</li>
+                    <li><i class="fas fa-check-circle"></i> Limites du template matching vs approches deep learning</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Section Parcours/Timeline -->
     <section class="section">
-        <h2>Parcours de développement</h2>
-        <div class="timeline-container">
-            <div class="timeline-item">
-                <div class="timeline-date">Semaine 1</div>
-                <div class="timeline-content">
-                    <h3><i class="fas fa-lightbulb"></i> Découverte & Recherche</h3>
-                    <p>Exploration des concepts de computer vision et étude d'OpenCV. Premiers tests de capture d'écran et analyse des défis techniques.</p>
-                    <ul>
-                        <li>Installation et configuration de l'environnement Python</li>
-                        <li>Étude de la documentation OpenCV</li>
-                        <li>Tests de base avec Pillow et NumPy</li>
-                        <li>Analyse de l'interface du jeu</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-date">Semaine 2</div>
-                <div class="timeline-content">
-                    <h3><i class="fas fa-code"></i> Développement Core</h3>
-                    <p>Implémentation des fonctionnalités principales de reconnaissance d'images et d'automatisation des actions.</p>
-                    <ul>
-                        <li>Développement du système de template matching</li>
-                        <li>Création des algorithmes de détection d'éléments UI</li>
-                        <li>Implémentation de l'automatisation des clics</li>
-                        <li>Tests et debug des premières fonctionnalités</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-date">Semaine 3</div>
-                <div class="timeline-content">
-                    <h3><i class="fas fa-brain"></i> Optimisation & Intelligence</h3>
-                    <p>Amélioration des algorithmes et ajout de logique intelligente pour la prise de décision automatisée.</p>
-                    <ul>
-                        <li>Optimisation des performances de reconnaissance</li>
-                        <li>Ajout de logique de prise de décision</li>
-                        <li>Implémentation du système de logging</li>
-                        <li>Tests finaux et documentation du code</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-date">Réflexion</div>
-                <div class="timeline-content">
-                    <h3><i class="fas fa-balance-scale"></i> Considérations Éthiques</h3>
-                    <p>Analyse des implications éthiques et décision de non-publication pour respecter les bonnes pratiques.</p>
-                    <ul>
-                        <li>Réflexion sur l'usage responsable de la technologie</li>
-                        <li>Étude des conditions d'utilisation des jeux</li>
-                        <li>Décision de garder le projet à des fins éducatives</li>
-                        <li>Rédaction de la documentation éthique</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Éthique -->
-    <section class="section">
-        <h2>Considérations éthiques & Politique de non-publication</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Ce projet a été développé dans un cadre strictement éducatif avec plusieurs objectifs pédagogiques :</p>
-                
-                <ul class="about-details">
-                    <li><i class="fas fa-graduation-cap"></i> Comprendre les principes de la computer vision</li>
-                    <li><i class="fas fa-book"></i> Apprendre les techniques de machine learning</li>
-                    <li><i class="fas fa-cogs"></i> Maîtriser les outils de développement Python</li>
-                    <li><i class="fas fa-lightbulb"></i> Développer ma logique de programmation</li>
-                </ul>
-                
-                <p><strong>🚫 Pourquoi le code n'est pas publié :</strong></p>
-                <ul class="about-details">
-                    <li><i class="fas fa-shield-alt"></i> <strong>Respect des ToS :</strong> Conformité aux conditions d'utilisation des jeux</li>
-                    <li><i class="fas fa-balance-scale"></i> <strong>Éthique :</strong> Prévention d'un usage abusif ou commercial</li>
-                    <li><i class="fas fa-users"></i> <strong>Fair-play :</strong> Respect de l'expérience des autres joueurs</li>
-                    <li><i class="fas fa-graduation-cap"></i> <strong>Apprentissage :</strong> Focus sur l'aspect pédagogique uniquement</li>
-                </ul>
-                
-                <p><strong>Note importante :</strong> Je ne recommande pas l'utilisation de bots dans les jeux et je respecte 
-                les conditions d'utilisation des services. Ce projet reste dans le domaine de l'apprentissage technique 
-                et de la démonstration de compétences en computer vision.</p>
-            </div>
-        </div>
-    </section>    <!-- Section Contact/Retour -->
-    <section class="section">
-        <h2>Retour sur l'expérience</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Ce projet m'a ouvert les portes du monde fascinant de l'intelligence artificielle et de la computer vision. 
-                Bien que le contexte soit celui d'un jeu, les techniques apprises sont directement transférables vers des 
-                applications plus sérieuses comme la reconnaissance médicale, la surveillance, ou l'automatisation industrielle.</p>
-                
-                <p><strong>Démarche responsable :</strong> En choisissant de ne pas publier le code, je montre ma compréhension 
-                des enjeux éthiques du développement et mon engagement envers un usage responsable de la technologie. 
-                Cette approche reflète ma maturité professionnelle et mon respect des bonnes pratiques du secteur.</p>
-                
-                <div class="project-navigation">
-                    <a href="../index.html#work" class="cta-button">
-                        <i class="fas fa-arrow-left"></i> Retour aux projets
-                    </a>
-                    <a href="../index.html#contact" class="cta-button secondary">
-                        <i class="fas fa-envelope"></i> Me contacter
-                    </a>
-                </div>
+        <div class="contact-container">
+            <div class="social-links" style="justify-content: center;">
+                <a href="https://github.com/Benitoow/CoC" target="_blank" rel="noopener noreferrer" class="cta-button secondary"><i class="fab fa-github"></i></a>
+                <a href="../index.html#work" class="cta-button">&#8592; Retour aux projets</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Portfolio Benjamin LELEU. Tous droits réservés.</p>
+        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits reserves.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
@@ -462,5 +115,3 @@
     <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
 </body>
 </html>
-
-

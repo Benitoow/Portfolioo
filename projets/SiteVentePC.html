@@ -3,151 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click & Play - PC Gaming Store | Portfolio Benjamin LELEU</title>
-    <!-- Google Fonts -->
+    <title>Click &amp; Play - PC Gaming Store | Portfolio Benjamin LELEU</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
-    <!-- CSS autonome pour les pages projets -->
     <link rel="stylesheet" href="../css/projet-pages.css">
-    <!-- Font Awesome - Source alternative -->
     <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
-    <!-- AOS Animations -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Click & Play - Plateforme e-commerce moderne pour PC gaming avec configurateur personnalisé">
+    <meta name="description" content="Click and Play, site e-commerce personnel pour PC gaming avec configurateur : HTML, CSS, JavaScript vanilla. En ligne sur clickandplay.tech.">
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-    <!-- Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <!-- Navigation -->
+
     <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../Projet/Perso/VentePC.webp'); background-size: cover; background-position: center;">
         <nav class="navbar">
             <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
             <ul class="nav-links">
                 <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../index.html#about">À Propos</a></li>
+                <li><a href="../index.html#about">A Propos</a></li>
                 <li><a href="../index.html#work">Projets</a></li>
-                <li><a href="../index.html#skills">Compétences</a></li>
+                <li><a href="../index.html#skills">Competences</a></li>
                 <li><a href="../index.html#contact">Contact</a></li>
             </ul>
         </nav>
 
-        <!-- Contenu principal de la section Héro -->
-        <div class="hero-content">
-            <h1>Click & Play - PC Gaming Store <i class="fas fa-gamepad"></i></h1>
-            <p class="subtitle">Plateforme e-commerce moderne pour PC gaming avec configurateur personnalisé</p>            <div class="project-links">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Click &amp; Play : PC Gaming Store <i class="fas fa-gamepad"></i></h1>
+            <p class="subtitle">Un site e-commerce vanilla pour explorer comment vendre des PC gaming en ligne, sans framework.</p>
+            <div class="project-links">
                 <a href="https://clickandplay.tech/" class="cta-button" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-external-link-alt"></i> Voir le Site Live
                 </a>
-                <a href="https://github.com/Benitoow/Click---Play.git" class="cta-button" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Benitoow/Click---Play.git" class="cta-button secondary" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github"></i> Code Source
-                </a>                <a href="https://drive.google.com/drive/folders/1nOMaXhxKdWCoDVhas94vSDzll1sNOZRA?usp=sharing" class="cta-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-google-drive"></i> Archive Complète
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Section À Propos du Projet -->
-    <section class="section">
-        <h2>À propos du projet</h2>
+    <section class="section" data-aos="fade-up">
+        <h2>Contexte &amp; Objectifs</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Click & Play est une plateforme e-commerce complète dédiée aux passionnés de gaming. 
-                Développée dans le cadre de ma formation en BUT Informatique, cette application web permet 
-                aux utilisateurs de découvrir, configurer et acheter des PC gaming sur mesure. 
-                Le projet combine design moderne, fonctionnalités avancées et optimisations performances.</p>
-                
+                <p>Projet personnel declenche par une question simple : comment fonctionne un site e-commerce quand on le construit de zero, sans CMS, sans framework, juste avec du HTML, du CSS et du JavaScript vanilla ? L'univers du PC gaming s'est impose naturellement, etant un terrain que je connais bien en tant que joueur.</p>
+                <p>L'idee etait de simuler une vraie boutique : catalogue de produits, fiche detaillee avec configurateur, gestion du panier, et une interface qui donne envie d'acheter. Le tout sans librairie externe pour vraiment comprendre ce qui se passe sous le capot.</p>
+
                 <ul class="about-details">
-                    <li><i class="fas fa-calendar-alt"></i> Durée : 4 semaines</li>
-                    <li><i class="fas fa-user"></i> Projet personnel</li>
-                    <li><i class="fas fa-gamepad"></i> Thématique : Gaming & E-commerce</li>
-                    <li><i class="fas fa-code"></i> Technologies : HTML, CSS, JavaScript</li>
+                    <li><i class="fas fa-user"></i> Projet personnel, exploration libre</li>
+                    <li><i class="fas fa-calendar-alt"></i> 4 semaines, solo</li>
+                    <li><i class="fas fa-laptop-code"></i> Role : designer et developpeur front-end</li>
+                    <li><i class="fas fa-gamepad"></i> Enjeu : e-commerce vanilla de A a Z</li>
+                    <li><i class="fas fa-tools"></i> Stack : HTML5, CSS3, JavaScript ES6+, Figma</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Section Technologies -->
-    <section class="section">
-        <h2>Technologies utilisées</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
-                <ul>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>JavaScript ES6+</li>
-                    <li>Responsive Design</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-paint-brush"></i> Design</h3>
-                <ul>
-                    <li>UI/UX Design</li>
-                    <li>Animations CSS</li>
-                    <li>Typography</li>
-                    <li>Color Theory</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-tools"></i> Outils</h3>
-                <ul>
-                    <li>VS Code</li>
-                    <li>Git/GitHub</li>
-                    <li>Chrome DevTools</li>
-                    <li>Figma</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Galerie -->
-    <section class="section">
-        <h2>Aperçu du projet</h2>
+    <section class="section" data-aos="fade-up">
+        <h2>Apercu du Projet</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/VentePC.webp" alt="Page d'accueil Click & Play">
-                <h3>Page d'accueil</h3>
-                <p>Interface moderne avec mise en avant des produits gaming</p>
+                <img loading="lazy" decoding="async" src="../Projet/Perso/VentePC.webp" alt="Page d'accueil Click et Play">
+                <h3>Accueil</h3>
+                <p>Mise en avant des configs phares avec visuels gaming et appels a l'action directs.</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/PC800.webp" alt="Page produit">
-                <h3>Fiche produit</h3>
-                <p>Présentation détaillée avec configurateur intégré</p>
+                <img loading="lazy" decoding="async" src="../Projet/Perso/PC800.webp" alt="Fiche produit Click et Play">
+                <h3>Fiche Produit</h3>
+                <p>Presentation technique detaillee avec configurateur de composants integre.</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/VentePCLiv.webp" alt="Processus de commande">
-                <h3>Gestion des commandes</h3>
-                <p>Interface intuitive pour le suivi des commandes</p>
+                <img loading="lazy" decoding="async" src="../Projet/Perso/VentePCLiv.webp" alt="Gestion commandes Click et Play">
+                <h3>Suivi de Commande</h3>
+                <p>Interface de gestion des commandes avec statuts et recapitulatif produits.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section Contact/Retour -->
-    <section class="section">
-        <h2>Retour sur le projet</h2>
+    <section class="section" data-aos="fade-up">
+        <h2>Bilan &amp; Apprentissages</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Ce projet m'a permis de consolider mes compétences en développement front-end tout en explorant l'univers de l'e-commerce. 
-                J'ai particulièrement apprécié travailler sur l'expérience utilisateur et l'aspect visuel du site. 
-                Les défis techniques rencontrés m'ont poussé à approfondir mes connaissances en JavaScript et en CSS avancé.</p>
-                
-                <div class="contact-container">
-                    <div class="social-links">
-                        <a href="https://github.com/Benitoow/Click---Play.git" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                        <a href="https://clickandplay.tech/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-                        <a href="../index.html#work" class="cta-button">← Retour aux projets</a>
-                    </div>
-                </div>
+                <p>Construire un panier en JavaScript pur, sans librairie, m'a oblige a comprendre comment gerer l'etat cote client : stockage dans le localStorage, synchronisation entre pages, mise a jour du DOM sans rechargement. C'est le genre de mecanique qu'on prend pour acquise dans les frameworks mais qu'il faut vraiment comprendre quand on la fait a la main.</p>
+                <p>J'ai aussi appris que le design e-commerce a ses propres codes : la hierarchie visuelle doit guider l'oeil vers le bouton d'achat, les informations de confiance (stock, livraison, garantie) doivent etre visibles sans chercher. Ce projet m'a donne une lecture plus critique des sites marchands que je visite.</p>
+
+                <ul class="about-details">
+                    <li><i class="fas fa-check-circle"></i> Gestion d'etat cote client sans framework (localStorage, DOM)</li>
+                    <li><i class="fas fa-check-circle"></i> Architecture CSS scalable avec variables et composants</li>
+                    <li><i class="fas fa-check-circle"></i> UI/UX orientee conversion : hierarchy, CTA, signaux de confiance</li>
+                    <li><i class="fas fa-check-circle"></i> Deploiement et gestion du domaine custom (clickandplay.tech)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="contact-container">
+            <div class="social-links" style="justify-content: center;">
+                <a href="https://github.com/Benitoow/Click---Play.git" target="_blank" rel="noopener noreferrer" class="cta-button secondary"><i class="fab fa-github"></i></a>
+                <a href="../index.html#work" class="cta-button">&#8592; Retour aux projets</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Portfolio Benjamin LELEU. Tous droits réservés.</p>
+        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits reserves.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
@@ -155,4 +116,3 @@
     <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
 </body>
 </html>
-
