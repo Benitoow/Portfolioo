@@ -43,7 +43,7 @@
   Cache-Control: public, max-age=604800
 
 /videos/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=2592000
 
 /audios/*
   Cache-Control: public, max-age=86400

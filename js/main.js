@@ -44,6 +44,12 @@ if (document.readyState === "loading") {
   bootPortfolioApp();
 }
 
+// Year injection — footer stays current without hardcoding
+(function () {
+  const el = document.getElementById("footer-year");
+  if (el) el.textContent = new Date().getFullYear();
+})();
+
 // ===== MAIN INIT =====
 function initApp() {
   initLoader();

@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click & Play - PC Gaming Store | Portfolio Benjamin LELEU</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
     <!-- CSS autonome pour les pages projets -->
-    <link rel="stylesheet" href="../../css/projet-pages.css">
+    <link rel="stylesheet" href="../css/projet-pages.css">
     <!-- Font Awesome - Source alternative -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
     <!-- AOS Animations -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <meta name="description" content="Click & Play - Plateforme e-commerce moderne pour PC gaming avec configurateur personnalisé">
-    <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <!-- Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
     
     <!-- Navigation -->
-    <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../../Projet/Perso/VentePC.webp'); background-size: cover; background-position: center;">
+    <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../Projet/Perso/VentePC.webp'); background-size: cover; background-position: center;">
         <nav class="navbar">
             <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
             <ul class="nav-links">
@@ -28,14 +32,6 @@
                 <li><a href="../index.html#skills">Compétences</a></li>
                 <li><a href="../index.html#contact">Contact</a></li>
             </ul>
-            <div class="navbar-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <div class="menu-btn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
         </nav>
 
         <!-- Contenu principal de la section Héro -->
@@ -113,17 +109,17 @@
         <h2>Aperçu du projet</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../../Projet/Perso/VentePC.webp" alt="Page d'accueil Click & Play">
+                <img loading="lazy" decoding="async" src="../Projet/Perso/VentePC.webp" alt="Page d'accueil Click & Play">
                 <h3>Page d'accueil</h3>
                 <p>Interface moderne avec mise en avant des produits gaming</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../../Projet/Perso/PC800.webp" alt="Page produit">
+                <img loading="lazy" decoding="async" src="../Projet/Perso/PC800.webp" alt="Page produit">
                 <h3>Fiche produit</h3>
                 <p>Présentation détaillée avec configurateur intégré</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../../Projet/Perso/VentePCLiv.webp" alt="Processus de commande">
+                <img loading="lazy" decoding="async" src="../Projet/Perso/VentePCLiv.webp" alt="Processus de commande">
                 <h3>Gestion des commandes</h3>
                 <p>Interface intuitive pour le suivi des commandes</p>
             </div>
@@ -154,9 +150,9 @@
         <p>&copy; 2026 Portfolio Benjamin LELEU. Tous droits réservés.</p>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../../js/main.js"></script>
-    <script>AOS.init({ duration: 800, once: true });</script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="../js/main.js"></script>
+    <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
 </body>
 </html>
 

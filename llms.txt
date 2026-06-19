@@ -4,25 +4,25 @@ Portfolio personnel de Benjamin LELEU, étudiant en BUT MMI à Troyes. Le site p
 
 ## Pages principales
 
-- [Accueil](https://benjaminleleu.fr/html/) — page principale du portfolio, avec présentation, compétences, parcours et contact.
+- [Accueil](https://benjaminleleu.fr/) — page principale du portfolio, avec présentation, compétences, parcours et contact.
 - [CV PDF](https://benjaminleleu.fr/cv/Benjamin_LELEU_CV.pdf) — version téléchargeable du CV.
 - [Sitemap XML](https://benjaminleleu.fr/sitemap.xml) — liste complète des URL publiques utiles au crawl.
 
 ## Projets
 
-- [Kaobucha](https://benjaminleleu.fr/html/projets/kaobucha.html) — identité visuelle et branding d’une boisson énergisante naturelle.
-- [Mojo Tunes](https://benjaminleleu.fr/html/projets/mojo-tunes.html) — projet lié à l’univers musical et à la conception web.
-- [Star Wars](https://benjaminleleu.fr/html/projets/star-wars.html) — projet créatif inspiré de l’univers Star Wars.
-- [Podcast](https://benjaminleleu.fr/html/projets/podcast.html) — projet autour d’un podcast et de sa présentation.
-- [Site Web CapCom](https://benjaminleleu.fr/html/projets/SiteWebCapCom.html) — site pour une plateforme de covoiturage.
-- [Site Vente PC](https://benjaminleleu.fr/html/projets/SiteVentePC.html) — boutique e-commerce avec panier dynamique.
-- [Hypnothérapie](https://benjaminleleu.fr/html/projets/hypnotherapie.html) — site vitrine professionnel responsive.
-- [AI Aimbot](https://benjaminleleu.fr/html/projets/AIAimbot.html) — projet éducatif autour de la vision par ordinateur.
-- [CoC Bot](https://benjaminleleu.fr/html/projets/CoCBot.html) — projet de bot pour Clash of Clans.
-- [Site Coiffure](https://benjaminleleu.fr/html/projets/sitecoiffure.html) — site vitrine avec prise de contact/rendez-vous.
+- [Kaobucha](https://benjaminleleu.fr/projets/kaobucha.html) — identité visuelle et branding d’une boisson énergisante naturelle.
+- [Mojo Tunes](https://benjaminleleu.fr/projets/mojo-tunes.html) — projet lié à l’univers musical et à la conception web.
+- [Star Wars](https://benjaminleleu.fr/projets/star-wars.html) — projet créatif inspiré de l’univers Star Wars.
+- [Podcast](https://benjaminleleu.fr/projets/podcast.html) — projet autour d’un podcast et de sa présentation.
+- [Site Web CapCom](https://benjaminleleu.fr/projets/SiteWebCapCom.html) — site pour une plateforme de covoiturage.
+- [Site Vente PC](https://benjaminleleu.fr/projets/SiteVentePC.html) — boutique e-commerce avec panier dynamique.
+- [Hypnothérapie](https://benjaminleleu.fr/projets/hypnotherapie.html) — site vitrine professionnel responsive.
+- [AI Aimbot](https://benjaminleleu.fr/projets/AIAimbot.html) — projet éducatif autour de la vision par ordinateur.
+- [CoC Bot](https://benjaminleleu.fr/projets/CoCBot.html) — projet de bot pour Clash of Clans.
+- [Site Coiffure](https://benjaminleleu.fr/projets/sitecoiffure.html) — site vitrine avec prise de contact/rendez-vous.
 
 ## Notes utiles
 
 - Site statique en HTML, CSS et JavaScript.
-- Les contenus principaux sont dans `html/index.html` et `html/projets/`.
+- Les contenus principaux sont dans `index.html` et `projets/`.
 - Les liens internes pointent vers les pages ci-dessus, qui sont les meilleures entrées pour crawler le portfolio.
