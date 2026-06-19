@@ -602,35 +602,31 @@ footer a, .footer a {
     padding: 0;
     margin-top: 2rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
 }
 
 .about-details li {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
-    padding: 0.75rem 1.25rem;
-    background: rgba(30, 27, 24, 0.4);
-    border: 1px solid rgba(242, 201, 76, 0.15);
-    border-radius: 100px;
-    transition: all 0.3s var(--ease-out);
-    display: inline-flex;
-    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
 }
 
-.about-details li:hover {
-    border-color: var(--accent);
-    color: var(--text);
-    background: rgba(242, 201, 76, 0.08);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(242, 201, 76, 0.1);
+.about-details li:last-child {
+    border-bottom: none;
 }
 
 .about-details li i {
     color: var(--accent);
-    margin-right: 0.75rem;
-    font-size: 1.1rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    width: 1.1rem;
+    flex-shrink: 0;
+    text-align: center;
 }
 
 .about-details li strong {
