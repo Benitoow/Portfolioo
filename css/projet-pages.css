@@ -231,55 +231,53 @@ button:focus-visible {
     font-weight: 400;
 }
 
-.project-links {
+.project-meta-links {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     flex-wrap: wrap;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
 }
 
-.cta-button {
-    display: inline-flex;
+.project-meta-links a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.75rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    font-family: var(--font-body);
-    color: var(--bg);
-    background: linear-gradient(135deg, var(--accent-light), var(--accent));
-    border: none;
-    border-radius: 100px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(242, 201, 76, 0.2);
-    transition: all 0.3s var(--ease-out);
+    gap: 0.4rem;
+    transition: color 0.2s;
 }
 
-.cta-button:hover {
-    box-shadow: 0 8px 25px rgba(242, 201, 76, 0.4);
-    transform: translateY(-2px);
-    color: var(--bg);
-}
-
-.cta-button:active {
-    transform: translateY(1px);
-}
-
-.cta-button.secondary,
-.cta-button:not(:first-child) {
-    background: rgba(30, 27, 24, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text);
-    box-shadow: none;
-}
-
-.cta-button.secondary:hover,
-.cta-button:not(:first-child):hover {
-    border-color: var(--accent);
+.project-meta-links a:hover {
     color: var(--accent);
-    background: rgba(242, 201, 76, 0.08);
-    box-shadow: 0 0 15px rgba(242, 201, 76, 0.15);
+}
+
+.project-meta-links i {
+    font-size: 0.75rem;
+}
+
+/* ===== BACK NAV ===== */
+.back-nav {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 3rem 3rem;
+    border-top: 1px solid var(--border);
+}
+
+.back-nav a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.back-nav a:hover {
+    color: var(--accent);
 }
 
 /* ===== MAIN CONTENT ===== */
