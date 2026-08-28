@@ -3,20 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aux Ptits Soins Coiffure - Site Vitrine | Portfolio Benjamin LELEU</title>
+    <title>Aux Ptits Soins Coiffure — Site vitrine | Benjamin Leleu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/projet-pages.css">
     <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Site vitrine et e-commerce pour salon de coiffure : prestations, prise de rendez-vous, galerie. Projet client reel, en production depuis 2024.">
+    <meta name="description" content="Site vitrine pour le salon Aux Ptits Soins Coiffure : prestations, tarifs, galerie, contact et prise de rendez-vous.">
+    <link rel="canonical" href="https://benjaminleleu.fr/projets/sitecoiffure.html">
+    <meta property="og:title" content="Aux Ptits Soins Coiffure — Site vitrine">
+    <meta property="og:description" content="Site vitrine pour un salon de coiffure : prestations, tarifs, galerie, contact et prise de rendez-vous.">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Portfolio Benjamin Leleu">
+    <meta property="og:url" content="https://benjaminleleu.fr/projets/sitecoiffure.html">
+    <meta property="og:image" content="https://benjaminleleu.fr/Projet/Perso/sitecoiff.webp">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Aux Ptits Soins Coiffure — Site vitrine",
+        "description": "Site vitrine pour un salon de coiffure : prestations, tarifs, galerie, contact et prise de rendez-vous.",
+        "url": "https://benjaminleleu.fr/projets/sitecoiffure.html",
+        "image": "https://benjaminleleu.fr/Projet/Perso/sitecoiff.webp",
+        "inLanguage": "fr-FR",
+        "creator": { "@type": "Person", "name": "Benjamin Leleu", "url": "https://benjaminleleu.fr/" }
+      }
+    </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../Projet/Perso/sitecoiff.webp'); background-size: cover; background-position: center;">
+    <header class="hero" style="--hero-image: url('../Projet/Perso/sitecoiff.webp')">
         <nav class="navbar">
             <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
             <ul class="nav-links">
@@ -29,14 +52,15 @@
         </nav>
 
         <div class="hero-content" data-aos="fade-up">
-            <h1>Aux Ptits Soins Coiffure <i class="fas fa-cut"></i></h1>
+            <h1>Aux Ptits Soins Coiffure <i class="fas fa-cut" aria-hidden="true"></i></h1>
             <p class="subtitle">Premier projet client reel : conception, mise en ligne, puis maintenance active d'un salon de coiffure independant.</p>
             <div class="project-meta-links">
-                <a href="https://github.com/Benitoow/SiteCoiffure.git" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> code source</a>
+                <a href="https://auxptitsoinscoiffure.fr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> site en ligne</a>
             </div>
         </div>
     </header>
 
+    <main id="contenu">
     <section class="section" data-aos="fade-up">
         <h2>Contexte &amp; Objectifs</h2>
         <div class="about-content">
@@ -45,11 +69,11 @@
                 <p>Ce projet a une particularite que les projets scolaires n'ont pas : il est en <strong>production reelle</strong>. Une erreur a un impact direct sur les rendez-vous d'une vraie commercante. Ca change la facon dont on teste, dont on deploie, dont on communique les changements.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-user-tie"></i> Client : commercante independante, salon de coiffure</li>
-                    <li><i class="fas fa-calendar-alt"></i> En production depuis 2024, maintenance continue</li>
-                    <li><i class="fas fa-laptop-code"></i> Role : conception, developpement, maintenance</li>
-                    <li><i class="fas fa-bullseye"></i> Enjeu : presence web et prise de RDV en ligne</li>
-                    <li><i class="fas fa-tools"></i> Stack : HTML5, CSS3, JavaScript</li>
+                    <li><i class="fas fa-user-tie" aria-hidden="true"></i> Client : commercante independante, salon de coiffure</li>
+                    <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> En production depuis 2024, maintenance continue</li>
+                    <li><i class="fas fa-laptop-code" aria-hidden="true"></i> Role : conception, developpement, maintenance</li>
+                    <li><i class="fas fa-bullseye" aria-hidden="true"></i> Enjeu : presence web et prise de RDV en ligne</li>
+                    <li><i class="fas fa-tools" aria-hidden="true"></i> Stack : HTML5, CSS3, JavaScript</li>
                 </ul>
             </div>
         </div>
@@ -89,14 +113,16 @@
                 <p>La maintenance long terme m'a aussi appris l'importance de coder de facon lisible et documentee, pas juste pour aujourd'hui mais pour "moi dans six mois" qui devra modifier quelque chose rapidement sans casser le reste.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-check-circle"></i> Gestion de projet client de A a Z (recueil besoin, specs, livraison, suivi)</li>
-                    <li><i class="fas fa-check-circle"></i> Design adapte a un secteur et une cible clientele specifique</li>
-                    <li><i class="fas fa-check-circle"></i> Maintenance long terme et versioning d'un site en production</li>
-                    <li><i class="fas fa-check-circle"></i> Communication non-technique avec une cliente non-tech</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Gestion de projet client de A a Z (recueil besoin, specs, livraison, suivi)</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Design adapte a un secteur et une cible clientele specifique</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Maintenance long terme et versioning d'un site en production</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Communication non-technique avec une cliente non-tech</li>
                 </ul>
             </div>
         </div>
     </section>
+
+    </main>
 
     <div class="back-nav">
         <a href="../index.html#work">&#8592; Projets</a>
@@ -107,7 +133,7 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/shared.js" defer></script>
     <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
 </body>
 </html>

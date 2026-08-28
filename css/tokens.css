@@ -1,0 +1,178 @@
+/* ===== DESIGN TOKENS + BASE PARTAGÉE ===== */
+/* Seule feuille chargée par les 11 pages : elle porte les tokens et les
+   transitions de page, qui doivent être déclarées des deux côtés d'une
+   navigation pour s'appliquer. */
+/* Palette: Dark Bark, Redwood, Path Mist, Kodak Yellow, Fern Green */
+/* Author: Benjamin LELEU · 2026 */
+
+:root {
+  /* ---------- Couleurs ----------
+     Les teintes récurrentes sont stockées en composantes RVB séparées afin de
+     pouvoir en dériver n'importe quelle opacité : rgb(var(--accent-rgb) / 0.06).
+     Changer l'accent du site = changer --accent-rgb, et rien d'autre. */
+  --bg-rgb: 30 27 24;
+  --bg-elevated-rgb: 62 47 40;
+  --text-rgb: 214 207 199;
+  --text-muted-rgb: 110 98 89;
+  --accent-rgb: 242 201 76;
+  --green-rgb: 74 93 68;
+
+  --bg: rgb(var(--bg-rgb));
+  --bg-elevated: rgb(var(--bg-elevated-rgb));
+  --bg-card: #2a221d;
+  --bg-terminal: #161210;
+
+  --text: rgb(var(--text-rgb));
+  --text-secondary: #a89e94;
+  --text-muted: #91857b;
+
+  --accent: rgb(var(--accent-rgb));
+  --accent-light: #f7d96e;
+  --accent-dark: #c9a836;
+
+  --green: rgb(var(--green-rgb));
+  --green-light: #5e7656;
+
+  /* Voile posé sur les visuels d'en-tête des pages projets */
+  --scrim-rgb: 10 10 10;
+
+  /* Surfaces et contours dérivés */
+  --border: rgb(var(--text-rgb) / 0.08);
+  --border-hover: rgb(var(--text-rgb) / 0.15);
+  --surface-subtle: rgb(var(--text-rgb) / 0.04);
+  --surface-raised: rgb(var(--text-rgb) / 0.06);
+
+  --accent-tint: rgb(var(--accent-rgb) / 0.06);
+  --accent-edge: rgb(var(--accent-rgb) / 0.15);
+  --accent-edge-strong: rgb(var(--accent-rgb) / 0.3);
+  --focus-ring: rgb(var(--accent-rgb) / 0.45);
+
+  /* ---------- Typographie ---------- */
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "Space Mono", "Courier New", monospace;
+
+  /* Échelle fluide.
+     Chaque échelon garde exactement les bornes qu'avait le titre concerné —
+     le rendu est donc inchangé à 320 px et à partir de 1440 px. Ce qui change,
+     c'est la pente : elle est calculée sur le même intervalle (20rem → 90rem)
+     pour tous. Avant, les titres montaient à 10vw, 6vw ou 5vw selon les cas,
+     et leurs proportions relatives se déformaient aux largeurs intermédiaires. */
+  /* Le hero couvre 2.5→8rem d'un seul tenant. Il avait auparavant une courbe
+     de base (3.5→8rem) et un override sous 768px (2.5→5rem) : les deux se
+     croisaient mal et la taille sautait de 5rem à 4.8rem au passage du seuil. */
+  --fs-display-xl: clamp(2.5rem, 0.929rem + 7.86vw, 8rem);
+  --fs-display-l: clamp(2.5rem, 1.929rem + 2.86vw, 4.5rem);
+  --fs-display-m: clamp(2rem, 1.571rem + 2.14vw, 3.5rem);
+  --fs-display-sm: clamp(1.75rem, 1.536rem + 1.07vw, 2.5rem);
+  --fs-display-xs: clamp(1.5rem, 1.329rem + 0.86vw, 2.1rem);
+  --fs-title: clamp(1.2rem, 1.086rem + 0.57vw, 1.6rem);
+  --fs-subtitle: clamp(1.1rem, 1.043rem + 0.29vw, 1.3rem);
+  --fs-lead: clamp(1rem, 0.957rem + 0.21vw, 1.15rem);
+
+  /* ---------- Espacement (base 4 px) ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Pas fluides : respiration de section et gouttière de conteneur */
+  --space-section: clamp(5rem, 11vw, 9.5rem);
+  --space-gutter: clamp(1.5rem, 4vw, 4rem);
+
+  /* ---------- Rayons ---------- */
+  --radius-xs: 2px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 100px;
+  --radius-full: 50%;
+
+  /* ---------- Profondeur ----------
+     Le menu mobile (999) passe volontairement SOUS la barre de nav (1000),
+     et le logo + le bouton hamburger (1001) restent au-dessus des deux pour
+     rester cliquables menu ouvert. */
+  --z-bg-video: -3;
+  --z-bg-canvas: -2;
+  --z-grain: -1;
+  --z-overlay: 999;
+  --z-nav: 1000;
+  --z-nav-top: 1001;
+  --z-cursor-follower: 9998;
+  --z-cursor: 9999;
+  --z-loader: 10000;
+  --z-progress: 10001;
+  --z-banner: 16000;
+  --z-skip: 20000;
+
+  /* ---------- Mouvement ---------- */
+  --dur-fast: 0.2s;
+  --dur-base: 0.3s;
+  --dur-slow: 0.6s;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Deux gestes de survol, et deux seulement :
+     les lignes de liste glissent, les surfaces se soulèvent. */
+  --hover-shift: 4px;
+  --hover-lift: 3px;
+
+  /* ---------- Gabarit ---------- */
+  --nav-height: 80px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 64px;
+  }
+}
+
+/* ===== TRANSITIONS DE PAGE =====
+   View Transitions en cross-document : pas de routeur, pas de SPA, la
+   navigation reste un chargement de page classique. Les navigateurs qui ne
+   gèrent pas l'API ignorent tout ce bloc et naviguent normalement — aucun
+   repli à écrire. */
+@view-transition {
+  navigation: auto;
+}
+
+/* L'ancienne page s'efface vers le haut, la nouvelle monte : le mouvement
+   va dans le sens de la lecture au lieu d'un fondu neutre. */
+@keyframes vt-sortie {
+  to {
+    opacity: 0;
+    transform: translateY(-1.2%);
+  }
+}
+
+@keyframes vt-entree {
+  from {
+    opacity: 0;
+    transform: translateY(1.6%);
+  }
+}
+
+::view-transition-old(root) {
+  animation: vt-sortie 0.3s var(--ease-in-out) both;
+}
+
+::view-transition-new(root) {
+  animation: vt-entree 0.42s var(--ease-out) both;
+}
+
+/* Les pseudo-éléments de transition vivent hors de l'arbre du document :
+   la règle globale `*` du bloc prefers-reduced-motion ne les atteint pas,
+   il faut les neutraliser explicitement. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

@@ -3,20 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click &amp; Play - PC Gaming Store | Portfolio Benjamin LELEU</title>
+    <title>Click &amp; Play — Boutique PC gaming | Benjamin Leleu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/projet-pages.css">
     <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Click and Play, site e-commerce personnel pour PC gaming avec configurateur : HTML, CSS, JavaScript vanilla. En ligne sur clickandplay.tech.">
+    <meta name="description" content="Click &amp; Play : boutique PC gaming conçue en HTML, CSS et JavaScript vanilla, avec catalogue, configurateur et panier dynamique.">
+    <link rel="canonical" href="https://benjaminleleu.fr/projets/SiteVentePC.html">
+    <meta property="og:title" content="Click &amp; Play — Boutique PC gaming">
+    <meta property="og:description" content="Boutique PC gaming en HTML, CSS et JavaScript vanilla, avec catalogue, configurateur et panier dynamique.">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Portfolio Benjamin Leleu">
+    <meta property="og:url" content="https://benjaminleleu.fr/projets/SiteVentePC.html">
+    <meta property="og:image" content="https://benjaminleleu.fr/Projet/Perso/VentePC.webp">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Click & Play — Boutique PC gaming",
+        "description": "Boutique PC gaming en HTML, CSS et JavaScript vanilla, avec catalogue, configurateur et panier dynamique.",
+        "url": "https://benjaminleleu.fr/projets/SiteVentePC.html",
+        "image": "https://benjaminleleu.fr/Projet/Perso/VentePC.webp",
+        "inLanguage": "fr-FR",
+        "creator": { "@type": "Person", "name": "Benjamin Leleu", "url": "https://benjaminleleu.fr/" }
+      }
+    </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../Projet/Perso/VentePC.webp'); background-size: cover; background-position: center;">
+    <header class="hero" style="--hero-image: url('../Projet/Perso/VentePC.webp')">
         <nav class="navbar">
             <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
             <ul class="nav-links">
@@ -29,15 +52,12 @@
         </nav>
 
         <div class="hero-content" data-aos="fade-up">
-            <h1>Click &amp; Play, PC Gaming Store <i class="fas fa-gamepad"></i></h1>
+            <h1>Click &amp; Play, PC Gaming Store <i class="fas fa-gamepad" aria-hidden="true"></i></h1>
             <p class="subtitle">Un site e-commerce vanilla pour explorer comment vendre des PC gaming en ligne, sans framework.</p>
-            <div class="project-meta-links">
-                <a href="https://clickandplay.tech/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> clickandplay.tech</a>
-                <a href="https://github.com/Benitoow/Click---Play.git" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> code source</a>
-            </div>
         </div>
     </header>
 
+    <main id="contenu">
     <section class="section" data-aos="fade-up">
         <h2>Contexte &amp; Objectifs</h2>
         <div class="about-content">
@@ -46,11 +66,11 @@
                 <p>L'idee etait de simuler une vraie boutique : catalogue de produits, fiche detaillee avec configurateur, gestion du panier, et une interface qui donne envie d'acheter. Le tout sans librairie externe pour vraiment comprendre ce qui se passe sous le capot.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-user"></i> Projet personnel, exploration libre</li>
-                    <li><i class="fas fa-calendar-alt"></i> 4 semaines, solo</li>
-                    <li><i class="fas fa-laptop-code"></i> Role : designer et developpeur front-end</li>
-                    <li><i class="fas fa-gamepad"></i> Enjeu : e-commerce vanilla de A a Z</li>
-                    <li><i class="fas fa-tools"></i> Stack : HTML5, CSS3, JavaScript ES6+, Figma</li>
+                    <li><i class="fas fa-user" aria-hidden="true"></i> Projet personnel, exploration libre</li>
+                    <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> 4 semaines, solo</li>
+                    <li><i class="fas fa-laptop-code" aria-hidden="true"></i> Role : designer et developpeur front-end</li>
+                    <li><i class="fas fa-gamepad" aria-hidden="true"></i> Enjeu : e-commerce vanilla de A a Z</li>
+                    <li><i class="fas fa-tools" aria-hidden="true"></i> Stack : HTML5, CSS3, JavaScript ES6+, Figma</li>
                 </ul>
             </div>
         </div>
@@ -85,14 +105,16 @@
                 <p>J'ai aussi appris que le design e-commerce a ses propres codes : la hierarchie visuelle doit guider l'oeil vers le bouton d'achat, les informations de confiance (stock, livraison, garantie) doivent etre visibles sans chercher. Ce projet m'a donne une lecture plus critique des sites marchands que je visite.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-check-circle"></i> Gestion d'etat cote client sans framework (localStorage, DOM)</li>
-                    <li><i class="fas fa-check-circle"></i> Architecture CSS scalable avec variables et composants</li>
-                    <li><i class="fas fa-check-circle"></i> UI/UX orientee conversion : hierarchy, CTA, signaux de confiance</li>
-                    <li><i class="fas fa-check-circle"></i> Deploiement et gestion du domaine custom (clickandplay.tech)</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Gestion d'etat cote client sans framework (localStorage, DOM)</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Architecture CSS scalable avec variables et composants</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> UI/UX orientee conversion : hierarchy, CTA, signaux de confiance</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Deploiement historique sur un domaine personnalise (site desormais hors ligne)</li>
                 </ul>
             </div>
         </div>
     </section>
+
+    </main>
 
     <div class="back-nav">
         <a href="../index.html#work">&#8592; Projets</a>
@@ -103,7 +125,7 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/shared.js" defer></script>
     <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
 </body>
 </html>

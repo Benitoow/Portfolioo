@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page non trouvée | Benjamin LELEU</title>
+    <title>Page non trouvée — Portfolio Benjamin Leleu</title>
+    <meta name="description" content="Cette page n'existe pas sur le portfolio de Benjamin Leleu.">
+    <meta name="robots" content="noindex,follow">
     <style>
         * {
             margin: 0;
@@ -52,9 +54,14 @@
             font-weight: 600;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .btn:hover {
+        .btn:hover,
+        .btn:focus-visible {
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(242, 201, 76, 0.3);
+        }
+        .btn:focus-visible {
+            outline: 3px solid #F2C94C;
+            outline-offset: 4px;
         }
     </style>
 </head>

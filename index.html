@@ -3,33 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Benjamin LELEU</title>
+    <title>Benjamin Leleu — Portfolio création numérique</title>
     <meta
       name="description"
-      content="Portfolio de Benjamin LELEU, étudiant en BUT MMI. Développeur web & créateur numérique."
+      content="Portfolio de Benjamin Leleu, étudiant en 2e année de BUT MMI, parcours Création numérique, à l'IUT de Vélizy (UVSQ). Web, design et audiovisuel."
     />
     <meta name="author" content="Benjamin LELEU" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#1E1B18" />
     <link rel="canonical" href="https://benjaminleleu.fr/" />
-    <meta property="og:title" content="Portfolio Benjamin LELEU" />
+    <meta property="og:title" content="Benjamin Leleu — Portfolio création numérique" />
     <meta
       property="og:description"
-      content="Développeur web & créateur numérique. Étudiant BUT MMI à Troyes."
+      content="Étudiant en 2e année de BUT MMI, parcours Création numérique, à l'IUT de Vélizy (UVSQ). Portfolio web, design et audiovisuel."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
-    <meta property="og:site_name" content="Benjamin LELEU Portfolio" />
+    <meta property="og:site_name" content="Portfolio Benjamin Leleu" />
     <meta property="og:url" content="https://benjaminleleu.fr/" />
     <meta
       property="og:image"
       content="https://benjaminleleu.fr/images/og-image.png"
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Portfolio Benjamin LELEU" />
+    <meta name="twitter:title" content="Benjamin Leleu — Portfolio création numérique" />
     <meta
       name="twitter:description"
-      content="Développeur web & créateur numérique. Étudiant BUT MMI à Troyes."
+      content="Étudiant en 2e année de BUT MMI, parcours Création numérique, à l'IUT de Vélizy (UVSQ). Portfolio web, design et audiovisuel."
     />
     <meta
       name="twitter:image"
@@ -46,15 +46,17 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" href="css/tokens.css" as="style" />
     <link rel="preload" href="css/style.css" as="style" />
     <link
       rel="preload"
-      href="videos/Forest-Walking.mp4"
-      as="video"
-      type="video/mp4"
+      href="images/posters/forest-walking.webp"
+      as="image"
+      type="image/webp"
     />
 
-    <!-- Styles -->
+    <!-- Styles — tokens.css d'abord : il définit les custom properties -->
+    <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/style.css" />
 
     <!-- GSAP -->
@@ -75,13 +77,30 @@
       {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "Benjamin LELEU",
-        "jobTitle": "Étudiant BUT MMI",
+        "name": "Benjamin Leleu",
+        "jobTitle": "Étudiant en deuxième année de BUT MMI — parcours Création numérique",
         "url": "https://benjaminleleu.fr/",
+        "email": "mailto:ll.benjamin.9455@gmail.com",
+        "telephone": "+33671691064",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "IUT de Vélizy, Université de Versailles Saint-Quentin-en-Yvelines",
+          "alternateName": "IUT de Vélizy — UVSQ"
+        },
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "IUT de Troyes, Université de Reims Champagne-Ardenne"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "IUT A de Villeneuve-d'Ascq, Université de Lille"
+          }
+        ],
+        "knowsLanguage": ["fr", "en"],
         "sameAs": [
           "https://www.linkedin.com/in/benjamin-leleu-b373bb36a/",
-          "https://github.com/Benitoow",
-          "https://x.com/noflixe"
+          "https://github.com/Benitoow"
         ]
       }
     </script>
@@ -181,6 +200,11 @@
     <div class="cursor" id="cursor"></div>
     <div class="cursor-follower" id="cursorFollower"></div>
 
+    <!-- Aperçu projet au survol — rempli par main.js, décoratif -->
+    <div class="project-preview" id="projectPreview" aria-hidden="true">
+      <img alt="" width="440" height="330" decoding="async" />
+    </div>
+
     <!-- Loader -->
     <div class="loader" id="loader">
       <div class="loader-content">
@@ -234,12 +258,6 @@
             rel="noopener noreferrer"
             >GitHub</a
           >
-          <a
-            href="https://x.com/noflixe"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Twitter</a
-          >
         </div>
       </div>
     </div>
@@ -260,15 +278,19 @@
               ><span class="hero-line-inner accent">LELEU</span></span
             >
           </h1>
-          <p class="hero-subtitle">Développeur Web & Créateur Numérique</p>
+          <p class="hero-subtitle">Création numérique · Web · Audiovisuel</p>
           <p class="hero-description">
-            Étudiant en BUT MMI à l'IUT de Troyes. Je transforme les idées en
-            expériences numériques.
+            Étudiant en 2e année de BUT MMI, parcours Création numérique, à
+            l'IUT de Vélizy — UVSQ.
           </p>
-          <div class="hero-availability">
-            <span class="availability-dot"></span>
-            Ouvert aux projets &amp; collaborations
-          </div>
+          <a
+            class="hero-availability"
+            href="#contact"
+            aria-label="Voir mes disponibilités pour un job étudiant le week-end"
+          >
+            <span class="availability-dot" aria-hidden="true"></span>
+            Job étudiant · samedi ou dimanche · 8 h max/semaine
+          </a>
         </div>
 
       </section>
@@ -277,23 +299,27 @@
       <div class="marquee">
         <div class="marquee-inner">
           <div class="marquee-track">
+            <span>Création Numérique</span>
+            <span class="marquee-dot">✦</span>
+            <span>Audiovisuel</span>
+            <span class="marquee-dot">✦</span>
+            <span>UX/UI Design</span>
+            <span class="marquee-dot">✦</span>
             <span>Développeur Web</span>
             <span class="marquee-dot">✦</span>
-            <span>BUT MMI Troyes</span>
-            <span class="marquee-dot">✦</span>
-            <span>Créateur Numérique</span>
-            <span class="marquee-dot">✦</span>
-            <span>UI/UX Design</span>
+            <span>BUT MMI · 2e année</span>
             <span class="marquee-dot">✦</span>
           </div>
           <div class="marquee-track" aria-hidden="true">
+            <span>Création Numérique</span>
+            <span class="marquee-dot">✦</span>
+            <span>Audiovisuel</span>
+            <span class="marquee-dot">✦</span>
+            <span>UX/UI Design</span>
+            <span class="marquee-dot">✦</span>
             <span>Développeur Web</span>
             <span class="marquee-dot">✦</span>
-            <span>BUT MMI Troyes</span>
-            <span class="marquee-dot">✦</span>
-            <span>Créateur Numérique</span>
-            <span class="marquee-dot">✦</span>
-            <span>UI/UX Design</span>
+            <span>BUT MMI · 2e année</span>
             <span class="marquee-dot">✦</span>
           </div>
         </div>
@@ -307,19 +333,22 @@
           <div class="about-grid">
             <div class="about-text">
               <h2 class="section-title reveal-text" id="about-title">
-                Je crée des expériences web qui comptent.
+                Je crée des expériences numériques qui comptent.
               </h2>
               <p class="about-description reveal-text">
-                Je m'appelle <strong>Benjamin LELEU</strong>, étudiant en
-                <strong>BUT MMI</strong> à l'<strong>IUT de Troyes</strong>
-                (parcours création). Motivé par le travail en équipe, le contact
-                client et la création numérique, j'aime concevoir des projets
-                web et créatifs, du concept à la mise en ligne.
+                Je m'appelle <strong>Benjamin Leleu</strong>. En août 2026, je
+                poursuis ma <strong>deuxième année de BUT MMI</strong>, parcours
+                <strong>Création numérique</strong>, à l'<strong>IUT de Vélizy —
+                UVSQ</strong>. Après une première année de MMI à Troyes, je
+                construis un profil à la croisée du web, du design et de
+                l'audiovisuel.
               </p>
               <p class="about-description reveal-text">
-                Je mobilise mes compétences en HTML/CSS/JS, Java, design et
-                outils Adobe pour contribuer activement à des projets web et
-                créatifs.
+                Je recherche aussi un <strong>job étudiant le week-end</strong>,
+                le samedi ou le dimanche, dans la limite de
+                <strong>8 heures par semaine</strong>. Je privilégie le cinéma,
+                la technologie, l'informatique, l'audiovisuel, la photo, l'audio,
+                les jeux vidéo, les loisirs immersifs et l'accueil culturel.
               </p>
             </div>
             <div class="about-details">
@@ -339,12 +368,13 @@
                   <code>
                     <span class="code-prop">role</span>:
                     <span class="code-string"
-                      >"Développeur Web et Créateur Numérique"</span
+                      >"Création numérique, web et audiovisuel"</span
                     >,</code
                   >
                   <code>
                     <span class="code-prop">formation</span>:
-                    <span class="code-string">"BUT MMI Troyes"</span>,</code
+                    <span class="code-string">"BUT MMI · 2e année · UVSQ"</span
+                    >,</code
                   >
                   <code>
                     <span class="code-prop">passion</span>:
@@ -352,8 +382,8 @@
                     >,</code
                   >
                   <code>
-                    <span class="code-prop">disponible</span>:
-                    <span class="code-bool">true</span>,</code
+                    <span class="code-prop">weekend</span>:
+                    <span class="code-string">"samedi || dimanche"</span>,</code
                   >
                   <code>};</code>
                 </div>
@@ -361,15 +391,23 @@
 
               <div class="about-detail-item">
                 <span class="detail-label">Formation</span>
-                <span class="detail-value">BUT MMI · IUT de Troyes</span>
+                <span class="detail-value">2e année de BUT MMI · parcours Création numérique</span>
               </div>
               <div class="about-detail-item">
-                <span class="detail-label">Localisation</span>
-                <span class="detail-value">Cergy Pontoise, France</span>
+                <span class="detail-label">Établissement</span>
+                <span class="detail-value">IUT de Vélizy · UVSQ</span>
+              </div>
+              <div class="about-detail-item">
+                <span class="detail-label">Disponibilité</span>
+                <span class="detail-value">Samedi ou dimanche · 8 h/semaine maximum</span>
               </div>
               <div class="about-detail-item">
                 <span class="detail-label">Langues</span>
                 <span class="detail-value">Français · Anglais B2</span>
+              </div>
+              <div class="about-detail-item">
+                <span class="detail-label">Mobilité</span>
+                <span class="detail-value">Permis B</span>
               </div>
             </div>
           </div>
@@ -377,7 +415,7 @@
           <!-- Stats -->
           <div class="stats-row">
             <div class="stat-item">
-              <span class="stat-number" data-target="12">0</span>
+              <span class="stat-number" data-target="15">0</span>
               <span class="stat-label">Projets réalisés</span>
             </div>
             <div class="stat-item">
@@ -385,8 +423,8 @@
               <span class="stat-label">Technologies</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number" data-target="3">0</span>
-              <span class="stat-label">Années d'expérience</span>
+              <span class="stat-number" data-target="2">0</span>
+              <span class="stat-label">Année de BUT MMI</span>
             </div>
           </div>
         </div>
@@ -409,11 +447,15 @@
           <div class="projects-list">
             <a
               href="./projets/kaobucha.html"
-              class="project-item"
+              class="project-item project-item--featured"
+              data-thumb="images/thumbs/mockup-mango.webp"
             >
+
+              <img class="project-thumb" src="images/thumbs/mockup-mango.webp" alt=""
+                   width="64" height="64" loading="lazy" decoding="async" />
               <div class="project-index">01</div>
               <div class="project-info">
-                <h3 class="project-name">Kaobucha, Identité de Marque</h3>
+                <h3 class="project-name" data-num="01">Kaobucha, Identité de Marque</h3>
                 <p class="project-desc">
                   SAE 1.02. Création fictive d'une marque de boisson énergisante naturelle et stratégie social media internationale.
                 </p>
@@ -431,11 +473,15 @@
 
             <a
               href="./projets/mojo-tunes.html"
-              class="project-item"
+              class="project-item project-item--featured"
+              data-thumb="images/thumbs/moodboard.webp"
             >
+
+              <img class="project-thumb" src="images/thumbs/moodboard.webp" alt=""
+                   width="64" height="64" loading="lazy" decoding="async" />
               <div class="project-index">02</div>
               <div class="project-info">
-                <h3 class="project-name">Mojo Tunes, Rebranding</h3>
+                <h3 class="project-name" data-num="02">Mojo Tunes, Rebranding</h3>
                 <p class="project-desc">
                   SAE 1.03. Refonte complète de l'identité visuelle d'une enseigne locale à Troyes.
                 </p>
@@ -452,11 +498,15 @@
 
             <a
               href="./projets/star-wars.html"
-              class="project-item"
+              class="project-item project-item--featured"
+              data-thumb="images/thumbs/banner_light.webp"
             >
+
+              <img class="project-thumb" src="images/thumbs/banner_light.webp" alt=""
+                   width="64" height="64" loading="lazy" decoding="async" />
               <div class="project-index">03</div>
               <div class="project-info">
-                <h3 class="project-name">Star Wars, Plateforme Web</h3>
+                <h3 class="project-name" data-num="03">Star Wars, Plateforme Web</h3>
                 <p class="project-desc">
                   SAE 1.05. Développement complet d'un site interactif en PHP avec intégration de base de données JSON.
                 </p>
@@ -474,11 +524,15 @@
 
             <a
               href="./projets/podcast.html"
-              class="project-item"
+              class="project-item project-item--featured"
+              data-thumb="images/thumbs/Affiche_Podcast.webp"
             >
+
+              <img class="project-thumb" src="images/thumbs/Affiche_Podcast.webp" alt=""
+                   width="64" height="64" loading="lazy" decoding="async" />
               <div class="project-index">04</div>
               <div class="project-info">
-                <h3 class="project-name">Fiction Sonore (Podcast)</h3>
+                <h3 class="project-name" data-num="04">Fiction Sonore (Podcast)</h3>
                 <p class="project-desc">
                   Écriture, enregistrement studio et sound design d'un podcast (Horreur/Humour).
                 </p>
@@ -494,11 +548,35 @@
               <div class="project-arrow" aria-hidden="true">→</div>
             </a>
 
+            <div class="project-item project-item--static">
+              <div class="project-index">05</div>
+              <div class="project-info">
+                <h3 class="project-name">Interview Vidéo, Joueur de Football</h3>
+                <p class="project-desc">
+                  Réalisation et montage d'une interview vidéo : préparation,
+                  tournage, dérushage et étalonnage.
+                </p>
+              </div>
+              <div class="project-meta">
+                <span class="project-type">Scolaire</span>
+                <div class="project-tags">
+                  <span>Tournage</span>
+                  <span>Montage</span>
+                  <span>DaVinci Resolve</span>
+                </div>
+              </div>
+              <div class="project-arrow" aria-hidden="true">◦</div>
+            </div>
+
             <a
               href="./projets/SiteWebCapCom.html"
               class="project-item"
+              data-thumb="images/thumbs/CapComSite.webp"
             >
-              <div class="project-index">05</div>
+
+              <img class="project-thumb" src="images/thumbs/CapComSite.webp" alt=""
+                   width="64" height="64" loading="lazy" decoding="async" />
+              <div class="project-index">06</div>
               <div class="project-info">
                 <h3 class="project-name">Site Covoiturage CapCom</h3>
                 <p class="project-desc">
@@ -516,11 +594,35 @@
               <div class="project-arrow" aria-hidden="true">→</div>
             </a>
 
+            <div class="project-item project-item--static">
+              <div class="project-index">07</div>
+              <div class="project-info">
+                <h3 class="project-name">Mini-jeu Éducatif, Apprendre Bash</h3>
+                <p class="project-desc">
+                  Jeu vidéo pédagogique développé en Java pour apprendre les
+                  commandes Bash de façon ludique.
+                </p>
+              </div>
+              <div class="project-meta">
+                <span class="project-type">Scolaire</span>
+                <div class="project-tags">
+                  <span>Java</span>
+                  <span>Bash</span>
+                  <span>Pédagogie</span>
+                </div>
+              </div>
+              <div class="project-arrow" aria-hidden="true">◦</div>
+            </div>
+
             <a
               href="./projets/SiteVentePC.html"
               class="project-item"
+              data-thumb="images/thumbs/VentePC.webp"
             >
-              <div class="project-index">06</div>
+
+              <img class="project-thumb" src="images/thumbs/VentePC.webp" alt=""
+                   width="64" height="64" loading="lazy" decoding="async" />
+              <div class="project-index">08</div>
               <div class="project-info">
                 <h3 class="project-name">Site de Vente de PC</h3>
                 <p class="project-desc">
@@ -542,8 +644,12 @@
             <a
               href="./projets/hypnotherapie.html"
               class="project-item"
+              data-thumb="images/thumbs/hypno-site-maman.webp"
             >
-              <div class="project-index">07</div>
+
+              <img class="project-thumb" src="images/thumbs/hypno-site-maman.webp" alt=""
+                   width="64" height="64" loading="lazy" decoding="async" />
+              <div class="project-index">09</div>
               <div class="project-info">
                 <h3 class="project-name">Site d'Hypnothérapeute</h3>
                 <p class="project-desc">
@@ -565,8 +671,12 @@
             <a
               href="./projets/AIAimbot.html"
               class="project-item"
+              data-thumb="images/thumbs/aimbot.webp"
             >
-              <div class="project-index">08</div>
+
+              <img class="project-thumb" src="images/thumbs/aimbot.webp" alt=""
+                   width="64" height="64" loading="lazy" decoding="async" />
+              <div class="project-index">10</div>
               <div class="project-info">
                 <h3 class="project-name">AI Aimbot, Projet Éducatif</h3>
                 <p class="project-desc">
@@ -588,8 +698,12 @@
             <a
               href="./projets/CoCBot.html"
               class="project-item"
+              data-thumb="images/thumbs/BoTCSC.webp"
             >
-              <div class="project-index">09</div>
+
+              <img class="project-thumb" src="images/thumbs/BoTCSC.webp" alt=""
+                   width="64" height="64" loading="lazy" decoding="async" />
+              <div class="project-index">11</div>
               <div class="project-info">
                 <h3 class="project-name">CoC Bot, Automatisation</h3>
                 <p class="project-desc">
@@ -611,10 +725,13 @@
             <a
               href="https://auxptitsoinscoiffure.fr/"
               class="project-item"
+              data-thumb="images/thumbs/sitecoiff.webp"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div class="project-index">10</div>
+              <img class="project-thumb" src="images/thumbs/sitecoiff.webp" alt=""
+                   width="64" height="64" loading="lazy" decoding="async" />
+              <div class="project-index">12</div>
               <div class="project-info">
                 <h3 class="project-name">Aux Ptits Soins Coiffure</h3>
                 <p class="project-desc">
@@ -634,13 +751,35 @@
               <div class="project-arrow" aria-hidden="true">↗</div>
             </a>
 
+            <div class="project-item project-item--static">
+              <div class="project-index">13</div>
+              <div class="project-info">
+                <h3 class="project-name">Gestion de Communautés en Ligne</h3>
+                <p class="project-desc">
+                  Administration du serveur Discord officiel d'OpenAI (~480 000
+                  membres) et animation d'une communauté de jeu ARK (~200
+                  membres). Création de visuels et de photos de profil
+                  personnalisées.
+                </p>
+              </div>
+              <div class="project-meta">
+                <span class="project-type">Personnel</span>
+                <div class="project-tags">
+                  <span>Discord</span>
+                  <span>Modération</span>
+                  <span>Community</span>
+                </div>
+              </div>
+              <div class="project-arrow" aria-hidden="true">◦</div>
+            </div>
+
             <a
               href="https://www.tiktok.com/@ww2__tank"
               class="project-item"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div class="project-index">11</div>
+              <div class="project-index">14</div>
               <div class="project-info">
                 <h3 class="project-name">TikTok @benitoow · 37k</h3>
                 <p class="project-desc">
@@ -665,7 +804,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div class="project-index">12</div>
+              <div class="project-index">15</div>
               <div class="project-info">
                 <h3 class="project-name">TikTok Star Wars</h3>
                 <p class="project-desc">
@@ -690,7 +829,7 @@
       <!-- ===== SKILLS ===== -->
       <section class="section" id="skills" aria-labelledby="skills-title">
         <div class="section-glow section-glow--left"></div>
-        <div class="container">
+        <div class="container container--large">
           <div class="section-label">03 · Compétences</div>
           <h2 class="section-title reveal-text" id="skills-title">
             Outils & Technologies
@@ -704,27 +843,44 @@
                 <div class="skill-chip">CSS3</div>
                 <div class="skill-chip">JavaScript</div>
                 <div class="skill-chip">Java</div>
-                <div class="skill-chip">SQL</div>
                 <div class="skill-chip">Bash</div>
               </div>
             </div>
 
             <div class="skill-category">
-              <h3 class="skill-category-title">Création</h3>
+              <h3 class="skill-category-title">Design & Création</h3>
               <div class="skill-items">
-                <div class="skill-chip">Figma</div>
-                <div class="skill-chip">After Effects</div>
-                <div class="skill-chip">Premiere Pro</div>
                 <div class="skill-chip">Photoshop</div>
                 <div class="skill-chip">Illustrator</div>
+                <div class="skill-chip">Figma</div>
+                <div class="skill-chip">Canva Pro</div>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3 class="skill-category-title">Audiovisuel</h3>
+              <div class="skill-items">
+                <div class="skill-chip">DaVinci Resolve</div>
+                <div class="skill-chip">Premiere Pro</div>
+                <div class="skill-chip">After Effects</div>
+                <div class="skill-chip">Topaz Video AI</div>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3 class="skill-category-title">Outils</h3>
+              <div class="skill-items">
+                <div class="skill-chip">GitHub</div>
+                <div class="skill-chip">Adobe Creative Cloud</div>
+                <div class="skill-chip">Pack Office</div>
               </div>
             </div>
 
             <div class="skill-category">
               <h3 class="skill-category-title">Soft Skills</h3>
               <div class="skill-items">
-                <div class="skill-chip">Travail d'équipe</div>
                 <div class="skill-chip">Relation client</div>
+                <div class="skill-chip">Travail d'équipe</div>
                 <div class="skill-chip">Créativité</div>
                 <div class="skill-chip">Gestion du temps</div>
                 <div class="skill-chip">Adaptabilité</div>
@@ -732,11 +888,9 @@
             </div>
 
             <div class="skill-category">
-              <h3 class="skill-category-title">Outils</h3>
+              <h3 class="skill-category-title">Langues</h3>
               <div class="skill-items">
-                <div class="skill-chip">Git</div>
-                <div class="skill-chip">Pack Office</div>
-                <div class="skill-chip">Réseaux sociaux</div>
+                <div class="skill-chip">Français, langue maternelle</div>
                 <div class="skill-chip">Anglais B2</div>
               </div>
             </div>
@@ -778,8 +932,8 @@
               <div class="timeline-content">
                 <h3>BUT Informatique</h3>
                 <p>
-                  IUT A, Villeneuve d'Ascq. Premiers projets web et Java.
-                  Découverte de la programmation avancée.
+                  IUT A de Villeneuve-d'Ascq, Université de Lille. Projets web
+                  et Java, avec une approche structurée de la programmation.
                 </p>
                 <div class="timeline-tags">
                   <span>BUT Info</span>
@@ -790,34 +944,34 @@
             </div>
 
             <div class="timeline-item">
-              <div class="timeline-date">2025</div>
+              <div class="timeline-date">2025 / 2026</div>
               <div class="timeline-content">
-                <h3>Réorientation Stratégique</h3>
+                <h3>1re année de BUT MMI</h3>
                 <p>
-                  Décision mûrement réfléchie vers le BUT MMI pour allier
-                  technique et créativité. Correspond à mes aspirations.
+                  IUT de Troyes, Université de Reims Champagne-Ardenne.
+                  Découverte des métiers du multimédia et de l'Internet.
                 </p>
                 <div class="timeline-tags">
-                  <span>Réorientation</span>
-                  <span>Créativité</span>
-                  <span>Ambition</span>
+                  <span>BUT MMI</span>
+                  <span>Troyes</span>
+                  <span>URCA</span>
                 </div>
               </div>
             </div>
 
             <div class="timeline-item">
-              <div class="timeline-date">2025 / Présent</div>
+              <div class="timeline-date">2026 / Présent</div>
               <div class="timeline-content">
-                <h3>BUT MMI, IUT de Troyes</h3>
+                <h3>2e année de BUT MMI, IUT de Vélizy — UVSQ</h3>
                 <p>
-                  Métiers du Multimédia et de l'Internet. Alliance
-                  technique/communication, création numérique et web design.
+                  Parcours Création numérique. Une formation qui relie design,
+                  audiovisuel, communication et développement web.
                 </p>
                 <div class="timeline-tags">
                   <span>BUT MMI</span>
-                  <span>Troyes</span>
-                  <span>Web Design</span>
-                  <span>Multimédia</span>
+                  <span>Vélizy</span>
+                  <span>Création Numérique</span>
+                  <span>Audiovisuel</span>
                 </div>
               </div>
             </div>
@@ -831,11 +985,11 @@
           <div class="section-label">05 · Contact</div>
           <div class="contact-content">
             <h2 class="contact-title reveal-text" id="contact-title">
-              Travaillons ensemble.
+              Un projet, une équipe, un week-end&nbsp;?
             </h2>
             <p class="contact-subtitle reveal-text">
-              Je suis ouvert aux opportunités et aux collaborations.
-              N'hésitez pas à me contacter.
+              Pour une collaboration créative ou un job étudiant, je suis
+              disponible le samedi ou le dimanche, jusqu'à 8 heures par semaine.
             </p>
 
             <div class="contact-links">
@@ -874,16 +1028,6 @@
                 <span class="contact-link-value">Benitoow</span>
                 <span class="contact-link-arrow">↗</span>
               </a>
-              <a
-                href="https://x.com/noflixe"
-                class="contact-link-item"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span class="contact-link-label">Twitter</span>
-                <span class="contact-link-value">@noflixe</span>
-                <span class="contact-link-arrow">↗</span>
-              </a>
             </div>
           </div>
         </div>
@@ -912,12 +1056,6 @@
                 rel="noopener noreferrer"
                 >GitHub</a
               >
-              <a
-                href="https://x.com/noflixe"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Twitter</a
-              >
             </div>
           </div>
         </div>
@@ -928,7 +1066,8 @@
       </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Scripts — shared.js d'abord : main.js dépend de ses helpers -->
+    <script src="js/shared.js" defer></script>
     <script src="js/main.js" defer></script>
   </body>
 </html>

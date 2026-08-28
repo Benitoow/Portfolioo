@@ -1,6 +1,14 @@
-# Benjamin LELEU — Portfolio
+# Benjamin Leleu — Portfolio
 
-Portfolio personnel de Benjamin LELEU, étudiant en BUT MMI à Troyes. Le site présente des projets web, des créations numériques, du branding, de la vidéo et des travaux liés au développement front-end.
+Portfolio personnel de Benjamin Leleu, étudiant en deuxième année de BUT MMI, parcours Création numérique, à l'IUT de Vélizy (UVSQ). Le site présente des projets web, des créations numériques, du branding, de l'audiovisuel et des travaux liés au développement front-end.
+
+Benjamin Leleu recherche un job étudiant le samedi ou le dimanche, dans la limite de 8 heures par semaine. Secteurs privilégiés : cinéma, technologie, informatique, audiovisuel, photo, audio, jeux vidéo, loisirs immersifs et accueil culturel.
+
+## Parcours
+
+- 2026–présent : deuxième année de BUT MMI, parcours Création numérique, à l'IUT de Vélizy (UVSQ).
+- 2025–2026 : première année de BUT MMI à l'IUT de Troyes, Université de Reims Champagne-Ardenne.
+- 2023–2025 : BUT Informatique à l'IUT A de Villeneuve-d'Ascq, Université de Lille.
 
 ## Pages principales
 

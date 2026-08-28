@@ -1,19 +1,16 @@
 /* ===== PORTFOLIO — GSAP ANIMATIONS & INTERACTIONS ===== */
+/* Page d'accueil uniquement. Le commun vit dans shared.js, chargé avant. */
 /* Editorial style, inspired by chimdibam.co */
 /* Author: Benjamin LELEU · 2026 */
 
-const isReducedMotion = () =>
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const isSaveDataEnabled = () => {
-  const connection =
-    navigator.connection ||
-    navigator.mozConnection ||
-    navigator.webkitConnection;
-  return !!(connection && connection.saveData);
-};
-
 // ===== WAIT FOR GSAP =====
 function bootPortfolioApp() {
+  // Les pages projets chargent shared.js seul : rien à animer ici.
+  if (!document.getElementById("hero")) return;
+
+  // Indépendant de GSAP : valable aussi en repli et en mouvement réduit.
+  initTitleMorph();
+
   if (isReducedMotion()) {
     document.body.classList.add("reduced-motion");
     initReducedApp();
@@ -44,26 +41,20 @@ if (document.readyState === "loading") {
   bootPortfolioApp();
 }
 
-// Year injection — footer stays current without hardcoding
-(function () {
-  const el = document.getElementById("footer-year");
-  if (el) el.textContent = new Date().getFullYear();
-})();
-
 // ===== MAIN INIT =====
 function initApp() {
   initLoader();
   initCursor();
   initNav();
   initMobileMenu();
-  initScrollProgress();
   initRevealAnimations();
   initProjectHovers();
+  initProjectPreview();
   initStatsCounter();
   initTimelineAnimations();
   initSkillAnimations();
   initContactAnimations();
-  initSmoothScroll();
+  initScrollDepth();
   initBgCanvas();
   initVideoBackground();
   initMarquee();
@@ -81,8 +72,6 @@ function initAppFallback() {
 
   initNav();
   initMobileMenu();
-  initScrollProgress();
-  initSmoothScroll();
   initBgCanvas();
   initVideoBackground();
   initMarquee();
@@ -97,8 +86,6 @@ function initReducedApp() {
   revealStaticContent();
   initNav();
   initMobileMenu();
-  initScrollProgress();
-  initSmoothScroll();
   initMarquee();
 
   console.log("✦ Portfolio loaded (reduced motion)");
@@ -107,7 +94,7 @@ function initReducedApp() {
 function revealStaticContent() {
   document
     .querySelectorAll(
-      ".reveal-text, .hero-label, .hero-subtitle, .hero-description, .hero-availability, .hero-scroll",
+      ".reveal-text, .hero-label, .hero-subtitle, .hero-description, .hero-availability",
     )
     .forEach((el) => {
       el.style.opacity = "1";
@@ -201,12 +188,40 @@ function initMarquee() {
 }
 
 // ===== LOADER =====
+// Première visite de la session seulement. Sans ça, revenir d'une page projet
+// rejoue 2,5 s de rideau plein écran par-dessus la transition de page — et
+// l'animation du hero avec.
+const LOADER_KEY = "bl:loader-vu";
+
+function loaderDejaVu() {
+  try {
+    return sessionStorage.getItem(LOADER_KEY) === "1";
+  } catch {
+    return false; // sessionStorage indisponible (navigation privée stricte)
+  }
+}
+
+function marquerLoaderVu() {
+  try {
+    sessionStorage.setItem(LOADER_KEY, "1");
+  } catch {
+    /* sans effet : le loader se rejouera, ce n'est pas bloquant */
+  }
+}
+
 function initLoader() {
   const loader = document.getElementById("loader");
   const loaderTexts = document.querySelectorAll(".loader-text");
   const loaderProgress = document.querySelector(".loader-progress");
 
   if (!loader) return;
+
+  if (loaderDejaVu()) {
+    loader.classList.add("is-skipped");
+    initHeroAnimation();
+    return;
+  }
+  marquerLoaderVu();
 
   const tl = gsap.timeline({
     onComplete: () => {
@@ -390,33 +405,35 @@ function initMobileMenu() {
   mobileLinks.forEach((link) => {
     link.addEventListener("click", () => {
       setMenuState(false);
+      menuBtn.focus({ preventScroll: true });
     });
   });
 
-  // Close on escape
+  // Le panneau plein écran reste un vrai espace clavier : le focus ne part pas
+  // visiter la page masquée derrière lui, et Escape revient au déclencheur.
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+    if (!mobileMenu.classList.contains("active")) return;
+
+    if (e.key === "Escape") {
       setMenuState(false);
+      menuBtn.focus({ preventScroll: true });
+      return;
+    }
+
+    if (e.key !== "Tab") return;
+
+    const focusable = [menuBtn, ...mobileMenu.querySelectorAll("a[href]")];
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
     }
   });
-}
-
-// ===== SCROLL PROGRESS =====
-function initScrollProgress() {
-  const progressBar = document.getElementById("scrollProgress");
-  if (!progressBar) return;
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progressBar.style.width = progress + "%";
-    },
-    { passive: true },
-  );
 }
 
 // ===== HERO ANIMATION =====
@@ -426,7 +443,6 @@ function initHeroAnimation() {
   const heroSubtitle = document.querySelector(".hero-subtitle");
   const heroDesc = document.querySelector(".hero-description");
   const heroAvail = document.querySelector(".hero-availability");
-  const heroScroll = document.querySelector(".hero-scroll");
 
   if (!heroLines.length) return;
 
@@ -473,15 +489,6 @@ function initHeroAnimation() {
         ease: "power2.out",
       },
       "-=0.2",
-    )
-    .to(
-      heroScroll,
-      {
-        opacity: 1,
-        duration: 0.8,
-        ease: "power2.out",
-      },
-      "-=0.1",
     );
 }
 
@@ -543,6 +550,125 @@ function initProjectHovers() {
   });
 }
 
+// ===== APERÇU PROJET AU SURVOL =====
+function initProjectPreview() {
+  const preview = document.getElementById("projectPreview");
+  const img = preview?.querySelector("img");
+  // Les lignes mises en avant affichent déjà leur visuel : un aperçu flottant
+  // par-dessus ferait doublon.
+  const items = document.querySelectorAll(
+    ".project-item[data-thumb]:not(.project-item--featured)",
+  );
+
+  if (
+    !preview ||
+    !img ||
+    !items.length ||
+    window.matchMedia("(pointer: coarse)").matches ||
+    isReducedMotion()
+  )
+    return;
+
+  const OFFSET_X = 28;
+  const OFFSET_Y = -24;
+
+  let mouseX = 0,
+    mouseY = 0,
+    x = 0,
+    y = 0,
+    active = false,
+    frame = null;
+
+  // Le rAF ne tourne que pendant un survol, pas en permanence.
+  function follow() {
+    x += (mouseX - x) * 0.14;
+    y += (mouseY - y) * 0.14;
+    preview.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+
+    if (active || Math.abs(mouseX - x) > 0.5 || Math.abs(mouseY - y) > 0.5) {
+      frame = requestAnimationFrame(follow);
+    } else {
+      frame = null;
+    }
+  }
+
+  function onMove(e) {
+    // Bridé pour rester dans la fenêtre, quelle que soit la position du curseur.
+    const w = preview.offsetWidth;
+    const h = preview.offsetHeight;
+    mouseX = Math.min(e.clientX + OFFSET_X, window.innerWidth - w - 12);
+    mouseY = Math.min(
+      Math.max(e.clientY + OFFSET_Y, 12),
+      window.innerHeight - h - 12,
+    );
+  }
+
+  document.addEventListener("mousemove", onMove, { passive: true });
+
+  items.forEach((item) => {
+    item.addEventListener("mouseenter", (e) => {
+      const src = item.dataset.thumb;
+      if (img.getAttribute("src") !== src) img.setAttribute("src", src);
+
+      onMove(e);
+      // Premier survol : on place sans interpoler, sinon l'aperçu arrive en glissant
+      // depuis le coin de l'écran.
+      if (!active && frame === null) {
+        x = mouseX;
+        y = mouseY;
+      }
+
+      active = true;
+      preview.classList.add("is-visible");
+      if (frame === null) frame = requestAnimationFrame(follow);
+    });
+
+    item.addEventListener("mouseleave", () => {
+      active = false;
+      preview.classList.remove("is-visible");
+    });
+  });
+
+  // Décharge les vignettes quand la section approche, pour éviter
+  // un blanc au premier survol.
+  const prefetch = () => {
+    items.forEach((item) => {
+      const i = new Image();
+      i.src = item.dataset.thumb;
+    });
+  };
+  ScrollTrigger.create({
+    trigger: "#work",
+    start: "top 200%",
+    once: true,
+    onEnter: () =>
+      "requestIdleCallback" in window
+        ? requestIdleCallback(prefetch, { timeout: 2000 })
+        : setTimeout(prefetch, 300),
+  });
+}
+
+// ===== MORPHING DU TITRE VERS LA PAGE PROJET =====
+// Le nom de transition est posé au clic, sur la seule ligne concernée : le
+// nommer sur les 9 d'avance ferait capturer 9 éléments distincts, dont 8 sans
+// équivalent sur la page d'arrivée.
+function initTitleMorph() {
+  if (!("startViewTransition" in document)) return;
+
+  const liens = document.querySelectorAll('.project-item[href^="./projets/"]');
+
+  liens.forEach((lien) => {
+    lien.addEventListener("click", () => {
+      liens.forEach((l) => {
+        const t = l.querySelector(".project-name");
+        if (t) t.style.viewTransitionName = "";
+      });
+      const titre = lien.querySelector(".project-name");
+      if (titre) titre.style.viewTransitionName = "vt-projet";
+    });
+  });
+}
+
 // ===== STATS COUNTER =====
 function initStatsCounter() {
   const statNumbers = document.querySelectorAll(".stat-number[data-target]");
@@ -572,10 +698,14 @@ function initStatsCounter() {
 }
 
 // ===== TIMELINE ANIMATIONS =====
+// La frise fait ~1250 px : un déclencheur par élément, pour que chacun
+// s'anime au moment où il entre. Pas de `delay` indexé — il ferait attendre
+// le 4e élément 300 ms APRÈS son entrée à l'écran, ce qui se lit comme
+// de la latence et non comme un décalage.
 function initTimelineAnimations() {
   const timelineItems = document.querySelectorAll(".timeline-item");
 
-  timelineItems.forEach((item, index) => {
+  timelineItems.forEach((item) => {
     gsap.set(item, { opacity: 0, x: -40 });
 
     gsap.to(item, {
@@ -587,102 +717,109 @@ function initTimelineAnimations() {
       opacity: 1,
       x: 0,
       duration: 0.7,
-      delay: index * 0.1,
       ease: "power3.out",
     });
   });
 }
 
 // ===== SKILL ANIMATIONS =====
+// La grille tient à l'écran : un seul déclencheur sur le conteneur, et
+// c'est `stagger` qui orchestre — les cartes se répondent au lieu de
+// s'animer chacune dans son coin.
 function initSkillAnimations() {
-  const skillCategories = document.querySelectorAll(".skill-category");
+  const grid = document.querySelector(".skills-grid");
+  const cats = document.querySelectorAll(".skill-category");
+  const chips = document.querySelectorAll(".skill-chip");
+  if (!grid || !cats.length) return;
 
-  skillCategories.forEach((cat, index) => {
-    // Set initial hidden state explicitly
-    gsap.set(cat, { opacity: 0, y: 40 });
+  gsap.set(cats, { opacity: 0, y: 40 });
+  gsap.set(chips, { opacity: 0, scale: 0.8 });
 
-    gsap.to(cat, {
-      scrollTrigger: {
-        trigger: cat,
-        start: "top 90%",
-        once: true,
-      },
+  gsap
+    .timeline({
+      scrollTrigger: { trigger: grid, start: "top 85%", once: true },
+    })
+    .to(cats, {
       opacity: 1,
       y: 0,
       duration: 0.6,
-      delay: index * 0.1,
+      stagger: 0.08,
       ease: "power3.out",
-    });
-
-    // Stagger chips
-    const chips = cat.querySelectorAll(".skill-chip");
-    gsap.set(chips, { opacity: 0, scale: 0.8 });
-
-    gsap.to(chips, {
-      scrollTrigger: {
-        trigger: cat,
-        start: "top 85%",
-        once: true,
+    })
+    .to(
+      chips,
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.4,
+        stagger: 0.02,
+        ease: "back.out(1.5)",
       },
-      opacity: 1,
-      scale: 1,
-      duration: 0.4,
-      stagger: 0.05,
-      delay: 0.3 + index * 0.1,
-      ease: "back.out(1.5)",
-    });
-  });
+      "-=0.35",
+    );
 }
 
 // ===== CONTACT ANIMATIONS =====
+// Les 5 lignes tiennent à l'écran : déclencheur unique + stagger.
 function initContactAnimations() {
-  const contactLinks = document.querySelectorAll(".contact-link-item");
+  const list = document.querySelector(".contact-links");
+  const links = document.querySelectorAll(".contact-link-item");
+  if (!list || !links.length) return;
 
-  contactLinks.forEach((link, index) => {
-    gsap.set(link, { opacity: 0, x: -30 });
+  gsap.set(links, { opacity: 0, x: -30 });
 
-    gsap.to(link, {
-      scrollTrigger: {
-        trigger: link,
-        start: "top 95%",
-        once: true,
-      },
-      opacity: 1,
-      x: 0,
-      duration: 0.5,
-      delay: index * 0.08,
-      ease: "power3.out",
-    });
+  gsap.to(links, {
+    scrollTrigger: { trigger: list, start: "top 88%", once: true },
+    opacity: 1,
+    x: 0,
+    duration: 0.5,
+    stagger: 0.07,
+    ease: "power3.out",
   });
 }
 
-// ===== SMOOTH SCROLL =====
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      const targetId = this.getAttribute("href");
-      if (targetId === "#") return;
+// ===== PROFONDEUR LIÉE AU SCROLL =====
+// Jusqu'ici rien ne réagissait à la position de scroll : tout était
+// déclenché une fois puis figé. Les halos dérivent doucement à contre-sens
+// du défilement, ce qui donne un plan d'arrière-fond au contenu.
+function initScrollDepth() {
+  if (isReducedMotion() || isSaveDataEnabled()) return;
 
-      const target = document.querySelector(targetId);
-      if (!target) return;
+  document.querySelectorAll(".section-glow").forEach((glow) => {
+    const section = glow.closest(".section");
+    if (!section) return;
 
-      e.preventDefault();
-
-      const navHeight =
-        parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue(
-            "--nav-height",
-          ),
-        ) || 80;
-      const targetPosition =
-        target.getBoundingClientRect().top + window.scrollY - navHeight;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: isReducedMotion() ? "auto" : "smooth",
-      });
-    });
+    gsap.fromTo(
+      glow,
+      { yPercent: -12 },
+      {
+        yPercent: 12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.6,
+        },
+      },
+    );
   });
+
+  // Le bloc hero se retire légèrement pendant qu'on le quitte.
+  const heroInner = document.querySelector(".hero-inner");
+  if (heroInner) {
+    gsap.to(heroInner, {
+      yPercent: 14,
+      opacity: 0.35,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: 0.4,
+      },
+    });
+  }
 }
 
 // ===== GLOBAL BACKGROUND — ANIMATED MESH GRADIENT =====

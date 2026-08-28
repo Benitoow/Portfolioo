@@ -3,20 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoC Bot - Automatisation OpenCV | Portfolio Benjamin LELEU</title>
+    <title>CoC Bot — Automatisation OpenCV | Benjamin Leleu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/projet-pages.css">
     <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Bot Python pour Clash of Clans : computer vision avec OpenCV, template matching, automatisation d'actions. Projet educatif, code source disponible.">
+    <meta name="description" content="CoC Bot : projet éducatif en Python autour d'OpenCV, du template matching et de l'automatisation visuelle, avec code source disponible.">
+    <link rel="canonical" href="https://benjaminleleu.fr/projets/CoCBot.html">
+    <meta property="og:title" content="CoC Bot — Automatisation OpenCV">
+    <meta property="og:description" content="Projet éducatif en Python autour d'OpenCV, du template matching et de l'automatisation visuelle.">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Portfolio Benjamin Leleu">
+    <meta property="og:url" content="https://benjaminleleu.fr/projets/CoCBot.html">
+    <meta property="og:image" content="https://benjaminleleu.fr/Projet/Perso/BoTCSC.webp">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "CoC Bot — Automatisation OpenCV",
+        "description": "Projet éducatif en Python autour d'OpenCV, du template matching et de l'automatisation visuelle.",
+        "url": "https://benjaminleleu.fr/projets/CoCBot.html",
+        "image": "https://benjaminleleu.fr/Projet/Perso/BoTCSC.webp",
+        "inLanguage": "fr-FR",
+        "creator": { "@type": "Person", "name": "Benjamin Leleu", "url": "https://benjaminleleu.fr/" }
+      }
+    </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <header class="hero" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('../Projet/Perso/BoTCSC.webp'); background-size: cover; background-position: center;">
+    <header class="hero" style="--hero-image: url('../Projet/Perso/BoTCSC.webp')">
         <nav class="navbar">
             <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
             <ul class="nav-links">
@@ -29,14 +52,15 @@
         </nav>
 
         <div class="hero-content" data-aos="fade-up">
-            <h1>CoC Bot, Automatisation <i class="fas fa-robot"></i></h1>
+            <h1>CoC Bot, Automatisation <i class="fas fa-robot" aria-hidden="true"></i></h1>
             <p class="subtitle">Trois semaines pour comprendre comment un programme "voit" une interface et prend des decisions a partir d'une image.</p>
             <div class="project-meta-links">
-                <a href="https://github.com/Benitoow/CoC" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> code source</a>
+                <a href="https://github.com/Benitoow/CoC" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> code source</a>
             </div>
         </div>
     </header>
 
+    <main id="contenu">
     <section class="section" data-aos="fade-up">
         <h2>Contexte &amp; Objectifs</h2>
         <div class="about-content">
@@ -46,10 +70,10 @@
                 <p>Ce projet a ete realise a des fins educatives uniquement. Son code est public sur GitHub pour que les techniques documentees servent a apprendre.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-user"></i> Projet personnel d'apprentissage</li>
-                    <li><i class="fas fa-calendar-alt"></i> 3 semaines</li>
-                    <li><i class="fas fa-eye"></i> Focus : computer vision, pattern recognition, automation</li>
-                    <li><i class="fas fa-code"></i> Stack : Python, OpenCV, NumPy, Pillow</li>
+                    <li><i class="fas fa-user" aria-hidden="true"></i> Projet personnel d'apprentissage</li>
+                    <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> 3 semaines</li>
+                    <li><i class="fas fa-eye" aria-hidden="true"></i> Focus : computer vision, pattern recognition, automation</li>
+                    <li><i class="fas fa-code" aria-hidden="true"></i> Stack : Python, OpenCV, NumPy, Pillow</li>
                 </ul>
             </div>
         </div>
@@ -57,23 +81,23 @@
 
     <section class="section" data-aos="fade-up">
         <h2>Demarche Technique</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 2rem;">La boucle principale capture l'ecran, compare chaque region d'interet contre des templates (images de reference des boutons/icones du jeu), puis declenche l'action correspondante si la similarite depasse un seuil.</p>
+        <p class="section-intro">La boucle principale capture l'ecran, compare chaque region d'interet contre des templates (images de reference des boutons/icones du jeu), puis declenche l'action correspondante si la similarite depasse un seuil.</p>
 
         <div class="projects-grid">
-            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
-                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-search"></i></div>
+            <div class="project-card project-card--centered">
+                <div class="card-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
                 <h3>Template Matching</h3>
-                <p style="margin-top: 1rem;">Comparaison de regions d'image contre des templates de reference avec seuillage adaptatif pour gerer les variations de resolution et d'eclairage.</p>
+                <p>Comparaison de regions d'image contre des templates de reference avec seuillage adaptatif pour gerer les variations de resolution et d'eclairage.</p>
             </div>
-            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
-                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-hand-pointer"></i></div>
+            <div class="project-card project-card--centered">
+                <div class="card-icon"><i class="fas fa-hand-pointer" aria-hidden="true"></i></div>
                 <h3>Automatisation d'Actions</h3>
-                <p style="margin-top: 1rem;">Simulation de clics aux coordonnees detectees, gestion des sequences d'actions et des etats de jeu via une machine a etats simple.</p>
+                <p>Simulation de clics aux coordonnees detectees, gestion des sequences d'actions et des etats de jeu via une machine a etats simple.</p>
             </div>
-            <div class="project-card" style="text-align: center; padding: 2.5rem 1.5rem;">
-                <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-tachometer-alt"></i></div>
+            <div class="project-card project-card--centered">
+                <div class="card-icon"><i class="fas fa-tachometer-alt" aria-hidden="true"></i></div>
                 <h3>Optimisation</h3>
-                <p style="margin-top: 1rem;">Caching des templates, ROI pour ne pas analyser l'image entiere a chaque frame, threading pour ne pas bloquer la capture.</p>
+                <p>Caching des templates, ROI pour ne pas analyser l'image entiere a chaque frame, threading pour ne pas bloquer la capture.</p>
             </div>
         </div>
     </section>
@@ -86,14 +110,16 @@
                 <p>J'ai aussi compris pourquoi les approches de deep learning ont largement remplace le template matching dans les applications modernes : la robustesse aux variations est beaucoup plus facile a obtenir avec un modele entraine qu'avec des heuristiques manuelles.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-check-circle"></i> OpenCV : template matching, seuillage, ROI, multi-scale search</li>
-                    <li><i class="fas fa-check-circle"></i> Python avance : threading, gestion d'exceptions, state machine</li>
-                    <li><i class="fas fa-check-circle"></i> Optimisation de pipeline de traitement d'images temps reel</li>
-                    <li><i class="fas fa-check-circle"></i> Limites du template matching vs approches deep learning</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> OpenCV : template matching, seuillage, ROI, multi-scale search</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Python avance : threading, gestion d'exceptions, state machine</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Optimisation de pipeline de traitement d'images temps reel</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Limites du template matching vs approches deep learning</li>
                 </ul>
             </div>
         </div>
     </section>
+
+    </main>
 
     <div class="back-nav">
         <a href="../index.html#work">&#8592; Projets</a>
@@ -104,7 +130,7 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/shared.js" defer></script>
     <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
 </body>
 </html>
