@@ -10,6 +10,8 @@ main = "worker/index.js"
 [assets]
 directory = "."
 binding = "ASSETS"
+# Sans ce réglage, Workers sert une 404 vide : `404.html` ne serait jamais vu.
+not_found_handling = "404-page"
 # Le Worker n'est invoqué que pour les pages HTML : CSS, images et vidéos
 # gardent le chemin direct. Sans ce réglage, les assets seraient servis avant
 # le Worker et `Accept: text/markdown` n'atteindrait jamais le code.
