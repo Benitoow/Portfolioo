@@ -1,6 +1,16 @@
 name = "portfolioo"
 compatibility_date = "2024-01-01"
-# Projet Cloudflare Pages : le dossier servi est passé en argument
-# (`wrangler pages dev .`) et les Functions vivent dans `functions/`.
-# La section `[assets]` (réservée aux Workers avec assets) est volontairement
-# absente : sa présence empêchait `functions/_middleware.js` d'être exécuté.
+
+# Site statique ET négociation markdown : le Worker tourne avant les assets sur
+# les routes HTML (voir worker/index.js), le reste est servi directement par
+# Cloudflare. La section `[assets]` est ce que lit `wrangler deploy` — sans
+# elle, le déploiement publie un Worker vide.
+main = "worker/index.js"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+# Le Worker n'est invoqué que pour les pages HTML : CSS, images et vidéos
+# gardent le chemin direct. Sans ce réglage, les assets seraient servis avant
+# le Worker et `Accept: text/markdown` n'atteindrait jamais le code.
+run_worker_first = ["/", "/index.html", "/projets/*"]

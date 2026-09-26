@@ -1,5 +1,5 @@
 /**
- * Markdown for Agents — négociation de contenu.
+ * Worker du site : statique (assets) + négociation markdown.
  *
  * Un client qui demande `Accept: text/markdown` reçoit la page convertie ;
  * tout le reste (navigateurs, robots, images, CSS) passe inchangé. La
@@ -13,6 +13,9 @@
  *
  * Le HTML reste la réponse par défaut : `Vary: Accept` est posé dans les deux
  * cas pour qu'aucun cache ne serve l'un à la place de l'autre.
+ *
+ * Le site est servi par un Worker « avec assets » (wrangler deploy), pas par
+ * Pages : d'où `env.ASSETS.fetch()` et `run_worker_first` dans wrangler.toml.
  */
 
 const MARKDOWN_TYPE = "text/markdown; charset=utf-8";
@@ -180,36 +183,37 @@ async function markdownFrom(html) {
   return CLEAN(parts.join(""));
 }
 
-export async function onRequest(context) {
-  const { request, next } = context;
-  const response = await next();
-  const contentType = response.headers.get("Content-Type") || "";
-  const isHtml = contentType.includes("text/html");
+export default {
+  async fetch(request, env) {
+    const response = await env.ASSETS.fetch(request);
+    const contentType = response.headers.get("Content-Type") || "";
+    const isHtml = contentType.includes("text/html");
 
-  if (!wantsMarkdown(request) || !isHtml) {
-    if (isHtml) {
-      const passthrough = new Response(response.body, response);
-      passthrough.headers.set("Vary", "Accept");
-      return passthrough;
+    if (!wantsMarkdown(request) || !isHtml) {
+      if (isHtml) {
+        const passthrough = new Response(response.body, response);
+        passthrough.headers.set("Vary", "Accept");
+        return passthrough;
+      }
+      return response;
     }
-    return response;
-  }
 
-  const markdown = await markdownFrom(await response.text());
-  const url = new URL(request.url);
-  const footer =
-    `\n\n---\n\nPage d'origine : ${url.origin}${url.pathname} — ` +
-    `résumé lisible par les agents : ${url.origin}/llms.txt\n`;
+    const markdown = await markdownFrom(await response.text());
+    const url = new URL(request.url);
+    const footer =
+      `\n\n---\n\nPage d'origine : ${url.origin}${url.pathname} — ` +
+      `résumé lisible par les agents : ${url.origin}/llms.txt\n`;
 
-  return new Response(markdown + footer, {
-    status: 200,
-    headers: {
-      "Content-Type": MARKDOWN_TYPE,
-      "Content-Language": "fr",
-      Vary: "Accept",
-      // Estimation usuelle : ~4 caractères par token en français.
-      "x-markdown-tokens": String(Math.ceil((markdown.length + footer.length) / 4)),
-      "Cache-Control": "public, max-age=0, must-revalidate",
-    },
-  });
-}
+    return new Response(markdown + footer, {
+      status: 200,
+      headers: {
+        "Content-Type": MARKDOWN_TYPE,
+        "Content-Language": "fr",
+        Vary: "Accept",
+        // Estimation usuelle : ~4 caractères par token en français.
+        "x-markdown-tokens": String(Math.ceil((markdown.length + footer.length) / 4)),
+        "Cache-Control": "public, max-age=0, must-revalidate",
+      },
+    });
+  },
+};
