@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Star Wars — Site dynamique PHP | Benjamin Leleu</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <title>Star Wars, un site dynamique en PHP | Benjamin Leleu</title>
+    <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/projet-pages.css">
-    <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Site Star Wars dynamique en PHP avec données JSON, galerie générée côté serveur et formulaire traité sans base de données SQL.">
-    <link rel="canonical" href="https://benjaminleleu.fr/projets/star-wars.html">
-    <meta property="og:title" content="Star Wars — Site dynamique PHP">
-    <meta property="og:description" content="Site dynamique en PHP avec données JSON, galerie générée côté serveur et formulaire traité sans base SQL.">
+    <meta name="description" content="Site Star Wars codé en PHP avec un fichier JSON comme source de données : galerie générée côté serveur et formulaire traité sans base SQL.">
+    <link rel="canonical" href="https://benjaminleleu.fr/projets/star-wars">
+    <meta property="og:title" content="Star Wars, un site dynamique en PHP">
+    <meta property="og:description" content="Un site en PHP qui lit ses données dans un fichier JSON : galerie générée côté serveur et formulaire traité sans base SQL.">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Portfolio Benjamin Leleu">
-    <meta property="og:url" content="https://benjaminleleu.fr/projets/star-wars.html">
+    <meta property="og:url" content="https://benjaminleleu.fr/projets/star-wars">
     <meta property="og:image" content="https://benjaminleleu.fr/images/projets/star-wars/banner_light.webp">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
-        "name": "Star Wars — Site dynamique PHP",
-        "description": "Site dynamique en PHP avec données JSON, galerie générée côté serveur et formulaire traité sans base SQL.",
-        "url": "https://benjaminleleu.fr/projets/star-wars.html",
+        "name": "Star Wars, un site dynamique en PHP",
+        "description": "Un site en PHP qui lit ses données dans un fichier JSON : galerie générée côté serveur et formulaire traité sans base SQL.",
+        "url": "https://benjaminleleu.fr/projets/star-wars",
         "image": "https://benjaminleleu.fr/images/projets/star-wars/banner_light.webp",
         "inLanguage": "fr-FR",
         "creator": { "@type": "Person", "name": "Benjamin Leleu", "url": "https://benjaminleleu.fr/" }
@@ -36,84 +31,97 @@
     </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body class="case-study case-study--star-wars" style="--shader-rgb: 182 195 137">
+    <canvas class="shader-canvas" aria-hidden="true"></canvas>
+    <a class="case-skip-link" href="#contenu">Aller au contenu du projet</a>
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <header class="hero" style="--hero-image: url('../images/projets/star-wars/banner_light.webp')">
-        <nav class="navbar">
-            <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../index.html#about">A Propos</a></li>
-                <li><a href="../index.html#work">Projets</a></li>
-                <li><a href="../index.html#skills">Competences</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
-            </ul>
+    <nav class="navbar" aria-label="Navigation du projet">
+            <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
+            <span class="case-nav-index">Étude de cas / 03</span>
+            <a class="case-nav-back" href="/#work">Tous les projets <span aria-hidden="true">↗</span></a>
         </nav>
+    <header class="hero" style="--hero-image: url('../images/projets/star-wars/banner_light.webp')">
 
-        <div class="hero-content" data-aos="fade-up">
-            <h1>Star Wars, Plateforme Web <i class="fas fa-jedi" aria-hidden="true"></i></h1>
-            <p class="subtitle">Un site PHP qui consomme ses donnees depuis un fichier JSON, sans base de donnees traditionnelle.</p>
+        <div class="case-hero-art" aria-hidden="true"><img src="../images/projets/star-wars/banner_light.webp" alt="" width="800" height="533"></div>
+        <div class="hero-content">
+            <p class="case-kicker">03 / Développement web</p>
+            <h1>Star Wars, un site en PHP <svg class="icon" aria-hidden="true"><use href="../images/icons.svg#jedi"></use></svg></h1>
+            <p class="subtitle">Tout le contenu vient d'un fichier JSON que PHP va lire. Aucune base de données derrière.</p>
+            <div class="case-hero-facts"><span>PHP &amp; données JSON</span><span>SAE 1.05 · BUT MMI</span></div>
             <div class="project-meta-links">
-                <a href="http://sae105.mmi25b12.mmi-troyes.fr/index.php" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> site live</a>
+                <a href="http://sae105.mmi25b12.mmi-troyes.fr/index.php" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#external-link-alt"></use></svg> voir le site en ligne</a>
             </div>
         </div>
     </header>
 
     <main id="contenu">
-    <section class="section" data-aos="fade-up">
+    <div class="case-ledger" aria-label="Repères du projet">
+      <div><span>Discipline</span><strong>Développement web</strong></div>
+      <div><span>Mon rôle</span><strong>PHP &amp; données JSON</strong></div>
+      <div><span>Cadre</span><strong>SAE 1.05 · BUT MMI</strong></div>
+    </div>
+    <section class="section">
         <h2>Contexte &amp; Objectifs</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Dans le cadre de la <strong>SAE 1.05</strong> de ma premiere annee de BUT MMI a l'IUT de Troyes (Universite de Reims Champagne-Ardenne), l'enjeu etait de concevoir un site web complet sur un sujet libre, avec une contrainte technique forte : rendre les pages dynamiques cote serveur via <strong>PHP</strong> et stocker les donnees dans un fichier <strong>JSON</strong> plutot qu'une base SQL. Passionne de science-fiction, j'ai choisi l'univers de <strong>Star Wars</strong> pour porter ce projet.</p>
-                <p>Au-dela de l'integration HTML/CSS, ce SAE evaluait la capacite a architecturer un site "vivant" : contenu genere a la volee, formulaire traite cote serveur, galerie alimentee par les donnees JSON.</p>
+                <p>Ce projet vient de la <strong>SAE 1.05</strong>, en première année de BUT MMI à l'IUT de Troyes (Université de Reims Champagne-Ardenne). Le sujet était libre, la contrainte technique ne l'était pas : des pages rendues côté serveur en <strong>PHP</strong>, et les données rangées dans un fichier <strong>JSON</strong> plutôt que dans une base SQL. Fan de science-fiction, j'ai pris <strong>Star Wars</strong> comme thème.</p>
+                <p>L'intégration HTML/CSS comptait, mais la SAE portait surtout sur l'architecture. Le contenu était généré à la volée, le formulaire traité côté serveur, la galerie alimentée par les mêmes données JSON.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-university" aria-hidden="true"></i> SAE 1.05, 1re annee de BUT MMI, IUT de Troyes (URCA)</li>
-                    <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> S1 2025-2026, projet individuel</li>
-                    <li><i class="fas fa-laptop-code" aria-hidden="true"></i> Role : developpeur web full-stack</li>
-                    <li><i class="fas fa-database" aria-hidden="true"></i> Enjeu : dynamisme PHP, donnees JSON</li>
-                    <li><i class="fas fa-tools" aria-hidden="true"></i> Technologies : HTML5, CSS3, PHP 8, JSON</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#university"></use></svg> SAE 1.05, 1re année de BUT MMI, IUT de Troyes (URCA)</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#calendar-alt"></use></svg> S1 2025-2026, projet individuel</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#laptop-code"></use></svg> Rôle : développeur web full-stack</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#database"></use></svg> Objectif : rendre le site dynamique avec PHP et JSON</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#tools"></use></svg> Technologies : HTML5, CSS3, PHP 8, JSON</li>
                 </ul>
             </div>
         </div>
     </section>
+    <aside class="case-note"><span>L'idée du projet</span><p>Séparer le contenu de son affichage, et laisser le fichier JSON décider de ce que les pages montrent.</p></aside>
 
-    <section class="section" data-aos="fade-up">
-        <h2>Demarche &amp; Architecture</h2>
-        <p class="section-intro">Avant de coder, j'ai structure le fichier JSON comme une mini-API : personnages, vaisseaux, lore. Chaque page PHP lit ce fichier et genere le HTML correspondant avec des boucles. Le formulaire de contact utilise GET pour passer les messages de succes/erreur dans l'URL sans rechargement complet.</p>
+    <section class="section">
+        <h2>Démarche &amp; Architecture</h2>
+        <p class="section-intro">J'ai commencé par écrire le fichier JSON : personnages, vaisseaux, citations. Chaque page PHP le lit et construit son HTML avec des boucles. Le formulaire passe par des paramètres GET pour afficher ses messages après l'envoi.</p>
 
         <div class="projects-grid">
             <div class="project-card project-card--centered">
-                <div class="card-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
+                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#server"></use></svg></div>
                 <h3>Formulaire PHP</h3>
-                <p>Traitement cote serveur avec gestion des erreurs et messages de retour via parametres GET. Pas de JS requis.</p>
+                <p>Tout se joue côté serveur : contrôle des erreurs et messages de retour passés en GET. Aucun JavaScript nécessaire.</p>
             </div>
             <div class="project-card project-card--centered">
-                <div class="card-icon"><i class="fab fa-js-square" aria-hidden="true"></i></div>
-                <h3>Donnees JSON</h3>
-                <p>Tout le contenu (personnages, vaisseaux, citations) est parse et injecte dynamiquement dans les templates PHP.</p>
+                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#js-square"></use></svg></div>
+                <h3>Données JSON</h3>
+                <p>Personnages, vaisseaux, citations : tout est lu dans le fichier puis injecté dans les templates PHP.</p>
             </div>
             <div class="project-card project-card--centered">
-                <div class="card-icon"><i class="fas fa-images" aria-hidden="true"></i></div>
-                <h3>Galerie Dynamique</h3>
-                <p>Galerie generee via inclusions PHP depuis les donnees JSON : ajouter un personnage au fichier suffit a l'afficher sur le site.</p>
+                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#images"></use></svg></div>
+                <h3>Galerie dynamique</h3>
+                <p>La galerie est construite à partir des données JSON. Ajouter un personnage au fichier suffit à le faire apparaître sur le site.</p>
             </div>
         </div>
     </section>
+    <section class="section case-gallery" aria-labelledby="case-gallery-title">
+      <h2 id="case-gallery-title">Le site en images</h2>
+      <div class="projects-grid projects-grid--duo">
+        <figure class="project-card"><img loading="lazy" decoding="async" src="../images/projets/star-wars/sw77.webp" alt="Vue du site Star Wars" width="640" height="800"><figcaption>Une interface habillée aux couleurs de Star Wars.</figcaption></figure>
+        <figure class="project-card"><img loading="lazy" decoding="async" src="../images/projets/star-wars/hologram.webp" alt="Visuel holographique du projet" width="1280" height="720"><figcaption>Le côté science-fiction assumé dans les visuels.</figcaption></figure>
+      </div>
+    </section>
 
-    <section class="section" data-aos="fade-up">
+    <section class="section">
         <h2>Bilan &amp; Apprentissages</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Le plus instructif dans ce projet n'etait pas PHP en lui-meme mais la notion de separation donnees / presentation. Utiliser JSON comme source de verite m'a fait comprendre intuitivement ce que font les CMS et les APIs avant meme d'en avoir utilise un formellement.</p>
-                <p>J'ai aussi decouvert que la gestion des erreurs de formulaire "a l'ancienne" (via GET) est plus robuste qu'elle n'y parait : pas de dependance JS, fonctionne meme sur les navigateurs les plus limites.</p>
+                <p>Ce que j'en retiens, c'est la séparation entre les données et leur affichage, plus que PHP en lui-même. En prenant le JSON comme source unique, j'ai compris ce que font les CMS et les APIs, avant même d'en utiliser un pour de vrai.</p>
+                <p>Les erreurs de formulaire gérées à l'ancienne, via GET, m'ont aussi étonné : pas de dépendance à JavaScript, et ça fonctionne même sur un navigateur limité.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC14.01. Mettre en place un environnement de developpement web</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC14.02. Produire des pages web statiques et dynamiques</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC11.01. Analyser un besoin et formaliser une solution technique</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC21.01. Developper a l'aide d'un langage de script cote serveur</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC14.01. Mettre en place un environnement de développement web</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC14.02. Produire des pages web statiques et dynamiques</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC11.01. Analyser un besoin et formaliser une solution technique</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC21.01. Développer à l'aide d'un langage de script côté serveur</li>
                 </ul>
             </div>
         </div>
@@ -121,16 +129,15 @@
 
     </main>
 
-    <div class="back-nav">
-        <a href="../index.html#work">&#8592; Projets</a>
-    </div>
+    <nav class="case-next" aria-label="Continuer la visite">
+      <a href="podcast" class="case-next-link"><span>Projet suivant / 04</span><strong>Fiction sonore</strong><span>Découvrir <b aria-hidden="true">↗</b></span></a>
+      <a href="/#work" class="case-next-back">← Retour à la sélection</a>
+    </nav>
 
     <footer>
-        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits reserves.</p>
+        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits réservés.</p>
     </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="../js/shared.js" defer></script>
-    <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
+    <script src="../js/shader.js" defer></script>
 </body>
 </html>

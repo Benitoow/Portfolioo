@@ -3,36 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaobucha — Identité de marque | Benjamin Leleu</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <title>Kaobucha : identité de marque | Benjamin Leleu</title>
+    <!-- Polices auto-hébergées -->
+    <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <!-- CSS autonome pour les pages projets -->
     <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/projet-pages.css">
-    <!-- Font Awesome - Source alternative -->
-    <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
-    <!-- AOS Animations -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Kaobucha : création d'une identité visuelle et d'une stratégie social media internationale pour une boisson énergisante naturelle fictive.">
-    <link rel="canonical" href="https://benjaminleleu.fr/projets/kaobucha.html">
-    <meta property="og:title" content="Kaobucha — Identité de marque">
-    <meta property="og:description" content="Identité visuelle et stratégie social media internationale pour une boisson énergisante naturelle fictive.">
+    <meta name="description" content="Kaobucha : identité visuelle et stratégie social media d'une boisson énergisante naturelle fictive, pensée pour la France, les États-Unis et le Japon.">
+    <link rel="canonical" href="https://benjaminleleu.fr/projets/kaobucha">
+    <meta property="og:title" content="Kaobucha : identité de marque">
+    <meta property="og:description" content="Identité visuelle et stratégie social media d'une boisson énergisante naturelle fictive, sur trois marchés.">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Portfolio Benjamin Leleu">
-    <meta property="og:url" content="https://benjaminleleu.fr/projets/kaobucha.html">
+    <meta property="og:url" content="https://benjaminleleu.fr/projets/kaobucha">
     <meta property="og:image" content="https://benjaminleleu.fr/images/projets/kaobucha/mockup-mango.webp">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
-        "name": "Kaobucha — Identité de marque",
-        "description": "Identité visuelle et stratégie social media internationale pour une boisson énergisante naturelle fictive.",
-        "url": "https://benjaminleleu.fr/projets/kaobucha.html",
+        "name": "Kaobucha : identité de marque",
+        "description": "Identité visuelle et stratégie social media d'une boisson énergisante naturelle fictive, sur trois marchés.",
+        "url": "https://benjaminleleu.fr/projets/kaobucha",
         "image": "https://benjaminleleu.fr/images/projets/kaobucha/mockup-mango.webp",
         "inLanguage": "fr-FR",
         "creator": { "@type": "Person", "name": "Benjamin Leleu", "url": "https://benjaminleleu.fr/" }
@@ -40,137 +33,134 @@
     </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body class="case-study case-study--kaobucha" style="--shader-rgb: 241 190 100">
+    <canvas class="shader-canvas" aria-hidden="true"></canvas>
+    <a class="case-skip-link" href="#contenu">Aller au contenu du projet</a>
     <!-- Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Navigation -->
-    <header class="hero" style="--hero-image: url('../images/projets/kaobucha/mockup-mango.webp')">
-        <nav class="navbar">
-            <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../index.html#about">À Propos</a></li>
-                <li><a href="../index.html#work">Projets</a></li>
-                <li><a href="../index.html#skills">Compétences</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
-            </ul>
+    <nav class="navbar" aria-label="Navigation du projet">
+            <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
+            <span class="case-nav-index">Étude de cas / 01</span>
+            <a class="case-nav-back" href="/#work">Tous les projets <span aria-hidden="true">↗</span></a>
         </nav>
+    <header class="hero" style="--hero-image: url('../images/projets/kaobucha/mockup-mango.webp')">
 
         <!-- Contenu principal de la section Héro -->
-        <div class="hero-content" data-aos="fade-up">
-            <h1>Kaobucha, Identité Visuelle <i class="fas fa-leaf" aria-hidden="true"></i></h1>
-            <p class="subtitle">Création d'une marque de boisson énergisante, saine et naturelle.</p>
+        <div class="case-hero-art" aria-hidden="true"><img src="../images/projets/kaobucha/mockup-mango.webp" alt="" width="800" height="534"></div>
+        <div class="hero-content">
+            <p class="case-kicker">01 / Identité de marque</p>
+            <h1>Kaobucha, une marque à créer de zéro <svg class="icon" aria-hidden="true"><use href="../images/icons.svg#leaf"></use></svg></h1>
+            <p class="subtitle">Identité visuelle et packaging d'une boisson énergisante naturelle, sans alcool.</p>
+            <div class="case-hero-facts"><span>Branding &amp; design</span><span>SAE 1.02 · BUT MMI</span></div>
         </div>
     </header>
 
     <!-- Section À Propos du Projet -->
     <main id="contenu">
-    <section class="section" data-aos="fade-up">
-        <h2>Contexte & Objectifs</h2>
+    <div class="case-ledger" aria-label="Repères du projet">
+      <div><span>Discipline</span><strong>Identité de marque</strong></div>
+      <div><span>Mon rôle</span><strong>Branding &amp; design</strong></div>
+      <div><span>Cadre</span><strong>SAE 1.02 · BUT MMI</strong></div>
+    </div>
+    <section class="section">
+        <h2>Le point de départ</h2>
         <div class="about-content">
             <div class="about-text">
-                <p><strong>Projet SAE 1.02, BUT MMI.</strong> L'objectif de ce projet était de concevoir de bout en bout l'identité numérique et visuelle d'une nouvelle marque de boisson : <strong>Kaobucha</strong>. Le concept ? Une boisson énergisante, sans alcool et composée de produits 100% naturels.</p>
-                <p>Le défi comportait également un volet de communication internationale, nécessitant d'adapter notre stratégie marketing et nos créations graphiques pour la France, les États-Unis et le Japon.</p>
+                <p><strong>SAE 1.02, BUT MMI.</strong> Il fallait créer de bout en bout l'identité visuelle et numérique d'une marque de boisson qui n'existait pas encore : <strong>Kaobucha</strong>. Le produit : une boisson énergisante sans alcool, composée de produits 100% naturels.</p>
+                <p>Le projet ne s'arrêtait pas à la France. Il impliquait aussi les États-Unis et le Japon, donc une stratégie marketing et des créations graphiques adaptées à chacun de ces marchés.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-university" aria-hidden="true"></i> Contexte : 1re année de BUT MMI, IUT de Troyes (URCA), 2025-2026</li>
-                    <li><i class="fas fa-palette" aria-hidden="true"></i> Rôle : Créativité & Branding</li>
-                    <li><i class="fas fa-globe" aria-hidden="true"></i> Enjeu : Stratégie Internationale</li>
-                    <li><i class="fas fa-tools" aria-hidden="true"></i> Outils : Photoshop, Illustrator</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#university"></use></svg> Contexte : 1re année de BUT MMI, IUT de Troyes (URCA), 2025-2026</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#palette"></use></svg> Rôle : Créativité & Branding</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#globe"></use></svg> Enjeu : une stratégie pour trois marchés</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#tools"></use></svg> Outils : Photoshop, Illustrator</li>
                 </ul>
             </div>
         </div>
     </section>
+    <aside class="case-note"><span>Le fil du projet</span><p>La même énergie naturelle, déclinée sur trois marchés sans perdre son identité.</p></aside>
 
     <!-- Section Moodboard -->
-    <section class="section" data-aos="fade-up">
-        <h2>Identité Visuelle & Inspiration</h2>
+    <section class="section">
+        <h2>Direction artistique</h2>
         <div class="about-content">
-            <p class="section-intro section-intro--tight">La direction artistique de <strong>Kaobucha</strong> s'appuie sur une esthétique naturelle, fraîche et organique. L'objectif est de s'éloigner des codes agressifs classiques des boissons énergisantes pour proposer une image de vitalité douce et saine.</p>
-                <img class="media-full" src="../images/projets/kaobucha/moodboard.webp" alt="Moodboard Kaobucha">
+            <p class="section-intro section-intro--tight">L'esthétique de <strong>Kaobucha</strong> reste naturelle, fraîche et organique. On voulait s'écarter des codes agressifs des boissons énergisantes pour montrer une vitalité plus douce.</p>
+                <img class="media-full" src="../images/projets/kaobucha/moodboard.webp" alt="Moodboard Kaobucha" width="1200" height="675">
         </div>
     </section>
 
     <!-- Section Déclinaisons (Mockups) -->
-    <section class="section" data-aos="fade-up">
-        <h2>Déclinaisons Produits</h2>
-        <p class="section-intro">Conception des packagings pour trois saveurs distinctes, traduisant chacune l'énergie naturelle de ses ingrédients.</p>
+    <section class="section">
+        <h2>Trois saveurs, trois packagings</h2>
+        <p class="section-intro">Chaque saveur a son packaging, avec la couleur et l'énergie de ses ingrédients.</p>
         <div class="projects-grid">
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/mockup-mango.webp" alt="Mockup Canette Kaobucha Mango">
+                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/mockup-mango.webp" alt="Mockup Canette Kaobucha Mango" width="800" height="534">
                 <h3>Saveur Mango</h3>
-                <p>Énergie tropicale et dynamique. Design chaleureux et vibrant.</p>
+                <p>L'énergie tropicale, dans une palette chaude et vibrante.</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/mockup-berry.webp" alt="Mockup Canette Kaobucha Berry">
+                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/mockup-berry.webp" alt="Mockup Canette Kaobucha Berry" width="1920" height="1281">
                 <h3>Saveur Berry</h3>
-                <p>Focus sur les propriétés antioxydantes des fruits rouges. Ton profond et mystérieux.</p>
+                <p>Les fruits rouges et leurs antioxydants, dans un ton profond et plus mystérieux.</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/mockup-orange.webp" alt="Mockup Canette Kaobucha Orange">
+                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/mockup-orange.webp" alt="Mockup Canette Kaobucha Orange" width="1920" height="1281">
                 <h3>Saveur Orange</h3>
-                <p>Coup de fouet vitaminé classique. Design lumineux et rafraîchissant.</p>
+                <p>Le coup de fouet vitaminé qu'on attend, en plus lumineux et rafraîchissant.</p>
             </div>
         </div>
     </section>
 
     <!-- Section Stratégie Internationale -->
-    <section class="section" data-aos="fade-up">
-        <h2>Stratégie Social Media Internationale</h2>
-        <p class="section-intro">Afin de s'implanter sur trois marchés clés, nous avons défini des cibles (Personas) spécifiques et adapté les créations pour les réseaux sociaux de chaque pays.</p>
+    <section class="section">
+        <h2>Trois marchés, trois stratégies</h2>
+        <p class="section-intro">Pour entrer sur trois marchés, nous avons défini des personas pour chacun et adapté nos publications aux réseaux sociaux de chaque pays.</p>
 
         <div class="projects-grid">
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/post-insta-fr.webp" alt="Post Instagram France">
+                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/post-insta-fr.webp" alt="Post Instagram France" width="900" height="1600">
                 <h3>Marché Français</h3>
-                <p>Axe de communication : L'art de vivre, l'élégance et la composition naturelle "Made in France".</p>
+                <p>L'art de vivre et l'élégance, avec la composition naturelle "Made in France".</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/post-insta-jp.webp" alt="Post Instagram Japon">
+                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/post-insta-jp.webp" alt="Post Instagram Japon" width="900" height="1600">
                 <h3>Marché Japonais</h3>
-                <p>Axe de communication : Esthétique Kawaii/Moderne, aspect fonctionnel de la boisson dans une journée intense.</p>
+                <p>Une esthétique kawaii et moderne, avec la boisson comme appui dans une journée chargée.</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/post-insta-usa.webp" alt="Post Instagram USA">
+                <img loading="lazy" decoding="async" src="../images/projets/kaobucha/post-insta-usa.webp" alt="Post Instagram USA" width="900" height="1600">
                 <h3>Marché Américain</h3>
-                <p>Axe de communication : Mode de vie actif, fitness, côte ouest et lifestyle dynamique.</p>
+                <p>Le mode de vie actif, le fitness et l'esprit côte ouest.</p>
             </div>
         </div>
     </section>
 
     <!-- Section PDF Intégré -->
-    <section class="section" data-aos="fade-up">
-        <h2>Rendu Final du Projet</h2>
-        <p class="section-intro section-intro--tight">Consultez le dossier complet de conception et de stratégie marketing :</p>
+    <section class="section">
+        <h2>Le rendu du projet</h2>
+        <p class="section-intro section-intro--tight">La conception et la stratégie marketing tiennent dans ce dossier :</p>
         <div class="pdf-viewer-container">
-                        <object data="../docs/projets/kaobucha/Rendu_final_S102.pdf" type="application/pdf" class="pdf-iframe">
+                        <object title="Rendu final du projet (PDF)" data="../docs/projets/kaobucha/Rendu_final_S102.pdf" type="application/pdf" class="pdf-iframe">
                 <p>Votre navigateur ne supporte pas l'affichage des PDF. <a href="../docs/projets/kaobucha/Rendu_final_S102.pdf">Téléchargez le fichier ici</a>.</p>
             </object>
         </div>
-    </section>
-
-    <!-- Section Retour -->
-    <section class="section">
-        <div class="contact-container">
-            <div class="social-links social-links--center">
-                <a href="../index.html#work" class="cta-button">← Retour aux projets</a>
-            </div>
-        </div>
+        <a class="case-download" href="../docs/projets/kaobucha/Rendu_final_S102.pdf" target="_blank" rel="noopener noreferrer">Ouvrir le dossier PDF <span aria-hidden="true">↗</span></a>
     </section>
 
     </main>
 
-    <div class="back-nav">
-        <a href="../index.html#work">&#8592; Projets</a>
-    </div>
+    <nav class="case-next" aria-label="Continuer la visite">
+      <a href="mojo-tunes" class="case-next-link"><span>Projet suivant / 02</span><strong>Mojo Tunes</strong><span>Découvrir <b aria-hidden="true">↗</b></span></a>
+      <a href="/#work" class="case-next-back">← Retour à la sélection</a>
+    </nav>
 
     <footer>
         <p>&copy; 2026 Portfolio Benjamin LELEU. Tous droits réservés.</p>
     </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="../js/shared.js" defer></script>
-    <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
+    <script src="../js/shader.js" defer></script>
 </body>
 </html>

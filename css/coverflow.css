@@ -1,0 +1,323 @@
+/* Galerie des projets sur la vidéo de fond. */
+.project-coverflow[hidden],
+.coverflow-link[hidden],
+.coverflow-no-link[hidden] {
+  display: none;
+}
+
+.project-coverflow {
+  margin-top: var(--space-8);
+}
+
+.coverflow-gallery {
+  --cf-card: clamp(190px, 29vw, 330px);
+  position: relative;
+  left: 50%;
+  width: min(calc(100vw - var(--space-gutter) - var(--space-gutter)), 1760px);
+  overflow: hidden;
+  padding: clamp(1.5rem, 3vw, 2.75rem) 0 1.5rem;
+  color: #f9f5e9;
+  transform: translateX(-50%);
+}
+
+.coverflow-kicker,
+.coverflow-caption,
+.coverflow-hint {
+  text-shadow: 0 2px 12px rgb(0 0 0 / 0.9);
+}
+
+.coverflow-kicker {
+  padding-inline: var(--space-8);
+  color: #f2c94c;
+  font: 700 0.68rem var(--font-mono);
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.coverflow-stage {
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+  outline: none;
+  perspective: 1100px;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.coverflow-stage:active {
+  cursor: grabbing;
+}
+
+.coverflow-stage:focus-visible {
+  outline: 2px solid #b3943b;
+  outline-offset: -4px;
+}
+
+.coverflow-track {
+  position: relative;
+  height: var(--cf-card);
+  transform-style: preserve-3d;
+  user-select: none;
+  pointer-events: none;
+}
+
+.coverflow-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--cf-card);
+  aspect-ratio: 1;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: #2e302a;
+  box-shadow: 0 16px 30px rgb(35 27 19 / 0.2);
+  color: inherit;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.coverflow-card.is-in-range {
+  will-change: transform, opacity;
+}
+
+.coverflow-card:focus-visible {
+  outline: 3px solid #f2c94c;
+  outline-offset: 3px;
+}
+
+.coverflow-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.coverflow-placeholder {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #574940, #212626 72%);
+  color: #f6efd9;
+  text-align: left;
+}
+
+.coverflow-card:nth-child(3n + 2) .coverflow-placeholder {
+  background: linear-gradient(145deg, #a17757, #3d3f39 80%);
+}
+
+.coverflow-card:nth-child(3n + 3) .coverflow-placeholder {
+  background: linear-gradient(145deg, #665e74, #272c39 80%);
+}
+
+/* Numéro décoratif : posé en CSS, il n'entre pas dans le texte lu par les
+   lecteurs d'écran, qui annoncent le titre. */
+.coverflow-placeholder::before {
+  content: attr(data-index);
+  font: 700 0.8rem var(--font-mono);
+  letter-spacing: 0.12em;
+}
+
+.coverflow-placeholder-title {
+  font: 700 clamp(1.2rem, 2vw, 1.7rem)/1.15 var(--font-display);
+}
+
+.coverflow-caption {
+  display: flex;
+  min-height: 228px;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.coverflow-count {
+  color: #f2c94c;
+  font: 700 0.68rem var(--font-mono);
+  letter-spacing: 0.14em;
+}
+
+.coverflow-title {
+  margin-top: 0.5rem;
+  font: 700 clamp(1.3rem, 2.5vw, 1.8rem)/1.2 var(--font-display);
+}
+
+.coverflow-description {
+  max-width: 50ch;
+  margin-top: 0.4rem;
+  color: #ece7da;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.coverflow-meta {
+  width: min(100%, 330px);
+  margin-top: 1.25rem;
+  font-size: 0.78rem;
+}
+
+.coverflow-meta > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.2rem 0;
+}
+
+.coverflow-meta dt {
+  color: #c7c0b3;
+}
+
+.coverflow-meta dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+}
+
+.coverflow-link,
+.coverflow-no-link {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+.coverflow-link {
+  display: inline-block;
+  /* 30 px de haut : cible tactile confortable sans déplacer la légende. */
+  padding-block: 0.2rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid currentColor;
+  color: #f2c94c;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.coverflow-link:hover,
+.coverflow-link:focus-visible {
+  color: #fff0aa;
+}
+
+.coverflow-no-link {
+  color: #d8d0c4;
+}
+
+.coverflow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1.25rem 1rem 0;
+}
+
+.coverflow-arrow {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgb(255 255 255 / 0.45);
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.16);
+  color: #fff;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.coverflow-arrow:hover,
+.coverflow-arrow:focus-visible {
+  border-color: #f2c94c;
+  background: rgb(242 201 76 / 0.22);
+}
+
+.coverflow-dots {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12rem;
+  max-width: 390px;
+}
+
+.coverflow-dot {
+  display: grid;
+  /* 26 px : la cible tactile minimale est de 24 px, le point visuel reste 7 px. */
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.coverflow-dot::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.55);
+  content: "";
+}
+
+.coverflow-dot[aria-current="true"]::before {
+  background: #f2c94c;
+}
+
+.coverflow-dot:focus-visible {
+  outline: 2px solid #b3943b;
+  outline-offset: 1px;
+}
+
+.coverflow-hint {
+  margin-top: 0.5rem;
+  color: #e1d9ca;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+/* Sur petit écran, huit points de 26 px ne tiennent pas sur une ligne :
+   24 px (le minimum tactile) et un écart resserré les ramènent sur une rangée. */
+@media (max-width: 480px) {
+  .coverflow-controls {
+    gap: 0.5rem;
+    padding-inline: 0.5rem;
+  }
+
+  .coverflow-dot {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.projects-fallback {
+  margin-top: 1.5rem;
+  line-height: 1.9;
+}
+
+.projects-fallback a {
+  color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .coverflow-gallery {
+    --cf-card: clamp(175px, 51vw, 225px);
+  }
+
+  .coverflow-stage {
+    padding-block: 1.5rem;
+  }
+
+  .coverflow-caption {
+    min-height: 248px;
+  }
+
+  .coverflow-hint {
+    padding-inline: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coverflow-card {
+    will-change: auto;
+  }
+}

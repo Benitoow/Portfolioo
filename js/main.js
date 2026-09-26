@@ -9,7 +9,6 @@ function bootPortfolioApp() {
   if (!document.getElementById("hero")) return;
 
   // Indépendant de GSAP : valable aussi en repli et en mouvement réduit.
-  initTitleMorph();
 
   if (isReducedMotion()) {
     document.body.classList.add("reduced-motion");
@@ -44,19 +43,16 @@ if (document.readyState === "loading") {
 // ===== MAIN INIT =====
 function initApp() {
   initLoader();
-  initCursor();
   initNav();
   initMobileMenu();
   initRevealAnimations();
-  initProjectHovers();
-  initProjectPreview();
   initStatsCounter();
   initTimelineAnimations();
   initSkillAnimations();
   initContactAnimations();
   initScrollDepth();
-  initBgCanvas();
-  initVideoBackground();
+  const fallbackBackground = initBgCanvas();
+  initVideoBackground(fallbackBackground);
   initMarquee();
   ensureVisibleAfterAnimations();
 
@@ -72,8 +68,8 @@ function initAppFallback() {
 
   initNav();
   initMobileMenu();
-  initBgCanvas();
-  initVideoBackground();
+  const fallbackBackground = initBgCanvas();
+  initVideoBackground(fallbackBackground);
   initMarquee();
 
   console.log("✦ Portfolio loaded (fallback, no GSAP)");
@@ -94,7 +90,7 @@ function initReducedApp() {
 function revealStaticContent() {
   document
     .querySelectorAll(
-      ".reveal-text, .hero-label, .hero-subtitle, .hero-description, .hero-availability",
+      ".reveal-text, .hero-label, .hero-subtitle, .hero-description",
     )
     .forEach((el) => {
       el.style.opacity = "1";
@@ -103,7 +99,7 @@ function revealStaticContent() {
 
   document
     .querySelectorAll(
-      ".hero-line-inner, .section-label, .project-item, .skill-category, .skill-chip, .timeline-item, .contact-link-item",
+      ".hero-line-inner, .section-label, .skill-card, .timeline-item, .contact-link-item",
     )
     .forEach((el) => {
       el.style.opacity = "1";
@@ -112,14 +108,16 @@ function revealStaticContent() {
 }
 
 function ensureVisibleAfterAnimations() {
-  // Safety net — force visibility if ScrollTrigger didn't fire
+  // Filet de sécurité : GSAP écrit `opacity: 0` en style inline au départ, puis
+  // l'anime. Lire `getComputedStyle` sur ~45 éléments obligeait à recalculer
+  // les styles ; l'attribut inline suffit et ne coûte rien.
   setTimeout(() => {
     document
       .querySelectorAll(
-        ".reveal-text, .section-label, .project-item, .skill-category, .skill-chip, .timeline-item, .contact-link-item",
+        ".reveal-text, .section-label, .skill-card, .timeline-item, .contact-link-item",
       )
       .forEach((el) => {
-        if (parseFloat(getComputedStyle(el).opacity) < 0.1) {
+        if (el.style.opacity === "0") {
           el.style.opacity = "1";
           el.style.transform = "none";
         }
@@ -157,20 +155,12 @@ function initMarquee() {
     const marqueeWidth = marquee.clientWidth || window.innerWidth;
     const minWidth = marqueeWidth * 1.2;
 
-    const temp = document.createElement("div");
-    temp.innerHTML = sourceTrack.dataset.baseHtml;
-    const baseItems = Array.from(temp.children);
-
-    let currentWidth = sourceTrack.scrollWidth;
-    let safety = 0;
-
-    while (currentWidth < minWidth && safety < 50) {
-      baseItems.forEach((node) =>
-        sourceTrack.appendChild(node.cloneNode(true)),
-      );
-      currentWidth = sourceTrack.scrollWidth;
-      safety++;
-    }
+    // Une seule mesure, puis une seule écriture : la boucle précédente lisait
+    // scrollWidth après chaque ajout, jusqu'à cinquante recalculs de mise en
+    // page d'affilée au premier rendu.
+    const baseWidth = sourceTrack.scrollWidth || marqueeWidth;
+    const repeats = Math.max(1, Math.ceil(minWidth / baseWidth));
+    sourceTrack.innerHTML = sourceTrack.dataset.baseHtml.repeat(repeats);
 
     const secondTrack = ensureSecondTrack();
     secondTrack.innerHTML = sourceTrack.innerHTML;
@@ -216,7 +206,8 @@ function initLoader() {
 
   if (!loader) return;
 
-  if (loaderDejaVu()) {
+  if (loaderDejaVu() || window.location.hash) {
+    marquerLoaderVu();
     loader.classList.add("is-skipped");
     initHeroAnimation();
     return;
@@ -268,68 +259,15 @@ function initLoader() {
     );
 }
 
-// ===== CUSTOM CURSOR =====
-function initCursor() {
-  const cursor = document.getElementById("cursor");
-  const follower = document.getElementById("cursorFollower");
-
-  if (
-    !cursor ||
-    !follower ||
-    window.matchMedia("(pointer: coarse)").matches ||
-    isReducedMotion()
-  )
-    return;
-
-  let mouseX = 0,
-    mouseY = 0;
-  let cursorX = 0,
-    cursorY = 0;
-  let followerX = 0,
-    followerY = 0;
-
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  // Smooth follow
-  function updateCursor() {
-    cursorX += (mouseX - cursorX) * 0.2;
-    cursorY += (mouseY - cursorY) * 0.2;
-    followerX += (mouseX - followerX) * 0.08;
-    followerY += (mouseY - followerY) * 0.08;
-
-    cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
-    follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`;
-
-    requestAnimationFrame(updateCursor);
-  }
-  updateCursor();
-
-  // Hover effects on interactive elements
-  const hoverTargets = document.querySelectorAll(
-    "a, button, .project-item, .skill-chip, .contact-link-item",
-  );
-  hoverTargets.forEach((target) => {
-    target.addEventListener("mouseenter", () => {
-      cursor.classList.add("hovering");
-      follower.classList.add("hovering");
-    });
-    target.addEventListener("mouseleave", () => {
-      cursor.classList.remove("hovering");
-      follower.classList.remove("hovering");
-    });
-  });
-}
-
 // ===== NAVIGATION =====
 function initNav() {
   const nav = document.getElementById("nav");
   if (!nav) return;
 
-  let lastScroll = 0;
+  let lastScroll = window.scrollY;
   let ticking = false;
+
+  if (lastScroll > 100) nav.classList.add("scrolled");
 
   window.addEventListener(
     "scroll",
@@ -345,7 +283,9 @@ function initNav() {
           }
 
           // Hide nav on scroll down, show on scroll up
-          if (currentScroll > lastScroll && currentScroll > 300) {
+          if (nav.classList.contains("menu-open")) {
+            nav.style.transform = "translateY(0)";
+          } else if (currentScroll > lastScroll && currentScroll > 300) {
             nav.style.transform = "translateY(-100%)";
           } else {
             nav.style.transform = "translateY(0)";
@@ -368,12 +308,17 @@ function initMobileMenu() {
   const menuBtn = document.getElementById("navMenu");
   const mobileMenu = document.getElementById("mobileMenu");
   const mobileLinks = document.querySelectorAll(".mobile-link");
+  const menuLabel = menuBtn?.querySelector(".nav-menu-label");
 
   if (!menuBtn || !mobileMenu) return;
 
   const setMenuState = (isOpen) => {
     menuBtn.classList.toggle("active", isOpen);
     mobileMenu.classList.toggle("active", isOpen);
+    const nav = document.getElementById("nav");
+    nav?.classList.toggle("menu-open", isOpen);
+    if (nav) nav.style.transform = "translateY(0)";
+    if (menuLabel) menuLabel.textContent = isOpen ? "Fermer" : "Menu";
     menuBtn.setAttribute("aria-expanded", String(isOpen));
     menuBtn.setAttribute(
       "aria-label",
@@ -442,7 +387,6 @@ function initHeroAnimation() {
   const heroLabel = document.querySelector(".hero-label");
   const heroSubtitle = document.querySelector(".hero-subtitle");
   const heroDesc = document.querySelector(".hero-description");
-  const heroAvail = document.querySelector(".hero-availability");
 
   if (!heroLines.length) return;
 
@@ -474,15 +418,6 @@ function initHeroAnimation() {
     )
     .to(
       heroDesc,
-      {
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-      },
-      "-=0.2",
-    )
-    .to(
-      heroAvail,
       {
         opacity: 1,
         duration: 0.6,
@@ -525,146 +460,6 @@ function initRevealAnimations() {
       x: 0,
       duration: 0.6,
       ease: "power3.out",
-    });
-  });
-}
-
-// ===== PROJECT HOVERS =====
-function initProjectHovers() {
-  const projects = document.querySelectorAll(".project-item");
-  if (!projects.length) return;
-
-  gsap.set(projects, { opacity: 0, y: 30 });
-
-  gsap.to(projects, {
-    scrollTrigger: {
-      trigger: "#work",
-      start: "top 80%",
-      once: true,
-    },
-    opacity: 1,
-    y: 0,
-    duration: 0.5,
-    stagger: 0.04,
-    ease: "power3.out",
-  });
-}
-
-// ===== APERÇU PROJET AU SURVOL =====
-function initProjectPreview() {
-  const preview = document.getElementById("projectPreview");
-  const img = preview?.querySelector("img");
-  // Les lignes mises en avant affichent déjà leur visuel : un aperçu flottant
-  // par-dessus ferait doublon.
-  const items = document.querySelectorAll(
-    ".project-item[data-thumb]:not(.project-item--featured)",
-  );
-
-  if (
-    !preview ||
-    !img ||
-    !items.length ||
-    window.matchMedia("(pointer: coarse)").matches ||
-    isReducedMotion()
-  )
-    return;
-
-  const OFFSET_X = 28;
-  const OFFSET_Y = -24;
-
-  let mouseX = 0,
-    mouseY = 0,
-    x = 0,
-    y = 0,
-    active = false,
-    frame = null;
-
-  // Le rAF ne tourne que pendant un survol, pas en permanence.
-  function follow() {
-    x += (mouseX - x) * 0.14;
-    y += (mouseY - y) * 0.14;
-    preview.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-
-    if (active || Math.abs(mouseX - x) > 0.5 || Math.abs(mouseY - y) > 0.5) {
-      frame = requestAnimationFrame(follow);
-    } else {
-      frame = null;
-    }
-  }
-
-  function onMove(e) {
-    // Bridé pour rester dans la fenêtre, quelle que soit la position du curseur.
-    const w = preview.offsetWidth;
-    const h = preview.offsetHeight;
-    mouseX = Math.min(e.clientX + OFFSET_X, window.innerWidth - w - 12);
-    mouseY = Math.min(
-      Math.max(e.clientY + OFFSET_Y, 12),
-      window.innerHeight - h - 12,
-    );
-  }
-
-  document.addEventListener("mousemove", onMove, { passive: true });
-
-  items.forEach((item) => {
-    item.addEventListener("mouseenter", (e) => {
-      const src = item.dataset.thumb;
-      if (img.getAttribute("src") !== src) img.setAttribute("src", src);
-
-      onMove(e);
-      // Premier survol : on place sans interpoler, sinon l'aperçu arrive en glissant
-      // depuis le coin de l'écran.
-      if (!active && frame === null) {
-        x = mouseX;
-        y = mouseY;
-      }
-
-      active = true;
-      preview.classList.add("is-visible");
-      if (frame === null) frame = requestAnimationFrame(follow);
-    });
-
-    item.addEventListener("mouseleave", () => {
-      active = false;
-      preview.classList.remove("is-visible");
-    });
-  });
-
-  // Décharge les vignettes quand la section approche, pour éviter
-  // un blanc au premier survol.
-  const prefetch = () => {
-    items.forEach((item) => {
-      const i = new Image();
-      i.src = item.dataset.thumb;
-    });
-  };
-  ScrollTrigger.create({
-    trigger: "#work",
-    start: "top 200%",
-    once: true,
-    onEnter: () =>
-      "requestIdleCallback" in window
-        ? requestIdleCallback(prefetch, { timeout: 2000 })
-        : setTimeout(prefetch, 300),
-  });
-}
-
-// ===== MORPHING DU TITRE VERS LA PAGE PROJET =====
-// Le nom de transition est posé au clic, sur la seule ligne concernée : le
-// nommer sur les 9 d'avance ferait capturer 9 éléments distincts, dont 8 sans
-// équivalent sur la page d'arrivée.
-function initTitleMorph() {
-  if (!("startViewTransition" in document)) return;
-
-  const liens = document.querySelectorAll('.project-item[href^="./projets/"]');
-
-  liens.forEach((lien) => {
-    lien.addEventListener("click", () => {
-      liens.forEach((l) => {
-        const t = l.querySelector(".project-name");
-        if (t) t.style.viewTransitionName = "";
-      });
-      const titre = lien.querySelector(".project-name");
-      if (titre) titre.style.viewTransitionName = "vt-projet";
     });
   });
 }
@@ -723,23 +518,23 @@ function initTimelineAnimations() {
 }
 
 // ===== SKILL ANIMATIONS =====
-// La grille tient à l'écran : un seul déclencheur sur le conteneur, et
+// La mosaïque tient à l'écran : un seul déclencheur sur le conteneur, et
 // c'est `stagger` qui orchestre — les cartes se répondent au lieu de
-// s'animer chacune dans son coin.
+// s'animer chacune dans son coin. Les cases vides suivent le mouvement pour
+// que la grille se pose d'un bloc.
 function initSkillAnimations() {
-  const grid = document.querySelector(".skills-grid");
-  const cats = document.querySelectorAll(".skill-category");
-  const chips = document.querySelectorAll(".skill-chip");
-  if (!grid || !cats.length) return;
+  const grid = document.querySelector(".skills-bento");
+  const cards = document.querySelectorAll(".skill-card");
+  if (!grid || !cards.length) return;
 
-  gsap.set(cats, { opacity: 0, y: 40 });
-  gsap.set(chips, { opacity: 0, scale: 0.8 });
+  gsap.set(cards, { opacity: 0, y: 40 });
+  gsap.set(grid.querySelectorAll(".skill-cell"), { opacity: 0 });
 
   gsap
     .timeline({
       scrollTrigger: { trigger: grid, start: "top 85%", once: true },
     })
-    .to(cats, {
+    .to(cards, {
       opacity: 1,
       y: 0,
       duration: 0.6,
@@ -747,15 +542,9 @@ function initSkillAnimations() {
       ease: "power3.out",
     })
     .to(
-      chips,
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 0.4,
-        stagger: 0.02,
-        ease: "back.out(1.5)",
-      },
-      "-=0.35",
+      grid.querySelectorAll(".skill-cell"),
+      { opacity: 1, duration: 0.4, stagger: 0.03 },
+      "-=0.5",
     );
 }
 
@@ -823,13 +612,18 @@ function initScrollDepth() {
 }
 
 // ===== GLOBAL BACKGROUND — ANIMATED MESH GRADIENT =====
+// Repli uniquement : le canvas tourne tant qu'aucun film n'est prêt, puis on
+// l'arrête. Le laisser peindre à 60 img/s six dégradés plein écran derrière une
+// vidéo déjà visible coûtait une tâche longue et un calcul de mise en page par
+// image (lecture de scrollHeight).
 function initBgCanvas() {
   const canvas = document.getElementById("bgCanvas");
-  if (!canvas || isReducedMotion() || isSaveDataEnabled()) return;
+  if (!canvas || isReducedMotion() || isSaveDataEnabled()) return null;
 
   const ctx = canvas.getContext("2d");
-  let width, height;
-  let animationId;
+  let width, height, maxScroll;
+  let animationId = null;
+  let stopped = false;
   let time = 0;
   let mouseX = 0.5,
     mouseY = 0.5; // normalized 0-1
@@ -840,13 +634,16 @@ function initBgCanvas() {
     mouseY = e.clientY / window.innerHeight;
   });
 
-  function resize() {
+  function measure() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
+    // Hauteur de défilement lue une fois par redimensionnement, pas par image.
+    maxScroll = Math.max(1, document.documentElement.scrollHeight - height);
   }
 
-  resize();
-  window.addEventListener("resize", resize);
+  measure();
+  window.addEventListener("resize", measure);
+  window.addEventListener("load", measure);
 
   // Blob definitions — forest palette
   const blobs = [
@@ -866,9 +663,7 @@ function initBgCanvas() {
     ctx.fillRect(0, 0, width, height);
 
     // Scroll offset — blobs shift as you scroll
-    const scrollY = window.scrollY;
-    const scrollFactor =
-      scrollY / (document.body.scrollHeight - window.innerHeight || 1);
+    const scrollFactor = window.scrollY / maxScroll;
 
     // Draw each blob
     blobs.forEach((blob, i) => {
@@ -919,24 +714,36 @@ function initBgCanvas() {
     animationId = requestAnimationFrame(draw);
   }
 
-  // Start immediately
-  draw();
+  function start() {
+    if (stopped || animationId || document.hidden) return;
+    animationId = requestAnimationFrame(draw);
+  }
+
+  function stop() {
+    if (animationId) cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+
+  start();
 
   // Pause when tab not visible for performance
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-        animationId = null;
-      }
-    } else {
-      if (!animationId) draw();
-    }
+    if (document.hidden) stop();
+    else start();
   });
+
+  // Le repli s'efface (et cesse de peindre) dès qu'un film prend le relais.
+  return {
+    retire() {
+      stopped = true;
+      stop();
+      canvas.style.opacity = "0";
+    },
+  };
 }
 
 // ===== VIDEO BACKGROUND — CROSSFADE ON SCROLL =====
-function initVideoBackground() {
+function initVideoBackground(backgroundFallback) {
   const videoBg = document.getElementById("videoBg");
   const videos = document.querySelectorAll(".video-bg__vid");
   if (!videoBg || !videos.length) return;
@@ -948,12 +755,8 @@ function initVideoBackground() {
 
   // Map section IDs to their video elements
   const sectionMap = {};
-  videos.forEach((vid, index) => {
-    const sectionId = vid.getAttribute("data-section");
-    sectionMap[sectionId] = vid;
-    if (index > 0) {
-      vid.preload = "none";
-    }
+  videos.forEach((vid) => {
+    sectionMap[vid.getAttribute("data-section")] = vid;
   });
 
   // Sections to watch (in DOM order)
@@ -964,7 +767,7 @@ function initVideoBackground() {
 
   let currentVideo = null;
   let videosLoaded = false;
-  let switchLock = false;
+  let requestedSectionId = "hero";
 
   // Check if at least the first video can load
   const firstVideo = videos[0];
@@ -977,20 +780,26 @@ function initVideoBackground() {
   function onVideoReady() {
     if (videosLoaded) return;
     videosLoaded = true;
-    // Hide the canvas fallback when video works
-    const bgCanvas = document.getElementById("bgCanvas");
-    if (bgCanvas) bgCanvas.style.opacity = "0";
+    // Le repli canvas s'efface et arrête de peindre.
+    backgroundFallback?.retire();
   }
 
+  // Le préchargement passe par `video.src` : écrire sur un <source> déclenche
+  // une sélection de ressource que l'appel suivant à load() abandonne
+  // (net::ERR_ABORTED), et la vidéo finit en NETWORK_NO_SOURCE — donc jamais
+  // préchargée. Un seul déclencheur, et `preload` avant `load()`.
   function ensureSourceLoaded(video) {
-    const source = video.querySelector("source");
-    if (!source) return Promise.resolve();
-
-    const dataSrc = source.getAttribute("data-src");
-    if (!source.getAttribute("src") && dataSrc) {
-      source.setAttribute("src", dataSrc);
-      source.removeAttribute("data-src");
-      video.load();
+    const dataSrc = video.dataset.src;
+    if (dataSrc) {
+      video.removeAttribute("data-src");
+      // L'affiche suit la source : charger les cinq posters au premier rendu
+      // coûtait ~500 Ko pour des sections jamais affichées.
+      if (video.dataset.poster) {
+        video.poster = video.dataset.poster;
+        video.removeAttribute("data-poster");
+      }
+      video.preload = "auto";
+      video.src = dataSrc;
     }
 
     if (video.readyState >= 2) {
@@ -1016,7 +825,7 @@ function initVideoBackground() {
     if (firstVideo.readyState >= 2) {
       onVideoReady();
     }
-    firstVideo.play().catch(() => {});
+    if (requestedSectionId === "hero") firstVideo.play().catch(() => {});
   });
   firstVideo.addEventListener("loadeddata", onVideoReady, { once: true });
   firstVideo.addEventListener("canplay", onVideoReady, { once: true });
@@ -1032,11 +841,12 @@ function initVideoBackground() {
   );
 
   async function switchVideo(sectionId) {
-    const targetVideo = sectionMap[sectionId];
-    if (!targetVideo || targetVideo === currentVideo || switchLock) return;
-    switchLock = true;
+    const targetVideo = sectionMap[sectionId] || null;
+    if (!targetVideo || sectionId === requestedSectionId) return;
+    requestedSectionId = sectionId;
 
-    await ensureSourceLoaded(targetVideo);
+    if (targetVideo) await ensureSourceLoaded(targetVideo);
+    if (requestedSectionId !== sectionId) return;
 
     // Fade out current
     const previousVideo = currentVideo;
@@ -1051,46 +861,63 @@ function initVideoBackground() {
     }
 
     // Fade in target
-    targetVideo.classList.add("active");
-    targetVideo.preload = "metadata";
-    targetVideo.play().catch(() => {}); // Silently handle autoplay issues
+    if (targetVideo) {
+      targetVideo.classList.add("active");
+      targetVideo.play().catch(() => {}); // Silently handle autoplay issues
+    }
     currentVideo = targetVideo;
-    switchLock = false;
   }
 
+  const prefetchedVideos = new WeakSet();
   function prefetchSectionVideo(sectionId) {
     const video = sectionMap[sectionId];
-    if (!video) return;
+    if (!video || prefetchedVideos.has(video)) return;
+    prefetchedVideos.add(video);
     ensureSourceLoaded(video).catch(() => {});
   }
 
   // Set initial video
   currentVideo = firstVideo;
 
-  // Use IntersectionObserver to detect which section is in view
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visibleEntries = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+  // Repère la section par sa position : les sections longues ne peuvent pas
+  // atteindre un taux d'intersection de 30 % sur un petit écran.
+  // Les positions sont mesurées une fois (chargement, redimensionnement) puis
+  // comparées au défilement en arithmétique pure : lire six rectangles à chaque
+  // image forçait un recalcul de mise en page par événement de défilement.
+  let sectionTops = sections.map(() => 0);
+  function measureSections() {
+    const scrollY = window.scrollY;
+    sectionTops = sections.map(
+      (section) => section.getBoundingClientRect().top + scrollY,
+    );
+  }
+  measureSections();
+  window.addEventListener("load", measureSections);
+  let measureTimer = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(measureTimer);
+    measureTimer = setTimeout(measureSections, 150);
+  });
 
-      if (!visibleEntries.length) return;
-
-      const topEntry = visibleEntries[0];
-      if (topEntry.intersectionRatio > 0.3) {
-        const currentIndex = sectionIds.indexOf(topEntry.target.id);
-        const nextId = sectionIds[currentIndex + 1];
-        switchVideo(topEntry.target.id);
-        if (nextId) prefetchSectionVideo(nextId);
-      }
-    },
-    {
-      threshold: [0.3, 0.5],
-      rootMargin: "-10% 0px -10% 0px",
-    },
-  );
-
-  sections.forEach((section) => observer.observe(section));
+  let videoFrame = 0;
+  function updateActiveSection() {
+    videoFrame = 0;
+    const trigger = window.scrollY + window.innerHeight * 0.42;
+    let activeId = sections[0]?.id;
+    sections.forEach((section, index) => {
+      if (sectionTops[index] <= trigger) activeId = section.id;
+    });
+    if (!activeId) return;
+    switchVideo(activeId);
+    const nextId = sectionIds[sectionIds.indexOf(activeId) + 1];
+    if (nextId) prefetchSectionVideo(nextId);
+  }
+  function queueVideoUpdate() {
+    if (!videoFrame) videoFrame = requestAnimationFrame(updateActiveSection);
+  }
+  window.addEventListener("scroll", queueVideoUpdate, { passive: true });
+  window.addEventListener("resize", queueVideoUpdate);
+  queueVideoUpdate();
 
   document.addEventListener("visibilitychange", () => {
     if (!currentVideo) return;

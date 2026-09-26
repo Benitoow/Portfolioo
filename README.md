@@ -4,11 +4,17 @@ Portfolio personnel hébergé sur [benjaminleleu.fr](https://benjaminleleu.fr), 
 
 ## Stack
 
-- HTML5 sémantique / CSS custom properties / JS ES2020
-- GSAP 3 + ScrollTrigger (page d'accueil)
-- AOS.js 2.3 (pages projets)
-- Fonts : Playfair Display, DM Sans, Space Mono (Google Fonts)
+- HTML5 sémantique / CSS custom properties / JS ES2020, sans build
+- GSAP 3 + ScrollTrigger, servi localement (`js/vendor/`)
+- WebGL maison (`js/shader.js`) : reflets de lumière discrets, accueil et fiches
+- Icônes : sprite SVG local (`images/icons.svg`) — Font Awesome 6.5.1 Free pour les fiches, Heroicons 2.2 (trait) pour la mosaïque de compétences
+- Fonts : Playfair Display, DM Sans, Space Mono, auto-hébergées en woff2 (`fonts/`)
+- Œuf de pâques : un clic sur le logo lâche les ballons de `balloons-js` (MIT), embarqué dans `js/vendor/` et chargé au premier clic seulement
 - Hébergement : Cloudflare Pages
+
+Aucune ressource n'est chargée depuis un domaine tiers : les polices, GSAP et les
+icônes viennent du site, ce qui supprime quatre origines du chemin critique et
+laisse `_headers` piloter leur cache (polices un an, CSS/JS 30 jours).
 
 ## Palette
 
@@ -21,26 +27,34 @@ Portfolio personnel hébergé sur [benjaminleleu.fr](https://benjaminleleu.fr), 
 ## Structure
 
 ```
-├── index.html              # Page d'accueil
-├── projets/                # 10 pages projets
+├── index.html              # Accueil : hero, à propos, coverflow, compétences, parcours, contact
+├── 404.html
+├── projets/                # 5 fiches projet
 │   ├── kaobucha.html
 │   ├── mojo-tunes.html
 │   ├── star-wars.html
 │   ├── podcast.html
-│   ├── SiteWebCapCom.html
-│   ├── SiteVentePC.html
-│   ├── hypnotherapie.html
-│   ├── AIAimbot.html
-│   ├── CoCBot.html
 │   └── sitecoiffure.html
 ├── css/
-│   └── projet-pages.css    # Styles partagés des pages projets
+│   ├── tokens.css          # Tokens + styles partagés, chargé par toutes les pages
+│   ├── style.css           # Accueil
+│   ├── coverflow.css       # Galerie des projets
+│   └── projet-pages.css    # Fiches projet
 ├── js/
-│   └── main.js             # GSAP animations, vidéos, nav
+│   ├── shared.js           # Commun : curseur, défilement, barre de progression, année
+│   ├── main.js             # Accueil : GSAP, vidéos de fond, menu mobile
+│   ├── coverflow.js        # Galerie des projets (clavier, molette, glisser)
+│   ├── shader.js           # Calque lumineux WebGL
+│   └── vendor/             # GSAP 3.12.5 + ScrollTrigger + balloons-js (MIT), servis localement
+├── fonts/                  # woff2 auto-hébergés (sous-ensemble latin)
 ├── images/
-│   ├── posters/            # Thumbnails WebP pour les vidéos
-│   └── og-image.png        # Open Graph 1200x630
-├── videos/                 # 5 videos foret en boucle (12 s, ~8 Mo total)
+│   ├── posters/            # Affiches des vidéos de fond (1024x576)
+│   ├── thumbs/             # Vignettes du coverflow
+│   ├── projets/            # Visuels des fiches
+│   ├── icons.svg           # Sprite d'icônes des fiches projet
+│   └── og-image.jpg        # Open Graph 1200x630
+├── videos/                 # 4 boucles forêt (12 s) pour le fond de l'accueil
+├── Projet/Perso/           # Captures du site client (coiffure)
 ├── docs/projets/           # PDF de rendus
 ├── audios/projets/         # Fichiers audio
 ├── cv/                     # CV PDF téléchargeable
@@ -53,3 +67,20 @@ Portfolio personnel hébergé sur [benjaminleleu.fr](https://benjaminleleu.fr), 
 ## Déploiement
 
 Push sur `main` → Cloudflare Pages déploie automatiquement.
+
+## Aperçu local
+
+```
+npx wrangler pages dev .        # http://127.0.0.1:8788
+```
+
+Wrangler applique `_headers` (cache, sécurité), la compression et les URL sans
+extension, comme la production. `python -m http.server` suffit pour regarder une
+page, mais il ignore `_headers` (un audit Lighthouse lancé dessus signalera à
+tort des durées de cache trop courtes) et ne sait pas résoudre `/projets/kaobucha`
+sans l'extension : les liens internes y renvoient 404.
+
+Cache en production : HTML revalidé à chaque visite, CSS/JS/images 30 jours avec
+`stale-while-revalidate`, vidéos et polices un an en `immutable`. Un média
+remplacé **sous le même nom** reste donc servi depuis le cache du navigateur
+jusqu'à expiration : changer le nom du fichier, ou purger le cache Cloudflare.

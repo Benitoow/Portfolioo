@@ -1,9 +1,69 @@
 /* ===== DESIGN TOKENS + BASE PARTAGÉE ===== */
-/* Seule feuille chargée par les 11 pages : elle porte les tokens et les
+/* Seule feuille chargée par les 8 pages : elle porte les tokens et les
    transitions de page, qui doivent être déclarées des deux côtés d'une
    navigation pour s'appliquer. */
 /* Palette: Dark Bark, Redwood, Path Mist, Kodak Yellow, Fern Green */
 /* Author: Benjamin LELEU · 2026 */
+
+/* ===== POLICES (auto-hébergées, sous-ensemble latin) =====
+   Servir les woff2 depuis le domaine supprime deux origines tierces du chemin
+   critique (fonts.googleapis.com bloquait le premier rendu, fonts.gstatic.com
+   ajoutait une résolution DNS + TLS) et autorise un cache d'un an. Le
+   sous-ensemble « latin » de Google couvre tout le français, œ compris. */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/dm-sans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/playfair-display-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/playfair-display-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/space-mono-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/space-mono-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 :root {
   /* ---------- Couleurs ----------
@@ -16,6 +76,7 @@
   --text-muted-rgb: 110 98 89;
   --accent-rgb: 242 201 76;
   --green-rgb: 74 93 68;
+  --shader-rgb: 242 201 76;
 
   --bg: rgb(var(--bg-rgb));
   --bg-elevated: rgb(var(--bg-elevated-rgb));
@@ -131,6 +192,59 @@
 @media (max-width: 768px) {
   :root {
     --nav-height: 64px;
+  }
+}
+
+/* Un calque lumineux commun à toutes les pages, sans bloquer les interactions. */
+.shader-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.55;
+  background: radial-gradient(circle at 72% 28%, rgb(var(--shader-rgb) / 0.055), transparent 50%);
+  mix-blend-mode: soft-light;
+}
+
+.shader-canvas.is-ready {
+  background: transparent;
+}
+
+/* Pointeur partagé entre l'accueil et les pages projet. */
+.smooth-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 27px;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  opacity: 0;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.35));
+  transition: opacity 0.15s ease;
+  will-change: transform;
+}
+
+.smooth-cursor svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+body.has-custom-cursor,
+body.has-custom-cursor * {
+  cursor: none !important;
+}
+
+body.has-custom-cursor :is(input, textarea, [contenteditable]) {
+  cursor: text !important;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .smooth-cursor {
+    display: none;
   }
 }
 

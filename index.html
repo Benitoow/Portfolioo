@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Benjamin Leleu — Portfolio création numérique</title>
+    <title>Benjamin Leleu · Portfolio création numérique</title>
     <meta
       name="description"
-      content="Portfolio de Benjamin Leleu, étudiant en 2e année de BUT MMI, parcours Création numérique, à l'IUT de Vélizy (UVSQ). Web, design et audiovisuel."
+      content="Portfolio de Benjamin Leleu : sites web, identités visuelles, podcasts et montages vidéo. Étudiant en 2e année de BUT MMI création numérique à l'IUT de Vélizy (UVSQ)."
     />
     <meta name="author" content="Benjamin LELEU" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#1E1B18" />
     <link rel="canonical" href="https://benjaminleleu.fr/" />
-    <meta property="og:title" content="Benjamin Leleu — Portfolio création numérique" />
+    <meta property="og:title" content="Benjamin Leleu · Portfolio création numérique" />
     <meta
       property="og:description"
-      content="Étudiant en 2e année de BUT MMI, parcours Création numérique, à l'IUT de Vélizy (UVSQ). Portfolio web, design et audiovisuel."
+      content="Sites web, identités visuelles, podcasts et montages vidéo. Étudiant en 2e année de BUT MMI création numérique à l'IUT de Vélizy (UVSQ)."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
@@ -23,31 +23,27 @@
     <meta property="og:url" content="https://benjaminleleu.fr/" />
     <meta
       property="og:image"
-      content="https://benjaminleleu.fr/images/og-image.png"
+      content="https://benjaminleleu.fr/images/og-image.jpg"
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Benjamin Leleu — Portfolio création numérique" />
+    <meta name="twitter:title" content="Benjamin Leleu · Portfolio création numérique" />
     <meta
       name="twitter:description"
-      content="Étudiant en 2e année de BUT MMI, parcours Création numérique, à l'IUT de Vélizy (UVSQ). Portfolio web, design et audiovisuel."
+      content="Sites web, identités visuelles, podcasts et montages vidéo. Étudiant en 2e année de BUT MMI création numérique à l'IUT de Vélizy (UVSQ)."
     />
     <meta
       name="twitter:image"
-      content="https://benjaminleleu.fr/images/og-image.png"
+      content="https://benjaminleleu.fr/images/og-image.jpg"
     />
 
     <!-- Page servie à la racine : aucune réécriture de base nécessaire -->
 
-    <!-- Préconnexions (perf) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Polices et feuilles servies localement -->
+    <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="css/tokens.css" as="style" />
     <link rel="preload" href="css/style.css" as="style" />
+    <link rel="preload" href="css/coverflow.css" as="style" />
     <link
       rel="preload"
       href="images/posters/forest-walking.webp"
@@ -58,16 +54,20 @@
     <!-- Styles — tokens.css d'abord : il définit les custom properties -->
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <!-- La galerie est sous la ligne de flottaison : sa feuille n'a pas à
+         bloquer le premier rendu. -->
+    <link
+      rel="stylesheet"
+      href="css/coverflow.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript><link rel="stylesheet" href="css/coverflow.css" /></noscript>
 
-    <!-- GSAP -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-      defer
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
-      defer
-    ></script>
+    <!-- GSAP — servi localement : une origine tierce de moins dans le chemin
+         critique, et le cache d'un an s'applique. -->
+    <script src="js/vendor/gsap.min.js" defer></script>
+    <script src="js/vendor/ScrollTrigger.min.js" defer></script>
 
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
@@ -117,12 +117,18 @@
     <!-- Global animated background -->
     <canvas class="bg-canvas" id="bgCanvas"></canvas>
     <div class="bg-grain"></div>
+    <canvas class="shader-canvas" aria-hidden="true"></canvas>
 
-    <!-- Video background system: crossfade on scroll -->
+    <!-- Video background system: crossfade on scroll.
+         Les sources différées sont portées par `data-src` sur la vidéo
+         elle-même : laisser un <source> vide dans l'arbre relance
+         l'algorithme de sélection à chaque écriture d'attribut et fait
+         abandonner la requête en cours de route. -->
     <div class="video-bg" id="videoBg" aria-hidden="true">
       <video
         class="video-bg__vid active"
         data-section="hero"
+        src="videos/Forest-Walking.mp4"
         autoplay
         muted
         loop
@@ -130,79 +136,63 @@
         preload="metadata"
         poster="images/posters/forest-walking.webp"
         aria-hidden="true"
-      >
-        <source src="videos/Forest-Walking.mp4" type="video/mp4" />
-      </video>
+      ></video>
       <video
         class="video-bg__vid"
         data-section="about"
+        data-src="videos/Forest-Walking2.mp4"
+        data-poster="images/posters/forest-walking2.webp"
         muted
         loop
         playsinline
         preload="none"
-        poster="images/posters/forest-walking2.webp"
         aria-hidden="true"
-      >
-        <source data-src="videos/Forest-Walking2.mp4" type="video/mp4" />
-      </video>
+      ></video>
       <video
         class="video-bg__vid"
         data-section="work"
+        data-src="videos/forest-walking3.mp4"
+        data-poster="images/posters/forest-walking3.webp"
         muted
         loop
         playsinline
         preload="none"
-        poster="images/posters/forest-walking3.webp"
         aria-hidden="true"
-      >
-        <source data-src="videos/forest-walking3.mp4" type="video/mp4" />
-      </video>
+      ></video>
       <video
         class="video-bg__vid"
         data-section="skills"
+        data-src="videos/forest-walking4.mp4"
+        data-poster="images/posters/forest-walking4.webp"
         muted
         loop
         playsinline
         preload="none"
-        poster="images/posters/forest-walking4.webp"
         aria-hidden="true"
-      >
-        <source data-src="videos/forest-walking4.mp4" type="video/mp4" />
-      </video>
+      ></video>
       <video
         class="video-bg__vid"
         data-section="journey"
+        data-src="videos/Forest-SkyLooking.mp4"
+        data-poster="images/posters/forest-skylooking.webp"
         muted
         loop
         playsinline
         preload="none"
-        poster="images/posters/forest-skylooking.webp"
         aria-hidden="true"
-      >
-        <source data-src="videos/Forest-SkyLooking.mp4" type="video/mp4" />
-      </video>
+      ></video>
       <video
         class="video-bg__vid"
         data-section="contact"
+        data-src="videos/Forest-SkyLooking.mp4"
+        data-poster="images/posters/forest-skylooking.webp"
         muted
         loop
         playsinline
         preload="none"
-        poster="images/posters/forest-skylooking.webp"
         aria-hidden="true"
-      >
-        <source data-src="videos/Forest-SkyLooking.mp4" type="video/mp4" />
-      </video>
+      ></video>
       <div class="video-bg__overlay"></div>
-    </div>
-
-    <!-- Cursor follower -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursorFollower"></div>
-
-    <!-- Aperçu projet au survol — rempli par main.js, décoratif -->
-    <div class="project-preview" id="projectPreview" aria-hidden="true">
-      <img alt="" width="440" height="330" decoding="async" />
     </div>
 
     <!-- Loader -->
@@ -232,20 +222,23 @@
         aria-controls="mobileMenu"
         aria-expanded="false"
       >
-        <span></span>
-        <span></span>
+        <span class="nav-menu-label">Menu</span>
+        <span class="nav-menu-icon" aria-hidden="true"><span></span><span></span></span>
       </button>
     </nav>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
       <div class="mobile-menu-content">
+        <div class="mobile-menu-heading"><span>Navigation</span><span>Benjamin Leleu / 2026</span></div>
         <a href="#about" class="mobile-link" data-index="01">À Propos</a>
         <a href="#work" class="mobile-link" data-index="02">Projets</a>
         <a href="#skills" class="mobile-link" data-index="03">Compétences</a>
         <a href="#journey" class="mobile-link" data-index="04">Parcours</a>
         <a href="#contact" class="mobile-link" data-index="05">Contact</a>
         <div class="mobile-menu-footer">
+          <span>Créer · concevoir · raconter</span>
+          <div class="mobile-menu-socials">
           <a
             href="https://www.linkedin.com/in/benjamin-leleu-b373bb36a/"
             target="_blank"
@@ -258,6 +251,7 @@
             rel="noopener noreferrer"
             >GitHub</a
           >
+          </div>
         </div>
       </div>
     </div>
@@ -280,17 +274,10 @@
           </h1>
           <p class="hero-subtitle">Création numérique · Web · Audiovisuel</p>
           <p class="hero-description">
-            Étudiant en 2e année de BUT MMI, parcours Création numérique, à
-            l'IUT de Vélizy — UVSQ.
+            Je suis en deuxième année de BUT MMI à l'IUT de Vélizy (UVSQ),
+            parcours création numérique. Selon les projets, je code un site, je
+            dessine une identité visuelle ou je monte une vidéo.
           </p>
-          <a
-            class="hero-availability"
-            href="#contact"
-            aria-label="Voir mes disponibilités pour un job étudiant le week-end"
-          >
-            <span class="availability-dot" aria-hidden="true"></span>
-            Job étudiant · samedi ou dimanche · 8 h max/semaine
-          </a>
         </div>
 
       </section>
@@ -333,59 +320,40 @@
           <div class="about-grid">
             <div class="about-text">
               <h2 class="section-title reveal-text" id="about-title">
-                Je crée des expériences numériques qui comptent.
+                Entre image, interface et code.
               </h2>
               <p class="about-description reveal-text">
-                Je m'appelle <strong>Benjamin Leleu</strong>. En août 2026, je
-                poursuis ma <strong>deuxième année de BUT MMI</strong>, parcours
-                <strong>Création numérique</strong>, à l'<strong>IUT de Vélizy —
-                UVSQ</strong>. Après une première année de MMI à Troyes, je
-                construis un profil à la croisée du web, du design et de
-                l'audiovisuel.
+                Je m'appelle <strong>Benjamin Leleu</strong>. J'ai commencé par
+                deux années de BUT Informatique à Lille, puis une première année
+                de MMI à Troyes. Je suis aujourd'hui en
+                <strong>deuxième année de BUT MMI</strong>, parcours
+                <strong>Création numérique</strong>, à l'<strong>IUT de Vélizy
+                (UVSQ)</strong>. Ce détour m'a laissé un pied dans le code et
+                l'autre dans l'image.
               </p>
               <p class="about-description reveal-text">
-                Je recherche aussi un <strong>job étudiant le week-end</strong>,
-                le samedi ou le dimanche, dans la limite de
-                <strong>8 heures par semaine</strong>. Je privilégie le cinéma,
-                la technologie, l'informatique, l'audiovisuel, la photo, l'audio,
-                les jeux vidéo, les loisirs immersifs et l'accueil culturel.
+                Les projets que je garde ici vont de l'identité de marque au
+                site web, du podcast au montage vidéo. Il y a des travaux
+                d'école et des projets perso, dont un site client en ligne
+                depuis 2024. Dans les deux cas, je vais jusqu'au bout : ce que
+                je dessine, je le fabrique.
               </p>
             </div>
             <div class="about-details">
-              <!-- Terminal-style visual decoration -->
-              <div class="about-terminal">
+              <div class="about-terminal" aria-label="Profil de Benjamin dans une fenêtre Terminal">
                 <div class="terminal-header">
-                  <span class="terminal-dot terminal-dot--red"></span>
-                  <span class="terminal-dot terminal-dot--yellow"></span>
-                  <span class="terminal-dot terminal-dot--green"></span>
-                  <span class="terminal-title">benjamin.js</span>
+                  <span class="terminal-controls" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="terminal-title"><span aria-hidden="true">📁</span> benjamin.js — zsh — 80×24</span>
                 </div>
                 <div class="terminal-body">
-                  <code
-                    ><span class="code-keyword">const</span>
-                    <span class="code-var">benjamin</span> = {</code
-                  >
-                  <code>
-                    <span class="code-prop">role</span>:
-                    <span class="code-string"
-                      >"Création numérique, web et audiovisuel"</span
-                    >,</code
-                  >
-                  <code>
-                    <span class="code-prop">formation</span>:
-                    <span class="code-string">"BUT MMI · 2e année · UVSQ"</span
-                    >,</code
-                  >
-                  <code>
-                    <span class="code-prop">passion</span>:
-                    <span class="code-string">"Créer des expériences"</span
-                    >,</code
-                  >
-                  <code>
-                    <span class="code-prop">weekend</span>:
-                    <span class="code-string">"samedi || dimanche"</span>,</code
-                  >
+                  <code class="terminal-prompt">benjamin@portfolio ~ % cat benjamin.js</code>
+                  <code>const benjamin = {</code>
+                  <code>  domaine: "création numérique",</code>
+                  <code>  pratique: ["web", "design", "audiovisuel"],</code>
+                  <code>  formation: "BUT MMI · UVSQ",</code>
+                  <code>  approche: "concevoir et réaliser"</code>
                   <code>};</code>
+                  <code class="terminal-prompt">benjamin@portfolio ~ % <span class="terminal-caret" aria-hidden="true"></span></code>
                 </div>
               </div>
 
@@ -398,8 +366,8 @@
                 <span class="detail-value">IUT de Vélizy · UVSQ</span>
               </div>
               <div class="about-detail-item">
-                <span class="detail-label">Disponibilité</span>
-                <span class="detail-value">Samedi ou dimanche · 8 h/semaine maximum</span>
+                <span class="detail-label">Domaines</span>
+                <span class="detail-value">Web · Design · Audiovisuel</span>
               </div>
               <div class="about-detail-item">
                 <span class="detail-label">Langues</span>
@@ -415,11 +383,11 @@
           <!-- Stats -->
           <div class="stats-row">
             <div class="stat-item">
-              <span class="stat-number" data-target="15">0</span>
-              <span class="stat-label">Projets réalisés</span>
+              <span class="stat-number" data-target="8">0</span>
+              <span class="stat-label">Projets présentés</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number" data-target="15">0</span>
+              <span class="stat-number" data-target="16">0</span>
               <span class="stat-label">Technologies</span>
             </div>
             <div class="stat-item">
@@ -432,7 +400,7 @@
 
       <!-- ===== PROJECTS ===== -->
       <section
-        class="section section-dark"
+        class="section"
         id="work"
         aria-labelledby="work-title"
       >
@@ -442,387 +410,54 @@
             Travaux sélectionnés
           </h2>
           <p class="section-subtitle reveal-text">
-            Projets scolaires & personnels qui me définissent.
+            Huit projets que j'assume, du rendu de SAE au site client encore en
+            ligne.
           </p>
-          <div class="projects-list">
-            <a
-              href="./projets/kaobucha.html"
-              class="project-item project-item--featured"
-              data-thumb="images/thumbs/mockup-mango.webp"
-            >
-
-              <img class="project-thumb" src="images/thumbs/mockup-mango.webp" alt=""
-                   width="64" height="64" loading="lazy" decoding="async" />
-              <div class="project-index">01</div>
-              <div class="project-info">
-                <h3 class="project-name" data-num="01">Kaobucha, Identité de Marque</h3>
-                <p class="project-desc">
-                  SAE 1.02. Création fictive d'une marque de boisson énergisante naturelle et stratégie social media internationale.
-                </p>
+          <div class="project-coverflow" id="projectCoverflow" hidden>
+            <div class="coverflow-gallery">
+              <p class="coverflow-kicker">Explorer les projets</p>
+              <div
+                class="coverflow-stage"
+                id="coverflowStage"
+                role="region"
+                aria-roledescription="carrousel"
+                aria-label="Choisir un projet"
+                aria-describedby="coverflowHint"
+                tabindex="0"
+              >
+                <div class="coverflow-track" id="coverflowTrack"></div>
               </div>
-              <div class="project-meta">
-                <span class="project-type">Scolaire</span>
-                <div class="project-tags">
-                  <span>Branding</span>
-                  <span>Design</span>
-                  <span>Marketing</span>
-                </div>
+              <div class="coverflow-caption" aria-live="polite" aria-atomic="true">
+                <span class="coverflow-count" id="coverflowCount"></span>
+                <h3 class="coverflow-title" id="coverflowTitle"></h3>
+                <p class="coverflow-description" id="coverflowDescription"></p>
+                <dl class="coverflow-meta">
+                  <div><dt>Type</dt><dd id="coverflowType"></dd></div>
+                  <div><dt>Domaines</dt><dd id="coverflowTags"></dd></div>
+                </dl>
+                <a class="coverflow-link" id="coverflowLink" hidden>Découvrir le projet <span aria-hidden="true">↗</span></a>
+                <span class="coverflow-no-link" id="coverflowNoLink" hidden>Projet présenté sans page dédiée</span>
               </div>
-              <div class="project-arrow" aria-hidden="true">→</div>
-            </a>
-
-            <a
-              href="./projets/mojo-tunes.html"
-              class="project-item project-item--featured"
-              data-thumb="images/thumbs/moodboard.webp"
-            >
-
-              <img class="project-thumb" src="images/thumbs/moodboard.webp" alt=""
-                   width="64" height="64" loading="lazy" decoding="async" />
-              <div class="project-index">02</div>
-              <div class="project-info">
-                <h3 class="project-name" data-num="02">Mojo Tunes, Rebranding</h3>
-                <p class="project-desc">
-                  SAE 1.03. Refonte complète de l'identité visuelle d'une enseigne locale à Troyes.
-                </p>
+              <div class="coverflow-controls" aria-label="Navigation des projets">
+                <button class="coverflow-arrow" id="coverflowPrev" type="button" aria-label="Projet précédent">←</button>
+                <div class="coverflow-dots" id="coverflowDots" aria-label="Aller à un projet"></div>
+                <button class="coverflow-arrow" id="coverflowNext" type="button" aria-label="Projet suivant">→</button>
               </div>
-              <div class="project-meta">
-                <span class="project-type">Scolaire</span>
-                <div class="project-tags">
-                  <span>Branding</span>
-                  <span>Charte Graphique</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">→</div>
-            </a>
-
-            <a
-              href="./projets/star-wars.html"
-              class="project-item project-item--featured"
-              data-thumb="images/thumbs/banner_light.webp"
-            >
-
-              <img class="project-thumb" src="images/thumbs/banner_light.webp" alt=""
-                   width="64" height="64" loading="lazy" decoding="async" />
-              <div class="project-index">03</div>
-              <div class="project-info">
-                <h3 class="project-name" data-num="03">Star Wars, Plateforme Web</h3>
-                <p class="project-desc">
-                  SAE 1.05. Développement complet d'un site interactif en PHP avec intégration de base de données JSON.
-                </p>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Scolaire</span>
-                <div class="project-tags">
-                  <span>PHP</span>
-                  <span>JSON</span>
-                  <span>Web Dev</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">→</div>
-            </a>
-
-            <a
-              href="./projets/podcast.html"
-              class="project-item project-item--featured"
-              data-thumb="images/thumbs/Affiche_Podcast.webp"
-            >
-
-              <img class="project-thumb" src="images/thumbs/Affiche_Podcast.webp" alt=""
-                   width="64" height="64" loading="lazy" decoding="async" />
-              <div class="project-index">04</div>
-              <div class="project-info">
-                <h3 class="project-name" data-num="04">Fiction Sonore (Podcast)</h3>
-                <p class="project-desc">
-                  Écriture, enregistrement studio et sound design d'un podcast (Horreur/Humour).
-                </p>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Scolaire</span>
-                <div class="project-tags">
-                  <span>Audio</span>
-                  <span>Scénario</span>
-                  <span>Studio</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">→</div>
-            </a>
-
-            <div class="project-item project-item--static">
-              <div class="project-index">05</div>
-              <div class="project-info">
-                <h3 class="project-name">Interview Vidéo, Joueur de Football</h3>
-                <p class="project-desc">
-                  Réalisation et montage d'une interview vidéo : préparation,
-                  tournage, dérushage et étalonnage.
-                </p>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Scolaire</span>
-                <div class="project-tags">
-                  <span>Tournage</span>
-                  <span>Montage</span>
-                  <span>DaVinci Resolve</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">◦</div>
+              <p class="coverflow-hint" id="coverflowHint">Glisser, molette ou flèches pour explorer ; la page défile en dehors des cartes.</p>
             </div>
-
-            <a
-              href="./projets/SiteWebCapCom.html"
-              class="project-item"
-              data-thumb="images/thumbs/CapComSite.webp"
-            >
-
-              <img class="project-thumb" src="images/thumbs/CapComSite.webp" alt=""
-                   width="64" height="64" loading="lazy" decoding="async" />
-              <div class="project-index">06</div>
-              <div class="project-info">
-                <h3 class="project-name">Site Covoiturage CapCom</h3>
-                <p class="project-desc">
-                  Site de covoiturage développé en équipe. Intégration CSS et
-                  interface utilisateur.
-                </p>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Scolaire</span>
-                <div class="project-tags">
-                  <span>HTML</span>
-                  <span>CSS</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">→</div>
-            </a>
-
-            <div class="project-item project-item--static">
-              <div class="project-index">07</div>
-              <div class="project-info">
-                <h3 class="project-name">Mini-jeu Éducatif, Apprendre Bash</h3>
-                <p class="project-desc">
-                  Jeu vidéo pédagogique développé en Java pour apprendre les
-                  commandes Bash de façon ludique.
-                </p>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Scolaire</span>
-                <div class="project-tags">
-                  <span>Java</span>
-                  <span>Bash</span>
-                  <span>Pédagogie</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">◦</div>
-            </div>
-
-            <a
-              href="./projets/SiteVentePC.html"
-              class="project-item"
-              data-thumb="images/thumbs/VentePC.webp"
-            >
-
-              <img class="project-thumb" src="images/thumbs/VentePC.webp" alt=""
-                   width="64" height="64" loading="lazy" decoding="async" />
-              <div class="project-index">08</div>
-              <div class="project-info">
-                <h3 class="project-name">Site de Vente de PC</h3>
-                <p class="project-desc">
-                  E-commerce moderne avec interface interactive et système de
-                  filtrage avancé.
-                </p>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Personnel</span>
-                <div class="project-tags">
-                  <span>HTML</span>
-                  <span>CSS</span>
-                  <span>JavaScript</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">→</div>
-            </a>
-
-            <a
-              href="./projets/hypnotherapie.html"
-              class="project-item"
-              data-thumb="images/thumbs/hypno-site-maman.webp"
-            >
-
-              <img class="project-thumb" src="images/thumbs/hypno-site-maman.webp" alt=""
-                   width="64" height="64" loading="lazy" decoding="async" />
-              <div class="project-index">09</div>
-              <div class="project-info">
-                <h3 class="project-name">Site d'Hypnothérapeute</h3>
-                <p class="project-desc">
-                  Site vitrine professionnel. Design apaisant et prise de
-                  rendez-vous.
-                </p>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Personnel</span>
-                <div class="project-tags">
-                  <span>HTML</span>
-                  <span>CSS</span>
-                  <span>JavaScript</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">→</div>
-            </a>
-
-            <a
-              href="./projets/AIAimbot.html"
-              class="project-item"
-              data-thumb="images/thumbs/aimbot.webp"
-            >
-
-              <img class="project-thumb" src="images/thumbs/aimbot.webp" alt=""
-                   width="64" height="64" loading="lazy" decoding="async" />
-              <div class="project-index">10</div>
-              <div class="project-info">
-                <h3 class="project-name">AI Aimbot, Projet Éducatif</h3>
-                <p class="project-desc">
-                  IA par vision par ordinateur pour l'analyse de jeux.
-                  Apprentissage & recherche.
-                </p>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Personnel</span>
-                <div class="project-tags">
-                  <span>Python</span>
-                  <span>PyTorch</span>
-                  <span>OpenCV</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">→</div>
-            </a>
-
-            <a
-              href="./projets/CoCBot.html"
-              class="project-item"
-              data-thumb="images/thumbs/BoTCSC.webp"
-            >
-
-              <img class="project-thumb" src="images/thumbs/BoTCSC.webp" alt=""
-                   width="64" height="64" loading="lazy" decoding="async" />
-              <div class="project-index">11</div>
-              <div class="project-info">
-                <h3 class="project-name">CoC Bot, Automatisation</h3>
-                <p class="project-desc">
-                  Bot intelligent utilisant la vision par ordinateur. Machine
-                  Learning appliqué.
-                </p>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Personnel</span>
-                <div class="project-tags">
-                  <span>Python</span>
-                  <span>OpenCV</span>
-                  <span>Selenium</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">→</div>
-            </a>
-
-            <a
-              href="https://auxptitsoinscoiffure.fr/"
-              class="project-item"
-              data-thumb="images/thumbs/sitecoiff.webp"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img class="project-thumb" src="images/thumbs/sitecoiff.webp" alt=""
-                   width="64" height="64" loading="lazy" decoding="async" />
-              <div class="project-index">12</div>
-              <div class="project-info">
-                <h3 class="project-name">Aux Ptits Soins Coiffure</h3>
-                <p class="project-desc">
-                  Site e-commerce pour salon de coiffure. Maintenance, évolution
-                  et support technique.
-                </p>
-                <span class="project-live">● En ligne</span>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Personnel</span>
-                <div class="project-tags">
-                  <span>HTML</span>
-                  <span>CSS</span>
-                  <span>JavaScript</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">↗</div>
-            </a>
-
-            <div class="project-item project-item--static">
-              <div class="project-index">13</div>
-              <div class="project-info">
-                <h3 class="project-name">Gestion de Communautés en Ligne</h3>
-                <p class="project-desc">
-                  Administration du serveur Discord officiel d'OpenAI (~480 000
-                  membres) et animation d'une communauté de jeu ARK (~200
-                  membres). Création de visuels et de photos de profil
-                  personnalisées.
-                </p>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Personnel</span>
-                <div class="project-tags">
-                  <span>Discord</span>
-                  <span>Modération</span>
-                  <span>Community</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">◦</div>
-            </div>
-
-            <a
-              href="https://www.tiktok.com/@ww2__tank"
-              class="project-item"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="project-index">14</div>
-              <div class="project-info">
-                <h3 class="project-name">TikTok @benitoow · 37k</h3>
-                <p class="project-desc">
-                  Ancien compte TikTok d'édits vidéo réalisé sur CapCut. Arrêté
-                  par choix.
-                </p>
-                <span class="project-status-tag archived">Archives</span>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Personnel</span>
-                <div class="project-tags">
-                  <span>CapCut</span>
-                  <span>TikTok</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">↗</div>
-            </a>
-
-            <a
-              href="https://www.tiktok.com/@astralcovenant"
-              class="project-item"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="project-index">15</div>
-              <div class="project-info">
-                <h3 class="project-name">TikTok Star Wars</h3>
-                <p class="project-desc">
-                  Edits Star Wars. Montage Premiere Pro & After Effects. En
-                  croissance.
-                </p>
-                <span class="project-status-tag active">En cours</span>
-              </div>
-              <div class="project-meta">
-                <span class="project-type">Personnel</span>
-                <div class="project-tags">
-                  <span>Premiere Pro</span>
-                  <span>After Effects</span>
-                </div>
-              </div>
-              <div class="project-arrow" aria-hidden="true">↗</div>
-            </a>
           </div>
+          <noscript>
+            <p class="projects-fallback">
+              Projets : <a href="./projets/kaobucha">Kaobucha</a>,
+              <a href="./projets/mojo-tunes">Mojo Tunes</a>,
+              <a href="./projets/star-wars">Star Wars</a>,
+              <a href="./projets/podcast">Fiction sonore</a>,
+              <a href="./projets/sitecoiffure">Aux P'tits Soins Coiffure</a>,
+              gestion de communautés en ligne,
+              <a href="https://www.tiktok.com/@ww2__tank">TikTok @benitoow</a>
+              et <a href="https://www.tiktok.com/@astralcovenant">Astral Covenant</a>.
+            </p>
+          </noscript>
         </div>
       </section>
 
@@ -832,68 +467,82 @@
         <div class="container container--large">
           <div class="section-label">03 · Compétences</div>
           <h2 class="section-title reveal-text" id="skills-title">
-            Outils & Technologies
+            Ce que j'utilise au quotidien
           </h2>
 
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h3 class="skill-category-title">Développement</h3>
-              <div class="skill-items">
-                <div class="skill-chip">HTML5</div>
-                <div class="skill-chip">CSS3</div>
-                <div class="skill-chip">JavaScript</div>
-                <div class="skill-chip">Java</div>
-                <div class="skill-chip">Bash</div>
+          <div class="skills-bento">
+            <div class="skill-cell" aria-hidden="true"></div>
+
+            <div class="skill-card skill-card--dark">
+              <p class="skill-card-tools">HTML5, CSS3, JavaScript, Java, Bash</p>
+              <div class="skill-card-foot">
+                <div>
+                  <h3 class="skill-card-title">Développement</h3>
+                  <p class="skill-card-note">Sites, interfaces, scripts</p>
+                </div>
+                <svg class="skill-card-icon" aria-hidden="true"><use href="images/icons.svg#skill-dev"></use></svg>
               </div>
             </div>
 
-            <div class="skill-category">
-              <h3 class="skill-category-title">Design & Création</h3>
-              <div class="skill-items">
-                <div class="skill-chip">Photoshop</div>
-                <div class="skill-chip">Illustrator</div>
-                <div class="skill-chip">Figma</div>
-                <div class="skill-chip">Canva Pro</div>
+            <div class="skill-card skill-card--accent skill-card--wide">
+              <p class="skill-card-tools">Photoshop, Illustrator, Figma, Canva Pro</p>
+              <div class="skill-card-foot">
+                <div>
+                  <h3 class="skill-card-title">Design &amp; création</h3>
+                  <p class="skill-card-note">Identités visuelles, maquettes, supports imprimés</p>
+                </div>
+                <svg class="skill-card-icon" aria-hidden="true"><use href="images/icons.svg#skill-design"></use></svg>
               </div>
             </div>
 
-            <div class="skill-category">
-              <h3 class="skill-category-title">Audiovisuel</h3>
-              <div class="skill-items">
-                <div class="skill-chip">DaVinci Resolve</div>
-                <div class="skill-chip">Premiere Pro</div>
-                <div class="skill-chip">After Effects</div>
-                <div class="skill-chip">Topaz Video AI</div>
+            <div class="skill-card skill-card--dark">
+              <p class="skill-card-tools">Premiere Pro, After Effects, DaVinci Resolve, Topaz Video AI</p>
+              <div class="skill-card-foot">
+                <div>
+                  <h3 class="skill-card-title">Audiovisuel</h3>
+                  <p class="skill-card-note">Montage et habillage</p>
+                </div>
+                <svg class="skill-card-icon" aria-hidden="true"><use href="images/icons.svg#skill-audio"></use></svg>
               </div>
             </div>
 
-            <div class="skill-category">
-              <h3 class="skill-category-title">Outils</h3>
-              <div class="skill-items">
-                <div class="skill-chip">GitHub</div>
-                <div class="skill-chip">Adobe Creative Cloud</div>
-                <div class="skill-chip">Pack Office</div>
+            <div class="skill-card skill-card--ghost">
+              <p class="skill-card-tools">GitHub, Adobe Creative Cloud, Pack Office</p>
+              <div class="skill-card-foot">
+                <div>
+                  <h3 class="skill-card-title">Outils</h3>
+                  <p class="skill-card-note">Au quotidien</p>
+                </div>
+                <svg class="skill-card-icon" aria-hidden="true"><use href="images/icons.svg#skill-tools"></use></svg>
               </div>
             </div>
 
-            <div class="skill-category">
-              <h3 class="skill-category-title">Soft Skills</h3>
-              <div class="skill-items">
-                <div class="skill-chip">Relation client</div>
-                <div class="skill-chip">Travail d'équipe</div>
-                <div class="skill-chip">Créativité</div>
-                <div class="skill-chip">Gestion du temps</div>
-                <div class="skill-chip">Adaptabilité</div>
+            <div class="skill-cell" aria-hidden="true"></div>
+            <div class="skill-cell" aria-hidden="true"></div>
+
+            <div class="skill-card skill-card--accent skill-card--wide">
+              <p class="skill-card-tools">Relation client, travail d'équipe, créativité, gestion du temps, adaptabilité</p>
+              <div class="skill-card-foot">
+                <div>
+                  <h3 class="skill-card-title">Savoir-être</h3>
+                  <p class="skill-card-note">Sur les projets clients et les SAE</p>
+                </div>
+                <svg class="skill-card-icon" aria-hidden="true"><use href="images/icons.svg#skill-soft"></use></svg>
               </div>
             </div>
 
-            <div class="skill-category">
-              <h3 class="skill-category-title">Langues</h3>
-              <div class="skill-items">
-                <div class="skill-chip">Français, langue maternelle</div>
-                <div class="skill-chip">Anglais B2</div>
+            <div class="skill-card skill-card--ghost">
+              <p class="skill-card-tools">Français langue maternelle, anglais B2</p>
+              <div class="skill-card-foot">
+                <div>
+                  <h3 class="skill-card-title">Langues</h3>
+                  <p class="skill-card-note">Lu, écrit, parlé</p>
+                </div>
+                <svg class="skill-card-icon" aria-hidden="true"><use href="images/icons.svg#skill-lang"></use></svg>
               </div>
             </div>
+
+            <div class="skill-cell" aria-hidden="true"></div>
           </div>
         </div>
       </section>
@@ -916,14 +565,10 @@
               <div class="timeline-content">
                 <h3>Bac STI2D, option SIN</h3>
                 <p>
-                  Lycée Jean Perrin, Saint-Ouen-l'Aumône. Systèmes d'Information
-                  et Numérique. Bases technologiques solides.
+                  Lycée Jean Perrin, Saint-Ouen-l'Aumône. Systèmes
+                  d'information et numérique : c'est là que j'ai appris à
+                  démonter un problème avant de le résoudre.
                 </p>
-                <div class="timeline-tags">
-                  <span>STI2D</span>
-                  <span>Systèmes d'Info</span>
-                  <span>Numérique</span>
-                </div>
               </div>
             </div>
 
@@ -932,14 +577,10 @@
               <div class="timeline-content">
                 <h3>BUT Informatique</h3>
                 <p>
-                  IUT A de Villeneuve-d'Ascq, Université de Lille. Projets web
-                  et Java, avec une approche structurée de la programmation.
+                  IUT A de Villeneuve-d'Ascq, Université de Lille. Deux ans de
+                  Java et de projets web, avec l'habitude de travailler sur du
+                  code qu'on relit six mois plus tard.
                 </p>
-                <div class="timeline-tags">
-                  <span>BUT Info</span>
-                  <span>Java</span>
-                  <span>Projets Web</span>
-                </div>
               </div>
             </div>
 
@@ -948,31 +589,21 @@
               <div class="timeline-content">
                 <h3>1re année de BUT MMI</h3>
                 <p>
-                  IUT de Troyes, Université de Reims Champagne-Ardenne.
-                  Découverte des métiers du multimédia et de l'Internet.
+                  IUT de Troyes, Université de Reims Champagne-Ardenne. L'année
+                  où j'ai ajouté l'image au code : branding, audiovisuel,
+                  écriture.
                 </p>
-                <div class="timeline-tags">
-                  <span>BUT MMI</span>
-                  <span>Troyes</span>
-                  <span>URCA</span>
-                </div>
               </div>
             </div>
 
             <div class="timeline-item">
               <div class="timeline-date">2026 / Présent</div>
               <div class="timeline-content">
-                <h3>2e année de BUT MMI, IUT de Vélizy — UVSQ</h3>
+                <h3>2e année de BUT MMI, IUT de Vélizy (UVSQ)</h3>
                 <p>
-                  Parcours Création numérique. Une formation qui relie design,
-                  audiovisuel, communication et développement web.
+                  Parcours création numérique. Design, audiovisuel,
+                  communication et développement web dans la même semaine.
                 </p>
-                <div class="timeline-tags">
-                  <span>BUT MMI</span>
-                  <span>Vélizy</span>
-                  <span>Création Numérique</span>
-                  <span>Audiovisuel</span>
-                </div>
               </div>
             </div>
           </div>
@@ -985,11 +616,11 @@
           <div class="section-label">05 · Contact</div>
           <div class="contact-content">
             <h2 class="contact-title reveal-text" id="contact-title">
-              Un projet, une équipe, un week-end&nbsp;?
+              Me contacter
             </h2>
             <p class="contact-subtitle reveal-text">
-              Pour une collaboration créative ou un job étudiant, je suis
-              disponible le samedi ou le dimanche, jusqu'à 8 heures par semaine.
+              Une question, un projet, une envie de travailler ensemble ? Le
+              plus simple reste un mail, je réponds vite.
             </p>
 
             <div class="contact-links">
@@ -1061,13 +692,15 @@
         </div>
         <div class="footer-bottom">
           <p>© <span id="footer-year">2026</span> Benjamin LELEU · Tous droits réservés</p>
-          <p>Conçu avec passion depuis 🇫🇷</p>
+          <p>Écrit à la main, sans framework</p>
         </div>
       </div>
     </footer>
 
     <!-- Scripts — shared.js d'abord : main.js dépend de ses helpers -->
     <script src="js/shared.js" defer></script>
+    <script src="js/shader.js" defer></script>
+    <script src="js/coverflow.js" defer></script>
     <script src="js/main.js" defer></script>
   </body>
 </html>

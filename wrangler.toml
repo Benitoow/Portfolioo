@@ -1,5 +1,6 @@
 name = "portfolioo"
 compatibility_date = "2024-01-01"
-
-[assets]
-directory = "."
+# Projet Cloudflare Pages : le dossier servi est passé en argument
+# (`wrangler pages dev .`) et les Functions vivent dans `functions/`.
+# La section `[assets]` (réservée aux Workers avec assets) est volontairement
+# absente : sa présence empêchait `functions/_middleware.js` d'être exécuté.

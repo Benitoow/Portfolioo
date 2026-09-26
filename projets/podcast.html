@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiction sonore — Horreur &amp; humour | Benjamin Leleu</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <title>Fiction sonore : horreur et humour | Benjamin Leleu</title>
+    <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/projet-pages.css">
-    <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Écriture et réalisation d'une fiction sonore mêlant horreur et humour : script, enregistrement en studio, montage et sound design.">
-    <link rel="canonical" href="https://benjaminleleu.fr/projets/podcast.html">
-    <meta property="og:title" content="Fiction sonore — Horreur &amp; humour">
+    <meta name="description" content="Écriture et réalisation d'une fiction sonore entre horreur et humour : script, enregistrement en studio, montage et sound design.">
+    <link rel="canonical" href="https://benjaminleleu.fr/projets/podcast">
+    <meta property="og:title" content="Fiction sonore : horreur et humour">
     <meta property="og:description" content="Écriture, enregistrement en studio, montage et sound design d'une fiction sonore.">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Portfolio Benjamin Leleu">
-    <meta property="og:url" content="https://benjaminleleu.fr/projets/podcast.html">
+    <meta property="og:url" content="https://benjaminleleu.fr/projets/podcast">
     <meta property="og:image" content="https://benjaminleleu.fr/images/projets/podcast/Affiche_Podcast.webp">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
-        "name": "Fiction sonore — Horreur et humour",
+        "name": "Fiction sonore : horreur et humour",
         "description": "Écriture, enregistrement en studio, montage et sound design d'une fiction sonore.",
-        "url": "https://benjaminleleu.fr/projets/podcast.html",
+        "url": "https://benjaminleleu.fr/projets/podcast",
         "image": "https://benjaminleleu.fr/images/projets/podcast/Affiche_Podcast.webp",
         "inLanguage": "fr-FR",
         "creator": { "@type": "Person", "name": "Benjamin Leleu", "url": "https://benjaminleleu.fr/" }
@@ -36,53 +31,59 @@
     </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body class="case-study case-study--podcast" style="--shader-rgb: 203 119 113">
+    <canvas class="shader-canvas" aria-hidden="true"></canvas>
+    <a class="case-skip-link" href="#contenu">Aller au contenu du projet</a>
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <header class="hero" style="--hero-image: url('../images/projets/podcast/Affiche_Podcast.webp')">
-        <nav class="navbar">
-            <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../index.html#about">A Propos</a></li>
-                <li><a href="../index.html#work">Projets</a></li>
-                <li><a href="../index.html#skills">Competences</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
-            </ul>
+    <nav class="navbar" aria-label="Navigation du projet">
+            <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
+            <span class="case-nav-index">Étude de cas / 04</span>
+            <a class="case-nav-back" href="/#work">Tous les projets <span aria-hidden="true">↗</span></a>
         </nav>
+    <header class="hero" style="--hero-image: url('../images/projets/podcast/Affiche_Podcast.webp')">
 
-        <div class="hero-content" data-aos="fade-up">
-            <h1>Fiction Sonore, Thriller &amp; Comedie <i class="fas fa-headphones" aria-hidden="true"></i></h1>
-            <p class="subtitle">Ecrire une histoire terrifiante qui fait aussi rire, puis la produire de A a Z en studio.</p>
+        <div class="case-hero-art" aria-hidden="true"><img src="../images/projets/podcast/Affiche_Podcast.webp" alt="" width="800" height="800"></div>
+        <div class="hero-content">
+            <p class="case-kicker">04 / Création sonore</p>
+            <h1>Une fiction sonore entre horreur et comédie <svg class="icon" aria-hidden="true"><use href="../images/icons.svg#headphones"></use></svg></h1>
+            <p class="subtitle">Écrire un récit qui fait peur et rire à la fois, puis le fabriquer de bout en bout en studio.</p>
+            <div class="case-hero-facts"><span>Scénario &amp; montage</span><span>Projet collectif · BUT MMI</span></div>
         </div>
     </header>
 
     <main id="contenu">
-    <section class="section" data-aos="fade-up">
-        <h2>Contexte &amp; Objectifs</h2>
+    <div class="case-ledger" aria-label="Repères du projet">
+      <div><span>Discipline</span><strong>Création sonore</strong></div>
+      <div><span>Mon rôle</span><strong>Scénario &amp; montage</strong></div>
+      <div><span>Cadre</span><strong>Projet collectif · BUT MMI</strong></div>
+    </div>
+    <section class="section">
+        <h2>Contexte et objectifs</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Dans le cadre de ma premiere annee de BUT MMI a l'IUT de Troyes (Universite de Reims Champagne-Ardenne), ce projet consistait a produire une fiction sonore complete en respectant une contrainte creative exigeante : meler les codes du genre <strong>horreur</strong> a ceux de la <strong>comedie</strong>. Deux registres qui se repoussent sur le papier, mais qui peuvent creer quelque chose de memorable quand ils sont bien doses.</p>
-                <p>Le projet couvrait l'integralite de la chaine de production audio : ecriture du script, captation en salle d'enregistrement avec le materiel de l'IUT, puis montage et sound design en post-production.</p>
+                <p>En première année de BUT MMI à l'IUT de Troyes (Université de Reims Champagne-Ardenne), ce projet demandait une fiction sonore complète, avec une contrainte : mélanger les codes de l'<strong>horreur</strong> et ceux de la <strong>comédie</strong>. Sur le papier, les deux registres se repoussent. Bien dosés, ils peuvent donner quelque chose de mémorable.</p>
+                <p>J'ai suivi toute la chaîne de production : écriture du script, captation en salle d'enregistrement avec le matériel de l'IUT, puis montage et sound design en post-production.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-university" aria-hidden="true"></i> 1re annee de BUT MMI, IUT de Troyes (URCA)</li>
-                    <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> S1 2025-2026, projet de groupe</li>
-                    <li><i class="fas fa-microphone" aria-hidden="true"></i> Role : scenariste &amp; monteur son</li>
-                    <li><i class="fas fa-theater-masks" aria-hidden="true"></i> Enjeu : ecriture bi-genre horreur/humour</li>
-                    <li><i class="fas fa-tools" aria-hidden="true"></i> Outils : Adobe Audition, studio d'enregistrement IUT</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#university"></use></svg> 1re année de BUT MMI, IUT de Troyes (URCA)</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#calendar-alt"></use></svg> S1 2025-2026, projet de groupe</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#microphone"></use></svg> Rôle : scénariste &amp; monteur son</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#theater-masks"></use></svg> Enjeu : faire cohabiter horreur et humour</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#tools"></use></svg> Outils : Adobe Audition et le studio de l'IUT</li>
                 </ul>
             </div>
         </div>
     </section>
+    <aside class="case-note"><span>Le fil du projet</span><p>Ici, le rythme du montage raconte autant que les dialogues.</p></aside>
 
-    <section class="section" data-aos="fade-up" id="audio-player">
-        <h2>Ecouter l'episode</h2>
-        <p class="section-intro section-intro--center">Mettez un casque pour profiter pleinement du mixage et de la spatialisation sonore.</p>
+    <section class="section" id="audio-player">
+        <h2>Écouter l'épisode</h2>
+        <p class="section-intro section-intro--center">Le mixage et la spatialisation méritent un casque.</p>
 
         <div class="audio-card">
-            <i class="fas fa-microphone-alt card-icon" aria-hidden="true"></i>
-            <h3>"Le Dernier Face a Face"</h3>
+            <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#microphone-lines"></use></svg></div>
+            <h3>"Le Dernier Face à Face"</h3>
             <audio class="audio-player" controls>
                 <source src="../audios/projets/podcast/podcast-horreur-humour.mp3" type="audio/mpeg">
                 Votre navigateur ne supporte pas le lecteur audio.
@@ -90,39 +91,39 @@
         </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-        <h2>Demarche &amp; Production</h2>
+    <section class="section">
+        <h2>Démarche et production</h2>
         <div class="projects-grid">
             <div class="project-card project-card--centered">
-                <div class="card-icon"><i class="fas fa-pen-nib" aria-hidden="true"></i></div>
-                <h3>Scripting</h3>
-                <p>Ecriture des dialogues en gardant en tete le rythme, les silences et l'integration des "punchlines" comiques au coeur des scenes de tension.</p>
+                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#pen-nib"></use></svg></div>
+                <h3>Écriture</h3>
+                <p>J'ai écrit les dialogues en pensant déjà au rythme, aux silences et aux « punchlines » glissées au milieu des scènes de tension.</p>
             </div>
             <div class="project-card project-card--centered">
-                <div class="card-icon"><i class="fas fa-record-vinyl" aria-hidden="true"></i></div>
-                <h3>Enregistrement Studio</h3>
-                <p>Captation au studio de l'IUT avec microphones directionnels : voix claires, sans reverberation parasite, proches de l'oreille de l'auditeur.</p>
+                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#record-vinyl"></use></svg></div>
+                <h3>Enregistrement</h3>
+                <p>Studio de l'IUT, microphones directionnels : des voix nettes, sans réverbération parasite, tout près de l'oreille.</p>
             </div>
             <div class="project-card project-card--centered">
-                <div class="card-icon"><i class="fas fa-sliders-h" aria-hidden="true"></i></div>
-                <h3>Sound Design</h3>
-                <p>Mixage des pistes vocales et ajout strategique de bruitages libres de droits pour renforcer alternativement la tension et l'absurde.</p>
+                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#sliders-h"></use></svg></div>
+                <h3>Sound design</h3>
+                <p>Mixage des voix et bruitages libres de droits posés à des moments précis, pour appuyer tantôt la tension, tantôt l'absurde.</p>
             </div>
         </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-        <h2>Bilan &amp; Apprentissages</h2>
+    <section class="section">
+        <h2>Bilan et apprentissages</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Le vrai defi n'etait pas technique mais narratif : trouver le ton. Trop d'humour et la peur disparait, trop d'horreur et les blagues tombent a plat. On a resolu ca en ecrivant les scenes de comedie comme si elles etaient serieuses, et en laissant le decalage faire le travail tout seul.</p>
-                <p>Sur le plan technique, j'ai appris que la qualite d'un podcast se joue beaucoup dans le montage : une respiration mal coupee, un silence trop long, un bruitage au mauvais moment, et toute l'immersion s'evapore. Ce projet m'a donne l'oreille pour ces details.</p>
+                <p>Le défi était moins technique que narratif : trouver le ton. Trop d'humour et la peur s'efface, trop d'horreur et les blagues tombent à plat. Nous avons résolu le problème en écrivant les scènes de comédie comme des scènes sérieuses, et en laissant le décalage faire le reste.</p>
+                <p>Techniquement, j'ai surtout appris que la qualité d'un podcast se joue au montage. Une respiration mal coupée, un silence trop long, un bruitage au mauvais moment, et l'auditeur décroche. Ce projet m'a rendu attentif à ces détails.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC15.01. Concevoir un contenu sonore original</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC15.02. Realiser une production sonore</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC13.01. Ecrire pour les medias socionumeriques</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC11.02. Analyser les specificites du public cible</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC15.01. Concevoir un contenu sonore original</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC15.02. Réaliser une production sonore</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC13.01. Écrire pour les médias socionumériques</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC11.02. Analyser les spécificités du public cible</li>
                 </ul>
             </div>
         </div>
@@ -130,16 +131,15 @@
 
     </main>
 
-    <div class="back-nav">
-        <a href="../index.html#work">&#8592; Projets</a>
-    </div>
+    <nav class="case-next" aria-label="Continuer la visite">
+      <a href="sitecoiffure" class="case-next-link"><span>Projet suivant / 05</span><strong>Aux P'tits Soins Coiffure</strong><span>Voir le projet <b aria-hidden="true">↗</b></span></a>
+      <a href="/#work" class="case-next-back">← Retour à la sélection</a>
+    </nav>
 
     <footer>
-        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits reserves.</p>
+        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits réservés.</p>
     </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="../js/shared.js" defer></script>
-    <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
+    <script src="../js/shader.js" defer></script>
 </body>
 </html>

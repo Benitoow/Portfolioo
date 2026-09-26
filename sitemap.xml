@@ -2,66 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://benjaminleleu.fr/</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://benjaminleleu.fr/projets/kaobucha.html</loc>
+    <loc>https://benjaminleleu.fr/projets/kaobucha</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://benjaminleleu.fr/projets/mojo-tunes.html</loc>
+    <loc>https://benjaminleleu.fr/projets/mojo-tunes</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://benjaminleleu.fr/projets/star-wars.html</loc>
+    <loc>https://benjaminleleu.fr/projets/star-wars</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://benjaminleleu.fr/projets/podcast.html</loc>
+    <loc>https://benjaminleleu.fr/projets/podcast</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://benjaminleleu.fr/projets/SiteWebCapCom.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://benjaminleleu.fr/projets/SiteVentePC.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://benjaminleleu.fr/projets/hypnotherapie.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://benjaminleleu.fr/projets/AIAimbot.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://benjaminleleu.fr/projets/CoCBot.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://benjaminleleu.fr/projets/sitecoiffure.html</loc>
+    <loc>https://benjaminleleu.fr/projets/sitecoiffure</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

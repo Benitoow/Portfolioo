@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aux Ptits Soins Coiffure — Site vitrine | Benjamin Leleu</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <title>Aux Ptits Soins Coiffure : site vitrine | Benjamin Leleu</title>
+    <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/projet-pages.css">
-    <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Site vitrine pour le salon Aux Ptits Soins Coiffure : prestations, tarifs, galerie, contact et prise de rendez-vous.">
-    <link rel="canonical" href="https://benjaminleleu.fr/projets/sitecoiffure.html">
-    <meta property="og:title" content="Aux Ptits Soins Coiffure — Site vitrine">
-    <meta property="og:description" content="Site vitrine pour un salon de coiffure : prestations, tarifs, galerie, contact et prise de rendez-vous.">
+    <meta name="description" content="Le site du salon Aux Ptits Soins Coiffure : prestations, tarifs, galerie, contact et prise de rendez-vous en ligne.">
+    <link rel="canonical" href="https://benjaminleleu.fr/projets/sitecoiffure">
+    <meta property="og:title" content="Aux Ptits Soins Coiffure : site vitrine">
+    <meta property="og:description" content="Le site du salon Aux Ptits Soins Coiffure : prestations, tarifs, galerie, contact et prise de rendez-vous en ligne.">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Portfolio Benjamin Leleu">
-    <meta property="og:url" content="https://benjaminleleu.fr/projets/sitecoiffure.html">
+    <meta property="og:url" content="https://benjaminleleu.fr/projets/sitecoiffure">
     <meta property="og:image" content="https://benjaminleleu.fr/Projet/Perso/sitecoiff.webp">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
-        "name": "Aux Ptits Soins Coiffure — Site vitrine",
-        "description": "Site vitrine pour un salon de coiffure : prestations, tarifs, galerie, contact et prise de rendez-vous.",
-        "url": "https://benjaminleleu.fr/projets/sitecoiffure.html",
+        "name": "Aux Ptits Soins Coiffure : site vitrine",
+        "description": "Le site du salon Aux Ptits Soins Coiffure : prestations, tarifs, galerie, contact et prise de rendez-vous en ligne.",
+        "url": "https://benjaminleleu.fr/projets/sitecoiffure",
         "image": "https://benjaminleleu.fr/Projet/Perso/sitecoiff.webp",
         "inLanguage": "fr-FR",
         "creator": { "@type": "Person", "name": "Benjamin Leleu", "url": "https://benjaminleleu.fr/" }
@@ -36,87 +31,93 @@
     </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body class="case-study case-study--sitecoiffure" style="--shader-rgb: 221 163 143">
+    <canvas class="shader-canvas" aria-hidden="true"></canvas>
+    <a class="case-skip-link" href="#contenu">Aller au contenu du projet</a>
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <header class="hero" style="--hero-image: url('../Projet/Perso/sitecoiff.webp')">
-        <nav class="navbar">
-            <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../index.html#about">A Propos</a></li>
-                <li><a href="../index.html#work">Projets</a></li>
-                <li><a href="../index.html#skills">Competences</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
-            </ul>
+    <nav class="navbar" aria-label="Navigation du projet">
+            <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
+            <span class="case-nav-index">Étude de cas / 05</span>
+            <a class="case-nav-back" href="/#work">Tous les projets <span aria-hidden="true">↗</span></a>
         </nav>
+    <header class="hero" style="--hero-image: url('../Projet/Perso/sitecoiff.webp')">
 
-        <div class="hero-content" data-aos="fade-up">
-            <h1>Aux Ptits Soins Coiffure <i class="fas fa-cut" aria-hidden="true"></i></h1>
-            <p class="subtitle">Premier projet client reel : conception, mise en ligne, puis maintenance active d'un salon de coiffure independant.</p>
+        <div class="case-hero-art" aria-hidden="true"><img src="../Projet/Perso/sitecoiff.webp" alt="" width="1920" height="1026"></div>
+        <div class="hero-content">
+            <p class="case-kicker">05 / Site client</p>
+            <h1>Aux Ptits Soins Coiffure <svg class="icon" aria-hidden="true"><use href="../images/icons.svg#cut"></use></svg></h1>
+            <p class="subtitle">Mon premier client : un salon de coiffure indépendant. Mis en ligne en 2024, je le maintiens depuis.</p>
+            <div class="case-hero-facts"><span>Conception &amp; suivi</span><span>En ligne depuis 2024</span></div>
             <div class="project-meta-links">
-                <a href="https://auxptitsoinscoiffure.fr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> site en ligne</a>
+                <a href="https://auxptitsoinscoiffure.fr/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#external-link-alt"></use></svg> site en ligne</a>
             </div>
         </div>
     </header>
 
     <main id="contenu">
-    <section class="section" data-aos="fade-up">
+    <div class="case-ledger" aria-label="Repères du projet">
+      <div><span>Discipline</span><strong>Site client</strong></div>
+      <div><span>Mon rôle</span><strong>Conception &amp; suivi</strong></div>
+      <div><span>Cadre</span><strong>En ligne depuis 2024</strong></div>
+    </div>
+    <section class="section">
         <h2>Contexte &amp; Objectifs</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Une commercante independante, coiffeuse, voulait developper sa clientele en ligne et proposer la prise de rendez-vous depuis son site. Elle n'avait ni budget important ni site existant. J'ai concu et developpe ce projet de bout en bout, puis je suis reste responsable de la <strong>maintenance, des evolutions et du support technique</strong> depuis la mise en ligne en 2024.</p>
-                <p>Ce projet a une particularite que les projets scolaires n'ont pas : il est en <strong>production reelle</strong>. Une erreur a un impact direct sur les rendez-vous d'une vraie commercante. Ca change la facon dont on teste, dont on deploie, dont on communique les changements.</p>
+                <p>La cliente est coiffeuse indépendante. Elle voulait développer sa clientèle en ligne et permettre la prise de rendez-vous depuis son site. Pas de site existant, pas de gros budget. J'ai conçu et développé le projet de bout en bout, puis depuis la mise en ligne en 2024, je garde la <strong>maintenance, les évolutions et le support technique</strong>.</p>
+                <p>La différence avec mes projets d'école tient en un mot : le site est en <strong>production</strong>. Une erreur touche directement les rendez-vous de la cliente. Je teste et je déploie donc autrement, et je préviens avant chaque changement.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-user-tie" aria-hidden="true"></i> Client : commercante independante, salon de coiffure</li>
-                    <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> En production depuis 2024, maintenance continue</li>
-                    <li><i class="fas fa-laptop-code" aria-hidden="true"></i> Role : conception, developpement, maintenance</li>
-                    <li><i class="fas fa-bullseye" aria-hidden="true"></i> Enjeu : presence web et prise de RDV en ligne</li>
-                    <li><i class="fas fa-tools" aria-hidden="true"></i> Stack : HTML5, CSS3, JavaScript</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#user-tie"></use></svg> Client : coiffeuse indépendante, salon de coiffure</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#calendar-alt"></use></svg> En production depuis 2024, maintenance continue</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#laptop-code"></use></svg> Rôle : conception, développement et maintenance</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#bullseye"></use></svg> Enjeu : visibilité en ligne et prise de rendez-vous</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#tools"></use></svg> Stack : HTML5, CSS3, JavaScript</li>
                 </ul>
             </div>
         </div>
     </section>
+    <aside class="case-note"><span>Le fil du projet</span><p>Un site né d'une activité réelle, que j'entretiens au fil de ses besoins.</p></aside>
 
-    <section class="section" data-aos="fade-up">
-        <h2>Apercu du Site</h2>
+    <section class="section">
+        <h2>Aperçu du Site</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/nav-site-hair.webp" alt="Navigation principale">
+                <img loading="lazy" decoding="async" src="../Projet/Perso/nav-site-hair.webp" alt="Navigation principale" width="1600" height="756">
                 <h3>Navigation</h3>
-                <p>Interface claire et elegante, pensee pour une clientele de tous ages.</p>
+                <p>Un menu simple, lisible à tout âge.</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/Presta-femme-site-hair.webp" alt="Prestations femmes">
-                <h3>Catalogue Prestations</h3>
-                <p>Services detailles avec tarifs, photos et descriptions accessibles.</p>
+                <img loading="lazy" decoding="async" src="../Projet/Perso/Presta-femme-site-hair.webp" alt="Prestations femmes" width="1824" height="818">
+                <h3>Prestations et tarifs</h3>
+                <p>Chaque prestation avec son tarif, une photo et une description.</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/onco-site-hair.webp" alt="Coiffure oncologique">
-                <h3>Coiffure Oncologique</h3>
-                <p>Section dediee a un service specialise : accompagnement personnalise pour les patients en traitement.</p>
+                <img loading="lazy" decoding="async" src="../Projet/Perso/onco-site-hair.webp" alt="Coiffure oncologique" width="1872" height="872">
+                <h3>Coiffure oncologique</h3>
+                <p>Une page à part pour l'accompagnement des personnes en traitement.</p>
             </div>
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/contact-site-hair.webp" alt="Contact et localisation">
-                <h3>Contact &amp; Localisation</h3>
-                <p>Informations pratiques et formulaire de prise de rendez-vous simplifie.</p>
+                <img loading="lazy" decoding="async" src="../Projet/Perso/contact-site-hair.webp" alt="Contact et localisation" width="1600" height="608">
+                <h3>Contact &amp; localisation</h3>
+                <p>Les informations pratiques et une prise de rendez-vous simplifiée.</p>
             </div>
         </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
+    <section class="section">
         <h2>Bilan &amp; Apprentissages</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Travailler avec un vrai client, c'est apprendre la relation client autant que le developpement. Il faut savoir reformuler un besoin flou ("je veux quelque chose de beau et moderne") en specifications concretes, expliquer les contraintes techniques sans jargon, et gerer les demandes de modification qui arrivent apres la mise en ligne.</p>
-                <p>La maintenance long terme m'a aussi appris l'importance de coder de facon lisible et documentee, pas juste pour aujourd'hui mais pour "moi dans six mois" qui devra modifier quelque chose rapidement sans casser le reste.</p>
+                <p>Avec un vrai client, on apprend la relation autant que le code. Quand la demande arrive sous la forme « je veux quelque chose de beau et moderne », il faut la traduire en points précis, puis expliquer les contraintes techniques sans jargon. Et gérer les demandes de modification qui tombent après la mise en ligne.</p>
+                <p>La maintenance m'a appris autre chose : écrire du code lisible et documenté. Pas pour aujourd'hui, pour celui que je serai dans six mois, quand il faudra modifier une page vite sans casser le reste.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Gestion de projet client de A a Z (recueil besoin, specs, livraison, suivi)</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Design adapte a un secteur et une cible clientele specifique</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Maintenance long terme et versioning d'un site en production</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Communication non-technique avec une cliente non-tech</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> Un projet client mené de A à Z, du recueil du besoin au suivi</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> Un design adapté à un secteur et à une clientèle donnés</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> Maintenance et versioning d'un site en production</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> Expliquer la technique à une cliente qui ne l'est pas</li>
                 </ul>
             </div>
         </div>
@@ -124,16 +125,15 @@
 
     </main>
 
-    <div class="back-nav">
-        <a href="../index.html#work">&#8592; Projets</a>
-    </div>
+    <nav class="case-next" aria-label="Continuer la visite">
+      <a href="kaobucha" class="case-next-link"><span>Projet suivant / 01</span><strong>Kaobucha</strong><span>Découvrir <b aria-hidden="true">↗</b></span></a>
+      <a href="/#work" class="case-next-back">← Retour à la sélection</a>
+    </nav>
 
     <footer>
-        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits reserves.</p>
+        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits réservés.</p>
     </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="../js/shared.js" defer></script>
-    <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
+    <script src="../js/shader.js" defer></script>
 </body>
 </html>

@@ -27,30 +27,47 @@
   # Découverte agentique / ressources machine-readable
   Link: </llms.txt>; rel="describedby"; type="text/plain", </sitemap.xml>; rel="describedby"; type="application/xml", </robots.txt>; rel="describedby"; type="text/plain"
 
-  # HTML: toujours revalidé pour voir rapidement les mises à jour
+  # HTML: toujours revalidé pour voir rapidement les mises à jour.
+  # Pas de Cache-Control ici : la règle générale couvre tout et se concatène
+  # à celle des assets (max-age=0 puis max-age=2592000), ce qui laisse le
+  # navigateur retomber sur max-age=0 pour des fichiers immuables.
+
+/
   Cache-Control: public, max-age=0, must-revalidate
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
-/css/*
+/projets/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.txt
   Cache-Control: public, max-age=86400
+
+/*.xml
+  Cache-Control: public, max-age=86400
+
+/css/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
 
 /js/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
 
 /images/*
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
 
 /videos/*
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
 /audios/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=2592000
 
 /cv/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=2592000
 
 /docs/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=2592000
   ! X-Frame-Options

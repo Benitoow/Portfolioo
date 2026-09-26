@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mojo Tunes — Rebranding graphique | Benjamin Leleu</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <title>Mojo Tunes · Rebranding graphique | Benjamin Leleu</title>
+    <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/projet-pages.css">
-    <link rel="preload" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"></noscript>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <meta name="description" content="Rebranding graphique de Mojo Tunes, commerce indépendant à Troyes : recherche, moodboard, esquisses, vectorisation et charte graphique.">
-    <link rel="canonical" href="https://benjaminleleu.fr/projets/mojo-tunes.html">
-    <meta property="og:title" content="Mojo Tunes — Rebranding graphique">
-    <meta property="og:description" content="Rebranding d'un commerce indépendant à Troyes, du moodboard à la charte graphique.">
+    <meta name="description" content="Refonte de l'identité visuelle de Mojo Tunes, commerce indépendant à Troyes : recherche d'inspiration, esquisses, vectorisation et charte graphique.">
+    <link rel="canonical" href="https://benjaminleleu.fr/projets/mojo-tunes">
+    <meta property="og:title" content="Mojo Tunes · Rebranding graphique">
+    <meta property="og:description" content="Refonte de l'identité visuelle d'un commerce indépendant à Troyes, du moodboard à la charte graphique.">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Portfolio Benjamin Leleu">
-    <meta property="og:url" content="https://benjaminleleu.fr/projets/mojo-tunes.html">
+    <meta property="og:url" content="https://benjaminleleu.fr/projets/mojo-tunes">
     <meta property="og:image" content="https://benjaminleleu.fr/images/projets/mojo-tunes/moodboard.webp">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
-        "name": "Mojo Tunes — Rebranding graphique",
-        "description": "Rebranding d'un commerce indépendant à Troyes, du moodboard à la charte graphique.",
-        "url": "https://benjaminleleu.fr/projets/mojo-tunes.html",
+        "name": "Mojo Tunes · Rebranding graphique",
+        "description": "Refonte de l'identité visuelle d'un commerce indépendant à Troyes, du moodboard à la charte graphique.",
+        "url": "https://benjaminleleu.fr/projets/mojo-tunes",
         "image": "https://benjaminleleu.fr/images/projets/mojo-tunes/moodboard.webp",
         "inLanguage": "fr-FR",
         "creator": { "@type": "Person", "name": "Benjamin Leleu", "url": "https://benjaminleleu.fr/" }
@@ -36,86 +31,93 @@
     </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body class="case-study case-study--mojo-tunes" style="--shader-rgb: 229 135 106">
+    <canvas class="shader-canvas" aria-hidden="true"></canvas>
+    <a class="case-skip-link" href="#contenu">Aller au contenu du projet</a>
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <header class="hero" style="--hero-image: url('../images/projets/mojo-tunes/moodboard.webp')">
-        <nav class="navbar">
-            <div class="logo"><a href="../index.html">Portfolio Ben</a></div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../index.html#about">A Propos</a></li>
-                <li><a href="../index.html#work">Projets</a></li>
-                <li><a href="../index.html#skills">Competences</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
-            </ul>
+    <nav class="navbar" aria-label="Navigation du projet">
+            <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
+            <span class="case-nav-index">Étude de cas / 02</span>
+            <a class="case-nav-back" href="/#work">Tous les projets <span aria-hidden="true">↗</span></a>
         </nav>
+    <header class="hero" style="--hero-image: url('../images/projets/mojo-tunes/moodboard.webp')">
 
-        <div class="hero-content" data-aos="fade-up">
-            <h1>Mojo Tunes, Rebranding <i class="fas fa-record-vinyl" aria-hidden="true"></i></h1>
-            <p class="subtitle">Moderniser l'identite visuelle d'un disquaire local sans trahir ce qui le rend unique.</p>
+        <div class="case-hero-art" aria-hidden="true"><img src="../images/projets/mojo-tunes/moodboard.webp" alt="" width="800" height="450"></div>
+        <div class="hero-content">
+            <p class="case-kicker">02 / Identité visuelle</p>
+            <h1>Mojo Tunes, Rebranding <svg class="icon" aria-hidden="true"><use href="../images/icons.svg#record-vinyl"></use></svg></h1>
+            <p class="subtitle">Refondre l'identité visuelle d'un commerce local, sans effacer ce qui le rend reconnaissable.</p>
+            <div class="case-hero-facts"><span>Design graphique</span><span>SAE 1.03 · BUT MMI</span></div>
         </div>
     </header>
 
     <main id="contenu">
-    <section class="section" data-aos="fade-up">
-        <h2>Contexte &amp; Objectifs</h2>
+    <div class="case-ledger" aria-label="Repères du projet">
+      <div><span>Discipline</span><strong>Identité visuelle</strong></div>
+      <div><span>Mon rôle</span><strong>Design graphique</strong></div>
+      <div><span>Cadre</span><strong>SAE 1.03 · BUT MMI</strong></div>
+    </div>
+    <section class="section">
+        <h2>Contexte &amp; objectifs</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Dans le cadre de la <strong>SAE 1.03</strong> de ma premiere annee de BUT MMI a l'IUT de Troyes (Universite de Reims Champagne-Ardenne), la mission etait de prendre en charge le rebranding complet de <strong>Mojo Tunes</strong>, un commerce independant bien ancre dans le paysage troyen. Objectif : construire un logo fort et une charte graphique coherente qui modernisent la marque tout en preservant son identite groovy et locale.</p>
-                <p>Le livrable attendu couvrait l'ensemble du processus creatif : de la recherche d'inspiration jusqu'aux declinaisons finales sur supports reels, en passant par les phases de croquis et de vectorisation.</p>
+                <p>En première année de BUT MMI à l'IUT de Troyes (Université de Reims Champagne-Ardenne), la <strong>SAE 1.03</strong> m'a demandé de reprendre l'identité visuelle de <strong>Mojo Tunes</strong>, un commerce indépendant installé à Troyes. Il fallait un logo qui tienne et une charte cohérente : remettre la marque au goût du jour, sans effacer sa personnalité groovy et son ancrage local.</p>
+                <p>Le livrable suivait tout le processus, de la recherche d'inspiration aux déclinaisons sur supports réels, croquis et vectorisation compris.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-university" aria-hidden="true"></i> SAE 1.03, 1re annee de BUT MMI, IUT de Troyes (URCA)</li>
-                    <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> S1 2025-2026, projet individuel</li>
-                    <li><i class="fas fa-palette" aria-hidden="true"></i> Role : designer graphique</li>
-                    <li><i class="fas fa-bullseye" aria-hidden="true"></i> Enjeu : rebranding identitaire d'une enseigne locale</li>
-                    <li><i class="fas fa-tools" aria-hidden="true"></i> Outils : Illustrator, Photoshop</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#university"></use></svg> SAE 1.03, 1re année de BUT MMI, IUT de Troyes (URCA)</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#calendar-alt"></use></svg> Semestre 1, 2025-2026, projet mené seul</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#palette"></use></svg> Rôle : designer graphique</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#bullseye"></use></svg> Enjeu : refondre l'identité d'une enseigne locale</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#tools"></use></svg> Outils : Illustrator, Photoshop</li>
                 </ul>
             </div>
         </div>
     </section>
+    <aside class="case-note"><span>Le fil du projet</span><p>Moderniser une enseigne locale sans perdre ce que ses clients reconnaissent.</p></aside>
 
-    <section class="section" data-aos="fade-up">
-        <h2>Processus Creatif, du Croquis au Vecteur</h2>
-        <p class="section-intro">Le travail a commence par une planche de tendance pour fixer la direction artistique : urbaine, groovy, moderne. Ensuite sont venus les croquis papier pour explorer les formes typographiques, avant d'ouvrir Illustrator pour la vectorisation finale.</p>
+    <section class="section">
+        <h2>Du croquis au vecteur</h2>
+        <p class="section-intro">Tout a commencé par une planche de tendance pour fixer la direction artistique : urbaine et groovy, résolument moderne. Les croquis papier sont venus ensuite, pour chercher les formes typographiques, avant la vectorisation sous Illustrator.</p>
 
         <div class="projects-grid projects-grid--duo">
             <div class="project-card">
-                <img loading="lazy" decoding="async" src="../images/projets/mojo-tunes/moodboard.webp" alt="Planche de tendance Mojo Tunes">
-                <h3>Planche de Tendance</h3>
-                <p>Definition de l'univers colorimetrique et stylistique. References visuelles, typos, ambiances.</p>
+                <img loading="lazy" decoding="async" src="../images/projets/mojo-tunes/moodboard.webp" alt="Planche de tendance Mojo Tunes" width="800" height="450">
+                <h3>Planche de tendance</h3>
+                <p>Direction colorimétrique et stylistique : références visuelles, typographies, ambiances.</p>
             </div>
             <div class="project-card">
-                <img class="media-16x9" loading="lazy" decoding="async" src="../images/projets/mojo-tunes/esquisses.webp" alt="Esquisses de recherche graphique Mojo Tunes">
-                <h3>Recherches &amp; Esquisses</h3>
-                <p>Exploration papier des formes du logo, des lettres, du rythme visuel avant vectorisation.</p>
+                <img class="media-16x9" loading="lazy" decoding="async" src="../images/projets/mojo-tunes/esquisses.webp" alt="Esquisses de recherche graphique Mojo Tunes" width="720" height="1013">
+                <h3>Recherches &amp; esquisses</h3>
+                <p>Formes du logo, dessin des lettres, rythme visuel : tout se cherche sur papier avant le vecteur.</p>
             </div>
         </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-        <h2>Rendu Final, Charte Graphique</h2>
-        <p class="section-intro section-intro--tight">Le livret complet de presentation du rebranding : declinaisons du logo, typographie, palette de couleurs, et mockups de mise en situation.</p>
+    <section class="section">
+        <h2>Rendu final &amp; charte graphique</h2>
+        <p class="section-intro section-intro--tight">Le livret complet du rebranding : déclinaisons du logo, typographies, palette de couleurs et mises en situation.</p>
         <div class="pdf-viewer-container">
-            <iframe src="../docs/projets/mojo-tunes/Rendu_final_S103.pdf" class="pdf-iframe" title="Rendu Final Charte Graphique Mojo Tunes">
-                <p>Votre navigateur ne supporte pas l'affichage PDF. <a href="../docs/projets/mojo-tunes/Rendu_final_S103.pdf">Telechargez le fichier ici</a>.</p>
+            <iframe src="../docs/projets/mojo-tunes/Rendu_final_S103.pdf" class="pdf-iframe" title="Charte graphique Mojo Tunes, rendu final">
+                <p>Votre navigateur ne supporte pas l'affichage PDF. <a href="../docs/projets/mojo-tunes/Rendu_final_S103.pdf">Téléchargez le fichier ici</a>.</p>
             </iframe>
         </div>
+        <a class="case-download" href="../docs/projets/mojo-tunes/Rendu_final_S103.pdf" target="_blank" rel="noopener noreferrer">Ouvrir le PDF <span aria-hidden="true">↗</span></a>
     </section>
 
-    <section class="section" data-aos="fade-up">
-        <h2>Bilan &amp; Apprentissages</h2>
+    <section class="section">
+        <h2>Bilan &amp; apprentissages</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>La difficulte principale etait de moderniser sans denaturer. Mojo Tunes a une personnalite : trop "propre" et elle disparait, trop "vintage" et elle stagne. Trouver ce point d'equilibre m'a oblige a iterer beaucoup plus que prevu sur les croquis avant meme d'allumer Illustrator.</p>
-                <p>Ce projet m'a ancre dans une habitude de travail que j'ai gardee : ne pas ouvrir le logiciel avant d'avoir une direction claire sur papier. La vitesse de vectorisation augmente quand la reflexion a precede l'execution.</p>
+                <p>La vraie difficulté était de moderniser sans dénaturer. Mojo Tunes a une personnalité : trop "propre", elle disparaît ; trop "vintage", elle stagne. Trouver cet équilibre m'a fait retoucher les croquis bien plus longtemps que prévu, avant même d'ouvrir Illustrator.</p>
+                <p>J'en ai gardé une habitude : ne pas lancer le logiciel avant d'avoir une direction claire sur papier. La vectorisation va plus vite quand la réflexion est déjà passée par là.</p>
 
                 <ul class="about-details">
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC13.02. Produire des pistes graphiques et des planches d'inspiration</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC13.03. Creer, composer et retoucher des visuels</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC11.04. Analyser la situation de communication</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> AC12.01. Concevoir un produit ou un service de communication visuelle</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC13.02. Produire des pistes graphiques et des planches d'inspiration</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC13.03. Créer, composer et retoucher des visuels</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC11.04. Analyser la situation de communication</li>
+                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC12.01. Concevoir un produit ou un service de communication visuelle</li>
                 </ul>
             </div>
         </div>
@@ -123,16 +125,15 @@
 
     </main>
 
-    <div class="back-nav">
-        <a href="../index.html#work">&#8592; Projets</a>
-    </div>
+    <nav class="case-next" aria-label="Continuer la visite">
+      <a href="star-wars" class="case-next-link"><span>Projet suivant / 03</span><strong>Star Wars</strong><span>Découvrir <b aria-hidden="true">↗</b></span></a>
+      <a href="/#work" class="case-next-back">← Retour à la sélection</a>
+    </nav>
 
     <footer>
-        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits reserves.</p>
+        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits réservés.</p>
     </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="../js/shared.js" defer></script>
-    <script>document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:800,once:true});});</script>
+    <script src="../js/shader.js" defer></script>
 </body>
 </html>

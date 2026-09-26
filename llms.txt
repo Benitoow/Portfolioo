@@ -2,7 +2,7 @@
 
 Portfolio personnel de Benjamin Leleu, étudiant en deuxième année de BUT MMI, parcours Création numérique, à l'IUT de Vélizy (UVSQ). Le site présente des projets web, des créations numériques, du branding, de l'audiovisuel et des travaux liés au développement front-end.
 
-Benjamin Leleu recherche un job étudiant le samedi ou le dimanche, dans la limite de 8 heures par semaine. Secteurs privilégiés : cinéma, technologie, informatique, audiovisuel, photo, audio, jeux vidéo, loisirs immersifs et accueil culturel.
+Son parcours relie le développement web, le design et l'audiovisuel, après des études en informatique à Lille et une première année de MMI à Troyes. Le portfolio présente des travaux scolaires et personnels.
 
 ## Parcours
 
@@ -18,16 +18,11 @@ Benjamin Leleu recherche un job étudiant le samedi ou le dimanche, dans la limi
 
 ## Projets
 
-- [Kaobucha](https://benjaminleleu.fr/projets/kaobucha.html) — identité visuelle et branding d’une boisson énergisante naturelle.
-- [Mojo Tunes](https://benjaminleleu.fr/projets/mojo-tunes.html) — projet lié à l’univers musical et à la conception web.
-- [Star Wars](https://benjaminleleu.fr/projets/star-wars.html) — projet créatif inspiré de l’univers Star Wars.
-- [Podcast](https://benjaminleleu.fr/projets/podcast.html) — projet autour d’un podcast et de sa présentation.
-- [Site Web CapCom](https://benjaminleleu.fr/projets/SiteWebCapCom.html) — site pour une plateforme de covoiturage.
-- [Site Vente PC](https://benjaminleleu.fr/projets/SiteVentePC.html) — boutique e-commerce avec panier dynamique.
-- [Hypnothérapie](https://benjaminleleu.fr/projets/hypnotherapie.html) — site vitrine professionnel responsive.
-- [AI Aimbot](https://benjaminleleu.fr/projets/AIAimbot.html) — projet éducatif autour de la vision par ordinateur.
-- [CoC Bot](https://benjaminleleu.fr/projets/CoCBot.html) — projet de bot pour Clash of Clans.
-- [Site Coiffure](https://benjaminleleu.fr/projets/sitecoiffure.html) — site vitrine avec prise de contact/rendez-vous.
+- [Kaobucha](https://benjaminleleu.fr/projets/kaobucha) — identité visuelle et branding d’une boisson énergisante naturelle.
+- [Mojo Tunes](https://benjaminleleu.fr/projets/mojo-tunes) — projet lié à l’univers musical et à la conception web.
+- [Star Wars](https://benjaminleleu.fr/projets/star-wars) — projet créatif inspiré de l’univers Star Wars.
+- [Podcast](https://benjaminleleu.fr/projets/podcast) — projet autour d’un podcast et de sa présentation.
+- [Site Coiffure](https://benjaminleleu.fr/projets/sitecoiffure) — site client d'un salon de coiffure, en production depuis 2024.
 
 ## Notes utiles
 
