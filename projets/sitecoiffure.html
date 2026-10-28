@@ -7,7 +7,7 @@
     <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../css/tokens.css">
-    <link rel="stylesheet" href="../css/projet-pages.css">
+    <link rel="stylesheet" href="../css/projet-pages.css?v=c284e19465">
     <meta name="description" content="Le site du salon Aux Ptits Soins Coiffure : prestations, tarifs, galerie, contact et prise de rendez-vous en ligne.">
     <link rel="canonical" href="https://benjaminleleu.fr/projets/sitecoiffure">
     <meta property="og:title" content="Aux Ptits Soins Coiffure : site vitrine">
@@ -30,110 +30,115 @@
       }
     </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#1E1B18">
+
 </head>
-<body class="case-study case-study--sitecoiffure" style="--shader-rgb: 221 163 143">
+<body class="case-study case-study--sitecoiffure">
+    <div class="case-atmosphere" aria-hidden="true"></div>
     <canvas class="shader-canvas" aria-hidden="true"></canvas>
     <a class="case-skip-link" href="#contenu">Aller au contenu du projet</a>
-    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-    <nav class="navbar" aria-label="Navigation du projet">
-            <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
-            <span class="case-nav-index">Étude de cas / 05</span>
-            <a class="case-nav-back" href="/#work">Tous les projets <span aria-hidden="true">↗</span></a>
-        </nav>
-    <header class="hero" style="--hero-image: url('../Projet/Perso/sitecoiff.webp')">
-
-        <div class="case-hero-art" aria-hidden="true"><img src="../Projet/Perso/sitecoiff.webp" alt="" width="1920" height="1026"></div>
-        <div class="hero-content">
-            <p class="case-kicker">05 / Site client</p>
-            <h1>Aux Ptits Soins Coiffure <svg class="icon" aria-hidden="true"><use href="../images/icons.svg#cut"></use></svg></h1>
-            <p class="subtitle">Mon premier client : un salon de coiffure indépendant. Mis en ligne en 2024, je le maintiens depuis.</p>
-            <div class="case-hero-facts"><span>Conception &amp; suivi</span><span>En ligne depuis 2024</span></div>
-            <div class="project-meta-links">
-                <a href="https://auxptitsoinscoiffure.fr/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#external-link-alt"></use></svg> site en ligne</a>
-            </div>
-        </div>
-    </header>
-
-    <main id="contenu">
-    <div class="case-ledger" aria-label="Repères du projet">
-      <div><span>Discipline</span><strong>Site client</strong></div>
-      <div><span>Mon rôle</span><strong>Conception &amp; suivi</strong></div>
-      <div><span>Cadre</span><strong>En ligne depuis 2024</strong></div>
-    </div>
-    <section class="section">
-        <h2>Contexte &amp; Objectifs</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>La cliente est coiffeuse indépendante. Elle voulait développer sa clientèle en ligne et permettre la prise de rendez-vous depuis son site. Pas de site existant, pas de gros budget. J'ai conçu et développé le projet de bout en bout, puis depuis la mise en ligne en 2024, je garde la <strong>maintenance, les évolutions et le support technique</strong>.</p>
-                <p>La différence avec mes projets d'école tient en un mot : le site est en <strong>production</strong>. Une erreur touche directement les rendez-vous de la cliente. Je teste et je déploie donc autrement, et je préviens avant chaque changement.</p>
-
-                <ul class="about-details">
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#user-tie"></use></svg> Client : coiffeuse indépendante, salon de coiffure</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#calendar-alt"></use></svg> En production depuis 2024, maintenance continue</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#laptop-code"></use></svg> Rôle : conception, développement et maintenance</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#bullseye"></use></svg> Enjeu : visibilité en ligne et prise de rendez-vous</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#tools"></use></svg> Stack : HTML5, CSS3, JavaScript</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <aside class="case-note"><span>Le fil du projet</span><p>Un site né d'une activité réelle, que j'entretiens au fil de ses besoins.</p></aside>
-
-    <section class="section">
-        <h2>Aperçu du Site</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/nav-site-hair.webp" alt="Navigation principale" width="1600" height="756">
-                <h3>Navigation</h3>
-                <p>Un menu simple, lisible à tout âge.</p>
-            </div>
-            <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/Presta-femme-site-hair.webp" alt="Prestations femmes" width="1824" height="818">
-                <h3>Prestations et tarifs</h3>
-                <p>Chaque prestation avec son tarif, une photo et une description.</p>
-            </div>
-            <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/onco-site-hair.webp" alt="Coiffure oncologique" width="1872" height="872">
-                <h3>Coiffure oncologique</h3>
-                <p>Une page à part pour l'accompagnement des personnes en traitement.</p>
-            </div>
-            <div class="project-card">
-                <img loading="lazy" decoding="async" src="../Projet/Perso/contact-site-hair.webp" alt="Contact et localisation" width="1600" height="608">
-                <h3>Contact &amp; localisation</h3>
-                <p>Les informations pratiques et une prise de rendez-vous simplifiée.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Bilan &amp; Apprentissages</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Avec un vrai client, on apprend la relation autant que le code. Quand la demande arrive sous la forme « je veux quelque chose de beau et moderne », il faut la traduire en points précis, puis expliquer les contraintes techniques sans jargon. Et gérer les demandes de modification qui tombent après la mise en ligne.</p>
-                <p>La maintenance m'a appris autre chose : écrire du code lisible et documenté. Pas pour aujourd'hui, pour celui que je serai dans six mois, quand il faudra modifier une page vite sans casser le reste.</p>
-
-                <ul class="about-details">
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> Un projet client mené de A à Z, du recueil du besoin au suivi</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> Un design adapté à un secteur et à une clientèle donnés</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> Maintenance et versioning d'un site en production</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> Expliquer la technique à une cliente qui ne l'est pas</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    </main>
-
-    <nav class="case-next" aria-label="Continuer la visite">
-      <a href="kaobucha" class="case-next-link"><span>Projet suivant / 01</span><strong>Kaobucha</strong><span>Découvrir <b aria-hidden="true">↗</b></span></a>
-      <a href="/#work" class="case-next-back">← Retour à la sélection</a>
+    <nav class="case-nav" aria-label="Navigation du projet">
+      <div class="case-shell case-nav__inner">
+        <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
+        <span class="case-nav__index">Carnet de projets / 05 — 05</span>
+        <a class="case-nav__back" href="/#work"><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-arrow-left"></use></svg></span> Tous les projets</a>
+      </div>
     </nav>
 
-    <footer>
-        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits réservés.</p>
+    <main id="contenu" class="case-shell" tabindex="-1">
+      <header class="case-hero">
+        <div class="case-hero__grid">
+          <div class="case-hero__copy">
+            <p class="eyebrow">Projet 05 <span>/ Site client</span></p>
+            <h1 class="hero-title--long">Aux P’tits<br>Soins Coiffure<span>.</span></h1>
+            <p class="hero-annotation">Un salon, côté web.</p>
+            <p class="hero-description">Mon premier projet client : concevoir le site d’une coiffeuse indépendante, le mettre en ligne et en assurer le suivi.</p>
+            <div class="hero-actions"><a class="case-button" href="https://auxptitsoinscoiffure.fr/" target="_blank" rel="noopener noreferrer">Visiter le site<span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></a><a class="case-text-link" href="#realisations">Voir les captures<span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-arrow-down"></use></svg></span></a></div>
+          </div>
+          <div class="hero-collage" aria-label="Visuels du projet">
+            <figure class="hero-print hero-print--main hero-print--screen">
+              <a href="../Projet/Perso/sitecoiff.webp" data-lightbox data-caption="01 / Le site du salon" aria-label="Agrandir : Aperçu du site Aux P’tits Soins Coiffure"><img src="../Projet/Perso/sitecoiff.webp" alt="Aperçu du site Aux P’tits Soins Coiffure" width="1600" height="916" fetchpriority="high" decoding="async"></a>
+              <figcaption><span>01 / Le site du salon</span><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></figcaption>
+            </figure><figure class="hero-print hero-print--detail hero-print--screen">
+              <a href="../Projet/Perso/Presta-femme-site-hair.webp" data-lightbox data-caption="02 / Les prestations" aria-label="Agrandir : Aperçu des prestations de coiffure et de leurs tarifs"><img src="../Projet/Perso/Presta-femme-site-hair.webp" alt="Aperçu des prestations de coiffure et de leurs tarifs" width="1824" height="818" loading="eager" decoding="async"></a>
+              <figcaption><span>02 / Les prestations</span><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></figcaption>
+            </figure>
+            <p class="hero-margin"><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-arrow-right"></use></svg></span>Conception, développement &amp; maintenance</p>
+          </div>
+        </div>
+        <dl class="case-facts" aria-label="Repères du projet"><div><dt>Mon rôle</dt><dd>Conception · Développement · Suivi</dd></div><div><dt>Cadre</dt><dd>Projet client indépendant</dd></div><div><dt>Depuis</dt><dd>Première mise en ligne en 2024</dd></div><div><dt>Technologies</dt><dd>HTML · CSS · JavaScript</dd></div></dl>
+      </header>
+
+      <section class="case-section case-story">
+        <div><p class="eyebrow">01 <span>/ La demande</span></p><h2>Un salon.<br><em>Une présence en ligne.</em></h2></div>
+        <div class="story-copy"><p>Une coiffeuse indépendante voulait présenter son activité et faciliter la prise de rendez-vous. J’ai conçu et développé son site, puis assuré son suivi après la mise en ligne en <strong>2024</strong>.</p><p>Le projet comprend la présentation des prestations et des tarifs, une partie consacrée à la coiffure oncologique et les informations pratiques pour contacter le salon.</p>
+
+        </div>
+      </section>
+<section class="case-section" id="realisations" tabindex="-1">
+        <div class="section-heading">
+          <div><p class="eyebrow">02 <span>/ Le site en images</span></p><h2>Pensé pour<br><em>les clientes du salon.</em></h2></div>
+          <p>Les captures peuvent être agrandies. Le site se consulte aussi directement depuis le lien en haut de page.</p>
+        </div>
+        <div class="gallery gallery--duo gallery--screens"><figure class="project-image ">
+          <a href="../Projet/Perso/sitecoiff.webp" data-lightbox data-caption="Un aperçu du site" aria-label="Agrandir : Capture du site Aux P’tits Soins : présentation des prothèses capillaires et accès au rendez-vous"><img src="../Projet/Perso/sitecoiff.webp" alt="Capture du site Aux P’tits Soins : présentation des prothèses capillaires et accès au rendez-vous" width="1600" height="916" loading="lazy" decoding="async"><span class="image-zoom" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-zoom-in-area"></use></svg></span></a>
+          <figcaption><span class="figure-number">01</span><span><strong>Un aperçu du site</strong>L’activité du salon et les moyens de prendre contact.</span></figcaption>
+        </figure><figure class="project-image ">
+          <a href="../Projet/Perso/nav-site-hair.webp" data-lightbox data-caption="Se repérer" aria-label="Agrandir : Capture de la navigation du site du salon"><img src="../Projet/Perso/nav-site-hair.webp" alt="Capture de la navigation du site du salon" width="1600" height="756" loading="lazy" decoding="async"><span class="image-zoom" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-zoom-in-area"></use></svg></span></a>
+          <figcaption><span class="figure-number">02</span><span><strong>Se repérer</strong>Une navigation qui va aux informations utiles.</span></figcaption>
+        </figure><figure class="project-image ">
+          <a href="../Projet/Perso/Presta-femme-site-hair.webp" data-lightbox data-caption="Choisir une prestation" aria-label="Agrandir : Capture des prestations et des tarifs de coiffure"><img src="../Projet/Perso/Presta-femme-site-hair.webp" alt="Capture des prestations et des tarifs de coiffure" width="1824" height="818" loading="lazy" decoding="async"><span class="image-zoom" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-zoom-in-area"></use></svg></span></a>
+          <figcaption><span class="figure-number">03</span><span><strong>Choisir une prestation</strong>Les services et leurs tarifs.</span></figcaption>
+        </figure><figure class="project-image ">
+          <a href="../Projet/Perso/onco-site-hair.webp" data-lightbox data-caption="Un accompagnement spécifique" aria-label="Agrandir : Capture de la page dédiée à la coiffure oncologique"><img src="../Projet/Perso/onco-site-hair.webp" alt="Capture de la page dédiée à la coiffure oncologique" width="1872" height="872" loading="lazy" decoding="async"><span class="image-zoom" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-zoom-in-area"></use></svg></span></a>
+          <figcaption><span class="figure-number">04</span><span><strong>Un accompagnement spécifique</strong>Une page dédiée aux personnes en traitement.</span></figcaption>
+        </figure><figure class="project-image ">
+          <a href="../Projet/Perso/contact-site-hair.webp" data-lightbox data-caption="Trouver le salon" aria-label="Agrandir : Capture des informations de contact et de localisation du salon"><img src="../Projet/Perso/contact-site-hair.webp" alt="Capture des informations de contact et de localisation du salon" width="1600" height="608" loading="lazy" decoding="async"><span class="image-zoom" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-zoom-in-area"></use></svg></span></a>
+          <figcaption><span class="figure-number">05</span><span><strong>Trouver le salon</strong>Les coordonnées et les informations pratiques.</span></figcaption>
+        </figure></div>
+      </section>
+<section class="case-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">03 <span>/ Les repères</span></p><h2>Le projet, <em>en quelques faits.</em></h2></div>
+
+        </div>
+        <div class="case-numbers">
+          <div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-calendar-03"></use></svg><p class="case-stat__value">2024</p><p class="stat-label">Première mise en ligne</p></div><div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-user-group"></use></svg><p class="case-stat__value">01</p><p class="stat-label">Cliente · Coiffeuse indépendante</p></div><div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-code"></use></svg><p class="case-stat__value">03</p><p class="stat-label">Technologies · HTML, CSS, JavaScript</p></div><div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-tools"></use></svg><p class="case-stat__value">Suivi</p><p class="stat-label">Maintenance et évolutions</p></div>
+          <aside class="case-role"><span class="eyebrow">Ma contribution</span><span class="case-role__mark" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-globe-02"></use></svg></span><div><h3>Concevoir. Développer. Suivre.</h3><p>Recueil du besoin, conception, développement, mise en ligne et support technique.</p></div></aside>
+        </div>
+      </section>
+<section class="case-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">04 <span>/ Le suivi</span></p><h2>Le projet continue<br><em>après la mise en ligne.</em></h2></div>
+
+        </div>
+        <ol class="process-list"><li><span class="process-list__number" aria-hidden="true">01</span><h3>Comprendre la demande</h3><p>Traduire les besoins de la cliente en pages et en fonctionnalités concrètes, avec des explications accessibles.</p></li><li><span class="process-list__number" aria-hidden="true">02</span><h3>Construire le site</h3><p>Intégrer l’identité du salon, ses prestations et ses informations pratiques en HTML, CSS et JavaScript.</p></li><li><span class="process-list__number" aria-hidden="true">03</span><h3>Assurer la suite</h3><p>Maintenir le site, répondre aux demandes d’évolution et prévenir la cliente avant les changements en production.</p></li></ol>
+      </section>
+<section class="case-section case-story">
+        <div><p class="eyebrow">05 <span>/ Ce que j’en garde</span></p><h2>Le code compte.<br><em>La relation aussi.</em></h2></div>
+        <div class="story-copy"><p>Une demande comme « je veux quelque chose de beau et moderne » oblige à poser des questions précises. Le travail commence là, avant les choix de couleurs et l’intégration.</p><p>La maintenance m’a appris à garder un code lisible. Quand il faut reprendre une page plusieurs mois plus tard, on apprécie de retrouver ses repères.</p>
+          <blockquote class="story-note">Un premier projet client, avec une responsabilité qui dure.</blockquote>
+        </div>
+      </section>
+    </main>
+
+    <nav class="case-next case-shell" aria-label="Continuer la visite">
+      <p class="case-next__label">La suite du carnet / Projet 01</p>
+      <a href="/projets/kaobucha" class="case-next__link">
+        <img class="case-next__image" src="../images/projets/kaobucha/mockup-mango.webp" alt="" width="96" height="80" loading="lazy" decoding="async">
+        <strong>Kaobucha</strong><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span>
+      </a>
+      <a href="/#work" class="case-text-link case-next__back">Retour à la sélection <span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></a>
+    </nav>
+
+    <footer class="case-footer case-shell">
+      <p>© <span id="footer-year">2026</span> Benjamin Leleu</p>
+      <p>Création numérique · Web · Audiovisuel</p>
     </footer>
-    <script src="../js/shared.js" defer></script>
+    <script src="../js/shared.js?v=a4e8303ff9" defer></script>
     <script src="../js/shader.js" defer></script>
+    <script src="../js/projet-pages.js?v=790d49932a" defer></script>
 </body>
 </html>

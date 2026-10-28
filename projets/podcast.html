@@ -7,7 +7,7 @@
     <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../css/tokens.css">
-    <link rel="stylesheet" href="../css/projet-pages.css">
+    <link rel="stylesheet" href="../css/projet-pages.css?v=c284e19465">
     <meta name="description" content="Écriture et réalisation d'une fiction sonore entre horreur et humour : script, enregistrement en studio, montage et sound design.">
     <link rel="canonical" href="https://benjaminleleu.fr/projets/podcast">
     <meta property="og:title" content="Fiction sonore : horreur et humour">
@@ -30,116 +30,117 @@
       }
     </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#1E1B18">
+
 </head>
-<body class="case-study case-study--podcast" style="--shader-rgb: 203 119 113">
+<body class="case-study case-study--podcast">
+    <div class="case-atmosphere" aria-hidden="true"></div>
     <canvas class="shader-canvas" aria-hidden="true"></canvas>
     <a class="case-skip-link" href="#contenu">Aller au contenu du projet</a>
-    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-    <nav class="navbar" aria-label="Navigation du projet">
-            <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
-            <span class="case-nav-index">Étude de cas / 04</span>
-            <a class="case-nav-back" href="/#work">Tous les projets <span aria-hidden="true">↗</span></a>
-        </nav>
-    <header class="hero" style="--hero-image: url('../images/projets/podcast/Affiche_Podcast.webp')">
-
-        <div class="case-hero-art" aria-hidden="true"><img src="../images/projets/podcast/Affiche_Podcast.webp" alt="" width="800" height="800"></div>
-        <div class="hero-content">
-            <p class="case-kicker">04 / Création sonore</p>
-            <h1>Une fiction sonore entre horreur et comédie <svg class="icon" aria-hidden="true"><use href="../images/icons.svg#headphones"></use></svg></h1>
-            <p class="subtitle">Écrire un récit qui fait peur et rire à la fois, puis le fabriquer de bout en bout en studio.</p>
-            <div class="case-hero-facts"><span>Scénario &amp; montage</span><span>Projet collectif · BUT MMI</span></div>
-        </div>
-    </header>
-
-    <main id="contenu">
-    <div class="case-ledger" aria-label="Repères du projet">
-      <div><span>Discipline</span><strong>Création sonore</strong></div>
-      <div><span>Mon rôle</span><strong>Scénario &amp; montage</strong></div>
-      <div><span>Cadre</span><strong>Projet collectif · BUT MMI</strong></div>
-    </div>
-    <section class="section">
-        <h2>Contexte et objectifs</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>En première année de BUT MMI à l'IUT de Troyes (Université de Reims Champagne-Ardenne), ce projet demandait une fiction sonore complète, avec une contrainte : mélanger les codes de l'<strong>horreur</strong> et ceux de la <strong>comédie</strong>. Sur le papier, les deux registres se repoussent. Bien dosés, ils peuvent donner quelque chose de mémorable.</p>
-                <p>J'ai suivi toute la chaîne de production : écriture du script, captation en salle d'enregistrement avec le matériel de l'IUT, puis montage et sound design en post-production.</p>
-
-                <ul class="about-details">
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#university"></use></svg> 1re année de BUT MMI, IUT de Troyes (URCA)</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#calendar-alt"></use></svg> S1 2025-2026, projet de groupe</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#microphone"></use></svg> Rôle : scénariste &amp; monteur son</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#theater-masks"></use></svg> Enjeu : faire cohabiter horreur et humour</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#tools"></use></svg> Outils : Adobe Audition et le studio de l'IUT</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <aside class="case-note"><span>Le fil du projet</span><p>Ici, le rythme du montage raconte autant que les dialogues.</p></aside>
-
-    <section class="section" id="audio-player">
-        <h2>Écouter l'épisode</h2>
-        <p class="section-intro section-intro--center">Le mixage et la spatialisation méritent un casque.</p>
-
-        <div class="audio-card">
-            <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#microphone-lines"></use></svg></div>
-            <h3>"Le Dernier Face à Face"</h3>
-            <audio class="audio-player" controls>
-                <source src="../audios/projets/podcast/podcast-horreur-humour.mp3" type="audio/mpeg">
-                Votre navigateur ne supporte pas le lecteur audio.
-            </audio>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Démarche et production</h2>
-        <div class="projects-grid">
-            <div class="project-card project-card--centered">
-                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#pen-nib"></use></svg></div>
-                <h3>Écriture</h3>
-                <p>J'ai écrit les dialogues en pensant déjà au rythme, aux silences et aux « punchlines » glissées au milieu des scènes de tension.</p>
-            </div>
-            <div class="project-card project-card--centered">
-                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#record-vinyl"></use></svg></div>
-                <h3>Enregistrement</h3>
-                <p>Studio de l'IUT, microphones directionnels : des voix nettes, sans réverbération parasite, tout près de l'oreille.</p>
-            </div>
-            <div class="project-card project-card--centered">
-                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#sliders-h"></use></svg></div>
-                <h3>Sound design</h3>
-                <p>Mixage des voix et bruitages libres de droits posés à des moments précis, pour appuyer tantôt la tension, tantôt l'absurde.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Bilan et apprentissages</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Le défi était moins technique que narratif : trouver le ton. Trop d'humour et la peur s'efface, trop d'horreur et les blagues tombent à plat. Nous avons résolu le problème en écrivant les scènes de comédie comme des scènes sérieuses, et en laissant le décalage faire le reste.</p>
-                <p>Techniquement, j'ai surtout appris que la qualité d'un podcast se joue au montage. Une respiration mal coupée, un silence trop long, un bruitage au mauvais moment, et l'auditeur décroche. Ce projet m'a rendu attentif à ces détails.</p>
-
-                <ul class="about-details">
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC15.01. Concevoir un contenu sonore original</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC15.02. Réaliser une production sonore</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC13.01. Écrire pour les médias socionumériques</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC11.02. Analyser les spécificités du public cible</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    </main>
-
-    <nav class="case-next" aria-label="Continuer la visite">
-      <a href="sitecoiffure" class="case-next-link"><span>Projet suivant / 05</span><strong>Aux P'tits Soins Coiffure</strong><span>Voir le projet <b aria-hidden="true">↗</b></span></a>
-      <a href="/#work" class="case-next-back">← Retour à la sélection</a>
+    <nav class="case-nav" aria-label="Navigation du projet">
+      <div class="case-shell case-nav__inner">
+        <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
+        <span class="case-nav__index">Carnet de projets / 04 — 05</span>
+        <a class="case-nav__back" href="/#work"><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-arrow-left"></use></svg></span> Tous les projets</a>
+      </div>
     </nav>
 
-    <footer>
-        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits réservés.</p>
+    <main id="contenu" class="case-shell" tabindex="-1">
+      <header class="case-hero">
+        <div class="case-hero__grid">
+          <div class="case-hero__copy">
+            <p class="eyebrow">Projet 04 <span>/ Création sonore</span></p>
+            <h1 class="hero-title--long">Le Dernier<br>Face à Face<span>.</span></h1>
+            <p class="hero-annotation">Une histoire à écouter.</p>
+            <p class="hero-description">Une fiction sonore entre horreur et humour. Du scénario au mixage, le récit se construit sans une seule image à l’écran.</p>
+            <div class="hero-actions"><a class="case-button" href="#ecouter">Écouter la fiction<span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-arrow-down"></use></svg></span></a><a class="case-text-link" href="#fichiers">Les fichiers<span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-arrow-down"></use></svg></span></a></div>
+          </div>
+          <div class="hero-collage" aria-label="Visuels du projet">
+            <figure class="hero-print hero-print--main ">
+              <a href="../images/projets/podcast/Affiche_Podcast.webp" data-lightbox data-caption="01 / L’affiche" aria-label="Agrandir : Affiche du Dernier Face à Face, entre horreur et quotidien"><img src="../images/projets/podcast/Affiche_Podcast.webp" alt="Affiche du Dernier Face à Face, entre horreur et quotidien" width="800" height="800" fetchpriority="high" decoding="async"></a>
+              <figcaption><span>01 / L’affiche</span><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></figcaption>
+            </figure><div class="sound-slip"><span>Le Dernier Face à Face / MP3</span><div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><a href="#ecouter">Écouter la fiction <span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-play"></use></svg></span></a></div>
+            <p class="hero-margin"><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-arrow-right"></use></svg></span>À écouter au casque</p>
+          </div>
+        </div>
+        <dl class="case-facts" aria-label="Repères du projet"><div><dt>Mon rôle</dt><dd>Scénario &amp; montage son</dd></div><div><dt>Cadre</dt><dd>Projet collectif · BUT MMI</dd></div><div><dt>Période</dt><dd>2025–2026 · Semestre 1</dd></div><div><dt>Outils</dt><dd>Adobe Audition · Studio IUT</dd></div></dl>
+      </header>
+
+      <section class="case-section" id="ecouter" tabindex="-1">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 <span>/ L’écoute</span></p><h2>L’histoire se passe<br><em>dans les oreilles.</em></h2></div>
+          <p>Le résultat d’abord. Le récit, les voix et les bruitages portent toute la scène.</p>
+        </div>
+        <div class="audio-session">
+          <figure class="audio-session__art"><img src="../images/projets/podcast/Affiche_Podcast.webp" alt="Affiche du Dernier Face à Face, entre chambre inquiétante et scène du quotidien" width="800" height="800" loading="lazy" decoding="async"></figure>
+          <div><p class="eyebrow">Fiction sonore <span>/ Horreur &amp; humour</span></p><h3>Le Dernier Face à Face</h3><p class="audio-session__hint">À écouter au casque pour les voix, le mixage et la spatialisation.</p>
+            <audio src="../audios/projets/podcast/podcast-horreur-humour.mp3" controls preload="metadata" aria-label="Écouter Le Dernier Face à Face">Votre navigateur ne prend pas en charge la lecture audio.</audio>
+            <p class="audio-error" id="audio-error" hidden role="status">La lecture n’a pas pu démarrer. Tu peux ouvrir ou télécharger le fichier MP3 ci-dessous.</p>
+            <a class="case-text-link" href="../audios/projets/podcast/podcast-horreur-humour.mp3" target="_blank" rel="noopener noreferrer">Ouvrir le MP3 à part <span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></a>
+          </div>
+        </div>
+      </section>
+<section class="case-section case-story">
+        <div><p class="eyebrow">02 <span>/ Le brief</span></p><h2>Faire peur.<br><em>Et laisser rire.</em></h2></div>
+        <div class="story-copy"><p>Ce projet collectif de première année de BUT MMI demandait une fiction sonore qui mélange l’horreur et la comédie. J’y ai participé comme <strong>scénariste et monteur son</strong>.</p><p>Nous avons écrit le script, enregistré les voix dans le studio de l’IUT de Troyes, puis construit le récit au montage avec Adobe Audition.</p>
+          <blockquote class="story-note">Un silence, une coupe ou un bruitage peuvent changer le sens d’une réplique.</blockquote>
+        </div>
+      </section>
+<section class="case-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">03 <span>/ Les repères</span></p><h2>Le projet, <em>en quelques faits.</em></h2></div>
+
+        </div>
+        <div class="case-numbers">
+          <div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-headphones"></use></svg><p class="case-stat__value">02</p><p class="stat-label">Registres · Horreur et comédie</p></div><div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-music-note-03"></use></svg><p class="case-stat__value">03</p><p class="stat-label">Étapes · Écriture, captation, montage</p></div><div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-user-group"></use></svg><p class="case-stat__value">S1</p><p class="stat-label">Projet collectif · BUT MMI · 2025–2026</p></div><div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-headphones"></use></svg><p class="case-stat__value">IUT</p><p class="stat-label">Studio d’enregistrement · Troyes</p></div>
+          <aside class="case-role"><span class="eyebrow">Ma contribution</span><span class="case-role__mark" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-headphones"></use></svg></span><div><h3>Écrire, puis faire entendre.</h3><p>Scénario, montage des voix et sound design sous Adobe Audition.</p></div></aside>
+        </div>
+      </section>
+<section class="case-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">04 <span>/ La fabrication</span></p><h2>Donner un rythme<br><em>à l’invisible.</em></h2></div>
+
+        </div>
+        <ol class="process-list"><li><span class="process-list__number" aria-hidden="true">01</span><h3>Écrire pour l’oreille</h3><p>Les dialogues ont été pensés avec leurs silences et leurs ruptures de rythme. L’humour devait trouver sa place dans les scènes de tension.</p></li><li><span class="process-list__number" aria-hidden="true">02</span><h3>Enregistrer les voix</h3><p>La captation a eu lieu dans le studio de l’IUT avec des microphones directionnels, pour obtenir des voix nettes et proches.</p></li><li><span class="process-list__number" aria-hidden="true">03</span><h3>Monter et mixer</h3><p>Les voix et les bruitages libres de droits ont été assemblés pour appuyer la tension ou le décalage. Le placement d’un son comptait autant que son choix.</p></li></ol>
+      </section>
+<section class="case-section case-resources" id="fichiers" tabindex="-1">
+        <div class="resource-heading"><p class="eyebrow">05 <span>/ Les fichiers</span></p><h2>À ouvrir.<br><em>À garder.</em></h2><p>La fiction complète et son affiche, à récupérer séparément.</p></div>
+        <div class="file-list"><a class="file-link" href="../audios/projets/podcast/podcast-horreur-humour.mp3" download>
+            <span class="file-icon file-icon--audio" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-headphones"></use></svg><b>MP3</b></span>
+            <span class="file-link__text"><strong>Le Dernier Face à Face</strong><span class="file-meta">MP3 · 5,8 Mo · Télécharger</span></span>
+            <span class="file-link__arrow" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-download"></use></svg></span>
+          </a><a class="file-link" href="../images/projets/podcast/Affiche_Podcast.webp" download>
+            <span class="file-icon file-icon--image" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-image-02"></use></svg><b>WEBP</b></span>
+            <span class="file-link__text"><strong>Affiche de la fiction sonore</strong><span class="file-meta">WEBP · 35 Ko · Télécharger</span></span>
+            <span class="file-link__arrow" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-download"></use></svg></span>
+          </a></div>
+
+      </section>
+<section class="case-section case-story">
+        <div><p class="eyebrow">06 <span>/ Ce que j’en garde</span></p><h2>Le montage<br><em>donne le ton.</em></h2></div>
+        <div class="story-copy"><p>Nous avons écrit les scènes de comédie comme des scènes sérieuses, en laissant le décalage produire l’humour. C’était notre façon de garder une tension sans étouffer les blagues.</p><p>Une respiration coupée trop tôt ou un bruitage mal placé se remarque vite. Ce projet m’a appris à écouter ces détails et à reprendre les coupes jusqu’à trouver le rythme.</p>
+          <details class="learning-details"><summary>Compétences travaillées · BUT MMI</summary><ul><li>AC15.01 · Concevoir un contenu sonore original.</li><li>AC15.02 · Réaliser une production sonore.</li><li>AC13.01 · Écrire pour les médias socionumériques.</li><li>AC11.02 · Analyser les spécificités du public cible.</li></ul></details>
+        </div>
+      </section>
+    </main>
+
+    <nav class="case-next case-shell" aria-label="Continuer la visite">
+      <p class="case-next__label">La suite du carnet / Projet 05</p>
+      <a href="/projets/sitecoiffure" class="case-next__link">
+        <img class="case-next__image" src="../Projet/Perso/sitecoiff.webp" alt="" width="96" height="80" loading="lazy" decoding="async">
+        <strong>Aux P’tits Soins Coiffure</strong><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span>
+      </a>
+      <a href="/#work" class="case-text-link case-next__back">Retour à la sélection <span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></a>
+    </nav>
+
+    <footer class="case-footer case-shell">
+      <p>© <span id="footer-year">2026</span> Benjamin Leleu</p>
+      <p>Création numérique · Web · Audiovisuel</p>
     </footer>
-    <script src="../js/shared.js" defer></script>
+    <script src="../js/shared.js?v=a4e8303ff9" defer></script>
     <script src="../js/shader.js" defer></script>
+    <script src="../js/projet-pages.js?v=790d49932a" defer></script>
 </body>
 </html>

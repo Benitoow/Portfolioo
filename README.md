@@ -7,11 +7,11 @@ Portfolio personnel hébergé sur [benjaminleleu.fr](https://benjaminleleu.fr), 
 - HTML5 sémantique / CSS custom properties / JS ES2020, sans build
 - GSAP 3 + ScrollTrigger, servi localement (`js/vendor/`)
 - WebGL maison (`js/shader.js`) : reflets de lumière discrets, accueil et fiches
-- Icônes : sprite SVG local (`images/icons.svg`) — Font Awesome 6.5.1 Free pour les fiches, Heroicons 2.2 (trait) pour la mosaïque de compétences
+- Icônes : sprites SVG locaux — Hugeicons et Line MD pour les fiches (`images/project-icons.svg`, licences MIT dans `images/licenses/`), Heroicons 2.2 pour les compétences de l’accueil
 - Fonts : Playfair Display, DM Sans, Space Mono, auto-hébergées en woff2 (`fonts/`)
-- Œuf de pâques : un clic sur le logo lâche les ballons de `balloons-js` (MIT), embarqué dans `js/vendor/` et chargé au premier clic seulement
+- Logo : revient à l’accueil et y lance les ballons de `balloons-js` (MIT), embarqué dans `js/vendor/` et chargé au premier clic seulement ; mouvement réduit et économie de données respectés
 - Surface agent : `worker/index.js` renvoie la page en markdown quand la requête porte `Accept: text/markdown` (HTML par défaut, `Vary: Accept`), et `llms.txt` résume le site pour les agents
-- Hébergement : Cloudflare Pages
+- Hébergement : Cloudflare Workers avec assets statiques
 
 Aucune ressource n'est chargée depuis un domaine tiers : les polices, GSAP et les
 icônes viennent du site, ce qui supprime quatre origines du chemin critique et
@@ -45,6 +45,7 @@ laisse `_headers` piloter leur cache (polices un an, CSS/JS 30 jours).
 │   └── index.js            # Worker : sert les assets + négociation markdown
 ├── js/
 │   ├── shared.js           # Commun : curseur, défilement, barre de progression, année
+│   ├── projet-pages.js     # Fiches : agrandissement des visuels, repli audio
 │   ├── main.js             # Accueil : GSAP, vidéos de fond, menu mobile
 │   ├── coverflow.js        # Galerie des projets (clavier, molette, glisser)
 │   ├── shader.js           # Calque lumineux WebGL
@@ -54,7 +55,9 @@ laisse `_headers` piloter leur cache (polices un an, CSS/JS 30 jours).
 │   ├── posters/            # Affiches des vidéos de fond (1024x576)
 │   ├── thumbs/             # Vignettes du coverflow
 │   ├── projets/            # Visuels des fiches
-│   ├── icons.svg           # Sprite d'icônes des fiches projet
+│   ├── icons.svg           # Sprite d'icônes de l'accueil
+│   ├── project-icons.svg   # Hugeicons et Line MD pour les fiches
+│   ├── licenses/           # Notices MIT des icônes
 │   └── og-image.jpg        # Open Graph 1200x630
 ├── videos/                 # 4 boucles forêt (12 s) pour le fond de l'accueil
 ├── Projet/Perso/           # Captures du site client (coiffure)
@@ -75,7 +78,7 @@ et non un projet Cloudflare Pages : c'est la section `[assets]` de
 point d'entrée.
 
 ```
-npx wrangler deploy        # publie le Worker + les 47 fichiers statiques
+npx wrangler deploy        # publie le Worker et ses assets statiques
 ```
 
 Un `git push` **ne déploie pas** : GitHub Pages construit bien une copie du
@@ -86,6 +89,15 @@ et le déploiement est atomique : en cas d'échec, l'ancienne version reste en
 ligne).
 
 ## Aperçu local
+
+Les cinq fiches reprennent la palette et les polices de l’accueil. Leurs collages,
+galeries et cartes de fichiers sont en HTML/CSS, sans dépendance supplémentaire.
+Les images s’agrandissent dans un dialogue accessible (Échap pour fermer) ; sans
+JavaScript, les liens ouvrent directement les images. Les PDF restent accessibles
+par un lien et un aperçu dépliable des deux premières pages, servi en images pour
+fonctionner aussi sur mobile ; la fiction sonore utilise le lecteur natif.
+Le dialogue suspend le curseur personnalisé et restaure le pointeur natif ; le
+curseur personnalisé reprend au prochain mouvement après la fermeture.
 
 ```
 npx wrangler dev       # http://127.0.0.1:8787

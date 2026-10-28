@@ -25,28 +25,33 @@ function initScrollProgress() {
   // Hauteur de document mise en cache : la relire à chaque événement de
   // défilement force un calcul de mise en page synchrone.
   let maxScroll = 0;
+  const update = () => {
+    const progress = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+    progressBar.style.width = Math.max(0, Math.min(100, progress)) + "%";
+  };
   const measure = () => {
     maxScroll = Math.max(
       0,
       document.documentElement.scrollHeight - window.innerHeight,
     );
+    update();
   };
   measure();
   window.addEventListener("resize", measure);
   window.addEventListener("load", measure);
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      const progress = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
-      progressBar.style.width = progress + "%";
-    },
-    { passive: true },
-  );
+  // Expanding previews or learning notes changes the document height.
+  if (typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(measure).observe(document.body);
+  }
+  window.addEventListener("scroll", update, { passive: true });
 }
 
 // ===== SMOOTH SCROLL =====
 function initSmoothScroll() {
+  // Project notebooks use CSS scrolling and native anchors so the URL,
+  // keyboard focus and browser history follow the selected section.
+  if (document.body.classList.contains("case-study")) return;
+
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       const targetId = this.getAttribute("href");
@@ -146,12 +151,17 @@ function initSmoothCursor() {
   }
 
   window.addEventListener("mousemove", (event) => {
-    if (window.matchMedia("(pointer: coarse)").matches || isReducedMotion()) {
+    if (document.body.classList.contains("has-open-media") ||
+        window.matchMedia("(pointer: coarse)").matches || isReducedMotion()) {
       cursor.style.opacity = "0";
       document.body.classList.remove("has-custom-cursor");
       initialized = false;
       return;
     }
+
+    // A modal temporarily restores the native pointer. Reinitialize its
+    // position before hiding that pointer again on the next movement.
+    if (!document.body.classList.contains("has-custom-cursor")) initialized = false;
 
     const now = performance.now();
     targetX = event.clientX;
@@ -229,22 +239,45 @@ function launchBalloons() {
   if (isReducedMotion() || isSaveDataEnabled()) return;
   const now = performance.now();
   // Deux clics rapprochés ne lancent qu'une grappe.
-  if (now - balloonsLastLaunch < 500) return;
+  if (balloonsLastLaunch && now - balloonsLastLaunch < 500) return;
   balloonsLastLaunch = now;
   loadBalloons().then((lib) => lib && lib.balloons());
 }
 
 function initLogoBalloons() {
+  const pendingKey = "portfolio:home-balloons";
+  const isHomePage = ["/", "/index.html"].includes(window.location.pathname);
+  const launchPending = () => {
+    if (!isHomePage) return;
+    try {
+      const requestedAt = Number(sessionStorage.getItem(pendingKey));
+      sessionStorage.removeItem(pendingKey);
+      const age = Date.now() - requestedAt;
+      if (requestedAt && age >= 0 && age < 10000) launchBalloons();
+    } catch {
+      // Navigation also works when browser storage is unavailable.
+    }
+  };
+  launchPending();
+  window.addEventListener("pageshow", launchPending);
+
   document.querySelectorAll(".nav-logo, .case-logo").forEach((logo) => {
     logo.addEventListener("click", (event) => {
-      // Clic souris simple : les ballons remplacent le saut d'ancre (l'accueil
-      // et les fiches ont d'autres liens pour la navigation). Le clavier
-      // (`detail === 0`), le clic milieu et les combinaisons gardent le
-      // comportement du lien.
-      if (event.detail === 0 || event.button !== 0) return;
+      if (event.button !== 0) return;
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      event.preventDefault();
-      launchBalloons();
+
+      if (!isHomePage) {
+        // Let the home link navigate immediately; launch the balloons there.
+        if (!isReducedMotion() && !isSaveDataEnabled()) {
+          try {
+            sessionStorage.setItem(pendingKey, String(Date.now()));
+          } catch {
+            // The home link remains functional without session storage.
+          }
+        }
+      } else {
+        launchBalloons();
+      }
     });
   });
 }

@@ -7,7 +7,7 @@
     <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../css/tokens.css">
-    <link rel="stylesheet" href="../css/projet-pages.css">
+    <link rel="stylesheet" href="../css/projet-pages.css?v=c284e19465">
     <meta name="description" content="Site Star Wars codé en PHP avec un fichier JSON comme source de données : galerie générée côté serveur et formulaire traité sans base SQL.">
     <link rel="canonical" href="https://benjaminleleu.fr/projets/star-wars">
     <meta property="og:title" content="Star Wars, un site dynamique en PHP">
@@ -30,114 +30,106 @@
       }
     </script>
     <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#1E1B18">
+
 </head>
-<body class="case-study case-study--star-wars" style="--shader-rgb: 182 195 137">
+<body class="case-study case-study--star-wars">
+    <div class="case-atmosphere" aria-hidden="true"></div>
     <canvas class="shader-canvas" aria-hidden="true"></canvas>
     <a class="case-skip-link" href="#contenu">Aller au contenu du projet</a>
-    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-    <nav class="navbar" aria-label="Navigation du projet">
-            <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
-            <span class="case-nav-index">Étude de cas / 03</span>
-            <a class="case-nav-back" href="/#work">Tous les projets <span aria-hidden="true">↗</span></a>
-        </nav>
-    <header class="hero" style="--hero-image: url('../images/projets/star-wars/banner_light.webp')">
-
-        <div class="case-hero-art" aria-hidden="true"><img src="../images/projets/star-wars/banner_light.webp" alt="" width="800" height="533"></div>
-        <div class="hero-content">
-            <p class="case-kicker">03 / Développement web</p>
-            <h1>Star Wars, un site en PHP <svg class="icon" aria-hidden="true"><use href="../images/icons.svg#jedi"></use></svg></h1>
-            <p class="subtitle">Tout le contenu vient d'un fichier JSON que PHP va lire. Aucune base de données derrière.</p>
-            <div class="case-hero-facts"><span>PHP &amp; données JSON</span><span>SAE 1.05 · BUT MMI</span></div>
-            <div class="project-meta-links">
-                <a href="http://sae105.mmi25b12.mmi-troyes.fr/index.php" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#external-link-alt"></use></svg> voir le site en ligne</a>
-            </div>
-        </div>
-    </header>
-
-    <main id="contenu">
-    <div class="case-ledger" aria-label="Repères du projet">
-      <div><span>Discipline</span><strong>Développement web</strong></div>
-      <div><span>Mon rôle</span><strong>PHP &amp; données JSON</strong></div>
-      <div><span>Cadre</span><strong>SAE 1.05 · BUT MMI</strong></div>
-    </div>
-    <section class="section">
-        <h2>Contexte &amp; Objectifs</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Ce projet vient de la <strong>SAE 1.05</strong>, en première année de BUT MMI à l'IUT de Troyes (Université de Reims Champagne-Ardenne). Le sujet était libre, la contrainte technique ne l'était pas : des pages rendues côté serveur en <strong>PHP</strong>, et les données rangées dans un fichier <strong>JSON</strong> plutôt que dans une base SQL. Fan de science-fiction, j'ai pris <strong>Star Wars</strong> comme thème.</p>
-                <p>L'intégration HTML/CSS comptait, mais la SAE portait surtout sur l'architecture. Le contenu était généré à la volée, le formulaire traité côté serveur, la galerie alimentée par les mêmes données JSON.</p>
-
-                <ul class="about-details">
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#university"></use></svg> SAE 1.05, 1re année de BUT MMI, IUT de Troyes (URCA)</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#calendar-alt"></use></svg> S1 2025-2026, projet individuel</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#laptop-code"></use></svg> Rôle : développeur web full-stack</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#database"></use></svg> Objectif : rendre le site dynamique avec PHP et JSON</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#tools"></use></svg> Technologies : HTML5, CSS3, PHP 8, JSON</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <aside class="case-note"><span>L'idée du projet</span><p>Séparer le contenu de son affichage, et laisser le fichier JSON décider de ce que les pages montrent.</p></aside>
-
-    <section class="section">
-        <h2>Démarche &amp; Architecture</h2>
-        <p class="section-intro">J'ai commencé par écrire le fichier JSON : personnages, vaisseaux, citations. Chaque page PHP le lit et construit son HTML avec des boucles. Le formulaire passe par des paramètres GET pour afficher ses messages après l'envoi.</p>
-
-        <div class="projects-grid">
-            <div class="project-card project-card--centered">
-                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#server"></use></svg></div>
-                <h3>Formulaire PHP</h3>
-                <p>Tout se joue côté serveur : contrôle des erreurs et messages de retour passés en GET. Aucun JavaScript nécessaire.</p>
-            </div>
-            <div class="project-card project-card--centered">
-                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#js-square"></use></svg></div>
-                <h3>Données JSON</h3>
-                <p>Personnages, vaisseaux, citations : tout est lu dans le fichier puis injecté dans les templates PHP.</p>
-            </div>
-            <div class="project-card project-card--centered">
-                <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#images"></use></svg></div>
-                <h3>Galerie dynamique</h3>
-                <p>La galerie est construite à partir des données JSON. Ajouter un personnage au fichier suffit à le faire apparaître sur le site.</p>
-            </div>
-        </div>
-    </section>
-    <section class="section case-gallery" aria-labelledby="case-gallery-title">
-      <h2 id="case-gallery-title">Le site en images</h2>
-      <div class="projects-grid projects-grid--duo">
-        <figure class="project-card"><img loading="lazy" decoding="async" src="../images/projets/star-wars/sw77.webp" alt="Vue du site Star Wars" width="640" height="800"><figcaption>Une interface habillée aux couleurs de Star Wars.</figcaption></figure>
-        <figure class="project-card"><img loading="lazy" decoding="async" src="../images/projets/star-wars/hologram.webp" alt="Visuel holographique du projet" width="1280" height="720"><figcaption>Le côté science-fiction assumé dans les visuels.</figcaption></figure>
+    <nav class="case-nav" aria-label="Navigation du projet">
+      <div class="case-shell case-nav__inner">
+        <a class="case-logo" href="/" aria-label="B. Accueil du portfolio">B<span>.</span></a>
+        <span class="case-nav__index">Carnet de projets / 03 — 05</span>
+        <a class="case-nav__back" href="/#work"><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-arrow-left"></use></svg></span> Tous les projets</a>
       </div>
-    </section>
-
-    <section class="section">
-        <h2>Bilan &amp; Apprentissages</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Ce que j'en retiens, c'est la séparation entre les données et leur affichage, plus que PHP en lui-même. En prenant le JSON comme source unique, j'ai compris ce que font les CMS et les APIs, avant même d'en utiliser un pour de vrai.</p>
-                <p>Les erreurs de formulaire gérées à l'ancienne, via GET, m'ont aussi étonné : pas de dépendance à JavaScript, et ça fonctionne même sur un navigateur limité.</p>
-
-                <ul class="about-details">
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC14.01. Mettre en place un environnement de développement web</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC14.02. Produire des pages web statiques et dynamiques</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC11.01. Analyser un besoin et formaliser une solution technique</li>
-                    <li><svg class="icon" aria-hidden="true"><use href="../images/icons.svg#check-circle"></use></svg> AC21.01. Développer à l'aide d'un langage de script côté serveur</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    </main>
-
-    <nav class="case-next" aria-label="Continuer la visite">
-      <a href="podcast" class="case-next-link"><span>Projet suivant / 04</span><strong>Fiction sonore</strong><span>Découvrir <b aria-hidden="true">↗</b></span></a>
-      <a href="/#work" class="case-next-back">← Retour à la sélection</a>
     </nav>
 
-    <footer>
-        <p>&copy; <span id="footer-year">2026</span> Benjamin LELEU. Tous droits réservés.</p>
+    <main id="contenu" class="case-shell" tabindex="-1">
+      <header class="case-hero">
+        <div class="case-hero__grid">
+          <div class="case-hero__copy">
+            <p class="eyebrow">Projet 03 <span>/ Développement web</span></p>
+            <h1>Star Wars<span>.</span></h1>
+            <p class="hero-annotation">Du JSON à l’écran.</p>
+            <p class="hero-description">Un site en PHP qui construit ses pages à partir d’un fichier JSON. Personnages, vaisseaux et citations partagent la même source.</p>
+            <div class="hero-actions"><a class="case-button" href="http://sae105.mmi25b12.mmi-troyes.fr/index.php" target="_blank" rel="noopener noreferrer">Voir le site<span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></a><a class="case-text-link" href="#architecture">Sous le capot<span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-arrow-down"></use></svg></span></a></div>
+          </div>
+          <div class="hero-collage" aria-label="Visuels du projet">
+            <figure class="hero-print hero-print--main ">
+              <a href="../images/projets/star-wars/banner_light.webp" data-lightbox data-caption="01 / Univers Star Wars" aria-label="Agrandir : Bannière avec le lettrage lumineux Star Wars"><img src="../images/projets/star-wars/banner_light.webp" alt="Bannière avec le lettrage lumineux Star Wars" width="800" height="533" fetchpriority="high" decoding="async"></a>
+              <figcaption><span>01 / Univers Star Wars</span><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></figcaption>
+            </figure><figure class="hero-print hero-print--detail ">
+              <a href="../images/projets/star-wars/sw77.webp" data-lightbox data-caption="02 / Référence visuelle" aria-label="Agrandir : Carrie Fisher et deux stormtroopers sur une photographie en noir et blanc"><img src="../images/projets/star-wars/sw77.webp" alt="Carrie Fisher et deux stormtroopers sur une photographie en noir et blanc" width="640" height="800" loading="eager" decoding="async"></a>
+              <figcaption><span>02 / Référence visuelle</span><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></figcaption>
+            </figure>
+            <p class="hero-margin"><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-arrow-right"></use></svg></span>PHP côté serveur · Données JSON</p>
+          </div>
+        </div>
+        <dl class="case-facts" aria-label="Repères du projet"><div><dt>Mon rôle</dt><dd>Développement web</dd></div><div><dt>Cadre</dt><dd>SAE 1.05 · Projet individuel</dd></div><div><dt>Période</dt><dd>2025–2026 · Semestre 1</dd></div><div><dt>Technologies</dt><dd>HTML · CSS · PHP 8 · JSON</dd></div></dl>
+      </header>
+
+      <section class="case-section case-story">
+        <div><p class="eyebrow">01 <span>/ Le brief</span></p><h2>L’univers est libre.<br><em>La contrainte, PHP.</em></h2></div>
+        <div class="story-copy"><p>La <strong>SAE 1.05</strong> demandait un site rendu côté serveur en PHP, avec un fichier JSON pour stocker le contenu. J’ai choisi Star Wars pour le thème.</p><p>Personnages, vaisseaux et citations partagent la même source de données. Les pages et la galerie se construisent à partir de ce fichier ; le formulaire est traité côté serveur.</p>
+
+        </div>
+      </section>
+<section class="case-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">02 <span>/ Les repères</span></p><h2>Le projet, <em>en quelques faits.</em></h2></div>
+
+        </div>
+        <div class="case-numbers">
+          <div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-code"></use></svg><p class="case-stat__value">PHP 8</p><p class="stat-label">Pages rendues côté serveur</p></div><div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-file-01"></use></svg><p class="case-stat__value">JSON</p><p class="stat-label">Source commune du contenu</p></div><div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-tools"></use></svg><p class="case-stat__value">0</p><p class="stat-label">Base de données SQL</p></div><div class="case-stat"><svg class="case-icon case-stat__icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-calendar-03"></use></svg><p class="case-stat__value">S1</p><p class="stat-label">SAE 1.05 · BUT MMI · 2025–2026</p></div>
+          <aside class="case-role"><span class="eyebrow">Ma contribution</span><span class="case-role__mark" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-code"></use></svg></span><div><h3>Relier le contenu à l’interface.</h3><p>Développement individuel en HTML, CSS et PHP : données, templates, galerie et traitement du formulaire.</p></div></aside>
+        </div>
+      </section>
+<section class="case-section" id="architecture" tabindex="-1">
+        <div class="section-heading">
+          <div><p class="eyebrow">03 <span>/ Sous le capot</span></p><h2>Un fichier.<br><em>Plusieurs pages.</em></h2></div>
+          <p>Le travail portait autant sur l’organisation des données que sur l’intégration des pages.</p>
+        </div>
+        <ol class="process-list"><li><span class="process-list__number" aria-hidden="true">01</span><h3>Les données</h3><p>Le fichier JSON regroupe les personnages, les vaisseaux et les citations. Il sert de source commune aux pages.</p></li><li><span class="process-list__number" aria-hidden="true">02</span><h3>Le rendu PHP</h3><p>Chaque page lit ce fichier et produit son HTML à l’aide de boucles. La galerie suit la même logique : un élément ajouté au JSON rejoint l’affichage.</p></li><li><span class="process-list__number" aria-hidden="true">03</span><h3>Le formulaire</h3><p>Le serveur contrôle les données reçues et renvoie les messages d’erreur ou de confirmation via les paramètres GET. Le traitement fonctionne sans JavaScript.</p></li></ol>
+      </section>
+<section class="case-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">04 <span>/ L’univers visuel</span></p><h2>Côté <em>galaxie.</em></h2></div>
+          <p>Une sélection de visuels du projet. Le site complet est accessible depuis le lien en haut de page.</p>
+        </div>
+        <div class="gallery gallery--research"><figure class="project-image ">
+          <a href="../images/projets/star-wars/sw77.webp" data-lightbox data-caption="Une référence à la saga" aria-label="Agrandir : Photographie en noir et blanc de Carrie Fisher portée par deux stormtroopers"><img src="../images/projets/star-wars/sw77.webp" alt="Photographie en noir et blanc de Carrie Fisher portée par deux stormtroopers" width="640" height="800" loading="lazy" decoding="async"><span class="image-zoom" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-zoom-in-area"></use></svg></span></a>
+          <figcaption><span class="figure-number">01</span><span><strong>Une référence à la saga</strong>Photographie présente dans les visuels du projet.</span></figcaption>
+        </figure><figure class="project-image ">
+          <a href="../images/projets/star-wars/hologram.webp" data-lightbox data-caption="Le vocabulaire science-fiction" aria-label="Agrandir : Visuel jaune d’un dispositif holographique"><img src="../images/projets/star-wars/hologram.webp" alt="Visuel jaune d’un dispositif holographique" width="1280" height="720" loading="lazy" decoding="async"><span class="image-zoom" aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#huge-zoom-in-area"></use></svg></span></a>
+          <figcaption><span class="figure-number">02</span><span><strong>Le vocabulaire science-fiction</strong>Un autre élément graphique utilisé pour l’univers du site.</span></figcaption>
+        </figure></div>
+      </section>
+<section class="case-section case-story">
+        <div><p class="eyebrow">05 <span>/ Ce que j’en garde</span></p><h2>Le contenu<br><em>a sa propre place.</em></h2></div>
+        <div class="story-copy"><p>C’est surtout la séparation des données et de leur affichage qui m’a marqué. Modifier un contenu dans le JSON évite d’aller le réécrire dans chaque page.</p><p>Le formulaire m’a aussi appris à penser le retour utilisateur côté serveur. Une validation et un message lisible restent nécessaires, même sans JavaScript.</p>
+          <details class="learning-details"><summary>Compétences travaillées · BUT MMI</summary><ul><li>AC14.01 · Mettre en place un environnement de développement web.</li><li>AC14.02 · Produire des pages web statiques et dynamiques.</li><li>AC11.01 · Analyser un besoin et formaliser une solution technique.</li><li>AC21.01 · Développer à l’aide d’un langage de script côté serveur.</li></ul></details>
+        </div>
+      </section>
+    </main>
+
+    <nav class="case-next case-shell" aria-label="Continuer la visite">
+      <p class="case-next__label">La suite du carnet / Projet 04</p>
+      <a href="/projets/podcast" class="case-next__link">
+        <img class="case-next__image" src="../images/projets/podcast/Affiche_Podcast.webp" alt="" width="96" height="80" loading="lazy" decoding="async">
+        <strong>Le Dernier Face à Face</strong><span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span>
+      </a>
+      <a href="/#work" class="case-text-link case-next__back">Retour à la sélection <span aria-hidden="true"><svg class="case-icon" aria-hidden="true" focusable="false"><use href="/images/project-icons.svg#line-external-link"></use></svg></span></a>
+    </nav>
+
+    <footer class="case-footer case-shell">
+      <p>© <span id="footer-year">2026</span> Benjamin Leleu</p>
+      <p>Création numérique · Web · Audiovisuel</p>
     </footer>
-    <script src="../js/shared.js" defer></script>
+    <script src="../js/shared.js?v=a4e8303ff9" defer></script>
     <script src="../js/shader.js" defer></script>
+    <script src="../js/projet-pages.js?v=790d49932a" defer></script>
 </body>
 </html>
