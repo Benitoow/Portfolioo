@@ -26,8 +26,8 @@ function initScrollProgress() {
   // défilement force un calcul de mise en page synchrone.
   let maxScroll = 0;
   const update = () => {
-    const progress = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
-    progressBar.style.width = Math.max(0, Math.min(100, progress)) + "%";
+    const ratio = maxScroll > 0 ? Math.max(0, Math.min(1, window.scrollY / maxScroll)) : 0;
+    progressBar.style.transform = `scaleX(${ratio.toFixed(4)})`;
   };
   const measure = () => {
     maxScroll = Math.max(
@@ -117,7 +117,7 @@ function initSmoothCursor() {
   const cursor = document.createElement("div");
   cursor.className = "smooth-cursor";
   cursor.setAttribute("aria-hidden", "true");
-  cursor.innerHTML = '<svg viewBox="0 0 50 54" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42.6817 41.1495 27.5103 6.79925c-.7834-1.77368-3.3021-1.77367-4.1176 0L7.59814 41.1495c-.83981 1.8264.92898 3.7407 2.81436 3.0459L24.3757 39.0496a2.4 2.4 0 0 1 1.5665 0l13.8699 5.1458c1.8728.6949 3.6763-1.2195 2.8696-3.0459Z" fill="#111" stroke="#fff" stroke-width="2.3" /></svg>';
+  cursor.innerHTML = '<svg viewBox="0 0 50 58" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42.6817 44.1495 27.5103 9.79925c-.7834-1.77368-3.3021-1.77367-4.1176 0L7.59814 44.1495c-.83981 1.8264.92898 3.7407 2.81436 3.0459L24.3757 42.0496a2.4 2.4 0 0 1 1.5665 0l13.8699 5.1458c1.8728.6949 3.6763-1.2195 2.8696-3.0459Z" fill="rgba(0,0,0,0.36)" /><path d="M42.6817 41.1495 27.5103 6.79925c-.7834-1.77368-3.3021-1.77367-4.1176 0L7.59814 41.1495c-.83981 1.8264.92898 3.7407 2.81436 3.0459L24.3757 39.0496a2.4 2.4 0 0 1 1.5665 0l13.8699 5.1458c1.8728.6949 3.6763-1.2195 2.8696-3.0459Z" fill="#111" stroke="#fff" stroke-width="2.3" /></svg>';
   document.body.append(cursor);
 
   let x = 0, y = 0, targetX = 0, targetY = 0;

@@ -45,6 +45,8 @@ function initApp() {
   initLoader();
   initNav();
   initMobileMenu();
+  initTerminalTabs();
+  initContactCopy();
   initRevealAnimations();
   initStatsCounter();
   initTimelineAnimations();
@@ -68,6 +70,8 @@ function initAppFallback() {
 
   initNav();
   initMobileMenu();
+  initTerminalTabs();
+  initContactCopy();
   const fallbackBackground = initBgCanvas();
   initVideoBackground(fallbackBackground);
   initMarquee();
@@ -82,6 +86,8 @@ function initReducedApp() {
   revealStaticContent();
   initNav();
   initMobileMenu();
+  initTerminalTabs();
+  initContactCopy();
   initMarquee();
 
   console.log("✦ Portfolio loaded (reduced motion)");
@@ -99,7 +105,7 @@ function revealStaticContent() {
 
   document
     .querySelectorAll(
-      ".hero-line-inner, .section-label, .skill-card, .timeline-item, .contact-link-item",
+      ".hero-line-inner, .section-label, .skill-card, .timeline-item, .contact-row, .contact-link-item",
     )
     .forEach((el) => {
       el.style.opacity = "1";
@@ -114,7 +120,7 @@ function ensureVisibleAfterAnimations() {
   setTimeout(() => {
     document
       .querySelectorAll(
-        ".reveal-text, .section-label, .skill-card, .timeline-item, .contact-link-item",
+        ".reveal-text, .section-label, .skill-card, .timeline-item, .contact-row, .contact-link-item",
       )
       .forEach((el) => {
         if (el.style.opacity === "0") {
@@ -123,6 +129,88 @@ function ensureVisibleAfterAnimations() {
         }
       });
   }, 4000);
+}
+
+// ===== TERMINAL TABS =====
+function initTerminalTabs() {
+  const terminal = document.querySelector(".about-terminal");
+  if (!terminal) return;
+  const tabs = terminal.querySelectorAll("[data-terminal-tab]");
+  const panels = terminal.querySelectorAll("[data-terminal-panel]");
+  if (!tabs.length || !panels.length) return;
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.terminalTab;
+      if (!target || tab.classList.contains("is-active")) return;
+
+      tabs.forEach((btn) => {
+        const active = btn.dataset.terminalTab === target;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-selected", String(active));
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.terminalPanel !== target;
+      });
+
+      window.dispatchEvent(
+        new CustomEvent("bl:terminal-tab", { detail: { tab: target } })
+      );
+    });
+  });
+}
+
+// ===== CONTACT ONE-CLICK COPY =====
+function initContactCopy() {
+  const buttons = document.querySelectorAll(".contact-copy-btn[data-copy]");
+  const copyText = async (value) => {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return true;
+    }
+    const helper = document.createElement("textarea");
+    helper.value = value;
+    helper.setAttribute("readonly", "");
+    helper.style.position = "fixed";
+    helper.style.opacity = "0";
+    document.body.append(helper);
+    helper.select();
+    const ok = document.execCommand("copy");
+    helper.remove();
+    return ok;
+  };
+
+  buttons.forEach((btn) => {
+    let resetTimer = null;
+    btn.addEventListener("click", async () => {
+      const text = btn.dataset.copy;
+      if (!text) return;
+      try {
+        await copyText(text);
+        btn.textContent = "Copié ✓";
+        btn.classList.add("is-copied");
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => {
+          btn.textContent = "Copier";
+          btn.classList.remove("is-copied");
+        }, 2000);
+        window.dispatchEvent(
+          new CustomEvent("bl:contact-copy", {
+            detail: { kind: btn.dataset.copyKind || "email" },
+          })
+        );
+      } catch {
+        // Fallback silencieux si le presse-papier est bloqué
+      }
+    });
+  });
+
+  const contactSection = document.getElementById("contact");
+  contactSection?.addEventListener("copy", () => {
+    window.dispatchEvent(
+      new CustomEvent("bl:contact-copy", { detail: { kind: "selection" } })
+    );
+  });
 }
 
 // ===== MARQUEE — AUTO-FILL TO FULL WIDTH =====
@@ -290,8 +378,6 @@ function initNav() {
           } else {
             nav.style.transform = "translateY(0)";
           }
-          nav.style.transition =
-            "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s, backdrop-filter 0.4s";
 
           lastScroll = currentScroll;
           ticking = false;
@@ -549,15 +635,16 @@ function initSkillAnimations() {
 }
 
 // ===== CONTACT ANIMATIONS =====
-// Les 5 lignes tiennent à l'écran : déclencheur unique + stagger.
+// Les lignes tiennent à l'écran : déclencheur unique + stagger.
 function initContactAnimations() {
   const list = document.querySelector(".contact-links");
-  const links = document.querySelectorAll(".contact-link-item");
-  if (!list || !links.length) return;
+  const rows = document.querySelectorAll(".contact-row");
+  const targets = rows.length ? rows : document.querySelectorAll(".contact-link-item");
+  if (!list || !targets.length) return;
 
-  gsap.set(links, { opacity: 0, x: -30 });
+  gsap.set(targets, { opacity: 0, x: -30 });
 
-  gsap.to(links, {
+  gsap.to(targets, {
     scrollTrigger: { trigger: list, start: "top 88%", once: true },
     opacity: 1,
     x: 0,
@@ -594,12 +681,13 @@ function initScrollDepth() {
     );
   });
 
-  // Le bloc hero se retire légèrement pendant qu'on le quitte.
+  // Le bloc hero se retire légèrement pendant qu'on le quitte (translation GPU
+  // pure sans `opacity` continue pour éviter de créer un groupe de compositing
+  // sur la typographie).
   const heroInner = document.querySelector(".hero-inner");
   if (heroInner) {
     gsap.to(heroInner, {
-      yPercent: 14,
-      opacity: 0.35,
+      yPercent: 12,
       ease: "none",
       scrollTrigger: {
         trigger: ".hero",
@@ -737,7 +825,9 @@ function initBgCanvas() {
     retire() {
       stopped = true;
       stop();
-      canvas.style.opacity = "0";
+      canvas.style.display = "none";
+      canvas.width = 0;
+      canvas.height = 0;
     },
   };
 }
@@ -753,10 +843,14 @@ function initVideoBackground(backgroundFallback) {
     return;
   }
 
-  // Map section IDs to their video elements
+  // Map section IDs to their video elements (supports comma-separated sections sharing one video)
   const sectionMap = {};
   videos.forEach((vid) => {
-    sectionMap[vid.getAttribute("data-section")] = vid;
+    const raw = vid.getAttribute("data-section") || "";
+    raw.split(",").forEach((sec) => {
+      const key = sec.trim();
+      if (key) sectionMap[key] = vid;
+    });
   });
 
   // Sections to watch (in DOM order)
@@ -844,9 +938,10 @@ function initVideoBackground(backgroundFallback) {
     const targetVideo = sectionMap[sectionId] || null;
     if (!targetVideo || sectionId === requestedSectionId) return;
     requestedSectionId = sectionId;
+    if (targetVideo === currentVideo) return;
 
     if (targetVideo) await ensureSourceLoaded(targetVideo);
-    if (requestedSectionId !== sectionId) return;
+    if (requestedSectionId !== sectionId || targetVideo === currentVideo) return;
 
     // Fade out current
     const previousVideo = currentVideo;

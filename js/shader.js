@@ -2,6 +2,13 @@
 (() => {
   const canvas = document.querySelector(".shader-canvas");
   if (!canvas) return;
+  // Sur l'accueil, les vidéos de forêt plein écran assurent déjà la lumière et
+  // le mouvement : désactiver ce second canvas WebGL plein écran économise une
+  // passe de fragment shader complète par image.
+  if (document.getElementById("videoBg")) {
+    canvas.style.display = "none";
+    return;
+  }
 
   const gl = canvas.getContext("webgl", {
     alpha: true,
@@ -95,15 +102,22 @@
   let pointerX = 0.5;
   let pointerY = 0.5;
   let scrollProgress = 0;
+  let scrollExtent = 0;
   let frame = null;
   let lastDraw = -Infinity;
 
+  function measureExtent() {
+    scrollExtent = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    scrollProgress = scrollExtent > 0 ? window.scrollY / scrollExtent : 0;
+  }
+
   function resize() {
-    const scale = Math.min(window.devicePixelRatio || 1, 1.25,
-      Math.sqrt(1200000 / (window.innerWidth * window.innerHeight)));
+    const scale = Math.min(window.devicePixelRatio || 1, 1,
+      Math.sqrt(700000 / Math.max(1, window.innerWidth * window.innerHeight)));
     canvas.width = Math.max(1, Math.round(window.innerWidth * scale));
     canvas.height = Math.max(1, Math.round(window.innerHeight * scale));
     gl.viewport(0, 0, canvas.width, canvas.height);
+    measureExtent();
     draw(performance.now());
   }
 
@@ -120,7 +134,7 @@
 
   function tick(now) {
     frame = null;
-    if (now - lastDraw >= 32) {
+    if (now - lastDraw >= 42) {
       draw(now);
       lastDraw = now;
     }
@@ -136,9 +150,12 @@
   }
 
   window.addEventListener("resize", resize, { passive: true });
+  window.addEventListener("load", measureExtent, { passive: true });
+  if (typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(measureExtent).observe(document.body);
+  }
   window.addEventListener("scroll", () => {
-    const extent = document.documentElement.scrollHeight - window.innerHeight;
-    scrollProgress = extent > 0 ? window.scrollY / extent : 0;
+    scrollProgress = scrollExtent > 0 ? window.scrollY / scrollExtent : 0;
     if (motion.matches || saveData) draw(0);
   }, { passive: true });
   window.addEventListener("pointermove", (event) => {

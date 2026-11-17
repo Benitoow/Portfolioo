@@ -77,6 +77,13 @@
   cursor: pointer;
   transform-style: preserve-3d;
   backface-visibility: hidden;
+  transition: box-shadow 0.28s var(--ease-out);
+}
+
+.coverflow-card[aria-current="true"] {
+  box-shadow:
+    0 22px 42px rgb(0 0 0 / 0.42),
+    0 0 0 1px rgb(242 201 76 / 0.34);
 }
 
 .coverflow-card.is-in-range {

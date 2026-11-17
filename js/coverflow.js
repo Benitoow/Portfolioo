@@ -221,16 +221,47 @@
       ignoreClick = false;
     }, true);
 
+    function syncFocusedCard() {
+      const active = document.activeElement;
+      if (active?.classList?.contains("coverflow-card") && stage.contains(active)) {
+        cards[wrap(Math.round(target))]?.focus({ preventScroll: true });
+      }
+    }
+
     stage.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
         event.preventDefault();
         nudge(event.key === "ArrowLeft" ? -1 : 1);
+        syncFocusedCard();
       } else if (event.key === "Home") {
         event.preventDefault();
         goTo(0);
+        syncFocusedCard();
       } else if (event.key === "End") {
         event.preventDefault();
         goTo(projects.length - 1);
+        syncFocusedCard();
+      }
+    });
+
+    let stageInView = false;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        ([entry]) => {
+          stageInView = Boolean(entry?.isIntersecting);
+        },
+        { threshold: 0.35 }
+      ).observe(stage);
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (!stageInView || stage.contains(event.target)) return;
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      if (document.body.classList.contains("menu-open")) return;
+      if (event.target?.closest?.("input, textarea, select, [contenteditable]")) return;
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        nudge(event.key === "ArrowLeft" ? -1 : 1);
       }
     });
 

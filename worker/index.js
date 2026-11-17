@@ -58,6 +58,10 @@ const DROP_SELECTOR = [
   ".stats-row",
   ".coverflow-hint",
   ".balloons-layer",
+  ".orb-companion",
+  ".orb-speech",
+  ".contact-copy-btn",
+  "[hidden]",
 ].join(", ");
 
 const BLOCK_SELECTOR = "p, figcaption, blockquote, dd, summary, caption, dt";

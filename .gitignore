@@ -1,2 +1,5 @@
 .claude/
 .wrangler/
+.astro/
+node_modules/
+dist/

@@ -164,11 +164,14 @@ ol {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--accent-light));
   z-index: var(--z-progress);
-  width: 0%;
-  transition: width 0.1s linear;
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+  pointer-events: none;
 }
 
 /* ===== NAVIGATION ===== */
@@ -185,14 +188,15 @@ ol {
   z-index: var(--z-nav);
   background: transparent;
   transition:
+    transform 0.4s var(--ease-out),
     background 0.4s var(--ease-out),
-    backdrop-filter 0.4s;
+    border-color 0.4s var(--ease-out);
+  will-change: transform;
 }
 
 .nav.scrolled {
-  background: rgb(var(--bg-rgb) / 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgb(var(--bg-rgb) / 0.95);
+  border-bottom: 1px solid rgb(var(--text-rgb) / 0.08);
 }
 
 .nav-logo {
@@ -426,8 +430,7 @@ ol {
 /* `#work` n'a pas de fond propre : le film de la section passe derrière les
    cartes, comme sur les autres sections. */
 .section-dark {
-  background: rgb(var(--bg-elevated-rgb) / 0.55);
-  backdrop-filter: blur(2px);
+  background: rgb(var(--bg-elevated-rgb) / 0.62);
 }
 
 .section-label {
@@ -499,7 +502,7 @@ ol {
   display: inline-block;
   font-family: var(--font-display);
   font-size: var(--fs-display-xl);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.15;
   transform: translateY(100%);
@@ -643,7 +646,7 @@ ol {
   display: block;
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--accent);
   line-height: 1;
   letter-spacing: -0.03em;
@@ -660,12 +663,67 @@ ol {
    Disposition en bento : des cartes d'une ou deux colonnes, des cases vides qui
    dessinent la grille, et trois tons qui alternent (sombre, accent, contour).
    Aucune image : le rythme vient des vides. */
+.skills-teaser-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.skills-galaxy-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.72rem 1.3rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgb(var(--accent-rgb) / 0.5);
+  background: rgb(var(--accent-rgb) / 0.14);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition:
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.skills-galaxy-cta:hover,
+.skills-galaxy-cta:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+  transform: translateY(-2px);
+}
+
 .skills-bento {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-auto-rows: minmax(150px, auto);
   gap: clamp(0.7rem, 1.1vw, 1.15rem);
   margin-top: var(--space-8);
+}
+
+.skills-bento--teaser {
+  grid-auto-rows: minmax(136px, auto);
+}
+
+.skill-logos-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.skill-logos-row img {
+  width: 26px;
+  height: 26px;
+  padding: 4px;
+  border-radius: 8px;
+  background: rgb(var(--bg-rgb) / 0.65);
+  border: 1px solid rgb(var(--text-rgb) / 0.1);
+  object-fit: contain;
 }
 
 /* Case vide : un simple filet, pour que la grille reste lisible. */
@@ -802,82 +860,192 @@ ol {
 }
 
 /* ===== TIMELINE ===== */
+/* Le parcours reprend la frise « timeline-01 » trouvée sur 21st.dev. Le
+   composant d'origine est en React + shadcn/Tailwind ; ce portfolio n'a ni
+   build ni React, donc c'est la structure et le rythme du composant qui sont
+   repris ici, transposés en CSS du site : une ligne continue, une pastille
+   creuse par étape, le lieu de formation dans une pastille ronde, puis
+   l'intitulé, la période, le texte et les tags. Aucune couleur brute : tout
+   passe par les tokens de tokens.css. */
 .timeline {
+  /* Le rail et le retrait du contenu sont liés : le point se place en
+     `--timeline-rail` du bord de la frise, le texte en `--timeline-indent`.
+     Une seule valeur à changer par palier. */
+  --timeline-rail: 0.75rem;
+  --timeline-indent: 2.75rem;
   position: relative;
+  max-width: 700px;
   margin-top: var(--space-12);
 }
 
+/* La ligne démarre à hauteur du premier point et s'efface juste avant la fin,
+   pour ne pas buter sur la dernière ligne de tags. Le trait est plus appuyé
+   que `--border-hover` : posé sur la vidéo, un 15 % d'opacité disparaissait. */
 .timeline::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 0;
+  left: var(--timeline-rail);
+  top: 1rem;
   bottom: 0;
-  width: 1px;
+  width: 2px;
+  border-radius: 2px;
   background: linear-gradient(
     to bottom,
-    var(--green),
-    var(--border),
-    transparent
+    rgb(var(--text-rgb) / 0.3) 0%,
+    rgb(var(--text-rgb) / 0.3) 88%,
+    transparent 100%
   );
 }
 
 .timeline-item {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 3rem;
-  padding: var(--space-10) 0;
-  padding-left: 3rem;
   position: relative;
-  border-bottom: 1px solid var(--border);
+  padding-left: var(--timeline-indent);
+  padding-bottom: var(--space-12);
 }
 
 .timeline-item:last-child {
-  border-bottom: none;
+  padding-bottom: 0;
 }
 
-.timeline-item::before {
-  content: "";
+/* Pastille creuse posée sur la ligne, centrée sur la pastille d'icône : elle
+   vit dans l'en-tête pour rester alignée même quand le lieu passe à la ligne.
+   Le fond et le halo reprennent celui de la page, comme le
+   `ring-8 ring-background` du composant d'origine : la ligne ne traverse pas
+   le point. */
+.timeline-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.timeline-dot {
   position: absolute;
-  left: -4px;
-  top: 2.8rem;
-  width: 9px;
-  height: 9px;
-  background: var(--accent);
+  top: 50%;
+  left: calc(var(--timeline-rail) - var(--timeline-indent));
+  width: 0.75rem;
+  height: 0.75rem;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--accent);
   border-radius: var(--radius-full);
-  border: 2px solid var(--bg-elevated);
+  background: var(--bg);
+  box-shadow: 0 0 0 5px rgb(var(--bg-rgb) / 0.55);
 }
 
-.timeline-date {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent);
-  padding-top: 0.2rem;
-  white-space: nowrap;
+.timeline-icon-badge {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
 }
 
-.timeline-content h3 {
-  font-family: var(--font-display);
-  font-size: var(--fs-subtitle);
-  font-weight: 700;
-  margin-bottom: var(--space-3);
+.timeline-icon {
+  flex: none;
+  color: inherit;
+}
+
+.timeline-head .timeline-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.timeline-org {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.6rem;
+  row-gap: 0.1rem;
+  min-width: 0;
+}
+
+.timeline-org-name {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.35;
   color: var(--text);
 }
 
-.timeline-content p {
-  font-size: 0.95rem;
+.timeline-place {
+  font-size: 0.85rem;
+  line-height: 1.35;
   color: var(--text-secondary);
-  line-height: 1.7;
-  /* Mesuré à 79 caractères par ligne sans bride, au-delà du confort de
-     lecture (~75). Les autres paragraphes du site sont entre 48 et 69. */
-  max-width: 72ch;
 }
 
-/* Plus de pastilles sous le texte : le dernier paragraphe ne traîne plus de
-   marge basse. */
-.timeline-content p:last-child {
-  margin-bottom: 0;
+.timeline-role {
+  margin-top: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-subtitle);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+.timeline-period {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--space-2);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.timeline-period .timeline-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--text-muted);
+}
+
+.timeline-desc {
+  margin-top: var(--space-3);
+  max-width: 66ch;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: var(--space-3);
+}
+
+.timeline-tag {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface-raised);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    --timeline-indent: 2.5rem;
+  }
+
+  .timeline-item {
+    padding-bottom: var(--space-10);
+  }
+
+  .timeline-role {
+    margin-top: var(--space-2);
+  }
+
+  .timeline-desc {
+    font-size: 0.92rem;
+  }
 }
 
 /* ===== CONTACT ===== */
@@ -888,7 +1056,7 @@ ol {
 .contact-title {
   font-family: var(--font-display);
   font-size: var(--fs-display-l);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.05;
   margin-bottom: var(--space-6);
@@ -906,25 +1074,67 @@ ol {
   flex-direction: column;
 }
 
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+
+.contact-row:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.contact-row:hover,
+.contact-row:focus-within {
+  border-color: rgb(var(--accent-rgb) / 0.2);
+}
+
 .contact-link-item {
+  flex: 1;
+  min-width: 0;
   display: grid;
   grid-template-columns: 100px 1fr 40px;
   gap: 1rem;
   align-items: center;
   padding: var(--space-6) 0;
-  border-bottom: 1px solid var(--border);
-  transition:
-    border-color var(--dur-base) var(--ease-out),
-    transform var(--dur-base) var(--ease-out);
+  transition: transform var(--dur-base) var(--ease-out);
 }
 
-.contact-link-item:first-child {
-  border-top: 1px solid var(--border);
-}
-
-.contact-link-item:hover {
-  border-color: rgb(var(--accent-rgb) / 0.2);
+.contact-link-item:hover,
+.contact-link-item:focus-visible {
   transform: translateX(var(--hover-shift));
+}
+
+.contact-copy-btn {
+  flex-shrink: 0;
+  padding: 0.36rem 0.72rem;
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition:
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    background var(--dur-fast) ease;
+}
+
+.contact-copy-btn:hover,
+.contact-copy-btn:focus-visible {
+  color: var(--accent);
+  border-color: rgb(var(--accent-rgb) / 0.5);
+  background: rgb(var(--accent-rgb) / 0.08);
+}
+
+.contact-copy-btn.is-copied {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .contact-link-label {
@@ -1034,6 +1244,8 @@ ol {
   height: 100%;
   z-index: var(--z-bg-video);
   overflow: hidden;
+  contain: strict;
+  transform: translateZ(0);
 }
 
 .video-bg__vid {
@@ -1043,11 +1255,18 @@ ol {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 1.2s var(--ease-in-out);
+  visibility: hidden;
+  transition:
+    opacity 1.2s var(--ease-in-out),
+    visibility 0s linear 1.2s;
 }
 
 .video-bg__vid.active {
   opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 1.2s var(--ease-in-out),
+    visibility 0s;
 }
 
 .video-bg__overlay {
@@ -1073,41 +1292,10 @@ ol {
   z-index: var(--z-bg-canvas);
 }
 
+/* Désactivé au profit du grain naturel des vidéos de fond : le filtre SVG
+   `<feTurbulence numOctaves='4'>` plein écran pénalisait le compositeur GPU. */
 .bg-grain {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: var(--z-grain);
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 200px 200px;
-}
-
-/* ===== SECTION GLOW EFFECTS ===== */
-.section-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: var(--radius-full);
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(120px);
-  opacity: 0.07;
-}
-
-.section-glow--right {
-  top: 10%;
-  right: -200px;
-  background: var(--green);
-}
-
-.section-glow--left {
-  top: 20%;
-  left: -200px;
-  background: var(--accent);
+  display: none;
 }
 
 /* ===== REVEAL ANIMATIONS ===== */
@@ -1122,15 +1310,6 @@ ol {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
-  }
-
-  .timeline-item {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-
-  .timeline-date {
-    font-size: 0.8rem;
   }
 }
 
@@ -1157,12 +1336,6 @@ ol {
     font-size: 0.95rem;
     line-height: 1.7;
     max-width: 32ch;
-  }
-
-  .section-glow {
-    width: 300px;
-    height: 300px;
-    opacity: 0.04;
   }
 
   .stats-row {
@@ -1195,20 +1368,6 @@ ol {
     gap: 0.5rem;
     text-align: center;
   }
-
-  .timeline::before {
-    left: 0;
-  }
-
-  .timeline-item {
-    padding-left: 2rem;
-  }
-
-  .timeline-item::before {
-    left: -3px;
-    width: 7px;
-    height: 7px;
-  }
 }
 
 @media (max-width: 560px) {
@@ -1223,21 +1382,32 @@ ol {
 
   .contact-link-item {
     grid-template-columns: 1fr 24px;
-    gap: 0.5rem;
-    align-items: start;
+    grid-template-rows: auto auto;
+    gap: 0.25rem 0.75rem;
+    align-items: center;
   }
 
   .contact-link-label {
+    grid-column: 1;
+    grid-row: 1;
     font-size: 0.68rem;
     letter-spacing: 0.08em;
   }
 
   .contact-link-value {
     grid-column: 1;
-    margin-top: 0.2rem;
+    grid-row: 2;
+    margin-top: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-copy-btn {
+    padding: 0.3rem 0.58rem;
+    font-size: 0.66rem;
   }
 
   .contact-link-arrow {
+    grid-column: 2;
     grid-row: 1 / span 2;
     align-self: center;
   }
@@ -1284,8 +1454,7 @@ ol {
 
 /* ===== NAVIGATION MOBILE — SOMMAIRE ÉDITORIAL ===== */
 .nav.menu-open {
-  background: rgb(var(--bg-rgb) / 0.94);
-  backdrop-filter: blur(18px);
+  background: rgb(var(--bg-rgb) / 0.96);
 }
 
 .nav-menu {
@@ -1520,17 +1689,43 @@ ol {
 .terminal-controls i:nth-child(2) { background: #ffbd44; }
 .terminal-controls i:nth-child(3) { background: #00ca4e; }
 
-.terminal-title {
-  overflow: hidden;
-  max-width: calc(100% - 104px);
-  margin: 0;
-  color: #cecece;
-  font: 600 0.75rem/1 var(--font-body);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.terminal-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: calc(100% - 76px);
+  margin-left: auto;
 }
 
-.terminal-title span { margin-right: 0.23rem; font-size: 0.75rem; }
+.terminal-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.24rem 0.55rem;
+  border-radius: 6px;
+  color: #a8a8a8;
+  font: 600 0.72rem/1 var(--font-body);
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.terminal-tab:hover {
+  color: #f1f1f1;
+  background: rgb(255 255 255 / 0.06);
+}
+
+.terminal-tab.is-active {
+  color: #f2c94c;
+  background: rgb(0 0 0 / 0.28);
+}
+
+.terminal-tab span {
+  font-size: 0.72rem;
+}
+
+.terminal-body[hidden] {
+  display: none;
+}
 .terminal-body {
   padding: 0.55rem 0.65rem 1.2rem;
   color: #f1f1f1;
@@ -1562,7 +1757,7 @@ ol {
 
 @media (max-width: 480px) {
   .terminal-body { font-size: 0.74rem; }
-  .terminal-title { font-size: 0.68rem; }
+  .terminal-tab { font-size: 0.68rem; padding: 0.22rem 0.44rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

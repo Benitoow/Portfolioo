@@ -7,8 +7,8 @@ Portfolio personnel hébergé sur [benjaminleleu.fr](https://benjaminleleu.fr), 
 - HTML5 sémantique / CSS custom properties / JS ES2020, sans build
 - GSAP 3 + ScrollTrigger, servi localement (`js/vendor/`)
 - WebGL maison (`js/shader.js`) : reflets de lumière discrets, accueil et fiches
-- Icônes : sprites SVG locaux — Hugeicons et Line MD pour les fiches (`images/project-icons.svg`, licences MIT dans `images/licenses/`), Heroicons 2.2 pour les compétences de l’accueil
-- Fonts : Playfair Display, DM Sans, Space Mono, auto-hébergées en woff2 (`fonts/`)
+- Icônes : sprites SVG locaux — Hugeicons et Line MD pour les fiches (`images/project-icons.svg`), Heroicons 2.2 pour les compétences et Lucide pour le parcours (licences dans `images/licenses/`)
+- Typographie : Bricolage Grotesque pour les titres, Inter Tight pour le texte, JetBrains Mono pour la micro-typographie — trois familles variables auto-hébergées en woff2 (`fonts/`, sous-ensemble latin, licences OFL dans `fonts/licenses/`)
 - Logo : revient à l’accueil et y lance les ballons de `balloons-js` (MIT), embarqué dans `js/vendor/` et chargé au premier clic seulement ; mouvement réduit et économie de données respectés
 - Surface agent : `worker/index.js` renvoie la page en markdown quand la requête porte `Accept: text/markdown` (HTML par défaut, `Vary: Accept`), et `llms.txt` résume le site pour les agents
 - Hébergement : Cloudflare Workers avec assets statiques
@@ -51,6 +51,7 @@ laisse `_headers` piloter leur cache (polices un an, CSS/JS 30 jours).
 │   ├── shader.js           # Calque lumineux WebGL
 │   └── vendor/             # GSAP 3.12.5 + ScrollTrigger + balloons-js (MIT), servis localement
 ├── fonts/                  # woff2 auto-hébergés (sous-ensemble latin)
+│   └── licenses/           # Notices OFL des trois familles
 ├── images/
 │   ├── posters/            # Affiches des vidéos de fond (1024x576)
 │   ├── thumbs/             # Vignettes du coverflow

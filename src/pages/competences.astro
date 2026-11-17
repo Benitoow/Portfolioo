@@ -1,0 +1,75 @@
+---
+import "@/styles/globals.css";
+import SkillsOrbit3D from "@/components/SkillsOrbit3D";
+---
+<!DOCTYPE html>
+<html lang="fr" class="skills-html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outils &amp; savoir-faire | Benjamin Leleu</title>
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/css/tokens.css?v=f18a3ab0ac" />
+    <link rel="stylesheet" href="/css/projet-pages.css?v=fe6cb2847e" />
+    <link rel="stylesheet" href="/css/skills-3d.css?v=72b45a2269" />
+    <link rel="stylesheet" href="/css/live-orb.css?v=146ad1e77f" />
+    <meta
+      name="description"
+      content="Carte orbitale 3D des outils de Benjamin Leleu : IA (Claude, Antigravity, Cursor, VS Code), Création (Illustrator, Photoshop, Figma), Vidéo (Premiere Pro, After Effects, DaVinci Resolve) et Code Web."
+    />
+    <link rel="canonical" href="https://benjaminleleu.fr/competences" />
+    <meta property="og:title" content="Outils & savoir-faire | Benjamin Leleu" />
+    <meta
+      property="og:description"
+      content="Explorez les 25 outils du workflow créatif et technique de Benjamin Leleu."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Portfolio Benjamin Leleu" />
+    <meta property="og:url" content="https://benjaminleleu.fr/competences" />
+    <meta property="og:image" content="https://benjaminleleu.fr/images/og-image.jpg" />
+    <link rel="shortcut icon" href="/images/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#040612" />
+    <style is:inline>
+      html, body {
+        --bg-rgb: 4 6 18;
+        --bg: #040612;
+        background-color: #040612 !important;
+        overscroll-behavior: none;
+        overscroll-behavior-y: none;
+      }
+    </style>
+  </head>
+  <body class="skills-page">
+    <a class="case-skip-link" href="#contenu">Aller aux outils</a>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <nav class="case-nav" aria-label="Navigation">
+      <div class="case-shell case-nav__inner">
+        <a class="case-logo" href="/" aria-label="Accueil">B<span>.</span></a>
+        <span class="case-nav__index">Outils</span>
+        <a class="case-nav__back" href="/">
+          <span aria-hidden="true">
+            <svg class="case-icon" aria-hidden="true" focusable="false">
+              <use href="/images/project-icons.svg#line-arrow-left"></use>
+            </svg>
+          </span>
+          Accueil
+        </a>
+      </div>
+    </nav>
+
+    <main id="contenu" class="skills-shell" tabindex="-1">
+      <SkillsOrbit3D client:load />
+    </main>
+
+    <footer class="case-footer case-shell">
+      <p>© <span id="footer-year">2026</span> Benjamin Leleu</p>
+      <p><a href="/#work">Projets</a> · <a href="/#contact">Contact</a></p>
+    </footer>
+
+    <script is:inline src="/js/shared.js?v=67c1f6fe04" defer></script>
+    <script is:inline src="/js/live-orb.js?v=1368685adf" defer></script>
+  </body>
+</html>

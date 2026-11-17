@@ -1,0 +1,824 @@
+---
+import "@/styles/globals.css";
+---
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benjamin Leleu · Portfolio création numérique</title>
+    <meta
+      name="description"
+      content="Portfolio de Benjamin Leleu : sites web, identités visuelles, podcasts et montages vidéo. Étudiant en 2e année de BUT MMI création numérique à l'IUT de Vélizy (UVSQ)."
+    />
+    <meta name="author" content="Benjamin LELEU" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#1E1B18" />
+    <link rel="canonical" href="https://benjaminleleu.fr/" />
+    <meta property="og:title" content="Benjamin Leleu · Portfolio création numérique" />
+    <meta
+      property="og:description"
+      content="Sites web, identités visuelles, podcasts et montages vidéo. Étudiant en 2e année de BUT MMI création numérique à l'IUT de Vélizy (UVSQ)."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Portfolio Benjamin Leleu" />
+    <meta property="og:url" content="https://benjaminleleu.fr/" />
+    <meta
+      property="og:image"
+      content="https://benjaminleleu.fr/images/og-image.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Benjamin Leleu · Portfolio création numérique" />
+    <meta
+      name="twitter:description"
+      content="Sites web, identités visuelles, podcasts et montages vidéo. Étudiant en 2e année de BUT MMI création numérique à l'IUT de Vélizy (UVSQ)."
+    />
+    <meta
+      name="twitter:image"
+      content="https://benjaminleleu.fr/images/og-image.jpg"
+    />
+
+    <!-- Page servie à la racine : aucune réécriture de base nécessaire -->
+
+    <!-- Polices et feuilles servies localement -->
+    <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="css/tokens.css?v=f18a3ab0ac" as="style" />
+    <link rel="preload" href="css/style.css?v=2b489fa438" as="style" />
+    <link rel="preload" href="css/coverflow.css?v=616d19b416" as="style" />
+    <link
+      rel="preload"
+      href="images/posters/forest-walking.webp"
+      as="image"
+      type="image/webp"
+    />
+
+    <!-- Styles — tokens.css d'abord : il définit les custom properties -->
+    <link rel="stylesheet" href="css/tokens.css?v=f18a3ab0ac" />
+    <link rel="stylesheet" href="css/style.css?v=2b489fa438" />
+    <link rel="stylesheet" href="css/live-orb.css?v=146ad1e77f" />
+    <!-- La galerie est sous la ligne de flottaison : sa feuille n'a pas à
+         bloquer le premier rendu. -->
+    <link
+      rel="stylesheet"
+      href="css/coverflow.css?v=616d19b416"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript><link rel="stylesheet" href="css/coverflow.css?v=616d19b416" /></noscript>
+
+    <!-- GSAP — servi localement : une origine tierce de moins dans le chemin
+         critique, et le cache d'un an s'applique. -->
+    <script is:inline src="js/vendor/gsap.min.js" defer></script>
+    <script is:inline src="js/vendor/ScrollTrigger.min.js" defer></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+
+    <!-- Structured Data -->
+    <script is:inline type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Benjamin Leleu",
+        "jobTitle": "Étudiant en deuxième année de BUT MMI — parcours Création numérique",
+        "url": "https://benjaminleleu.fr/",
+        "email": "mailto:ll.benjamin.9455@gmail.com",
+        "telephone": "+33671691064",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "IUT de Vélizy, Université de Versailles Saint-Quentin-en-Yvelines",
+          "alternateName": "IUT de Vélizy — UVSQ"
+        },
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "IUT de Troyes, Université de Reims Champagne-Ardenne"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "IUT A de Villeneuve-d'Ascq, Université de Lille"
+          }
+        ],
+        "knowsLanguage": ["fr", "en"],
+        "sameAs": [
+          "https://www.linkedin.com/in/benjamin-leleu-b373bb36a/",
+          "https://github.com/Benitoow"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    <noscript>
+      <div class="noscript-banner">
+        JavaScript est désactivé. Le site reste navigable, mais certaines
+        animations avancées sont désactivées.
+      </div>
+    </noscript>
+
+    <!-- Global animated background -->
+    <canvas class="bg-canvas" id="bgCanvas"></canvas>
+    <div class="bg-grain"></div>
+    <canvas class="shader-canvas" aria-hidden="true"></canvas>
+
+    <!-- Video background system: crossfade on scroll.
+         Les sources différées sont portées par `data-src` sur la vidéo
+         elle-même : laisser un <source> vide dans l'arbre relance
+         l'algorithme de sélection à chaque écriture d'attribut et fait
+         abandonner la requête en cours de route. -->
+    <div class="video-bg" id="videoBg" aria-hidden="true">
+      <video
+        class="video-bg__vid active"
+        data-section="hero"
+        src="videos/Forest-Walking.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="images/posters/forest-walking.webp"
+        aria-hidden="true"
+      ></video>
+      <video
+        class="video-bg__vid"
+        data-section="about"
+        data-src="videos/Forest-Walking2.mp4"
+        data-poster="images/posters/forest-walking2.webp"
+        muted
+        loop
+        playsinline
+        preload="none"
+        aria-hidden="true"
+      ></video>
+      <video
+        class="video-bg__vid"
+        data-section="work"
+        data-src="videos/forest-walking3.mp4"
+        data-poster="images/posters/forest-walking3.webp"
+        muted
+        loop
+        playsinline
+        preload="none"
+        aria-hidden="true"
+      ></video>
+      <video
+        class="video-bg__vid"
+        data-section="skills"
+        data-src="videos/forest-walking4.mp4"
+        data-poster="images/posters/forest-walking4.webp"
+        muted
+        loop
+        playsinline
+        preload="none"
+        aria-hidden="true"
+      ></video>
+      <video
+        class="video-bg__vid"
+        data-section="journey,contact"
+        data-src="videos/Forest-SkyLooking.mp4"
+        data-poster="images/posters/forest-skylooking.webp"
+        muted
+        loop
+        playsinline
+        preload="none"
+        aria-hidden="true"
+      ></video>
+      <div class="video-bg__overlay"></div>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+      <div class="loader-content">
+        <span class="loader-text">Benjamin</span>
+        <span class="loader-text">LELEU</span>
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#hero" class="nav-logo">B.</a>
+      <div class="nav-links">
+        <a href="#about" class="nav-link" data-index="01">À Propos</a>
+        <a href="#work" class="nav-link" data-index="02">Projets</a>
+        <a href="./competences" class="nav-link" data-index="03">Compétences</a>
+        <a href="#journey" class="nav-link" data-index="04">Parcours</a>
+        <a href="#contact" class="nav-link" data-index="05">Contact</a>
+      </div>
+      <a href="cv/Benjamin_LELEU_CV.pdf?v=42f940f0c1" class="nav-cta" download>CV ↓</a>
+      <button
+        class="nav-menu"
+        id="navMenu"
+        aria-label="Ouvrir le menu mobile"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+      >
+        <span class="nav-menu-label">Menu</span>
+        <span class="nav-menu-icon" aria-hidden="true"><span></span><span></span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <div class="mobile-menu-content">
+        <div class="mobile-menu-heading"><span>Navigation</span><span>Benjamin Leleu / 2026</span></div>
+        <a href="#about" class="mobile-link" data-index="01">À Propos</a>
+        <a href="#work" class="mobile-link" data-index="02">Projets</a>
+        <a href="./competences" class="mobile-link" data-index="03">Compétences</a>
+        <a href="#journey" class="mobile-link" data-index="04">Parcours</a>
+        <a href="#contact" class="mobile-link" data-index="05">Contact</a>
+        <div class="mobile-menu-footer">
+          <span>Créer · concevoir · raconter</span>
+          <div class="mobile-menu-socials">
+          <a
+            href="https://www.linkedin.com/in/benjamin-leleu-b373bb36a/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/Benitoow"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <main id="main-content">
+      <!-- ===== HERO ===== -->
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-label">Portfolio</div>
+          <h1 class="hero-title" id="hero-title">
+            <span class="hero-line"
+              ><span class="hero-line-inner">Benjamin</span></span
+            >
+            <span class="hero-line"
+              ><span class="hero-line-inner accent">LELEU</span></span
+            >
+          </h1>
+          <p class="hero-subtitle">Création numérique · Web · Audiovisuel</p>
+          <p class="hero-description">
+            Je suis en deuxième année de BUT MMI à l'IUT de Vélizy (UVSQ),
+            parcours création numérique. Selon les projets, je code un site, je
+            dessine une identité visuelle ou je monte une vidéo.
+          </p>
+        </div>
+
+      </section>
+
+      <!-- ===== MARQUEE ===== -->
+      <div class="marquee">
+        <div class="marquee-inner">
+          <div class="marquee-track">
+            <span>Création Numérique</span>
+            <span class="marquee-dot">✦</span>
+            <span>Audiovisuel</span>
+            <span class="marquee-dot">✦</span>
+            <span>UX/UI Design</span>
+            <span class="marquee-dot">✦</span>
+            <span>Développeur Web</span>
+            <span class="marquee-dot">✦</span>
+            <span>BUT MMI · 2e année</span>
+            <span class="marquee-dot">✦</span>
+          </div>
+          <div class="marquee-track" aria-hidden="true">
+            <span>Création Numérique</span>
+            <span class="marquee-dot">✦</span>
+            <span>Audiovisuel</span>
+            <span class="marquee-dot">✦</span>
+            <span>UX/UI Design</span>
+            <span class="marquee-dot">✦</span>
+            <span>Développeur Web</span>
+            <span class="marquee-dot">✦</span>
+            <span>BUT MMI · 2e année</span>
+            <span class="marquee-dot">✦</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ABOUT ===== -->
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-label">01 · À Propos</div>
+          <div class="about-grid">
+            <div class="about-text">
+              <h2 class="section-title reveal-text" id="about-title">
+                Entre image, interface et code.
+              </h2>
+              <p class="about-description reveal-text">
+                Je m'appelle <strong>Benjamin Leleu</strong>. J'ai commencé par
+                deux années de BUT Informatique à Lille, puis une première année
+                de MMI à Troyes. Je suis aujourd'hui en
+                <strong>deuxième année de BUT MMI</strong>, parcours
+                <strong>Création numérique</strong>, à l'<strong>IUT de Vélizy
+                (UVSQ)</strong>. Ce détour m'a laissé un pied dans le code et
+                l'autre dans l'image.
+              </p>
+              <p class="about-description reveal-text">
+                Les projets que je garde ici vont de l'identité de marque au
+                site web, du podcast au montage vidéo. Il y a des travaux
+                d'école et des projets perso, dont un site client en ligne
+                depuis 2024. Dans les deux cas, je vais jusqu'au bout : ce que
+                je dessine, je le fabrique.
+              </p>
+            </div>
+            <div class="about-details">
+              <div class="about-terminal" aria-label="Profil de Benjamin dans une fenêtre Terminal">
+                <div class="terminal-header">
+                  <span class="terminal-controls" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <div class="terminal-tabs" role="tablist" aria-label="Fichiers du terminal">
+                    <button
+                      type="button"
+                      class="terminal-tab is-active"
+                      role="tab"
+                      aria-selected="true"
+                      data-terminal-tab="profile"
+                    ><span aria-hidden="true">📁</span> benjamin.js</button>
+                    <button
+                      type="button"
+                      class="terminal-tab"
+                      role="tab"
+                      aria-selected="false"
+                      data-terminal-tab="status"
+                    ><span aria-hidden="true">⚡</span> dispo.sh</button>
+                  </div>
+                </div>
+                <div class="terminal-body" data-terminal-panel="profile">
+                  <code class="terminal-prompt" is:raw>benjamin@portfolio ~ % cat benjamin.js</code>
+                  <code is:raw>const benjamin = {</code>
+                  <code is:raw>  domaine: "création numérique",</code>
+                  <code is:raw>  pratique: ["web", "design", "audiovisuel"],</code>
+                  <code is:raw>  formation: "BUT MMI · UVSQ",</code>
+                  <code is:raw>  approche: "concevoir et réaliser"</code>
+                  <code is:raw>};</code>
+                  <code class="terminal-prompt" is:raw>benjamin@portfolio ~ % <span class="terminal-caret" aria-hidden="true"></span></code>
+                </div>
+                <div class="terminal-body" data-terminal-panel="status" hidden>
+                  <code class="terminal-prompt" is:raw>benjamin@portfolio ~ % ./dispo.sh</code>
+                  <code is:raw>poste   : Stage / Alternance 2026–2027</code>
+                  <code is:raw>zone    : Vélizy · Paris · Île-de-France</code>
+                  <code is:raw>permis  : B (véhiculé)</code>
+                  <code is:raw>statut  : Disponible &amp; à l'écoute</code>
+                  <code class="terminal-prompt" is:raw>benjamin@portfolio ~ % <span class="terminal-caret" aria-hidden="true"></span></code>
+                </div>
+              </div>
+
+              <div class="about-detail-item">
+                <span class="detail-label">Formation</span>
+                <span class="detail-value">2e année de BUT MMI · parcours Création numérique</span>
+              </div>
+              <div class="about-detail-item">
+                <span class="detail-label">Établissement</span>
+                <span class="detail-value">IUT de Vélizy · UVSQ</span>
+              </div>
+              <div class="about-detail-item">
+                <span class="detail-label">Domaines</span>
+                <span class="detail-value">Web · Design · Audiovisuel</span>
+              </div>
+              <div class="about-detail-item">
+                <span class="detail-label">Langues</span>
+                <span class="detail-value">Français · Anglais B2</span>
+              </div>
+              <div class="about-detail-item">
+                <span class="detail-label">Mobilité</span>
+                <span class="detail-value">Permis B</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-number" data-target="8">0</span>
+              <span class="stat-label">Projets présentés</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="16">0</span>
+              <span class="stat-label">Technologies</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="2">0</span>
+              <span class="stat-label">Année de BUT MMI</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PROJECTS ===== -->
+      <section
+        class="section"
+        id="work"
+        aria-labelledby="work-title"
+      >
+        <div class="container">
+          <div class="section-label">02 · Projets</div>
+          <h2 class="section-title reveal-text" id="work-title">
+            Travaux sélectionnés
+          </h2>
+          <p class="section-subtitle reveal-text">
+            Huit projets que j'assume, du rendu de SAE au site client encore en
+            ligne.
+          </p>
+          <div class="project-coverflow" id="projectCoverflow" hidden>
+            <div class="coverflow-gallery">
+              <p class="coverflow-kicker">Explorer les projets</p>
+              <div
+                class="coverflow-stage"
+                id="coverflowStage"
+                role="region"
+                aria-roledescription="carrousel"
+                aria-label="Choisir un projet"
+                aria-describedby="coverflowHint"
+                tabindex="0"
+              >
+                <div class="coverflow-track" id="coverflowTrack"></div>
+              </div>
+              <div class="coverflow-caption" aria-live="polite" aria-atomic="true">
+                <span class="coverflow-count" id="coverflowCount"></span>
+                <h3 class="coverflow-title" id="coverflowTitle"></h3>
+                <p class="coverflow-description" id="coverflowDescription"></p>
+                <dl class="coverflow-meta">
+                  <div><dt>Type</dt><dd id="coverflowType"></dd></div>
+                  <div><dt>Domaines</dt><dd id="coverflowTags"></dd></div>
+                </dl>
+                <a class="coverflow-link" id="coverflowLink" hidden>Découvrir le projet <span aria-hidden="true">↗</span></a>
+                <span class="coverflow-no-link" id="coverflowNoLink" hidden>Projet présenté sans page dédiée</span>
+              </div>
+              <div class="coverflow-controls" aria-label="Navigation des projets">
+                <button class="coverflow-arrow" id="coverflowPrev" type="button" aria-label="Projet précédent">←</button>
+                <div class="coverflow-dots" id="coverflowDots" aria-label="Aller à un projet"></div>
+                <button class="coverflow-arrow" id="coverflowNext" type="button" aria-label="Projet suivant">→</button>
+              </div>
+              <p class="coverflow-hint" id="coverflowHint">Glisser, molette ou flèches pour explorer ; la page défile en dehors des cartes.</p>
+            </div>
+          </div>
+          <noscript>
+            <p class="projects-fallback">
+              Projets : <a href="./projets/kaobucha">Kaobucha</a>,
+              <a href="./projets/mojo-tunes">Mojo Tunes</a>,
+              <a href="./projets/star-wars">Star Wars</a>,
+              <a href="./projets/podcast">Fiction sonore</a>,
+              <a href="./projets/sitecoiffure">Aux P'tits Soins Coiffure</a>,
+              gestion de communautés en ligne,
+              <a href="https://www.tiktok.com/@benitoow">TikTok @benitoow</a>
+              et <a href="https://www.tiktok.com/@astralcovenant">Astral Covenant</a>.
+            </p>
+          </noscript>
+        </div>
+      </section>
+
+      <!-- ===== SKILLS (TEASER VERS PAGE 3D DEDIEE) ===== -->
+      <section class="section" id="skills" aria-labelledby="skills-title">
+        <div class="container container--large">
+          <div class="skills-teaser-top">
+            <div>
+              <div class="section-label">03 · Compétences</div>
+              <h2 class="section-title reveal-text" id="skills-title">
+                Ce que j'utilise au quotidien
+              </h2>
+            </div>
+            <a href="./competences" class="skills-galaxy-cta">
+              <span>Explorer l'écosystème 3D</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div class="skills-bento skills-bento--teaser">
+            <a href="./competences" class="skill-card skill-card--dark" data-skill-cat="ai">
+              <div class="skill-logos-row" aria-label="Claude, Antigravity, Cursor, VS Code">
+                <img src="images/logos/claude.svg" alt="Claude" width="24" height="24" loading="lazy" />
+                <img src="images/logos/antigravity.svg" alt="Antigravity" width="24" height="24" loading="lazy" />
+                <img src="images/logos/cursor.svg" alt="Cursor" width="24" height="24" loading="lazy" />
+                <img src="images/logos/vscode.svg" alt="VS Code" width="24" height="24" loading="lazy" />
+              </div>
+              <div class="skill-card-foot">
+                <div>
+                  <h3 class="skill-card-title">IA &amp; Vibe Coding</h3>
+                  <p class="skill-card-note">Claude, Antigravity, Cursor, Gemini</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="./competences" class="skill-card skill-card--dark" data-skill-cat="design">
+              <div class="skill-logos-row" aria-label="Illustrator, Photoshop, Figma, Canva">
+                <img src="images/logos/illustrator.svg" alt="Adobe Illustrator" width="24" height="24" loading="lazy" />
+                <img src="images/logos/photoshop.svg" alt="Adobe Photoshop" width="24" height="24" loading="lazy" />
+                <img src="images/logos/figma.svg" alt="Figma" width="24" height="24" loading="lazy" />
+                <img src="images/logos/canva.svg" alt="Canva Pro" width="24" height="24" loading="lazy" />
+              </div>
+              <div class="skill-card-foot">
+                <div>
+                  <h3 class="skill-card-title">Design &amp; création</h3>
+                  <p class="skill-card-note">Branding, maquettes UI, print</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="./competences" class="skill-card skill-card--dark" data-skill-cat="audio">
+              <div class="skill-logos-row" aria-label="Premiere Pro, After Effects, DaVinci Resolve, Topaz Video AI">
+                <img src="images/logos/premierepro.svg" alt="Premiere Pro" width="24" height="24" loading="lazy" />
+                <img src="images/logos/aftereffects.svg" alt="After Effects" width="24" height="24" loading="lazy" />
+                <img src="images/logos/davinci.svg" alt="DaVinci Resolve" width="24" height="24" loading="lazy" />
+                <img src="images/logos/topaz.svg" alt="Topaz Video AI" width="24" height="24" loading="lazy" />
+              </div>
+              <div class="skill-card-foot">
+                <div>
+                  <h3 class="skill-card-title">Audiovisuel</h3>
+                  <p class="skill-card-note">Montage, motion, étalonnage</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="./competences" class="skill-card skill-card--ghost" data-skill-cat="dev">
+              <div class="skill-logos-row" aria-label="Astro, JavaScript, Cloudflare, GitHub">
+                <img src="images/logos/astro.svg" alt="Astro" width="24" height="24" loading="lazy" />
+                <img src="images/logos/javascript.svg" alt="JavaScript" width="24" height="24" loading="lazy" />
+                <img src="images/logos/cloudflare.svg" alt="Cloudflare" width="24" height="24" loading="lazy" />
+                <img src="images/logos/github.svg" alt="GitHub" width="24" height="24" loading="lazy" />
+              </div>
+              <div class="skill-card-foot">
+                <div>
+                  <h3 class="skill-card-title">Web &amp; code</h3>
+                  <p class="skill-card-note">HTML, CSS, TS, Java, Bash</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== JOURNEY / TIMELINE ===== -->
+      <section
+        class="section section-dark"
+        id="journey"
+        aria-labelledby="journey-title"
+      >
+        <div class="container">
+          <div class="section-label">04 · Parcours</div>
+          <h2 class="section-title reveal-text" id="journey-title">
+            Mon chemin
+          </h2>
+
+          <ol class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-body">
+                <div class="timeline-head">
+                  <span class="timeline-dot" aria-hidden="true"></span>
+                  <span class="timeline-icon-badge" aria-hidden="true">
+                    <svg class="timeline-icon">
+                      <use href="images/icons.svg#graduation-cap"></use>
+                    </svg>
+                  </span>
+                  <div class="timeline-org">
+                    <span class="timeline-org-name">Lycée Jean Perrin</span>
+                    <span class="timeline-place">Saint-Ouen-l'Aumône</span>
+                  </div>
+                </div>
+                <h3 class="timeline-role">Bac STI2D, option SIN</h3>
+                <p class="timeline-period">
+                  <svg class="timeline-icon" aria-hidden="true">
+                    <use href="images/icons.svg#calendar"></use>
+                  </svg>
+                  <span>2021 – 2023</span>
+                </p>
+                <p class="timeline-desc">
+                  Systèmes d'information et numérique : c'est là que j'ai appris
+                  à démonter un problème avant de le résoudre.
+                </p>
+                <ul class="timeline-tags">
+                  <li class="timeline-tag">STI2D</li>
+                  <li class="timeline-tag">SIN</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <div class="timeline-body">
+                <div class="timeline-head">
+                  <span class="timeline-dot" aria-hidden="true"></span>
+                  <span class="timeline-icon-badge" aria-hidden="true">
+                    <svg class="timeline-icon">
+                      <use href="images/icons.svg#graduation-cap"></use>
+                    </svg>
+                  </span>
+                  <div class="timeline-org">
+                    <span class="timeline-org-name">IUT A de Villeneuve-d'Ascq</span>
+                    <span class="timeline-place">Université de Lille</span>
+                  </div>
+                </div>
+                <h3 class="timeline-role">BUT Informatique</h3>
+                <p class="timeline-period">
+                  <svg class="timeline-icon" aria-hidden="true">
+                    <use href="images/icons.svg#calendar"></use>
+                  </svg>
+                  <span>2023 – 2025</span>
+                </p>
+                <p class="timeline-desc">
+                  Deux ans de Java et de projets web, avec l'habitude de
+                  travailler sur du code qu'on relit six mois plus tard.
+                </p>
+                <ul class="timeline-tags">
+                  <li class="timeline-tag">Java</li>
+                  <li class="timeline-tag">Projets web</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <div class="timeline-body">
+                <div class="timeline-head">
+                  <span class="timeline-dot" aria-hidden="true"></span>
+                  <span class="timeline-icon-badge" aria-hidden="true">
+                    <svg class="timeline-icon">
+                      <use href="images/icons.svg#graduation-cap"></use>
+                    </svg>
+                  </span>
+                  <div class="timeline-org">
+                    <span class="timeline-org-name">IUT de Troyes</span>
+                    <span class="timeline-place"
+                      >Université de Reims Champagne-Ardenne</span
+                    >
+                  </div>
+                </div>
+                <h3 class="timeline-role">1re année de BUT MMI</h3>
+                <p class="timeline-period">
+                  <svg class="timeline-icon" aria-hidden="true">
+                    <use href="images/icons.svg#calendar"></use>
+                  </svg>
+                  <span>2025 – 2026</span>
+                </p>
+                <p class="timeline-desc">
+                  L'année où j'ai ajouté l'image au code : branding, audiovisuel,
+                  écriture.
+                </p>
+                <ul class="timeline-tags">
+                  <li class="timeline-tag">Branding</li>
+                  <li class="timeline-tag">Audiovisuel</li>
+                  <li class="timeline-tag">Écriture</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <div class="timeline-body">
+                <div class="timeline-head">
+                  <span class="timeline-dot" aria-hidden="true"></span>
+                  <span class="timeline-icon-badge" aria-hidden="true">
+                    <svg class="timeline-icon">
+                      <use href="images/icons.svg#graduation-cap"></use>
+                    </svg>
+                  </span>
+                  <div class="timeline-org">
+                    <span class="timeline-org-name">IUT de Vélizy</span>
+                    <span class="timeline-place">UVSQ</span>
+                  </div>
+                </div>
+                <h3 class="timeline-role">2e année de BUT MMI</h3>
+                <p class="timeline-period">
+                  <svg class="timeline-icon" aria-hidden="true">
+                    <use href="images/icons.svg#calendar"></use>
+                  </svg>
+                  <span>2026 – présent</span>
+                </p>
+                <p class="timeline-desc">
+                  Parcours création numérique : design, audiovisuel,
+                  communication et développement web dans la même semaine.
+                </p>
+                <ul class="timeline-tags">
+                  <li class="timeline-tag">Design</li>
+                  <li class="timeline-tag">Audiovisuel</li>
+                  <li class="timeline-tag">Communication</li>
+                  <li class="timeline-tag">Développement web</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== CONTACT ===== -->
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="section-label">05 · Contact</div>
+          <div class="contact-content">
+            <h2 class="contact-title reveal-text" id="contact-title">
+              Me contacter
+            </h2>
+            <p class="contact-subtitle reveal-text">
+              Une question, un projet, une envie de travailler ensemble ? Le
+              plus simple reste un mail, je réponds vite.
+            </p>
+
+            <div class="contact-links">
+              <div class="contact-row">
+                <a
+                  href="mailto:ll.benjamin.9455@gmail.com"
+                  class="contact-link-item"
+                >
+                  <span class="contact-link-label">Email</span>
+                  <span class="contact-link-value"
+                    >ll.benjamin.9455@gmail.com</span
+                  >
+                  <span class="contact-link-arrow">→</span>
+                </a>
+                <button
+                  type="button"
+                  class="contact-copy-btn"
+                  data-copy="ll.benjamin.9455@gmail.com"
+                  data-copy-kind="email"
+                  aria-label="Copier l'adresse email"
+                >Copier</button>
+              </div>
+              <div class="contact-row">
+                <a href="tel:+33671691064" class="contact-link-item">
+                  <span class="contact-link-label">Téléphone</span>
+                  <span class="contact-link-value">06 71 69 10 64</span>
+                  <span class="contact-link-arrow">→</span>
+                </a>
+                <button
+                  type="button"
+                  class="contact-copy-btn"
+                  data-copy="06 71 69 10 64"
+                  data-copy-kind="phone"
+                  aria-label="Copier le numéro de téléphone"
+                >Copier</button>
+              </div>
+              <div class="contact-row">
+                <a
+                  href="https://www.linkedin.com/in/benjamin-leleu-b373bb36a/"
+                  class="contact-link-item"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="contact-link-label">LinkedIn</span>
+                  <span class="contact-link-value">benjamin-leleu</span>
+                  <span class="contact-link-arrow">↗</span>
+                </a>
+              </div>
+              <div class="contact-row">
+                <a
+                  href="https://github.com/Benitoow"
+                  class="contact-link-item"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="contact-link-label">GitHub</span>
+                  <span class="contact-link-value">Benitoow</span>
+                  <span class="contact-link-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-left">
+            <span class="footer-name">Benjamin LELEU</span>
+            <span class="footer-tagline">Raconter le monde en pixels</span>
+          </div>
+          <div class="footer-right">
+            <div class="footer-links">
+              <a
+                href="https://www.linkedin.com/in/benjamin-leleu-b373bb36a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn</a
+              >
+              <a
+                href="https://github.com/Benitoow"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© <span id="footer-year">2026</span> Benjamin LELEU · Tous droits réservés</p>
+          <p>Écrit à la main, sans framework</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts — shared.js d'abord : main.js dépend de ses helpers -->
+    <script is:inline src="js/shared.js?v=67c1f6fe04" defer></script>
+    <script is:inline src="js/shader.js" defer></script>
+    <script is:inline src="js/coverflow.js?v=e60b40de71" defer></script>
+    <script is:inline src="js/main.js?v=f81703f4af" defer></script>
+    <script is:inline src="js/live-orb.js?v=1368685adf" defer></script>
+  </body>
+</html>
